@@ -59,9 +59,9 @@ $(function(){
         $(this).addClass('current');
     })
     /*简单验证登录页面*/
-    var $user=$(".form-group input[placeholder='用户名']")
-    var $pass=$(".form-group input[placeholder='密码']")
-    var $vali=$(".form-group input[placeholder='验证码']")
+    var $user=$(".form-group input[placeholder='用户名']");
+    var $pass=$(".form-group input[placeholder='密码']");
+    var $vali=$(".form-group input[placeholder='验证码']");
     $('.login-box .btn-info').on('click',function(){
         if($user.val()==''){
             alert(1)
@@ -71,4 +71,33 @@ $(function(){
             alert(3)
         }
     })
-})
+    /*角色绑定页面上用户绑定tab选项卡*/
+    var $tabLi = $('.layer .menu-hd>li');
+    var $menuBox = $('.layer .menu-box ul')
+    $tabLi.on('click',function(){
+        $menuBox.eq($(this).index()).css('display','block').siblings().css('display','none');
+        $(this).attr('class','active').siblings().attr('class','');
+    })
+    /*角色绑定页面用户和功能绑定的单选按钮*/
+    var $tCircle=$('.layer .t-circle');
+    var flag=true;
+    $tCircle.on('click',function(){
+        if(flag){
+            $(this).attr('class','t-circle current')
+        }else{
+            $(this).attr('class','t-circle')
+        }
+        flag=!flag;
+    })
+
+    // function radio(){
+    //     if(flag){
+    //         this.className='t-circle current'
+    //     }else{
+    //         this.className='t-circle'
+    //     }
+    //     flag=!flag;
+    // }
+
+
+});

@@ -230,7 +230,7 @@
                 <a href="javascript:;" class="btn btn-lg btn-info">创建角色</a>
             </div>
             <!--创建用户界面弹出层 start-->
-            <div class="layer" style="display:block;">
+            <div class="layer">
                 <h3>创建角色</h3>
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -255,25 +255,23 @@
                     <textarea rows="4" placeholder="请输入描述内容"></textarea>
                     <div class="tab-box">
                         <ul class="menu-hd">
-                            <li><a class="active" href="javascript:;">用户绑定</a></li>
+                            <li class="active"><a href="javascript:;">用户绑定</a></li>
                             <li><a href="javascript:;">功能绑定</a></li>
                         </ul>
-                        <div class="menu-box" style="display:block;">
-                            <ul>
-                                <li><i></i><span>张一</span></li>
-                                <li><i></i><span>张二</span></li>
-                                <li><i></i><span>张三</span></li>
-                                <li><i></i><span>张四</span></li>
-                                <li><i></i><span>张五</span></li>
-                            </ul>
-                        </div>
                         <div class="menu-box">
+                            <ul style="display:block;">
+                                <li><i class="t-circle"></i><span>张一</span></li>
+                                <li><i class="t-circle"></i><span>张二</span></li>
+                                <li><i class="t-circle"></i><span>张三</span></li>
+                                <li><i class="t-circle"></i><span>张四</span></li>
+                                <li><i class="t-circle"></i><span>张五</span></li>
+                            </ul>
                             <ul>
-                                <li><i></i><span>系统管理</span></li>
-                                <li><i></i><span>商品信息管理</span></li>
-                                <li><i></i><span>销售管理</span></li>
-                                <li><i></i><span>采购管理</span></li>
-                                <li><i></i><span>入库管理</span></li>
+                                <li><i class="t-circle"></i><span>系统管理</span></li>
+                                <li><i class="t-circle"></i><span>商品信息管理</span></li>
+                                <li><i class="t-circle"></i><span>销售管理</span></li>
+                                <li><i class="t-circle"></i><span>采购管理</span></li>
+                                <li><i class="t-circle"></i><span>入库管理</span></li>
                             </ul>
                         </div>
                     </div>
@@ -397,12 +395,13 @@
     $(function() {
         $('.side .item').perfectScrollbar();
         $('.wrap .main').perfectScrollbar();
+        $('.layer .menu-box').perfectScrollbar();
         /*手机屏幕下layer显示滚动条*/
         $(window).resize(function(){
             if($(window).width()<768||768<$(window).width()<992){
                 $('.wrap .layer').perfectScrollbar();
             }
-        })
+        });
     });
 </script>
 </html>
