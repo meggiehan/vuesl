@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jiaose.html</title>
+    <title>系统-角色管理</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <!--[if lt IE 9]>
@@ -18,17 +18,16 @@
         <div class="hd">
             <a href="" class="logo"><img src="img/logo.png" alt="logo"></a>
         </div>
-        <div class="item">
+        <div class="item">\
             <ul class="level1">
                 <li>
                     <a href="javascript:;" class="lv-btn"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
                     <ul class="level2">
-                        <li><a href="javascript:;">用户管理<i class="icon-d"></i></a></li>
-                        <li><a href="javascript:;">菜单管理<i class="icon-d"></i></a></li>
-                        <li><a href="javascript:;">部门管理<i class="icon-d"></i></a></li>
+                        <li><a href="./user.html">用户管理<i class="icon-d"></i></a></li>
+                        <li><a href="./menu.html">菜单管理<i class="icon-d"></i></a></li>
+                        <li><a href="./department.html">部门管理<i class="icon-d"></i></a></li>
                         <li><a href="javascript:;" class="current">角色管理<i class="icon-d"></i></a></li>
-                        <li><a href="javascript:;">供应商管理<i class="icon-d"></i></a></li>
-                        <li><a href="javascript:;">客户管理<i class="icon-d"></i></a></li>
+                        <li><a href="./gys.html">供应商管理<i class="icon-d"></i></a></li>
                     </ul>
                 </li>
                 <li>
@@ -210,7 +209,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <div class="down">
-                            <a href="javascript:;" class="click-btn">选择角色<span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
+                            <a href="javascript:;" class="click-btn"><em>选择角色</em><span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
                             <div class="down-m">
                                 <a href="javascipt:;" class="arrow-u"></a>
                                 <p><a href="javascript:;">超管员</a></p>
@@ -234,25 +233,28 @@
                 <h3>创建角色</h3>
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label for="a" class="col-sm-2 col-lg-1 col-md-1 control-label">名&nbsp;&nbsp;&nbsp;称</label>
-                        <div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1">
-                            <input type="text" id="a" class="form-control" placeholder="请输入用户名...">
+                        <label for="a" class="col-sm-2 col-lg-1 col-md-1 control-label">名&nbsp;&nbsp;&nbsp;称&nbsp;:</label>
+                        <div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+                            <input type="text" id="a" class="form-control placeholder" placeholder="请输入用户名...">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="b" class="col-sm-2 col-lg-1 col-md-1 control-label">编&nbsp;&nbsp;&nbsp;号</label>
-                        <div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1">
-                            <input type="text" class="form-control" id="b" placeholder="请输入密码...">
+                        <label for="b" class="col-sm-2 col-lg-1 col-md-1 control-label">编&nbsp;&nbsp;&nbsp;号&nbsp;:</label>
+                        <div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+                            <input type="text" class="form-control placeholder" id="b" placeholder="请输入密码...">
                         </div>
                     </div>
                     <div class="sure">
                         <p>
-                            <em>是否激活</em>
+                            <em>是否激活&nbsp;:</em>
                             <label for="f"><i id="f" class="circle current"></i><span>是</span></label>
                             <label for="g"><i id="g" class="circle"></i><span>否</span></label>
                         </p>
                     </div>
-                    <textarea rows="4" placeholder="请输入描述内容"></textarea>
+                    <div class="form-group">
+                        <span class='description ' style='vertical-align: top;'>描&nbsp;&nbsp;&nbsp;述&nbsp;:</span>
+                        <textarea class='placeholder' rows="4" placeholder="请输入描述内容..."></textarea>
+                    </div>
                     <div class="tab-box">
                         <ul class="menu-hd">
                             <li class="active"><a href="javascript:;">用户绑定</a></li>
@@ -276,7 +278,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="btn-t">
+                <div class="btn-t" style="margin-top:60px;text-align: center;">
                     <button class="btn btn-lg btn-danger">退出</button>
                     <button class="btn btn-lg btn-warning">删除</button>
                     <button class="btn btn-lg btn-success">确定</button>
