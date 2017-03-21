@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css/bootstrap.css")
@@ -10,98 +10,99 @@
 </head>
 <body>
     <section class="wrap container-fluid">
-        <div class="side col-lg-2 col-md-2 hidden-sm hidden-xs">
-            <div class="hd">
-                <a href="" class="logo"><img src="../../Content/img/logo.png" alt="logo"></a>
+            <!-------------左侧列表--------------------->
+            <div class="side col-lg-2 col-md-2 hidden-sm hidden-xs">
+                <div class="hd">
+                    <a href="" class="logo"><img src="img/logo.png" alt="logo"></a>
+                </div>
+                <div class="item">
+                    <ul class="level1">
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="./user.html">用户管理<i class="icon-d"></i></a></li>
+                                <li><a href="./menu.html">菜单管理<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;" class="current">部门管理<i class="icon-d"></i></a></li>
+                                <li><a href="./role.html">角色管理<i class="icon-d"></i></a></li>
+                                <li><a href="./gys.html">供应商管理<i class="icon-d	"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon2"></i>商品管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon3"></i>销售管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon4"></i>采购管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon5"></i>入库管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon6"></i>在库管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon7"></i>出库管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon8"></i>退货管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="lv-btn"><i class="icon icon9"></i>入款管理<i class="icon-d"></i></a>
+                            <ul class="level2">
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                                <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="item">
-                <ul class="level1">
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">用户管理<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">菜单管理<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">部门管理<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">角色管理<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">供应商管理<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">客户管理<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon2"></i>商品管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon3"></i>销售管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon4"></i>采购管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon5"></i>入库管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon6"></i>在库管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon7"></i>出库管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon8"></i>退货管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="lv-btn"><i class="icon icon9"></i>入款管理<i class="icon-d"></i></a>
-                        <ul class="level2">
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                            <li><a href="javascript:;">导航选项<i class="icon-d"></i></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
         <div class="main col-lg-10 col-md-10 col-sm-10 col-xs-12">
             <div class="hd clearfix">
                 <div class="wel fl">
@@ -198,16 +199,17 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-    $(function() {
-        $('.side .item').perfectScrollbar();
-        $('.wrap .main').perfectScrollbar();
-		/*手机屏幕下layer显示滚动条*/
-        $(window).resize(function(){
-            if($(window).width()<768||768<$(window).width()<992){
-                $('.wrap .layer').perfectScrollbar();
-            }
-		})
-    });
+     $(function () {
+            $('.side .item').perfectScrollbar();
+            $('.wrap .main').perfectScrollbar();
+            $('.role .role-menu-box>div').perfectScrollbar();
+            /*手机屏幕下显示滚动条*/
+            $(window).resize(function () {
+                if ($(window).width() < 768 || 768 < $(window).width() < 992) {
+                    $('.wrap .layer').perfectScrollbar();
+                }
+            })
+        });
     </script>
 </body>
 </html>

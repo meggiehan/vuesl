@@ -184,11 +184,7 @@ D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.Web
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.WebPages.dll
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.WebPages.Razor.dll
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\WebGrease.dll
-D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Data.SQLite.dll
-D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\MySql.Data.dll
-D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\NLog.dll
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\MiRai.pdb
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.Helpers.xml
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.Mvc.xml
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\System.Web.Optimization.xml
@@ -212,6 +208,6 @@ D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.Owin
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.Owin.Security.Google.xml
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.csprojResolveAssemblyReference.cache
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.dll
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.pdb
+D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\VHavingCore.dll
