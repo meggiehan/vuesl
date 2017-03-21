@@ -14,24 +14,24 @@ namespace VHaving.BackOfficeWeb.Controllers
     {
         private ConnBus _conn = null;
 
-        public HomeController()
-        {
-            CreateConn();
-        }
+        //public HomeController()
+        //{
+        //    CreateConn();
+        //}
 
-        private int CreateConn()
-        {
-            int ret = 0;
-            string connStr = "Password=123456;"
-                + "Persist Security Info=True;"
-                + "User ID=root;"
-                + "Initial Catalog=ECManager;"
-                + "Data Source=192.168.2.23";
-            _conn = new ConnBus(connStr, DbProvider.MySql);
-            _conn.IsReadDvPolicy = false;
-            _conn.Open();
-            return ret;
-        }
+        //private int CreateConn()
+        //{
+        //    int ret = 0;
+        //    string connStr = "Password=123456;"
+        //        + "Persist Security Info=True;"
+        //        + "User ID=root;"
+        //        + "Initial Catalog=ECManager;"
+        //        + "Data Source=192.168.2.23";
+        //    _conn = new ConnBus(connStr, DbProvider.MySql);
+        //    _conn.IsReadDvPolicy = false;
+        //    _conn.Open();
+        //    return ret;
+        //}
 
         [HttpPost]
         public async Task<ActionResult> Index(UserLogin model, string returnUrl)
