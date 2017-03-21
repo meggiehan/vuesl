@@ -49,6 +49,7 @@ $(function(){
     $(document).on('click',function(){
         $('.down-box').fadeOut('fast');
         $('.down-m').fadeOut();
+        $('.build-role').fadeOut();
     });
 
     /*点击显示是否下拉*/
@@ -184,7 +185,7 @@ $(function(){
     /*点击减号按钮js效果*/
     $('.main .reduce').on('click',function(){
         $(this).parents('.sure').css('display','none');
-        $('.main .layer .del').css('display','block')
+        $(this).parents('.sure').siblings('.del').css('display','block')
         return false;
     })
 
@@ -206,4 +207,8 @@ $(function(){
         return false;
     })
 
+    /*删除按钮*/
+    $('.main .remove').on('click',function(){
+        alert(1)
+    })
 });
