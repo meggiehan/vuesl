@@ -196,7 +196,7 @@ $(function(){
     })
     /*点击加号按钮js效果*/
     $('.main .add').on('click',function(){
-        $('.main .build-role').css('display','block')
+        $(this).parents('.down-m').siblings('.build-role').css('display','block')
         $(this).parents('.down-m').css('display','none')
         return false;
     })
