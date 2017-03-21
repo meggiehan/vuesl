@@ -23,7 +23,7 @@
             <ul class="level1">
                 <li>
                     <a href="javascript:;" class="lv-btn"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
-                    <ul class="level2">
+                    <ul class="level2" style="display:block;">
                         <li><a href="./user.html">用户管理<i class="icon-d"></i></a></li>
                         <li><a href="./menu.html">菜单管理<i class="icon-d"></i></a></li>
                         <li><a href="./department.html">部门管理<i class="icon-d"></i></a></li>
@@ -325,8 +325,8 @@
                         <li><a href="javascript:;" target="#item_info4">售后条款</a></li>
                         <li><a href="javascript:;" target="#item_info5">补充条款</a></li>
                     </ul>
-                    <div class="role-menu-box">
-                        <div  style='display:block;' id='item_info1'>
+                    <div class="role-menu-box" >
+                        <div style='display:block;' id='item_info1'>
                             <form class="form-horizontal">
                                 <div class="form-group">
                                     <label for="a" class="col-sm-2 control-label">供应商名称&nbsp;:</label>
@@ -409,15 +409,17 @@
                                 <div class="form-group type">
                                     <label class="col-sm-2 control-label">签订时间&nbsp;:</label>
                                     <div class="col-sm-10 col-lg-6 col-md-8">
-                                        <input type="text" class="sang_Calender placeholder" placeholder="合同签订时间"/>
+                                        <input type="text" class="sang_Calender" placeholder="合同签订时间"/>
                                         <i class="date"></i>
                                     </div>
                                 </div>
                                 <div class="form-group type">
                                     <label class="col-sm-2 control-label">终止时间&nbsp;:</label>
                                     <div class="col-sm-10 col-lg-6 col-md-8">
-                                        <input type="text" class="sang_Calender placeholder" placeholder="合同终止时间"/>
+                                        <input type="text" class="sang_Calender" placeholder="合同终止时间"/>
                                         <i class="date"></i>
+                                        <!--<input type="date" placeholder="合同终止时间"/>-->
+
                                     </div>
                                 </div>
 
@@ -931,7 +933,7 @@
     $(function () {
         $('.side .item').perfectScrollbar();
         $('.wrap .main').perfectScrollbar();
-        $('.role .role-menu-box').perfectScrollbar();
+        $('.role .role-menu-box>div').perfectScrollbar();
         /*手机屏幕下显示滚动条*/
         $(window).resize(function () {
             if ($(window).width() < 768 || 768 < $(window).width() < 992) {

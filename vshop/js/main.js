@@ -11,13 +11,29 @@ $(function(){
     var $lv2=$('.item .level2')
     var $lv1Arrow=$('.item .level1>li>a');
 
-    $('.item .lv-btn').stop().on('click',function(){
-        /*循环level2显示隐藏*/
+    // $('.item .lv-btn').stop().on('click',function(){
+    //     /*循环level2显示隐藏*/
+    //     $.each($lv2,function(i,elem){
+    //         $(elem).slideUp();
+    //     })
+    //     $(this).siblings('.level2').slideDown();
+    //     /*循环改变lv-btn当前状态*/
+    //     $.each($('.lv-btn'),function(i,elem){
+    //         $(elem).removeClass('current');
+    //     })
+    //     $(this).addClass('current');
+    // })
+    var on=true;
+    $('.item .lv-btn').on('click',function(){
         $.each($lv2,function(i,elem){
             $(elem).slideUp();
         })
-        $(this).siblings('.level2').slideDown();
-        /*循环改变lv-btn当前状态*/
+        if(on){
+            $(this).siblings('.level2').slideDown();
+        }else{
+            $(this).siblings('.level2').slideUp();
+        }
+        on=!on;
         $.each($('.lv-btn'),function(i,elem){
             $(elem).removeClass('current');
         })
@@ -58,10 +74,14 @@ $(function(){
         $('.main .role').fadeOut();
         $('.supply').fadeOut();
         $('.power').fadeOut();
+        $('.edit').fadeOut();
     })
 
     $('.table .pw').on('click',function(){
         $('.power').fadeIn();
+    })
+    $('.table .ed').on('click',function(){
+        $('.edit').fadeIn();
     })
 
     /*单选按钮封装*/
@@ -131,29 +151,59 @@ $(function(){
     $('.build .btn-success').on('click',function(){
         $('.supply').fadeIn();
     })
-	
-	/*power层里的全选*/
+
+    /*power层里的全选*/
     var $tCircleP=$('.power .all-check p')
-    // $('.all-check p').on('click',function(){
-    //     if($(this).children('i').attr('class')=='t-circle all'){
-    //         $(this).children('i').attr('class','t-circle');
-    //         $tCircle.attr('class','t-circle');
-    //     }else{
-    //         $(this).children('i').attr('class','t-circle all');
-    //         $tCircle.attr('class','t-circle current');
-    //     }
-    // })
     $tCircleP.on('click',function(){
-        if($(this).children('i').attr('class')=='t-circle all'){
-            $(this).children('i').attr('class','t-circle');
-           $(this).parents('.all-checkbox').children('ul').children().children('i').attr('class','t-circle');
+        if($(this).find('i').attr('class')=='t-circle all'){
+            $(this).find('i').attr('class','t-circle');
+            $(this).parents('.all-checkbox').find('ul').find('i.t-circle').attr('class','t-circle');
         }else{
-            $(this).children('i').attr('class','t-circle all');
-           $(this).parents('.all-checkbox').children('ul').children().children('i').attr('class','t-circle current');
+            $(this).find('i').attr('class','t-circle all');
+            $(this).parents('.all-checkbox').find('ul').find('i.t-circle').attr('class','t-circle current');
         }
     });
-    /*有一个未选 全选取消*/
 
 
+    /*选择多个按钮弹回*/
+    $('.btn-g>a').on('click',function(){
+        $(this).addClass('current');
+        return false;
+    })
+
+    $('.sure .y').on('click',function(){
+        var arr=[];
+        var $parentBtn=$(this).parents('.down').find('.btn-g').children('a.current');
+        $.each($parentBtn,function(i,elem){
+            arr.push($(elem).text().substring(0,1));
+            return arr;
+        })
+        $(this).parents('.down').find('em').text(arr);
+    })
+
+    /*点击减号按钮js效果*/
+    $('.main .reduce').on('click',function(){
+        $(this).parents('.sure').css('display','none');
+        $('.main .layer .del').css('display','block')
+        return false;
+    })
+
+    /*点击取消按钮返回*/
+    $('.main .del .cancel').on('click',function(){
+        $(this).parents('.del').css('display','none');
+        $('.main .layer .sure').css('display','block')
+        return false;
+    })
+    /*点击加号按钮js效果*/
+    $('.main .add').on('click',function(){
+        $('.main .build-role').css('display','block')
+        $(this).parents('.down-m').css('display','none')
+        return false;
+    })
+    $('.build-role .n').on('click',function(){
+        $(this).parents('.build-role').css('display','none');
+
+        return false;
+    })
 
 });

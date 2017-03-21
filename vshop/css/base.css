@@ -327,10 +327,10 @@ textarea {
     box-shadow: -2px 2px 3px rgba(143, 143, 143, .2);
     background: #f6f6f6;
     display: none;
+    z-index:20;
     position: absolute;
     top: 40px;
     left: -30px;
-    z-index: 2;
 }
 
 .wrap > .main .down-box .arrow-u {
@@ -481,9 +481,7 @@ textarea {
 }
 
 .down {
-    height: 46px;
     position: relative;
-    line-height: 46px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -495,7 +493,8 @@ textarea {
     color: #8d8688;
     width: 100%;
     padding-left: 15px;
-    height: 100%;
+    height: 46px;
+    line-height:46px;
     display: block;
     position: relative;
 }
@@ -524,7 +523,7 @@ textarea {
 }
 
 /*是否激活下拉菜单*/
-.down .down-m {
+.down .down-m, .down .build-role {
     position: absolute;
     z-index: 2;
     display: none;
@@ -535,7 +534,7 @@ textarea {
     box-shadow: -2px 2px 3px rgba(143, 143, 143, .2);
 }
 
-.down .down-m .arrow-u {
+.down .down-m .arrow-u, .down .build-role .arrow-u {
     width: 15px;
     height: 7px;
     background: url("../img/arrow-up.png") no-repeat;
@@ -543,7 +542,16 @@ textarea {
     right: 10px;
     top: -7px;
 }
-
+.down .build-role input{
+    width:100%;
+    height:40px;
+    padding-left:10px;
+    line-height:40px;
+    border:1px solid #ccc;
+    margin:20px 0;
+    font-size:14px;
+    color:#999899;
+}
 .down .down-m p {
     height: 42px;
     margin-bottom: 0;
@@ -567,18 +575,24 @@ textarea {
 }
 
 /*用户角色和所属部门下拉菜单*/
-.down .down-m > div {
-    width: 190px;
-    background: #f6f6f6;
-    padding: 6px;
+.down .down-m, .down .build-role{
+    background:#f6f6f6;
+}
+.down .down-m > div, .down .build-role > div {
+    width:200px;
+    text-align: center;
+    padding: 10px;
 }
 
 .down .down-m .btn-g > a {
     float: left;
-    margin: 3px;
+    margin: 6px;
+}
+.down .down-m .btn-g > a.current{
+    background:red;
 }
 
-.down .down-m .sure {
+.down .down-m .sure, .down .build-role .sure {
     border-top: 1px solid #ccc;
     overflow: hidden;
     padding: 6px 8px 0;
@@ -603,7 +617,7 @@ textarea {
 }
 
 /*layer弹出层start*/
-.main .layer, .main .role, .main .supply,  .main .power{
+.main .layer, .main .role, .main .supply,  .main .power, .main .edit{
     width: 40%;
     background: #fff;
     position: fixed;
@@ -617,11 +631,18 @@ textarea {
 }
 
 .main .layer .placeholder,
+.main .edit .placeholder,
 .main .role .placeholder { /*3.17*/
     font-size: 16px;
 }
 
-.main .layer h3, .main .supply h3, .main .power h3{
+.layer .wrap-box{
+    height:600px;
+    width:100%;
+    overflow: hidden;
+}
+
+.main .layer h3, .main .supply h3, .main .power h3, .main .edit h3{
     font-size: 18px;
     color: #231815;
     line-height: 56px;
@@ -629,34 +650,57 @@ textarea {
     border-bottom: 1px solid #a0a0a1;
 }
 
-.main .layer .form-horizontal .form-group {
+.main .layer .form-horizontal .form-group,.main .edit .form-horizontal .form-group {
     /*margin-left: -10px;*/
     margin-left: 0px; /*3.17*/
 }
 
-.main .layer .form-horizontal .control-label, .main .role .form-horizontal .control-label,
-.main .layer .form-horizontal .description, .main .role .form-horizontal .description { /*----3.16----*/
+.main .layer .form-horizontal .control-label, .main .role .form-horizontal .control-label, .main .edit .form-horizontal .control-label,
+.main .layer .form-horizontal .description, .main .role .form-horizontal .description, .main .edit .form-horizontal .description { /*----3.16----*/
     padding: 12px 0;
     font-size: 16px;
     color: #231815;
     font-weight: normal;
 }
 
-.main .layer .form-control, .main .role .form-control {
+.main .layer .form-control, .main .role .form-control, .main .edit .form-control {
     height: 46px;
 }
 
-.main .layer .sure
+.main .layer .sure,
+.main .edit .sure
 .main .role .sure {
+    /*font-size: 16px;*/
+    /*color: #323333;*/
+    /*padding-top: 8px;*/
+}
+
+.main .layer .sure label,
+.main .edit .sure label,
+.main .role .sure label{
     font-size: 16px;
     color: #323333;
     padding-top: 8px;
 }
 
+.main .layer .del{
+    padding:6px 8px 0;
+    margin-top:6px;
+    display:none;
+}
+.main .layer .del .cancel,
+.main .layer .del .remove{
+    padding:2px 5px;
+    background:#ccc;
+    font-size:12px;
+    color:#fff;
+    border-radius:4px;
+}
+
 .main .layer .sure em,
+.main .edit .sure em,
 .main .role .sure em {
     font-style: normal;
-    /*margin-right: 10px;*/
     height: 44px;
     line-height: 44px;
     font-size: 16px;
@@ -670,12 +714,14 @@ textarea {
 
 
 .main .layer .sure label,
+.main .edit .sure label,
 .main .role .sure label {
     margin-left: 30px;
     font-weight: normal;
 }
 
 .main .layer .sure .circle,
+.main .edit .sure .circle,
 .main .role .sure .circle {
     width: 22px;
     height: 22px;
@@ -687,6 +733,7 @@ textarea {
 }
 
 .main .layer .sure .circle.current,
+.main .edit .sure .circle.current,
 .main .role .sure .circle.current {
     background: url("../img/circle-s.png") no-repeat;
 }
@@ -694,11 +741,13 @@ textarea {
     margin-left: 50px;
 }
 
-.main .layer .container {
+.main .layer .container,
+.main .edit .container{
     margin-bottom: 20px;
 }
 
-.main .layer .container .col-lg-1 {
+.main .layer .container .col-lg-1,
+.main .edit .container .col-lg-1 {
     height: 44px;
     line-height: 44px;
     font-size: 16px;
@@ -708,16 +757,20 @@ textarea {
 
 .main .btn-t {
     text-align: center;
-    margin-top: 50px;
+    position:absolute;
+    bottom:20px;
+    width:100%;
 }
 
-.main .layer .btn-t button, .main .role .btn-t button, .main .supply .btn-t button , .main .power .btn-t button{
+.main .layer .btn-t button, .main .role .btn-t button, .main .supply .btn-t button , .main .power .btn-t button, .main .edit .btn-t button{
     margin: 0 5%;
 }
 
-.main .layer .form-group .layer-txt {
+.main .layer .form-group .layer-txt,
+.main .edit .form-group .layer-txt{
     margin-left: 25px; /*3.17*/
 }
+
 
 /*2 菜单管理页面弹出层 B*/
 .main .layer .system-menu-type-son {
@@ -731,6 +784,21 @@ textarea {
 
 .main .layer .system-menu-btn-t button {
     margin: 0 5%;
+}
+
+.main .layer .operation{}
+.main .layer .operation .add,
+.main .layer .operation .reduce
+{
+    width:24px;
+    height:24px;
+    display:inline-block;
+    background:#999899;
+    font-size:14px;
+    line-height:24px;
+    border-radius:4px;
+    text-align: center;
+    color:#fff;
 }
 
 /*2 菜单管理页面弹出层 B*/
@@ -788,6 +856,10 @@ textarea {
 }
 .menu-box>.all-checkbox{
     display:none;
+}
+.menu-box.menu-spec>ul{
+    height:200px;
+    display: none;
 }
 
 .menu-box ul {
@@ -1094,7 +1166,9 @@ textarea {
     top:10px;
     opacity: 0;
     z-index:2;
+    font-size: 16px;
 }
+
 .role .form-horizontal .form-group .file_box .file_btn{
     width:40px;
     height:24px;
@@ -1153,8 +1227,13 @@ textarea {
     display: none;
 }
 
-.main .role .tab-box .role-menu-box {
-    height: 600px;
+/*.main .role .tab-box .role-menu-box {*/
+    /*height: 600px;*/
+    /*overflow: hidden;*/
+/*}*/
+.main .role .tab-box .role-menu-box>div{
+    height:600px;
+    overflow: hidden;
 }
 
 .main .role .type {

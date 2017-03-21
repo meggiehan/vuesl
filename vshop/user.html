@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 	<meta charset="utf-8">
@@ -21,8 +21,8 @@
 			<div class="item">
 				<ul class="level1">
 					<li>
-						<a href="javascript:;" class="lv-btn current"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
-						<ul class="level2">
+						<a href="javascript:;" class="lv-btn"><i class="icon icon1"></i>系统管理<i class="icon-d"></i></a>
+						<ul class="level2" style="display:block;">
 							<li><a href="javascript:;" class="current">用户管理<i class="icon-d"></i></a></li>
 							<li><a href="./menu.html">菜单管理<i class="icon-d"></i></a></li>
 							<li><a href="./department.html">部门管理<i class="icon-d"></i></a></li>
@@ -219,22 +219,22 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<div class="down">
-								<a href="javascript:;" class="click-btn">用户角色<span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
+								<a href="javascript:;" class="click-btn"><em>用户角色</em><span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
 								<div class="down-m">
 									<a href="javascipt:;" class="arrow-u"></a>
 									<div>
 										<div class="btn-g clearfix">
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
-											<a href="" class="btn btn-xs btn-info">管理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">管理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">超理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">管员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">管理员</a>
+											<a href="javascript:;" class="btn btn-xs btn-info">管理员</a>
 										</div>
 										<div class="sure">
-											<a href="" class="btn btn-xs btn-success fr">确定</a>
-											<a href="" class="btn btn-xs btn-danger fl">取消</a>
+											<a href="javascript:;" class="btn btn-xs n btn-danger fl">取消</a>
+											<a href="javascript:;" class="btn btn-xs y btn-success fr">确定</a>
 										</div>
 									</div>
 								</div>
@@ -242,22 +242,22 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<div class="down">
-								<a href="javascript:;" class="click-btn">所属部门<span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
+								<a href="javascript:;" class="click-btn"><em>所属部门</em><span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
 								<div class="down-m">
 									<a href="javascipt:;" class="arrow-u"></a>
 									<div>
 										<div class="btn-g clearfix">
-											<a href="" class="btn btn-xs btn-warning">产品</a>
-											<a href="" class="btn btn-xs btn-warning">客服</a>
-											<a href="" class="btn btn-xs btn-warning">产品</a>
-											<a href="" class="btn btn-xs btn-warning">客服</a>
-											<a href="" class="btn btn-xs btn-warning">产品</a>
-											<a href="" class="btn btn-xs btn-warning">客服</a>
-											<a href="" class="btn btn-xs btn-warning">产品</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">产品</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">客服</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">产品</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">客服</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">产品</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">客服</a>
+											<a href="javascript:;" class="btn btn-xs btn-warning">产品</a>
 										</div>
 										<div class="sure">
-											<a href="" class="btn btn-xs btn-success fr">确定</a>
-											<a href="" class="btn btn-xs btn-danger fl">取消</a>
+											<a href="javascript:;" class="btn btn-xs btn-danger n fl">取消</a>
+											<a href="javascript:;" class="btn btn-xs btn-success y fr">确定</a>
 										</div>
 									</div>
 								</div>
@@ -269,7 +269,129 @@
 					<a href="javascript:;" class="btn btn-lg btn-info">创建用户</a>
 				</div>
 				<!--创建用户界面弹出层 start-->
-				<div class="layer">
+				<div class="layer" style="display:block;">
+					<h3>用户创建</h3>
+					<div class="wrap-box">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="a" class="col-sm-2 col-lg-1 col-md-1 control-label">用户名&nbsp;:</label>
+								<div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+									<input type="text" id="a" class="form-control placeholder" placeholder="请输入用户名...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="b" class="col-sm-2 col-lg-1 col-md-1 control-label">密&nbsp;&nbsp;&nbsp;码&nbsp;:</label>
+								<div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+									<input type="password" class="form-control placeholder" id="b" placeholder="请输入密码...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="c" class="col-sm-2 col-lg-1 col-md-1 control-label">姓&nbsp;&nbsp;&nbsp;名&nbsp;:</label>
+								<div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+									<input type="text" id="c" class="form-control placeholder" placeholder="请输入姓名...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="d" class="col-sm-2 col-lg-1 col-md-1 control-label">手&nbsp;&nbsp;&nbsp;机&nbsp;:</label>
+								<div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+									<input type="text" id="d" class="form-control placeholder" id="inputTel11" placeholder="请输入手机...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="e" class="col-sm-2 col-lg-1 col-md-1 control-label">邮&nbsp;&nbsp;&nbsp;箱&nbsp;:</label>
+								<div class="col-sm-10 col-lg-6 col-md-8 col-md-offset-1 layer-txt">
+									<input type="email" id="e" class="form-control placeholder" id="inputEmail3" placeholder="请输入邮箱...">
+								</div>
+							</div>
+							<div class="sure">
+								<p>
+									<em>是否激活&nbsp;:</em>
+									<label for="f"><i id="f" class="circle radio-active current"></i><span>是</span></label>
+									<label for="g"><i id="g" class="circle radio-active"></i><span>否</span></label>
+								</p>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-1 col-md-1">选择角色&nbsp;:</div>
+									<div class="down col-lg-3 col-md-3">
+										<a href="javascript:;" class="click-btn"><em>用户角色</em><span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
+										<div class="down-m">
+											<a href="javascipt:;" class="arrow-u"></a>
+											<div>
+												<div class="btn-g clearfix">
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+													<a href="" class="btn btn-xs btn-info">管理员</a>
+												</div>
+												<div class="sure clear">
+													<div class="operation fl">
+														<a href="javascript:;" class="add">+</a>
+														<a href="javascript:;" class="reduce">-</a>
+													</div>
+													<a href="" class="btn btn-xs btn-success fr">确定</a>
+												</div>
+												<div class="del clear">
+													<a href="javascript:;" class="cancel fl">取消</a>
+													<a href="javascript:;" class="remove fr">删除</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="build-role">
+											<a href="javascipt:;" class="arrow-u"></a>
+											<div>
+												<input type="text" class="form-control" placeholder="请输入要创建的角色...">
+												<div class="sure">
+													<a href="javascript:;" class="btn btn-xs n btn-danger fl">取消</a>
+													<a href="javascript:;" class="btn btn-xs y btn-success fr">确定</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-1 col-md-1">选择部门&nbsp;:</div>
+									<div class="down col-lg-3 col-md-3">
+										<a href="javascript:;" class="click-btn"><em>所属部门</em><span class="hidden-xs">|</span><i class="xiala hidden-xs"></i></a>
+										<div class="down-m">
+											<a href="javascipt:;" class="arrow-u"></a>
+											<div>
+												<div class="btn-g clearfix">
+													<a href="" class="btn btn-xs btn-warning">产品</a>
+													<a href="" class="btn btn-xs btn-warning">客服</a>
+													<a href="" class="btn btn-xs btn-warning">产品</a>
+													<a href="" class="btn btn-xs btn-warning">客服</a>
+													<a href="" class="btn btn-xs btn-warning">产品</a>
+													<a href="" class="btn btn-xs btn-warning">客服</a>
+													<a href="" class="btn btn-xs btn-warning">产品</a>
+												</div>
+												<div class="sure">
+													<a href="" class="btn btn-xs btn-success fr">确定</a>
+													<a href="" class="btn btn-xs btn-danger fl">取消</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="btn-t">
+						<button class="btn btn-lg btn-danger">退出</button>
+						<button class="btn btn-lg btn-success">确定</button>
+					</div>
+				</div>
+				<!--创建用户界面弹出层 end-->
+
+				<!--编辑界面弹出层 start-->
+				<div class="edit">
 					<h3>用户创建</h3>
 					<form class="form-horizontal">
 						<div class="form-group">
@@ -364,11 +486,12 @@
 					</form>
 					<div class="btn-t">
 						<button class="btn btn-lg btn-danger">退出</button>
+						<button class="btn btn-lg btn-warning">删除</button>
 						<button class="btn btn-lg btn-success">确定</button>
 					</div>
 				</div>
-				<!--创建用户界面弹出层 end-->
-				
+				<!--编辑界面弹出层 end-->
+
 				<!--创建权限弹出层-->
 				<div class="power">
 					<h3>用户权限</h3>
@@ -481,7 +604,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -494,7 +617,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -507,7 +630,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -520,7 +643,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -533,7 +656,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -546,7 +669,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -559,7 +682,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -572,7 +695,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -585,7 +708,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -598,7 +721,7 @@
 							<td><i class="yun"></i></td>
 							<td class="hidden-sm hidden-xs">2017-3-1<span>|</span>09:30</td>
 							<td>
-								<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
+								<a href="javascript:;" class="btn btn-info btn-xs ed">编辑</a>
 								<a href="javascript:;" class="btn btn-info btn-xs pw">权限</a>
 							</td>
 						</tr>
@@ -632,6 +755,7 @@
     $(function() {
         $('.side .item').perfectScrollbar();
         $('.wrap .main').perfectScrollbar();
+        $('.wrap .wrap-box').perfectScrollbar();
 		/*手机屏幕下layer显示滚动条*/
         $(window).resize(function(){
             if($(window).width()<768||768<$(window).width()<992){
