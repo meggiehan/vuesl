@@ -211,3 +211,4 @@ D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\Microsoft.Owin
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.dll
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.pdb
 D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\bin\VHavingCore.dll
+D:\Project\VHavingBackOfficeWeb\Backend\VHaving.BackOfficeWeb\obj\Debug\VHaving.BackOfficeWeb.csprojResolveAssemblyReference.cache
