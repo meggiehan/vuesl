@@ -49,7 +49,6 @@ $(function(){
     $(document).on('click',function(){
         $('.down-box').fadeOut('fast');
         $('.down-m').fadeOut();
-        //$('.build-role').fadeOut();
     });
 
     /*点击显示是否下拉*/
@@ -185,7 +184,7 @@ $(function(){
     /*点击减号按钮js效果*/
     $('.main .reduce').on('click',function(){
         $(this).parents('.sure').css('display','none');
-        $(this).parents('.sure').siblings('.del').css('display','block');
+        $('.main .layer .del').css('display','block')
         return false;
     })
 
@@ -197,7 +196,7 @@ $(function(){
     })
     /*点击加号按钮js效果*/
     $('.main .add').on('click',function(){
-        $(this).parents('.down-m').siblings('.build-role').css('display','block')
+        $('.main .build-role').css('display','block')
         $(this).parents('.down-m').css('display','none')
         return false;
     })
@@ -207,16 +206,4 @@ $(function(){
         return false;
     })
 
-    /*删除按钮*/
-    $('.main .remove').on('click',function(){
-        alert(1)
-    })
-
-    /*点击添加按钮js效果*/
-    $('.build-role .y1').on('click',function(){
-        var $inputVal = $(this).parents('.build-role').find('#input-text').val()
-        var $btnGA='<a class="btn btn-xs btn-info" href="javascript:;">'+$inputVal+'</a>';
-        $(this).parents('.down').find('.btn-g').append($btnGA)
-        $(this).parents('.build-role').css('display','none');
-    })
 });

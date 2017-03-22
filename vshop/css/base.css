@@ -480,24 +480,7 @@ textarea {
     background: url("../img/search-s.png") no-repeat;
 }
 
-.down {
-    position: relative;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 0 auto;
-}
 
-.down > a {
-    font-size: 16px;
-    color: #8d8688;
-    width: 100%;
-    padding-left: 15px;
-    height: 46px;
-    line-height:46px;
-    display: block;
-    position: relative;
-}
 
 .down .layer-down-a {
     padding-left: 0px; /*3.17*/
@@ -523,7 +506,7 @@ textarea {
 }
 
 /*是否激活下拉菜单*/
-.down .down-m, .down .build-role {
+.down .build-role {
     position: absolute;
     z-index: 2;
     display: none;
@@ -534,7 +517,7 @@ textarea {
     box-shadow: -2px 2px 3px rgba(143, 143, 143, .2);
 }
 
-.down .down-m .arrow-u, .down .build-role .arrow-u {
+.down .build-role .arrow-u {
     width: 15px;
     height: 7px;
     background: url("../img/arrow-up.png") no-repeat;
@@ -552,27 +535,7 @@ textarea {
     font-size:14px;
     color:#999899;
 }
-.down .down-m p {
-    height: 42px;
-    margin-bottom: 0;
-    width: 110px;
-    text-align: center;
-    line-height: 42px;
-}
 
-.down .down-m p > a {
-    width: 100%;
-    height: 100%;
-    display: block;
-    color: #666;
-    font-size: 16px;
-    color: #2b333b;
-}
-
-.down .down-m p > a:hover {
-    color: #333;
-    background: #e4e3e3;
-}
 
 /*用户角色和所属部门下拉菜单*/
 .down .down-m, .down .build-role{
