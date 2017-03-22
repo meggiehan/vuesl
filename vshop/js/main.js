@@ -213,7 +213,10 @@ $(function(){
     })
 
     /*点击添加按钮js效果*/
-    $('.build-role .y').on('click',function(){
-        console.log($(this).parents('.sure').siblings('input').val());
+    $('.build-role .y1').on('click',function(){
+        var $inputVal = $(this).parents('.build-role').find('#input-text').val()
+        var $btnGA='<a class="btn btn-xs btn-info" href="javascript:;">'+$inputVal+'</a>';
+        $(this).parents('.down').find('.btn-g').append($btnGA)
+        $(this).parents('.build-role').css('display','none');
     })
 });
