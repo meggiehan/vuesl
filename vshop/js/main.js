@@ -65,10 +65,23 @@ $(function(){
     })
 
     /*创建用户*/
-    $('.build>.btn-info').on('click',function(){
+    /*$('.build>.btn-info').on('click',function(){
         $('.main .layer').fadeIn();
         $('.main .role').fadeIn();
-    })
+    })*/
+
+    /*封装点击显示弹出层页面*/
+    function show(obj,target){
+        obj.on('click',function(){
+            $(target).fadeIn()
+        })
+    }
+    show($('.build>.btn-info'),$('.main .layer'))
+    show($('.table .ed'),$('.main .edit'));
+    show($('.table .pw'),$('.main .power'));
+    show($('.build>.btn-info'),$('.role'));
+    show($('.build>.btn-success'),$('.role'));
+
     $('.btn-t .btn').on('click',function(){
         $('.main .layer').fadeOut();
         $('.main .role').fadeOut();
@@ -77,12 +90,6 @@ $(function(){
         $('.edit').fadeOut();
     })
 
-    $('.table .pw').on('click',function(){
-        $('.power').fadeIn();
-    })
-    $('.table .ed').on('click',function(){
-        $('.edit').fadeIn();
-    })
 
     /*单选按钮封装*/
     function radio_toggle($circleAll) {
@@ -181,29 +188,5 @@ $(function(){
         $(this).parents('.down').find('em').text(arr);
     })
 
-    /*点击减号按钮js效果*/
-    $('.main .reduce').on('click',function(){
-        $(this).parents('.sure').css('display','none');
-        $('.main .layer .del').css('display','block')
-        return false;
-    })
-
-    /*点击取消按钮返回*/
-    $('.main .del .cancel').on('click',function(){
-        $(this).parents('.del').css('display','none');
-        $('.main .layer .sure').css('display','block')
-        return false;
-    })
-    /*点击加号按钮js效果*/
-    $('.main .add').on('click',function(){
-        $('.main .build-role').css('display','block')
-        $(this).parents('.down-m').css('display','none')
-        return false;
-    })
-    $('.build-role .n').on('click',function(){
-        $(this).parents('.build-role').css('display','none');
-
-        return false;
-    })
 
 });
