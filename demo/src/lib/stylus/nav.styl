@@ -1,0 +1,75 @@
+@import './lib/stylus/until.styl'
+#nav
+    width:2.5rem
+    position:absolute
+    height: 100%
+    overflow-y: auto
+    background: #2B323A
+    .nav-top
+        height:1rem
+        border-bottom:.02rem solid #755931
+        border-top:.01rem solid #818893
+        .logo
+            height: .7rem
+            max-width:1.4rem
+            margin-top:.15rem
+            margin-left:.3rem
+    .nav-list
+        width:100%
+        .title
+            height: .45rem
+            line-height: .45rem
+            padding-left:.3rem
+            cursor: pointer
+            color:#646164
+            .t-logo
+                width:.2rem
+                height:.2rem
+                margin-right:.1rem
+                vertical-align: text-bottom
+            &.active
+                color:#fff
+                .t-logo
+                    -webkit-filter:brightness(2)
+                    filter:brightness(2)  
+        .top-li
+            min-height: .45rem
+            .level-1
+                padding-left:.6rem
+                border-left:.03rem solid rgba(0,0,0,0)
+                overflow: hidden
+                vendor(transition, all .2s ease)
+                height:0
+                &.lactive
+                    height:auto
+                    border-left:.03rem solid #ffa626
+        .level-li
+            height: .45rem
+            line-height: .45rem
+            a
+                display: block
+                width:100%
+                height: 100%
+                color:#646164
+                &.router-link-active
+                    color:#fff
+#content
+    margin-left:2.5rem
+    height: 100%
+    overflow-y: auto
+    .content-top
+        height 1rem
+        line-height: 1rem
+        padding:0 .24rem
+        background-color: #fff
+        .welcome
+            color:#666666
+            font-size: .15rem
+            margin-left:.21rem
+        .hello
+            color:#328EBF
+            margin-left:.13rem
+        .home-icon
+            width:.2rem
+            height: .2rem
+            vertical-align: text-bottom
