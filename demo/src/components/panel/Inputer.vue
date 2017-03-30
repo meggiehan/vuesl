@@ -1,10 +1,10 @@
 <template>
   <div class="s-list">
     <label for="">{{child.text}}：</label>
-    <input v-if="child.sub === 'input'" type="input" v-model="val" :placeholder="child.holder" >
-    <input v-if="child.sub === 'password'" type="password" v-model="val" :placeholder="child.holder" >
-    <input v-if="child.sub === 'email'" type="email" v-model="val" :placeholder="child.holder" >
-    <input v-if="child.sub === 'date'" type="date" v-model="val" :placeholder="child.holder" >
+    <input v-if="child.sub === 'input'" type="input" v-model="val" :placeholder="child.holder" @input="change()">
+    <input v-if="child.sub === 'password'" type="password" v-model="val" :placeholder="child.holder" @input="change()">
+    <input v-if="child.sub === 'email'" type="email" v-model="val" :placeholder="child.holder" @input="change()">
+    <input v-if="child.sub === 'date'" type="date" v-model="val" :placeholder="child.holder" @input="change()">
   </div>
 </template>
 
@@ -20,9 +20,9 @@ export default {
       val: ''
     }
   },
-  watch: {
-    'val': function (value, oldval) {
-      this.$emit('topanel', {name: this.child.name, val: this.val})
+  methods: {
+    change () {
+      this.$emit('toparent', {name: this.child.name, val: this.val})
     }
   }
 }
@@ -32,11 +32,16 @@ export default {
   .s-list
       overflow:hidden
       padding:.1rem 0
+      // text-align: justify
+      // text-align-last: justify
+      // text-justify: inter-ideograph
       label
         line-height:.5rem
-        margin-right:.25rem
+        margin-right:.15rem
         width:.8rem
-        text-align:justify
+        display:inline-block
+        height:.5rem
+        text-align:right
       input
         padding:0 .1rem
         width:3.5rem

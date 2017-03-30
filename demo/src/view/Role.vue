@@ -6,14 +6,16 @@
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="show = !show">创建角色</button>
+        <button class="btn" @click="create()">创建角色</button>
       </div>
       <tables :method="method"
               :column="column"
               :options="options"></tables>
   </div>
   <transition name="slide-fade">
-    <panel :panels="panels" v-if="show"></panel>
+    <panel :panels="panels" :types="types" @close="close" v-if="show">
+      <span slot="title">{{title}}</span>
+    </panel>
   </transition>  
 </div>
 
@@ -34,6 +36,7 @@ export default {
         parent: '系统管理',
         child: '角色管理'
       },
+      title: '',
       method: {
         list: 'role_list'
       },
@@ -52,8 +55,11 @@ export default {
         {name: 'password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
         {name: 'name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
         {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'date'},
-        {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'}
+        {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
+        {name: 'active', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
+        {name: 'role', text: '用户角色', type: 'select', sub: 'select', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
+      types: ['sure', 'quit'],
       filters: [
         {name: 'name', size: 'big', type: 'input'},
         {name: 'part', size: 'small', type: 'select', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
@@ -72,8 +78,17 @@ export default {
     ])
   },
   methods: {
+    close () {
+      this.show = false
+    },
+    create () {
+      this.show = !this.show
+      this.title = '创建角色'
+    },
     edit (idx) {
-      console.log(2222, this.list[idx])
+      // console.log(2222, this.list[idx])
+      this.show = !this.show
+      this.title = '编辑角色'
     },
     auth (idx) {
       console.log(44444)

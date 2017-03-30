@@ -12,7 +12,7 @@ export const getdata = ({commit, state}) => {
   let method = state.current + '_list'  
   api.get(state.filters[state.current], method).then(item => {
     // console.log('hhee', state.filters)
-    commit('getdata', item)
+    commit('getdata', item || [])
   })
 }
 export const setcurrent = ({commit}, param) => {

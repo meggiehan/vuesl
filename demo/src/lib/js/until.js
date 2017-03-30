@@ -19,7 +19,6 @@ export const GetSignature = (param, requestdata, secret) => {
   url += 'sign=' + result
   let returns = JSON.parse(JSON.stringify(tempparam))
   returns.sign = result
-  // console.log('hello', returns)
   return {
     result,
     url,
