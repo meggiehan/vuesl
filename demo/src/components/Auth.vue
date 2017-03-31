@@ -9,7 +9,7 @@
     </div>
     <div class="render">
       <ul class="render-list">
-        <li v-for="(item,idx) in list[index].child"><p class="choice" @click="insert(list[index], idx, item.id)" v-bind:class="{active: (updata[list[index].name] || []).indexOf(item.id)>-1}"><span></span></p>{{item.title}}</li>
+        <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: (updata[list[index].name] || []).indexOf(item.id)>-1}" @click="insert(list[index], idx, item.id)"><span></span></p>{{item.title}}{{list[index].name}}</li>
       </ul>
     </div>
  </div>
@@ -50,7 +50,7 @@
         } else {
           this.updata[data.name].splice(i, 1)
         }
-        console.log(this.updata[data.name])
+        console.log(this.updata)
       }
     }
   }
