@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Func</title>
+<title>Groups</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -291,15 +291,15 @@ img {
 </style>
 </head>
 <body>
-<h2>菜单接口文档</h2>
+<h2>用户组接口文档</h2>
 <ol>
-<li>添加菜单</li>
-<li>编辑菜单</li>
-<li>删除菜单</li>
-<li>菜单信息</li>
-<li>菜单列表</li>
+<li>添加用户组</li>
+<li>编辑用户组</li>
+<li>删除用户组</li>
+<li>用户组信息</li>
+<li>用户组列表</li>
 </ol>
-<h4>1. 添加菜单</h4>
+<h4>1. 添加用户组</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -324,7 +324,7 @@ img {
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.func.insert</td>
+	<td>vchange.groups.insert</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -389,55 +389,13 @@ img {
 	<td>No</td>
 	<td>string</td>
 	<td>true</td>
-	<td>功能编号</td>
+	<td>组编号</td>
 </tr>
 <tr>
 	<td>Name</td>
 	<td>string</td>
 	<td>true</td>
-	<td>功能名称</td>
-</tr>
-<tr>
-	<td>Url</td>
-	<td>string</td>
-	<td>false</td>
-	<td>功能URL地址</td>
-</tr>
-<tr>
-	<td>ParentId</td>
-	<td>string</td>
-	<td>true</td>
-	<td>父功能ID</td>
-</tr>
-<tr>
-	<td>Image1</td>
-	<td>string</td>
-	<td>false</td>
-	<td>功能对应图片１</td>
-</tr>
-<tr>
-	<td>Type</td>
-	<td>string</td>
-	<td>true</td>
-	<td>功能类别</td>
-</tr>
-<tr>
-	<td>Run</td>
-	<td>string</td>
-	<td>true</td>
-	<td>功能是否运行</td>
-</tr>
-<tr>
-	<td>Description</td>
-	<td>string</td>
-	<td>false</td>
-	<td>描述</td>
-</tr>
-<tr>
-	<td>Remark</td>
-	<td>string</td>
-	<td>false</td>
-	<td>备注</td>
+	<td>组名称</td>
 </tr>
 <tr>
 	<td>Status</td>
@@ -448,7 +406,7 @@ img {
 <tr>
 	<td>DispIndex</td>
 	<td>string</td>
-	<td>false</td>
+	<td>true</td>
 	<td>序列值</td>
 </tr>
 </tbody>
@@ -484,15 +442,15 @@ img {
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.func.insert
+<pre><code>method:vchange.groups.insert
 ver:1
-timestamp:2017-03-28 16:00:03
+timestamp:2017-03-30 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,   &quot;Url&quot;: &quot;111&quot;,   &quot;Image1&quot;: &quot;Image1&quot;,   &quot;Image2&quot;: &quot;Image2&quot;,   &quot;Text1&quot;: &quot;Text1&quot;,   &quot;Text2&quot;: &quot;Text2&quot;,   &quot;Type&quot;: &quot;Type&quot;,   &quot;Run&quot;: &quot;Run&quot;,   &quot;Description&quot;: &quot;Description&quot;,   &quot;Remark&quot;: &quot;Remark&quot;,   &quot;Status&quot;: 1,   &quot;DispIndex&quot;: 1 ,&quot;ParentId&quot;:&quot;123&quot;}
+JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
 </code></pre>
 
 </blockquote>
@@ -504,13 +462,13 @@ JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,  
   &quot;responsetext&quot;: &quot;请求成功！&quot;,
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;id&quot;: &quot;bedc800e-ffbf-4bd2-91b5-3f34eb5ed3a8&quot;
+    &quot;id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;
   }
 }}
 </code></pre>
 
 </blockquote>
-<h4>2. 编辑菜单</h4>
+<h4>2. 编辑用户组</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -535,7 +493,7 @@ JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,  
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.func.update</td>
+	<td>vchange.groups.update</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -597,58 +555,22 @@ JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,  
 </thead>
 <tbody>
 <tr>
+	<td>Id</td>
+	<td>guid</td>
+	<td>true</td>
+	<td>用户组ID</td>
+</tr>
+<tr>
 	<td>No</td>
 	<td>string</td>
 	<td>true</td>
-	<td>功能编号</td>
+	<td>组编号</td>
 </tr>
 <tr>
 	<td>Name</td>
 	<td>string</td>
 	<td>true</td>
-	<td>功能名称</td>
-</tr>
-<tr>
-	<td>Url</td>
-	<td>string</td>
-	<td>false</td>
-	<td>功能URL地址</td>
-</tr>
-<tr>
-	<td>ParentId</td>
-	<td>string</td>
-	<td>true</td>
-	<td>父功能ID</td>
-</tr>
-<tr>
-	<td>Image1</td>
-	<td>string</td>
-	<td>false</td>
-	<td>功能对应图片１</td>
-</tr>
-<tr>
-	<td>Type</td>
-	<td>string</td>
-	<td>true</td>
-	<td>功能类别</td>
-</tr>
-<tr>
-	<td>Run</td>
-	<td>string</td>
-	<td>true</td>
-	<td>功能是否运行</td>
-</tr>
-<tr>
-	<td>Description</td>
-	<td>string</td>
-	<td>false</td>
-	<td>描述</td>
-</tr>
-<tr>
-	<td>Remark</td>
-	<td>string</td>
-	<td>false</td>
-	<td>备注</td>
+	<td>组名称</td>
 </tr>
 <tr>
 	<td>Status</td>
@@ -659,7 +581,7 @@ JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,  
 <tr>
 	<td>DispIndex</td>
 	<td>string</td>
-	<td>false</td>
+	<td>true</td>
 	<td>序列值</td>
 </tr>
 </tbody>
@@ -695,15 +617,15 @@ JSON:{   &quot;No&quot;: &quot;No&quot;,   &quot;Name&quot;: &quot;Name&quot;,  
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.func.update
+<pre><code>method:vchange.groups.update
 ver:1
-timestamp:2017-03-28 16:00:03
+timestamp:2017-03-30 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{   &quot;Id&quot;:&quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;,&quot;No&quot;: &quot;123&quot;,   }
+JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
 </code></pre>
 
 </blockquote>
@@ -715,13 +637,13 @@ JSON:{   &quot;Id&quot;:&quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;,&quot;N
   &quot;responsetext&quot;: &quot;请求成功！&quot;,
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;id&quot;: &quot;1528a872-6304-498a-96f9-6f2947638e6e&quot;
+    &quot;id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;
   }
 }}
 </code></pre>
 
 </blockquote>
-<h4>3. 删除菜单</h4>
+<h4>3. 删除用户组</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -746,7 +668,7 @@ JSON:{   &quot;Id&quot;:&quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;,&quot;N
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.func.delete</td>
+	<td>vchange.groups.delete</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -811,7 +733,7 @@ JSON:{   &quot;Id&quot;:&quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;,&quot;N
 	<td>Id</td>
 	<td>array</td>
 	<td>true</td>
-	<td>菜单ID</td>
+	<td>用户组ID</td>
 </tr>
 </tbody>
 </table>
@@ -846,15 +768,15 @@ JSON:{   &quot;Id&quot;:&quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;,&quot;N
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.func.delete
+<pre><code>method:vchange.groups.delete
 ver:1
-timestamp:2017-03-28 16:00:03
+timestamp:2017-03-30 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:[  &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;  ]
+JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 </code></pre>
 
 </blockquote>
@@ -869,7 +791,7 @@ JSON:[  &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;  ]
 </code></pre>
 
 </blockquote>
-<h4>4. 菜单信息</h4>
+<h4>4. 用户组信息</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -894,7 +816,7 @@ JSON:[  &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;  ]
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.func.info</td>
+	<td>vchange.groups.info</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -957,9 +879,9 @@ JSON:[  &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;  ]
 <tbody>
 <tr>
 	<td>Id</td>
-	<td>array</td>
+	<td>guid</td>
 	<td>true</td>
-	<td>菜单ID</td>
+	<td>用户组ID</td>
 </tr>
 </tbody>
 </table>
@@ -994,15 +916,15 @@ JSON:[  &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot;  ]
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.func.info
+<pre><code>method:vchange.groups.info
 ver:1
-timestamp:2017-03-28 17:00:03
+timestamp:2017-03-30 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
+JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
 </code></pre>
 
 </blockquote>
@@ -1014,31 +936,21 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
   &quot;responsetext&quot;: &quot;请求成功！&quot;,
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;Id&quot;: &quot;fce1988f-605b-4d46-b6a4-c136c68f3a02&quot;,
-    &quot;No&quot;: &quot;No&quot;,
-    &quot;Name&quot;: &quot;Name&quot;,
-    &quot;Url&quot;: &quot;??&quot;,
-    &quot;Parent_id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot;,
-    &quot;Image_1&quot;: &quot;Image1&quot;,
-    &quot;Image_2&quot;: &quot;&quot;,
-    &quot;Text_1&quot;: &quot;&quot;,
-    &quot;Text_2&quot;: &quot;&quot;,
-    &quot;Type&quot;: &quot;Type&quot;,
-    &quot;Run&quot;: &quot;Run&quot;,
-    &quot;Description&quot;: &quot;Description&quot;,
-    &quot;Remark&quot;: &quot;Remark&quot;,
+    &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,
+    &quot;No&quot;: &quot;&quot;,
+    &quot;Name&quot;: &quot;&quot;,
     &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-03-28 16:31:58&quot;,
+    &quot;Create_time&quot;: &quot;2017-03-31 11:24:32&quot;,
     &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-03-28 16:31:58&quot;,
-    &quot;Status&quot;: 1,
-    &quot;Disp_index&quot;: 1
+    &quot;Operate_time&quot;: &quot;2017-03-31 11:30:36&quot;,
+    &quot;Status&quot;: 0,
+    &quot;Disp_index&quot;: 0
   }
 }}
 </code></pre>
 
 </blockquote>
-<h4>5. 菜单列表</h4>
+<h4>5. 用户组列表</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -1063,7 +975,7 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.func.list</td>
+	<td>vchange.groups.list</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -1128,7 +1040,7 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 	<td>Id</td>
 	<td>string</td>
 	<td>false</td>
-	<td>菜单ID</td>
+	<td>用户组ID</td>
 </tr>
 </tbody>
 </table>
@@ -1147,12 +1059,12 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>responsecode</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>responsetext</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -1163,9 +1075,9 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.func.list
+<pre><code>method:vchange.groups.list
 ver:1
-timestamp:2017-03-28 17:00:03
+timestamp:2017-03-30 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
@@ -1184,23 +1096,13 @@ JSON:
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;2b65f430-757a-4d22-9f42-e16f73b75148&quot;,
-      &quot;No&quot;: &quot;No&quot;,
-      &quot;Name&quot;: &quot;Name&quot;,
-      &quot;Url&quot;: &quot;&quot;,
-      &quot;Parent_id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot;,
-      &quot;Image_1&quot;: &quot;&quot;,
-      &quot;Image_2&quot;: &quot;&quot;,
-      &quot;Text_1&quot;: &quot;&quot;,
-      &quot;Text_2&quot;: &quot;&quot;,
-      &quot;Type&quot;: &quot;Type&quot;,
-      &quot;Run&quot;: &quot;&quot;,
-      &quot;Description&quot;: &quot;Description&quot;,
-      &quot;Remark&quot;: &quot;Remark&quot;,
+      &quot;Id&quot;: &quot;f98d77f2-f02f-43f2-b2b1-4e768b07da7d&quot;,
+      &quot;No&quot;: &quot;111&quot;,
+      &quot;Name&quot;: &quot;111&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-28 16:18:33&quot;,
+      &quot;Create_time&quot;: &quot;2017-03-15 10:34:50&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-28 16:18:33&quot;,
+      &quot;Operate_time&quot;: &quot;2017-03-15 10:34:50&quot;,
       &quot;Status&quot;: 1,
       &quot;Disp_index&quot;: 1
     }

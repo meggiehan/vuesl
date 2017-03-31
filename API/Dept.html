@@ -456,12 +456,12 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -488,7 +488,13 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{}}
+<pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;b2f244de-9d3d-4636-96cc-ca1f8629d0d6&quot;
+  }
+}}
 </code></pre>
 
 </blockquote>
@@ -643,12 +649,12 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -675,7 +681,10 @@ JSON:{    &quot;Id&quot;:&quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;, &quot
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{}}
+<pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;
+}}
 </code></pre>
 
 </blockquote>
@@ -788,12 +797,12 @@ JSON:{    &quot;Id&quot;:&quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;, &quot
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -821,7 +830,8 @@ JSON:[&quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;]
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;results&quot;: []
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;
 }}
 </code></pre>
 
@@ -900,12 +910,12 @@ session | string | true | 1799163E221F4638A27D0CBC47830C07</p>
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -933,17 +943,19 @@ JSON:{   &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot; }
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,
+    &quot;Id&quot;: &quot;b2f244de-9d3d-4636-96cc-ca1f8629d0d6&quot;,
     &quot;Type&quot;: &quot;DEPT&quot;,
-    &quot;No&quot;: &quot;ccc&quot;,
+    &quot;No&quot;: &quot;bbb&quot;,
     &quot;Name&quot;: &quot;bbbb&quot;,
     &quot;Description&quot;: &quot;aaaaa&quot;,
-    &quot;Remark&quot;: &quot;aaaaa&quot;,
+    &quot;Remark&quot;: &quot;vvvvvvv&quot;,
     &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-03-29 19:13:28&quot;,
+    &quot;Create_time&quot;: &quot;2017-03-31 10:43:34&quot;,
     &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-03-30 10:03:29&quot;,
+    &quot;Operate_time&quot;: &quot;2017-03-31 10:49:39&quot;,
     &quot;Status&quot;: 1,
     &quot;Disp_index&quot;: 1
   }
@@ -1060,12 +1072,12 @@ JSON:{   &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -1084,7 +1096,7 @@ app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{    }
+JSON:
 </code></pre>
 
 </blockquote>
@@ -1093,46 +1105,20 @@ JSON:{    }
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Id&quot;: &quot;b2f244de-9d3d-4636-96cc-ca1f8629d0d6&quot;,
       &quot;Type&quot;: &quot;DEPT&quot;,
-      &quot;No&quot;: &quot;&quot;,
-      &quot;Name&quot;: &quot;&quot;,
-      &quot;Description&quot;: &quot;&quot;,
-      &quot;Remark&quot;: &quot;&quot;,
-      &quot;Create_user_id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,
-      &quot;Create_time&quot;: &quot;1900-01-01 00:00:00&quot;,
-      &quot;Operate_user_id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,
-      &quot;Operate_time&quot;: &quot;1900-01-01 00:00:00&quot;,
-      &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 0
-    },
-    {
-      &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,
-      &quot;Type&quot;: &quot;DEPT&quot;,
-      &quot;No&quot;: &quot;ccc&quot;,
+      &quot;No&quot;: &quot;bbb&quot;,
       &quot;Name&quot;: &quot;bbbb&quot;,
       &quot;Description&quot;: &quot;aaaaa&quot;,
-      &quot;Remark&quot;: &quot;aaaaa&quot;,
+      &quot;Remark&quot;: &quot;vvvvvvv&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-29 19:13:28&quot;,
+      &quot;Create_time&quot;: &quot;2017-03-31 10:43:34&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-30 10:03:29&quot;,
-      &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 1
-    },
-    {
-      &quot;Id&quot;: &quot;ce1d18f2-dd73-44ad-b3f8-32df24af269b&quot;,
-      &quot;Type&quot;: &quot;DEPT&quot;,
-      &quot;No&quot;: &quot;aaaaa&quot;,
-      &quot;Name&quot;: &quot;aaaaa&quot;,
-      &quot;Description&quot;: &quot;aaaaa&quot;,
-      &quot;Remark&quot;: &quot;aaaaa&quot;,
-      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-30 09:12:07&quot;,
-      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-30 09:12:07&quot;,
+      &quot;Operate_time&quot;: &quot;2017-03-31 10:49:39&quot;,
       &quot;Status&quot;: 1,
       &quot;Disp_index&quot;: 1
     }

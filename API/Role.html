@@ -444,12 +444,12 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -477,8 +477,11 @@ JSON:{   &quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;, 
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;ErrCode&quot;: &quot;200&quot;,
-  &quot;ErrMsg&quot;: &quot;请求成功！&quot;
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot;
+  }
 }}
 </code></pre>
 
@@ -634,12 +637,12 @@ JSON:{   &quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;, 
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -658,7 +661,7 @@ app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{  &quot;Id&quot;:&quot;e7e057ea-8fae-4f6d-b106-241837abf90e&quot;, &quot;Type&quot;: &quot;22&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,   &quot;Prop1&quot;:&quot;Prop1&quot;, &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1,  }
+JSON:{  &quot;Id&quot;:&quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot;, &quot;Type&quot;: &quot;22&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,   &quot;Prop1&quot;:&quot;Prop1&quot;, &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1,  }
 </code></pre>
 
 </blockquote>
@@ -667,8 +670,11 @@ JSON:{  &quot;Id&quot;:&quot;e7e057ea-8fae-4f6d-b106-241837abf90e&quot;, &quot;T
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;ErrCode&quot;: &quot;200&quot;,
-  &quot;ErrMsg&quot;: &quot;请求成功！&quot;
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot;
+  }
 }}
 </code></pre>
 
@@ -782,12 +788,12 @@ JSON:{  &quot;Id&quot;:&quot;e7e057ea-8fae-4f6d-b106-241837abf90e&quot;, &quot;T
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -815,9 +821,8 @@ JSON:[  &quot;e7e057ea-8fae-4f6d-b106-241837abf90e&quot;  ]
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;results&quot;: [],
-  &quot;ErrCode&quot;: &quot;200&quot;,
-  &quot;ErrMsg&quot;: &quot;请求成功！&quot;
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;
 }}
 </code></pre>
 
@@ -896,12 +901,12 @@ session | string | true | 1799163E221F4638A27D0CBC47830C07</p>
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -929,18 +934,20 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;Id&quot;: &quot;2e4c333e-19e5-4b68-8a0f-98a27de47022&quot;,
-    &quot;Type&quot;: &quot;aaa&quot;,
+    &quot;Id&quot;: &quot;dcb1602d-ab6b-4aed-b2c3-c2e0dd6c3ddb&quot;,
+    &quot;Type&quot;: &quot;Type&quot;,
     &quot;No&quot;: &quot;No&quot;,
     &quot;Name&quot;: &quot;Name&quot;,
     &quot;Description&quot;: &quot;Description&quot;,
     &quot;Remark&quot;: &quot;Remark&quot;,
     &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-03-30 14:26:08&quot;,
+    &quot;Create_time&quot;: &quot;2017-03-30 14:12:56&quot;,
     &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-03-30 14:26:08&quot;,
-    &quot;Status&quot;: -1,
+    &quot;Operate_time&quot;: &quot;2017-03-30 14:12:56&quot;,
+    &quot;Status&quot;: 1,
     &quot;Disp_index&quot;: 1
   }
 }}
@@ -1056,12 +1063,12 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>ErrCode</td>
+	<td>responsecode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>ErrMsg</td>
+	<td>responsetext</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -1080,7 +1087,7 @@ app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
+JSON:
 </code></pre>
 
 </blockquote>
@@ -1089,7 +1096,23 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
+    {
+      &quot;Id&quot;: &quot;3cfdea5c-0966-4458-8d93-a01c6080548d&quot;,
+      &quot;Type&quot;: &quot;Type&quot;,
+      &quot;No&quot;: &quot;No&quot;,
+      &quot;Name&quot;: &quot;Name&quot;,
+      &quot;Description&quot;: &quot;Description&quot;,
+      &quot;Remark&quot;: &quot;Remark&quot;,
+      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Create_time&quot;: &quot;2017-03-31 09:06:43&quot;,
+      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Operate_time&quot;: &quot;2017-03-31 09:06:43&quot;,
+      &quot;Status&quot;: 1,
+      &quot;Disp_index&quot;: 1
+    },
     {
       &quot;Id&quot;: &quot;dcb1602d-ab6b-4aed-b2c3-c2e0dd6c3ddb&quot;,
       &quot;Type&quot;: &quot;Type&quot;,
