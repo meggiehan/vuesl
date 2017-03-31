@@ -4,11 +4,11 @@ import store from '../vuex'
 import { resetfilter, setcurrent } from '../vuex/actions'
 import Index from '@/view/Index'
 import List from '@/view/List'
-import Role from '@/view/Role'
-import User from '@/view/User'
-import Part from '@/view/Part'
-import Supplier from '@/view/Supplier'
-import Menu from '@/view/Menu'
+import Role from '@/view/system/Role'
+import User from '@/view/system/User'
+import Part from '@/view/system/Part'
+import Supplier from '@/view/system/Supplier'
+import Menu from '@/view/system/Menu'
 
 Vue.use(Router)
 const router = new Router({

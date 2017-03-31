@@ -9,6 +9,9 @@ const gettime = (time) => {
 }
 const METHOD = {
   'role_list': 'vchange.role.list', //角色列表请求地址
+  'role_insert': 'vchange.role.insert', //添加角色
+  'role_update': 'vchange.role.update', //修改角色
+  'role_delete': 'vchange.role.delete', //删除角色
   'menu_list': 'vchange.func.list', //菜单列表请求地址
   'part_list': 'vchange.dept.list'  //部门列表请求地址
 }

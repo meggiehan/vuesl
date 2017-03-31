@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Tables from '../components/Tables.vue'
-import Tip from '../components/Tip.vue'
-import Filters from '../components/Filters.vue'
+import Tables from '../../components/Tables.vue'
+import Tip from '../../components/Tip.vue'
+import Filters from '../../components/Filters.vue'
 export default {
   name: 'role',
   data () {

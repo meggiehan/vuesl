@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Tables from '../components/Tables.vue'
-import Tip from '../components/Tip.vue'
+import Tables from '../../components/Tables.vue'
+import Tip from '../../components/Tip.vue'
 // import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'user',
