@@ -47,7 +47,7 @@
         // this.$emit('close')
       },
       quit () {
-        this.$emit('close')
+        this.$emit('close', {name: 'panel'})
       },
       change (value) {
         this.updata[value.name] = value.val
