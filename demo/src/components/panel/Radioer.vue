@@ -2,7 +2,7 @@
   <div class="s-radio">
     <label for="" class="label-radio">{{child.text}}：</label>
     <div class="radios" v-for="item in child.radioval">
-      <input type="radio" :value="item.val" v-model="picked">
+      <input type="radio" :value="item.val" v-model="picked" @click="change()">
       <label for="">{{item.text}}</label>
     </div>
   </div>
@@ -20,9 +20,9 @@ export default {
       picked: ''
     }
   },
-  watch: {
-    'picked': function (value, oldval) {
-      console.log(value)
+  methods: {
+    change () {
+      this.$emit('toparent', {name: this.child.name, val: this.picked})
     }
   }
 }

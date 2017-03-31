@@ -4,6 +4,7 @@
       <div class="wrap-component f-l" v-for="item in filters">
         <selecter :param="item" :method="method" v-if="item.type=='select'"></selecter>
         <inputer :param="item" :method="method" v-if="item.type=='input'"></inputer>
+        <multi :param="item" :method="method" v-if="item.type=='multi'"></multi>
       </div>
  </div>
 </template>
@@ -11,6 +12,7 @@
 <script>
   import Selecter from './filters/Selecter.vue'
   import Inputer from './filters/Inputer.vue'
+  import Multi from './filters/Multi.vue'
   export default {
     name: 'filter',
     props: {
@@ -19,7 +21,8 @@
     },
     components: {
       selecter: Selecter,
-      inputer: Inputer
+      inputer: Inputer,
+      multi: Multi
     }
   }
 </script>

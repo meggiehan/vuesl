@@ -4,8 +4,8 @@
     <p class="p-title"><slot name="title"></slot></p>
     <div class="form-input" v-for="item in panels">
       <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
-      <radioer v-if="item.type == 'radio'" :child="item"></radioer>
-      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
+      <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
+      <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
     </div>
     <div class="form-action">
       <button :class="item" v-for="item in types" @click="operate(item)">{{texts[item]}}</button>
@@ -16,7 +16,7 @@
 <script>
   import Inputer from './panel/Inputer.vue'
   import Radioer from './panel/Radioer.vue'
-  import Selecter from './panel/Selecter.vue'
+  import Multi from './panel/multi.vue'
   export default {
     name: 'panel',
     props: {
@@ -35,7 +35,7 @@
     components: {
       inputer: Inputer,
       radioer: Radioer,
-      selecter: Selecter
+      multi: Multi
     },
     methods: {
       operate (tp) {
@@ -44,7 +44,7 @@
       },
       sure () {
         console.log('value', this.updata)
-        this.$emit('close')
+        // this.$emit('close')
       },
       quit () {
         this.$emit('close')

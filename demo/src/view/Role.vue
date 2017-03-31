@@ -41,7 +41,7 @@ export default {
         list: 'role_list'
       },
       column: [
-        {text: '序号', name: 'Id'},
+        {text: '序号', name: 'Disp_index'},
         {text: '名称', name: 'Name'},
         {text: '编号', name: 'No'},
         {text: '时间', name: 'Create_time'}
@@ -57,12 +57,13 @@ export default {
         {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'date'},
         {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
         {name: 'active', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
-        {name: 'role', text: '用户角色', type: 'select', sub: 'select', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
+        {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
       types: ['sure', 'quit'],
       filters: [
         {name: 'name', size: 'big', type: 'input'},
-        {name: 'part', size: 'small', type: 'select', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
