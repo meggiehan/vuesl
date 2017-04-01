@@ -1,16 +1,19 @@
 <!-- 筛选组装主部件 -->
 <template>
  <div class="pannel">
-    <p class="p-title">用户权限</p>
+    <p class="p-title"><slot name="title"></slot></p>
     <div class="wrap-panel">
       <ul class="tab-panel">
-        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:idx === index }" @click="index=(page-1)*5+idx"><span>{{item.title}}</span></li>
+        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:idx === index }" @click="change(idx)"><span>{{item.title}}</span></li>
       </ul>
     </div>
     <div class="render">
       <ul class="render-list">
-        <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: (updata[list[index].name] || []).indexOf(item.id)>-1}" @click="insert(list[index], idx, item.id)"><span></span></p>{{item.title}}{{list[index].name}}</li>
+        <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: tdx.indexOf(item.id)>-1}" @click="insert(list[index], idx, item.id)"><span></span></p>{{item.title}}</li>
       </ul>
+      <div class="select-all">
+        <p class="choice" @click="selectall()"><span></span></p>全选
+      </div>
     </div>
  </div>
 </template>
@@ -30,6 +33,7 @@
           quit: '退出',
           sure: '确定'
         },
+        tdx: [],
         list: [
           {name: 'system', title: '系统管理', child: [{name: 'brand', id: 1, title: '品牌'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '管理'}]},
           {name: 'goods', title: '商品管理', child: [{name: 'brand', id: 1, title: '商品'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '666'}]},
@@ -41,15 +45,19 @@
       }
     },
     methods: {
+      change (idx) {
+        this.index = (this.page - 1) * 5 + idx
+        this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+      },
       insert (data, idx, id) {
-        this.updata[data.name] = this.updata[data.name] || []
-        let i = this.updata[data.name].indexOf(id)
-        console.log(i + '&&&&&' + id)
-        if (i < 0) {
-          this.updata[data.name].push(id)
+        this.tdx = this.updata[data.name] ? JSON.parse(JSON.stringify(this.updata[data.name])) : []
+        let im = this.tdx.indexOf(id)
+        if (im === -1) {
+          this.tdx.push(id)
         } else {
-          this.updata[data.name].splice(i, 1)
+          this.tdx.splice(im, 1)
         }
+        this.updata[data.name] = JSON.parse(JSON.stringify(this.tdx))
         console.log(this.updata)
       }
     }
@@ -58,8 +66,28 @@
 
 <style scoped lang="stylus">
   @import '../lib/stylus/until.styl' 
+  .choice
+    display:inline-block
+    width:.25rem
+    height:.25rem
+    vertical-align:middle
+    border-radius:50%
+    border:.01rem solid #535353
+    margin-right:.1rem
+    line-height:.23rem
+    text-align:center
+    cursor:pointer
+    &.active
+      span
+          background:#ffa725
+    span
+      width:.13rem
+      height:.13rem
+      border-radius:50%
+      display:inline-block
   .pannel
     position: fixed
+    overflow-y:auto
     top:1rem
     right:0
     bottom:0
@@ -91,30 +119,15 @@
           span
             border-bottom:.03rem solid #ffa626
     .render
-      border-bottom:.01rem solid #858689
+      .select-all
+        border-top:.01rem solid #858689
+        height:.8rem
+        line-height:.8rem
+        margin-top:.15rem
       .render-list
         li
           height:.55rem
           line-height:.55rem
-          .choice
-            display:inline-block
-            width:.25rem
-            height:.25rem
-            vertical-align:middle
-            border-radius:50%
-            border:.01rem solid #535353
-            margin-right:.1rem
-            line-height:.23rem
-            text-align:center
-            cursor:pointer
-            &.active
-              span
-                 background:#ffa725
-            span
-              width:.13rem
-              height:.13rem
-              border-radius:50%
-              display:inline-block
     .form-action
       text-align:center
       margin-top:.5rem

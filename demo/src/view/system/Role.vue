@@ -19,7 +19,7 @@
   </transition>
   <transition name="slide-fade">
     <auth @close="close" v-if="show.auth">
-      <span slot="title">{{title}}</span>
+      <span slot="title">用户权限</span>
     </auth>
   </transition>  
 </div>
@@ -102,7 +102,7 @@ export default {
           this.show[i] = false
         }
       }
-      // this.title = '创建角色'
+      this.title = '创建角色'
     },
     edit (idx) {
       // console.log(2222, this.list[idx])
