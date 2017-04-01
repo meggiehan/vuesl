@@ -1,0 +1,113 @@
+<!-- 弹出层下拉部件 -->
+<template>
+  <div class="s-lis clearfloat">
+    <label for="">{{child.text}}：</label>
+    <div class="s-part f-l">
+      <p class="p-title" @click="isshow = !isshow">{{text1}}</p>
+      <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
+      <ul class="list-role" v-show="isshow">
+        <li v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.title}}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { mapActions } from 'vuex'
+  export default {
+    name: 'selecter',
+    props: {
+      child: ''
+    },
+    data () {
+      return {
+        index: -1,
+        isshow: false,
+        text1: this.child.text1
+      }
+    },
+    methods: {
+      ...mapActions(['setfliter']),
+      change (idx) {
+        this.index = idx
+        this.isshow = !this.isshow
+        this.text1 = this.child.list[idx].title
+        this.setfliter({name: this.child.name, id: this.child.list[idx].id})
+      }
+    }
+  }
+</script>
+
+<style scoped lang="stylus">
+  .s-lis
+    padding: .1rem 0
+    label
+      line-height:.5rem
+      margin-right:.23rem
+      width:.8rem
+      display:inline-block
+      height:.5rem
+      text-align:right
+      float: left
+  .s-part
+    height: .5rem
+    border-radius: .06rem
+    border: .01rem solid #c6c6c6
+    width: 1.8rem
+    position: relative
+    padding: 0 0 0 .1rem
+    color: #2e2e3d
+    cursor: pointer
+    .s-down
+      width: .5rem
+      height: .25rem
+      line-height: .25rem
+      position: absolute
+      top: .125rem
+      right: 0
+      border-left: .01rem solid #5f6060
+      .trangle
+        width: 0;
+        height: 0;
+        position: absolute
+        left: 50%
+        margin-left: -.03rem
+        top: 50%
+        margin-top: -.03rem
+        border-left: .06rem solid transparent
+        border-right: .06rem solid transparent
+        border-top: .06rem solid #5f6060
+    .p-title
+      margin-right: .5rem
+      margin-top: .125rem
+      height.25rem
+      line-height: .25rem
+    .list-role
+      position: absolute
+      width: 100%;
+      top: .55rem
+      border: .01rem solid #dbdbdb
+      left: 0
+      background: #fff
+      border-radius: .03rem
+
+      z-index : 100
+      &:before
+        width: 0;
+        height: 0;
+        position: absolute
+        top: -.06rem
+        right: .15rem
+        border-left: .06rem solid transparent
+        border-right: .06rem solid transparent
+        border-bottom: .06rem solid #5f6060
+      li
+        width: 100%
+        height: .4rem
+        line-height: .4rem
+        padding: 0 .1rem
+        &.active
+          background: #dfeaed
+        &:hover
+          background: #dfeaed
+</style>

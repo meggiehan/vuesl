@@ -6,6 +6,8 @@
       <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
       <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
       <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
+      <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
+      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
     </div>
     <div class="form-action">
       <button :class="item" v-for="item in types" @click="operate(item)">{{texts[item]}}</button>
@@ -17,6 +19,8 @@
   import Inputer from './panel/Inputer.vue'
   import Radioer from './panel/Radioer.vue'
   import Multi from './panel/multi.vue'
+  import Textareaer from './panel/Textareaer.vue'
+  import Selecter from './panel/Selecter.vue'
   export default {
     name: 'panel',
     props: {
@@ -35,7 +39,9 @@
     components: {
       inputer: Inputer,
       radioer: Radioer,
-      multi: Multi
+      multi: Multi,
+      textareaer: Textareaer,
+      selecter: Selecter
     },
     methods: {
       operate (tp) {
@@ -60,7 +66,7 @@
 </script>
 
 <style scoped lang="stylus">
-  @import '../lib/stylus/until.styl' 
+  @import '../lib/stylus/until.styl'
   .pannel
     position: fixed
     top:1rem
