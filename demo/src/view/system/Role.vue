@@ -6,16 +6,21 @@
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create()">创建角色</button>
+        <button class="btn" @click="create('panel')">创建角色</button>
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>
+              :options="options"></tables>  
   </div>
   <transition name="slide-fade">
-    <panel :panels="panels" :types="types" @close="close" v-if="show">
+    <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
       <span slot="title">{{title}}</span>
     </panel>
+  </transition>
+  <transition name="slide-fade">
+    <auth @close="close" v-if="show.auth">
+      <span slot="title">用户权限</span>
+    </auth>
   </transition>  
 </div>
 
@@ -26,12 +31,16 @@ import Tables from '../../components/Tables.vue'
 import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
+import Auth from '../../components/Auth.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'role',
   data () {
     return {
-      show: false,
+      show: {
+        panel: false,
+        auth: false
+      },
       nav: {
         parent: '系统管理',
         child: '角色管理'
@@ -54,10 +63,11 @@ export default {
         {name: 'user', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
         {name: 'password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
         {name: 'name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
-        {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'date'},
+        {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
         {name: 'active', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
-        {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
+        {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
+        {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
       types: ['sure', 'quit'],
       filters: [
@@ -71,7 +81,8 @@ export default {
     tables: Tables,
     tip: Tip,
     filters: Filters,
-    panel: Panel
+    panel: Panel,
+    auth: Auth
   },
   computed: {
     ...mapGetters([
@@ -79,11 +90,18 @@ export default {
     ])
   },
   methods: {
-    close () {
-      this.show = false
+    close (data) {
+      this.show[data.name] = false
     },
-    create () {
-      this.show = !this.show
+    create (name) {
+      console.log(name)
+      for (let i in this.show) {
+        if (i === name) {
+          this.show[i] = !this.show[i]
+        } else {
+          this.show[i] = false
+        }
+      }
       this.title = '创建角色'
     },
     edit (idx) {
@@ -92,7 +110,8 @@ export default {
       this.title = '编辑角色'
     },
     auth (idx) {
-      console.log(44444)
+      console.log(2222223333)
+      this.create('auth')
     }
   }
 }

@@ -9,7 +9,11 @@ const state = {
   count: 0,
   filters: {},
   data: [],
-  current: 'role'
+  current: 'role',
+  open: {
+    panel: false,
+    auth: false
+  }
 }
 
 const store = new Vuex.Store({

@@ -47,7 +47,7 @@
         // this.$emit('close')
       },
       quit () {
-        this.$emit('close')
+        this.$emit('close', {name: 'panel'})
       },
       change (value) {
         this.updata[value.name] = value.val
@@ -68,6 +68,7 @@
     bottom:0
     background:#fff
     width:8rem
+    overflow-y:auto
     z-index:55
     padding:.5rem .4rem 0
     vendor('box-shadow',3px 3px 8px 2px)

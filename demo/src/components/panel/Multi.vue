@@ -1,6 +1,6 @@
 <!-- 筛选下拉部件 -->
 <template>
-  <div class="clearfloat">
+  <div class="clearfloat wrap-multi">
     <div class="s-title f-l">
       {{child.text}}：
     </div>
