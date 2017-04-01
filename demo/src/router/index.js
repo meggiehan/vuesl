@@ -12,6 +12,7 @@ import Menu from '@/view/system/Menu'
 
 Vue.use(Router)
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/list/:id',

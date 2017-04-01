@@ -4,7 +4,11 @@
     <p class="p-title"><slot name="title"></slot></p>
     <div class="wrap-panel">
       <ul class="tab-panel">
-        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:idx === index }" @click="change(idx)"><span>{{item.title}}</span></li>
+        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="change(idx)"><span>{{item.title}}</span></li>
+      </ul>
+      <ul class="tab-page">
+        <li @click="prev()"><</li>
+        <li @click="next()">></li>
       </ul>
     </div>
     <div class="render">
@@ -12,8 +16,11 @@
         <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: tdx.indexOf(item.id)>-1}" @click="insert(list[index], idx, item.id)"><span></span></p>{{item.title}}</li>
       </ul>
       <div class="select-all">
-        <p class="choice" @click="selectall()"><span></span></p>全选
+        <p class="choice" @click="selectall()" v-bind:class="{active:tdx.length===list[index].child.length}"><span></span></p>全选
       </div>
+    </div>
+    <div class="form-action">
+      <button :class="item" v-for="item in types" @click="operate(item)">{{{quit:'退出',del:'删除',freeze:'冻结',sure:'确定'}[item]}}</button>
     </div>
  </div>
 </template>
@@ -22,10 +29,11 @@
   export default {
     name: 'auth',
     props: {
-      types: ''
+      msg: ''
     },
     data () {
       return {
+        types: ['quit', 'del', 'freeze', 'sure'],
         updata: {},
         page: 1,
         index: 0,
@@ -34,6 +42,7 @@
           sure: '确定'
         },
         tdx: [],
+        is_all: {},
         list: [
           {name: 'system', title: '系统管理', child: [{name: 'brand', id: 1, title: '品牌'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '管理'}]},
           {name: 'goods', title: '商品管理', child: [{name: 'brand', id: 1, title: '商品'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '666'}]},
@@ -45,6 +54,53 @@
       }
     },
     methods: {
+      operate (tp) {
+        tp === 'sure' && this.sure()
+        tp === 'quit' && this.quit()
+        tp === 'del' && this.del()
+        tp === 'freeze' && this.freeze()
+      },
+      sure () {
+        console.log(this.updata)
+        this.$emit('close', {name: 'auth'})
+      },
+      quit () {
+        this.$emit('close', {name: 'auth'})
+      },
+      del () {
+        this.$emit('close', {name: 'auth'})
+      },
+      freeze () {
+        this.$emit('close', {name: 'auth'})
+      },
+      prev () {
+        if (this.page > 1) {
+          this.page--
+          this.index = (this.page - 1) * 5
+          this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+        }
+      },
+      next () {
+        let all = Math.ceil(this.list.length / 5)
+        if (this.page < all) {
+          this.page++
+          this.index = (this.page - 1) * 5
+          this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+        }
+      },
+      selectall () {
+        let tlength = this.tdx.length
+        let alllength = this.list[this.index].child.length
+        this.tdx = []
+        this.is_all[this.list[this.index].name] = false
+        if (tlength !== alllength) {
+          this.is_all[this.list[this.index].name] = true
+          this.list[this.index].child.map((val) => {
+            this.tdx.push(val.id)
+          })
+        }
+        this.updata[this.list[this.index].name] = JSON.parse(JSON.stringify(this.tdx))
+      },
       change (idx) {
         this.index = (this.page - 1) * 5 + idx
         this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
@@ -102,6 +158,26 @@
     .wrap-panel
       position:relative
       border-bottom:.01rem solid #858689
+    .tab-page
+      width:.75rem
+      position:absolute
+      right:0
+      top:0
+      height:.6rem
+      font-size:0
+      li
+        display:inline-block
+        width:.25rem
+        height:.25rem
+        border:.01rem solid #fea525
+        margin-top:.2rem
+        border-radius:.03rem
+        cursor:pointer
+        text-align:center
+        line-height:.23rem
+        font-size:.18rem
+        &:last-child
+          margin-left:.08rem
     .tab-panel
       height:.6rem
       margin-right:.75rem
@@ -130,7 +206,9 @@
           line-height:.55rem
     .form-action
       text-align:center
-      margin-top:.5rem
+      margin-top:1.5rem
+      width:8rem
+      margin-left:-.4rem
       button
         text-align: center
         height:.5rem
@@ -146,5 +224,9 @@
           border:.01rem solid #B2F1EA
         &.sure
           border:.01rem solid #e40300
+        &.del
+          border:.01rem solid #e40300
+        &.freeze
+          border:.01rem solid #B2F1EA
 </style>
 

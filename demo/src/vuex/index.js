@@ -9,6 +9,7 @@ const state = {
   count: 0,
   filters: {},
   data: [],
+  single: [],
   current: 'role',
   open: {
     panel: false,
