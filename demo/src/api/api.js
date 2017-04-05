@@ -26,8 +26,7 @@ const PARAM = {
   session: '1799163E221F4638A27D0CBC47830C07'
 }
 // const baseUrl = 'http://192.168.2.162/VChangeUserService/Router.aspx'
-// const baseUrl = 'http://192.168.2.110/VChangeUserService/Router.aspx'
-const baseUrl = 'http://192.168.2.110/Router.aspx'
+const baseUrl = 'http://192.168.2.110/VChangeUserService/Router.aspx'
 const api = {}
 api.get = (requestData, method) => {
   console.log('re', requestData)
