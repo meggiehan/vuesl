@@ -40,11 +40,10 @@ export default {
         list: 'menu_list'
       },
       column: [
-        {text: '序号', name: 'Id'},
-        {text: '名称', name: 'Name'},
         {text: '编号', name: 'No'},
+        {text: '名称', name: 'Name'},
         {text: '类型', name: 'Type'},
-        {text: '菜单', name: 'Remark'},
+        {text: '父菜单', name: 'Remark'},
         {text: '排序', name: 'Status'},
         {text: '最后操作时间', name: 'Create_time'}
       ],
