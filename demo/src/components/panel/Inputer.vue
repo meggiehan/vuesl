@@ -5,6 +5,7 @@
     <input v-if="child.sub === 'password'" type="password" v-model="val" :placeholder="child.holder" @input="change()">
     <input v-if="child.sub === 'email'" type="email" v-model="val" :placeholder="child.holder" @input="change()">
     <input v-if="child.sub === 'date'" type="date" v-model="val" :placeholder="child.holder" @input="change()">
+    <input v-if="child.sub === 'url'" type="url" v-model="val" :placeholder="child.holder" @input="change()">
   </div>
 </template>
 

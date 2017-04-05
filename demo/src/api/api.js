@@ -56,7 +56,7 @@ api.post = (requestData, method) => {
       emulateJSON: true
     }).then(function (response) {
       resolve(response.body.Response.results)
-      
+
     })
   })
 }
