@@ -15,7 +15,7 @@ export const getdata = ({commit, state}) => {
     commit('getdata', item || [])
   })
 }
-export const getsingle = ({commit}, index) => commit('getdata', index)
+export const getsingle = ({commit}, index) => commit('getsingle', index)
 export const setcurrent = ({commit}, param) => {
   commit('setcurrent', param)
 }

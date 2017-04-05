@@ -20,7 +20,7 @@ export const getdata = (state, data) => {
 }
 export const getsingle = (state, index) => {
   state.single = JSON.parse(JSON.stringify(state.data[index]))
-  console.log('iiiii', index)
+  console.log('iiiii', state.single)
 }
 export const setcurrent = (state, param) => {
   state.current = param

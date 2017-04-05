@@ -62,7 +62,7 @@ export default {
       panels: [
         {name: 'user', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
         {name: 'password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
-        {name: 'name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
+        {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
         {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
         {name: 'active', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
@@ -106,7 +106,7 @@ export default {
     },
     edit (idx) {
       this.show.panel = !this.show.panel
-      this.title = '编辑角色'
+      // this.title = '编辑角色'
     },
     auth (idx) {
       this.create('auth')
