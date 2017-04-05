@@ -10,7 +10,7 @@
         <tbody>
           <tr v-for="(item, idx) in list.slice(10*(page-1),10*page)">
             <td v-for="its in column">{{item[its.name]}}</td>
-            <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="it.method(idx)">{{it.name}}</button></td>
+            <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx)">{{it.name}}</button></td>
           </tr>
         </tbody>
     </table>
@@ -42,6 +42,11 @@ export default {
     }
   },
   methods: {
+    operate (idx) {
+      console.log(122)
+      // this.getsingle(idx)
+      this.$store.dispatch('getdata', idx)
+    },
     show (idx) {
       let result = this.configure()
       if (idx <= 1) {
@@ -68,11 +73,11 @@ export default {
       result.reverse()
       return result
     },
-    ...mapActions(['getdata', 'setfliter'])
+    ...mapActions(['getdata', 'setfliter', 'getsingle'])
   },
   computed: {
     ...mapGetters([
-      'list', 'filters', 'leng'
+      'list', 'filters', 'leng', 'single'
     ])
   },
   created () {

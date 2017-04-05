@@ -32,7 +32,7 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'role',
   data () {
@@ -90,7 +90,6 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['getsingle']),
     close (data) {
       this.show[data.name] = false
     },
@@ -106,16 +105,11 @@ export default {
       this.title = '创建角色'
     },
     edit (idx) {
-      // console.log(2222, this.list[idx])
       this.show.panel = !this.show.panel
       this.title = '编辑角色'
-      // this.getsingle(idx)
-      this.$store.dispatch('getsingle', idx)
     },
     auth (idx) {
-      console.log(2222223333)
       this.create('auth')
-      // this.getsingle(idx)
     }
   }
 }

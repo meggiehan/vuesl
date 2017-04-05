@@ -19,7 +19,7 @@ export const getdata = (state, data) => {
   state.data = data
 }
 export const getsingle = (state, index) => {
-  // state.single = JSON.parse(JSON.stringify(state.data[index]))
+  state.single = JSON.parse(JSON.stringify(state.data[index]))
   console.log('iiiii', index)
 }
 export const setcurrent = (state, param) => {
