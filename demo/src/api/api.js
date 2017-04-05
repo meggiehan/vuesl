@@ -13,7 +13,8 @@ const METHOD = {
   'role_update': 'vchange.role.update', //修改角色
   'role_delete': 'vchange.role.delete', //删除角色
   'menu_list': 'vchange.func.list', //菜单列表请求地址
-  'part_list': 'vchange.dept.list'  //部门列表请求地址
+  'part_list': 'vchange.dept.list',  //部门列表请求地址
+  'user_list': 'vchange.groups.list' //用户列表请求地址
 }
 const SECRET = 'ED7B184CCAE248FF'
 const PARAM = {
@@ -25,7 +26,9 @@ const PARAM = {
   sign_method: 'md5',
   session: '1799163E221F4638A27D0CBC47830C07'
 }
+
 // const baseUrl = 'http://192.168.2.162/VChangeUserService/Router.aspx'
+
 const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
 api.get = (requestData, method) => {

@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     name: 'textarea',
     props: {
@@ -15,6 +16,13 @@
       return {
         val: ''
       }
+    },
+    computed: {
+      ...mapGetters(['single'])
+    },
+    mounted () {
+      this.val = this.single[this.child.name] || ''
+      this.val && this.$emit('toparent', {name: this.child.name, val: this.val})
     },
     methods: {
       change () {

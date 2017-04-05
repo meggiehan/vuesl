@@ -53,23 +53,22 @@ export default {
         {text: '序号', name: 'Disp_index'},
         {text: '名称', name: 'Name'},
         {text: '编号', name: 'No'},
-        {text: '时间', name: 'Create_time'}
+        {text: '最后操作时间', name: 'Create_time'}
       ],
       options: [
         {name: '编辑', method: this.edit},
-        {name: '权限', method: this.auth}
+        {name: '删除', method: this.edit}
       ],
       panels: [
-        {name: 'user', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
-        {name: 'password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
-        {name: 'name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
-        {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
-        {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
-        {name: 'active', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
-        {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
-        {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
+        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
+        {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
+        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
+        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
+        {name: 'Manage', text: '', holder: '', type: 'manage', sub: 'manage'}
+        // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
+        // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
-      types: ['sure', 'quit'],
+      types: [],
       filters: [
         {name: 'name', size: 'big', type: 'input'},
         {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
@@ -90,12 +89,17 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['getsingle']),
+    ...mapActions(['resetsingle']),
     close (data) {
       this.show[data.name] = false
     },
     create (name) {
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'role_insert'}
+      ]
       console.log(name)
+      this.resetsingle()
       for (let i in this.show) {
         if (i === name) {
           this.show[i] = !this.show[i]
@@ -106,16 +110,15 @@ export default {
       this.title = '创建角色'
     },
     edit (idx) {
-      // console.log(2222, this.list[idx])
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'role_insert'}
+      ]
       this.show.panel = !this.show.panel
-      this.title = '编辑角色'
-      // this.getsingle(idx)
-      this.$store.dispatch('getsingle', idx)
+      // this.title = '编辑角色'
     },
     auth (idx) {
-      console.log(2222223333)
       this.create('auth')
-      // this.getsingle(idx)
     }
   }
 }

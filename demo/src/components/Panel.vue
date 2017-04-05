@@ -8,9 +8,10 @@
       <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
+      <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
     </div>
     <div class="form-action">
-      <button :class="item" v-for="item in types" @click="operate(item)">{{texts[item]}}</button>
+      <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
     </div>
  </div>
 </template>
@@ -21,6 +22,7 @@
   import Multi from './panel/multi.vue'
   import Textareaer from './panel/Textareaer.vue'
   import Selecter from './panel/Selecter.vue'
+  import Manage from './panel/Manage.vue'
   export default {
     name: 'panel',
     props: {
@@ -29,11 +31,7 @@
     },
     data () {
       return {
-        updata: {},
-        texts: {
-          quit: '退出',
-          sure: '确定'
-        }
+        updata: {}
       }
     },
     components: {
@@ -41,15 +39,16 @@
       radioer: Radioer,
       multi: Multi,
       textareaer: Textareaer,
-      selecter: Selecter
+      selecter: Selecter,
+      manage: Manage
     },
     methods: {
-      operate (tp) {
-        tp === 'sure' && this.sure()
+      operate (tp, url) {
+        (tp === 'sure' || tp === 'save') && this.sure(url)
         tp === 'quit' && this.quit()
       },
-      sure () {
-        console.log('value', this.updata)
+      sure (url) {
+        console.log('value', this.updata + '%%%%%%%%%%%%' + url)
         // this.$emit('close')
       },
       quit () {
@@ -99,6 +98,8 @@
       &.quit
         border:.01rem solid #B2F1EA
       &.sure
+        border:.01rem solid #e40300
+      &.save
         border:.01rem solid #e40300
 </style>
 

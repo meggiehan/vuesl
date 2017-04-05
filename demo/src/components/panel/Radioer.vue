@@ -9,7 +9,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'radioer',
   props: {
@@ -19,6 +19,13 @@ export default {
     return {
       picked: ''
     }
+  },
+  computed: {
+    ...mapGetters(['single'])
+  },
+  mounted () {
+    this.picked = this.single[this.child.name] || ''
+    this.picked && this.$emit('toparent', {name: this.child.name, val: this.picked})
   },
   methods: {
     change () {
