@@ -13,7 +13,6 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
   export default {
     name: 'selecter',
     props: {
@@ -27,12 +26,11 @@
       }
     },
     methods: {
-      ...mapActions(['setfliter']),
       change (idx) {
         this.index = idx
         this.isshow = !this.isshow
         this.text1 = this.child.list[idx].title
-        this.setfliter({name: this.child.name, id: this.child.list[idx].id})
+        this.$emit('toparent', {name: this.child.name, val: this.child.list[idx].id})
       }
     }
   }
