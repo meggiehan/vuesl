@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
   <tip :parent="nav.parent"
-       :child="nav.child"></tip>     
+       :child="nav.child"></tip>
   <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
@@ -10,7 +10,8 @@
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>  
+              :options="options"
+              :filter="filters"></tables>
   </div>
   <transition name="slide-fade">
     <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
@@ -21,7 +22,7 @@
     <auth @close="close" v-if="show.auth">
       <span slot="title">用户权限</span>
     </auth>
-  </transition>  
+  </transition>
 </div>
 
 </template>
@@ -71,9 +72,9 @@ export default {
       ],
       types: [],
       filters: [
-        {name: 'name', size: 'big', type: 'input'},
-        {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-        {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''}
+        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
@@ -90,7 +91,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata']),
     close (data) {
       this.show[data.name] = false
     },
@@ -115,8 +116,8 @@ export default {
       updata.push(id)
       api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
         console.log('item', item)
+        this.getdata()
       })
-      console.log(idx, id)
     },
     edit (idx) {
       this.types = [

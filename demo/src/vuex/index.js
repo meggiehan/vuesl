@@ -10,6 +10,7 @@ const state = {
   filters: {},
   data: [],
   single: [],
+  pages: {},
   current: 'role',
   open: {
     panel: false,

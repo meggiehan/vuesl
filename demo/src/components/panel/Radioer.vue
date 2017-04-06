@@ -25,7 +25,7 @@ export default {
   },
   mounted () {
     this.picked = this.single[this.child.name] || ''
-    this.picked && this.$emit('toparent', {name: this.child.name, val: this.picked})
+    this.$emit('toparent', {name: this.child.name, val: this.picked})
   },
   methods: {
     change () {

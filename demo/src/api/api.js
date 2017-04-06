@@ -16,9 +16,14 @@ const METHOD = {
   'menu_insert': 'vchange.func.insert', //增加菜单
   'menu_update': 'vchange.func.update', //修改菜单
   'menu_delete': 'vchange.func.delete', //删除菜单
-  'part_list': 'vchange.dept.list',  //部门列表请求地址
-  'user_list': 'vchange.groups.list' //用户列表请求地址
+  'user_list': 'vchange.groups.list', //用户列表请求地址
+  'user_insert': 'vchange.groups.insert', //添加用户
+  'user_update': 'vchange.groups.update', //修改用户
+  'user_delete': 'vchange.groups.delete', //删除用户
+  'part_list': 'vchange.dept.list' //部门列表请求地址
+
 }
+const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
 const PARAM = {
   method: '',
@@ -34,20 +39,25 @@ const PARAM = {
 
 const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
-api.get = (requestData, method) => {
+api.list = (requestData, method) => {
   console.log('re', requestData)
-  PARAM.method = METHOD[method]
-  let request = GetSignature(PARAM, {}, SECRET)
-  let url = baseUrl + '?' + request.url
+  let redata = JSON.parse(JSON.stringify(requestData))
+  let updata = JSON.parse(JSON.stringify(PARAM))
+  updata.method = METHOD[method]
+  updata.PageSize = PAGESIZE
+  updata.PageNo = redata.PageNo
+  delete redata.PageNo
+  let lastdata = {JSON: JSON.stringify(redata)}
+  let request = GetSignature(updata, lastdata, SECRET)
   return new Promise((resolve, reject) => {
-    Vue.http.get(url, {
+    Vue.http.post(baseUrl, request.returns, {
       // headers: {
       //   'Access-Control-Allow-Origin': '*',
       //   'Content-Type': 'application/json; charset=utf-8'
       // },
       emulateJSON: true
     }).then(function (response) {
-      resolve(response.body.Response.results || response.body.Response.result)
+      resolve(response.body.Response)
     })
   })
 }

@@ -26,7 +26,7 @@ export default {
   },
   mounted () {
     this.val = this.single[this.child.name] || ''
-    this.val && this.$emit('toparent', {name: this.child.name, val: this.val})
+    this.$emit('toparent', {name: this.child.name, val: this.val})
   },
   methods: {
     change () {

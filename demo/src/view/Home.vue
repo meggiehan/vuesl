@@ -80,7 +80,4 @@
 <style lang="stylus">
   @import '../lib/stylus/common.styl'
   @import '../lib/stylus/nav.styl'
-  #app
-    padding-top:1px
-    margin-top:-1px
 </style>
