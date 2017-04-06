@@ -57,6 +57,8 @@ export default {
       }
     },
     go () {
+      console.log('加斯科拉里', this.number)
+      this.number = this.number ? this.number : 1
       this.number = parseInt(this.number, 10)
       this.number = this.number > this.pages.total ? this.pages.total : this.number
       this.$store.dispatch('setfliter', {name: 'PageNo', id: this.number})
