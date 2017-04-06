@@ -32,7 +32,8 @@ export default {
   props: {
     method: {},
     column: '',
-    options: ''
+    options: '',
+    filter: ''
   },
   data () {
     return {
@@ -79,8 +80,11 @@ export default {
       'list', 'filters', 'leng', 'single'
     ])
   },
-  created () {
-    // this.$store.dispatch('getdata')
+  mounted () {
+    this.filter.forEach((val) => {
+      this.$store.dispatch('setfliter', {name: val.name, id: val.val})
+    })
+    this.$store.dispatch('getdata')
   }
 }
 </script>

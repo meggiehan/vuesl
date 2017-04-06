@@ -10,7 +10,8 @@
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>  
+              :options="options"
+              :filter="filters"></tables>  
   </div>
   <transition name="slide-fade">
     <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
@@ -89,14 +90,8 @@ export default {
       'list'
     ])
   },
-  mounted () {
-    this.filters.forEach((val) => {
-      this.$store.dispatch('setfliter', {name: val.name, id: val.val})
-    })
-    this.$store.dispatch('getdata')
-  },
   methods: {
-    ...mapActions(['resetsingle', 'getdata', 'setfliter']),
+    ...mapActions(['resetsingle']),
     close (data) {
       this.show[data.name] = false
     },
