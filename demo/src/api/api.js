@@ -13,6 +13,9 @@ const METHOD = {
   'role_update': 'vchange.role.update', //修改角色
   'role_delete': 'vchange.role.delete', //删除角色
   'menu_list': 'vchange.func.list', //菜单列表请求地址
+  'menu_insert': 'vchange.func.insert', //增加菜单
+  'menu_update': 'vchange.func.update', //修改菜单
+  'menu_delete': 'vchange.func.delete', //删除菜单
   'part_list': 'vchange.dept.list',  //部门列表请求地址
   'user_list': 'vchange.groups.list' //用户列表请求地址
 }
