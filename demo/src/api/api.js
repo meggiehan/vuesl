@@ -16,8 +16,12 @@ const METHOD = {
   'menu_insert': 'vchange.func.insert', //增加菜单
   'menu_update': 'vchange.func.update', //修改菜单
   'menu_delete': 'vchange.func.delete', //删除菜单
-  'part_list': 'vchange.dept.list',  //部门列表请求地址
-  'user_list': 'vchange.groups.list' //用户列表请求地址
+  'user_list': 'vchange.groups.list', //用户列表请求地址
+  'user_insert': 'vchange.groups.insert', //添加用户
+  'user_update': 'vchange.groups.update', //修改用户
+  'user_delete': 'vchange.groups.delete', //删除用户
+  'part_list': 'vchange.dept.list' //部门列表请求地址
+
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'

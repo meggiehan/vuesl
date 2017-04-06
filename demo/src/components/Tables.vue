@@ -108,7 +108,7 @@ export default {
       height:.25rem
       -moz-user-select: none
       -webkit-user-select: none
-      -ms-user-select: none 
+      -ms-user-select: none
       cursor:pointer
       &.page-total
         font-size:.13rem
