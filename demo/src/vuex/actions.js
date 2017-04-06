@@ -10,7 +10,9 @@ export const resetfilter = ({commit}, param) => commit('resetfilter', param)
 export const getdata = ({commit, state}) => {
   // console.log('222', method)
   let method = state.current + '_list'  
-  api.get(state.filters[state.current], method).then(item => {
+  console.log('6666', state.filters[state.current])
+  // let JSON = {}
+  api.list(state.filters[state.current], method).then(item => {
     // console.log('hhee', state.filters)
     commit('getdata', item || [])
   })

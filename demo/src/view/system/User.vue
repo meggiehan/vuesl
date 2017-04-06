@@ -10,7 +10,8 @@
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>
+              :options="options"
+              :filter="filters"></tables>
   </div>
   <transition name="slide-fade">
     <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
@@ -75,7 +76,7 @@ export default {
       ],
       types: ['sure', 'quit'],
       filters: [
-        {name: 'name', size: 'big', type: 'input'},
+        {name: 'name', size: 'big', type: 'input', val: ''},
         {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
         {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]

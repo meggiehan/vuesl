@@ -32,7 +32,8 @@ export default {
   props: {
     method: {},
     column: '',
-    options: ''
+    options: '',
+    filter: ''
   },
   data () {
     return {
@@ -58,7 +59,7 @@ export default {
     },
     change (idx) {
       this.page = idx
-      this.$store.dispatch('setfliter', {name: 'page', id: this.page})
+      this.$store.dispatch('setfliter', {name: 'PageNo', id: this.page})
       this.show(idx)
       this.$store.dispatch('getdata')
     },
@@ -79,7 +80,10 @@ export default {
       'list', 'filters', 'leng', 'single'
     ])
   },
-  created () {
+  mounted () {
+    this.filter.forEach((val) => {
+      this.$store.dispatch('setfliter', {name: val.name, id: val.val})
+    })
     this.$store.dispatch('getdata')
   }
 }
