@@ -15,5 +15,7 @@
   }
 </script>
 <style lang="stylus">
-
+    #app
+      padding-top:1px
+      margin-top:-1px
 </style>

@@ -91,7 +91,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata']),
     close (data) {
       this.show[data.name] = false
     },
@@ -116,8 +116,8 @@ export default {
       updata.push(id)
       api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
         console.log('item', item)
+        this.getdata()
       })
-      console.log(idx, id)
     },
     edit (idx) {
       this.types = [

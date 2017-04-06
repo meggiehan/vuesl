@@ -50,6 +50,7 @@
           }
         })
       })
+      this.$emit('toparent', {name: this.child.name, val: this.combine(JSON.parse(JSON.stringify(this.updata)))})
     },
     methods: {
       prev () {

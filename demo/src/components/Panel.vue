@@ -24,7 +24,7 @@
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
   import api from '../api/api.js'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'panel',
     props: {
@@ -50,6 +50,7 @@
       ])
     },
     methods: {
+      ...mapActions(['getdata']),
       operate (tp, url) {
         (tp === 'sure' || tp === 'save') && this.sure(url, tp)
         tp === 'quit' && this.quit()
@@ -59,8 +60,8 @@
           this.updata.Id = this.single.Id
         }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
-          console.log('22222', item)
           this.$emit('close', {name: 'panel'})
+          this.$store.dispatch('getdata')
         })
       },
       quit () {
