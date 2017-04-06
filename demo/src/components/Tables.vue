@@ -8,19 +8,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, idx) in list.slice(10*(page-1),10*page)">
+          <tr v-for="(item, idx) in list">
             <td v-for="its in column">{{item[its.name]}}</td>
             <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx, it.method)">{{it.name}}</button></td>
           </tr>
         </tbody>
     </table>
     <ul class="page">
-      <li class="chevron"><</li>
-      <li class="page-item" v-for="n in arr" @click="change(n)" v-bind:class="{active:n==page}">{{n}}</li>
-      <li class="chevron right">></li>
-      <li class="page-set"><input type="text"></li>
-      <li class="page-go">GO</li>
-      <li class="page-total">共&nbsp{{leng}}&nbsp页</li>
+      <li class="chevron" @click="prev('min')"><</li>
+      <li class="page-item" v-for="n in pages.list" @click="change(n)" v-bind:class="{active:n==pages.num}">{{n}}</li>
+      <li class="chevron right" @click="prev('max')">></li>
+      <li class="page-set"><input type="text" v-model="number" @input="limit()"></li>
+      <li class="page-go" @click="go()">GO</li>
+      <li class="page-total">共&nbsp{{pages.total}}&nbsp页</li>
     </ul>
 </div>
 </template>
@@ -39,45 +39,43 @@ export default {
     return {
       page: 1,
       index: 1,
-      arr: [1, 2, 3]
+      number: ''
     }
   },
   methods: {
+    limit () {
+      this.number = this.number.replace(/\D/g, '')
+    },
+    prev (tp) {
+      if (tp === 'min' && this.pages.num > 1) {
+        this.$store.dispatch('setfliter', {name: 'PageNo', id: 1})
+        this.$store.dispatch('getdata')
+      }
+      if (tp === 'max' && this.pages.num < this.pages.total) {
+        this.$store.dispatch('setfliter', {name: 'PageNo', id: this.pages.total})
+        this.$store.dispatch('getdata')
+      }
+    },
+    go () {
+      this.number = parseInt(this.number, 10)
+      this.number = this.number > this.pages.total ? this.pages.total : this.number
+      this.$store.dispatch('setfliter', {name: 'PageNo', id: this.number})
+      this.$store.dispatch('getdata')
+    },
     operate (idx, method) {
       this.$store.dispatch('getsingle', idx)
       method(idx, this.single.Id)
     },
-    show (idx) {
-      let result = this.configure()
-      if (idx <= 1) {
-        this.arr = this.arr
-      } else if (this.leng - idx <= 1) {
-        this.arr = result.slice(this.leng - 3 >= 0 ? this.leng - 3 : 0, this.leng)
-      } else {
-        this.arr = result.slice(idx - 2, idx + 1)
-      }
-    },
     change (idx) {
       this.page = idx
       this.$store.dispatch('setfliter', {name: 'PageNo', id: this.page})
-      this.show(idx)
       this.$store.dispatch('getdata')
-    },
-    configure () {
-      let i = this.leng
-      let result = []
-      while (i) {
-        result.push(i)
-        i--
-      }
-      result.reverse()
-      return result
     },
     ...mapActions(['getdata', 'setfliter', 'getsingle'])
   },
   computed: {
     ...mapGetters([
-      'list', 'filters', 'leng', 'single'
+      'list', 'filters', 'pages', 'single'
     ])
   },
   mounted () {

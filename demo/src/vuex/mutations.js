@@ -1,3 +1,24 @@
+/* eslint-disable */
+let configure = (total) => {
+  let result = []
+  while (total) {
+    result.push(total)
+    total--
+  }
+  result.reverse()
+  return result
+}
+let show = (total, idx) => {
+  let result = configure(total)
+  if (idx <= 1) {
+    result = result
+  } else if (total - idx <= 1) {
+    result = result.slice(total - 3 >= 0 ? total - 3 : 0, total)
+  } else {
+    result = result.slice(idx - 2, idx + 1)
+  }
+  return result
+}
 export const increment = state => {
   state.count++
 }
@@ -17,6 +38,12 @@ export const resetfilter = (state, param) => {
 }
 export const getdata = (state, data) => {
   state.data = data
+}
+export const getpage = (state, data) => {
+  state.pages.total = Math.ceil(data.count / 10)
+  state.pages.num = data.pageno
+  state.pages.list = show(state.pages.total, state.pages.num)
+  console.log('就看到就卡萨萨克', state.pages)
 }
 export const getsingle = (state, index) => {
   state.single = JSON.parse(JSON.stringify(state.data[index])) || []
