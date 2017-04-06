@@ -44,7 +44,7 @@ export default {
   methods: {
     operate (idx, method) {
       this.$store.dispatch('getsingle', idx)
-      method()
+      method(idx, this.single.Id)
     },
     show (idx) {
       let result = this.configure()

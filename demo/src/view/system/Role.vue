@@ -32,6 +32,7 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
+import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'role',
@@ -57,14 +58,14 @@ export default {
       ],
       options: [
         {name: '编辑', method: this.edit},
-        {name: '删除', method: this.edit}
+        {name: '删除', method: this.del}
       ],
       panels: [
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'Manage', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
@@ -109,13 +110,21 @@ export default {
       }
       this.title = '创建角色'
     },
+    del (idx, id) {
+      let updata = []
+      updata.push(id)
+      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+        console.log('item', item)
+      })
+      console.log(idx, id)
+    },
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_insert'}
+        {name: 'save', text: '保存', url: 'role_update'}
       ]
       this.show.panel = !this.show.panel
-      // this.title = '编辑角色'
+      this.title = '编辑角色'
     },
     auth (idx) {
       this.create('auth')
