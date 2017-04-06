@@ -32,6 +32,7 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
+import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'role',
@@ -57,7 +58,7 @@ export default {
       ],
       options: [
         {name: '编辑', method: this.edit},
-        {name: '删除', method: this.edit}
+        {name: '删除', method: this.del}
       ],
       panels: [
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
@@ -109,13 +110,21 @@ export default {
       }
       this.title = '创建角色'
     },
+    del (idx, id) {
+      let updata = []
+      updata.push(id)
+      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+        console.log('item', item)
+      })
+      console.log(idx, id)
+    },
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
         {name: 'save', text: '保存', url: 'role_update'}
       ]
       this.show.panel = !this.show.panel
-      // this.title = '编辑角色'
+      this.title = '编辑角色'
     },
     auth (idx) {
       this.create('auth')

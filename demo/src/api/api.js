@@ -35,8 +35,9 @@ api.get = (requestData, method) => {
   console.log('re', requestData)
   PARAM.method = METHOD[method]
   let request = GetSignature(PARAM, {}, SECRET)
+  // let url = baseUrl + '?' + request.url
   return new Promise((resolve, reject) => {
-    Vue.http.get(baseUrl + '?' + request.url, {
+    Vue.http.get('/static/app.json', {
       // headers: {
       //   'Access-Control-Allow-Origin': '*',
       //   'Content-Type': 'application/json; charset=utf-8'
