@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
   <tip :parent="nav.parent"
-       :child="nav.child"></tip>     
+       :child="nav.child"></tip>
   <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
@@ -10,7 +10,7 @@
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>  
+              :options="options"></tables>
   </div>
   <transition name="slide-fade">
     <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
@@ -21,7 +21,7 @@
     <auth @close="close" v-if="show.auth">
       <span slot="title">用户权限</span>
     </auth>
-  </transition>  
+  </transition>
 </div>
 
 </template>
