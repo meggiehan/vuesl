@@ -5,8 +5,21 @@
     </div>
     <div class="login-form">
       <div class="form-wrap">
-        <input type="text">
+        <img src="../assets/username.png" alt="" class="icon">
+        <input type="text" class="msg" placeholder="用户名" v-model="user">
       </div>
+      <div class="form-wrap">
+      <img src="../assets/password.png" alt="" class="icon">
+        <input type="password" class="msg" placeholder="密码" v-model="password">
+      </div>
+      <div class="form-wrap">
+        <div class="form-item">
+        <img src="../assets/validate.png" alt="" class="icon">
+          <input type="text" class="msg" placeholder="验证码" v-model="code">
+        </div>
+        <a href="javascript:;" class="code"></a>
+      </div>
+      <button class="tologin" @click="login()">登录</button>
     </div>
   </div>
 </template>
@@ -16,7 +29,16 @@ export default {
   name: 'login',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      user: '',
+      password: '',
+      code: ''
+    }
+  },
+  methods: {
+    login () {
+      // this.$cookie.set('test', '卡死')
+      this.$router.push({name: 'Role'})
+      // console.log('sdssdsdsd', this.$cookie.get('test'))
     }
   }
 }
@@ -30,6 +52,16 @@ export default {
       margin-top:1.55rem
       img
         vertical-align:top
+    .tologin
+      width:100%
+      height:.5rem
+      background:#3eaee1
+      color:#fff
+      margin-top:.1rem
+      border:0
+      font-size:.18rem
+      letter-spacing:.06rem
+      text-indent:.06rem
     .login-form
       width:6rem
       height:4rem
@@ -39,7 +71,30 @@ export default {
       border:.01rem solid #9d9d9d
       padding:.65rem .49rem 0
       .form-wrap
+        margin-bottom:.2rem
+        position:relative
+        .icon
+          position:absolute
+          width:.2rem
+          height:.2rem
+          top:.15rem
+          left:.09rem
+        .code
+          width:1.3rem
+          top:0
+          right:0
+          position:absolute
+          height:.5rem
+          border:.01rem solid #bfbfbf
+        .form-item
+          margin-right:1.45rem
+          position:relative
         input
-         
+          height:.5rem
+          width:100%
+          border:.01rem solid #bfbfbf
+          padding-left:.36rem
+          &:focus
+            border:.01rem solid #3eaee1
 
 </style>
