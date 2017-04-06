@@ -64,7 +64,7 @@ export default {
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'Manage', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
@@ -112,7 +112,7 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_insert'}
+        {name: 'save', text: '保存', url: 'role_update'}
       ]
       this.show.panel = !this.show.panel
       // this.title = '编辑角色'

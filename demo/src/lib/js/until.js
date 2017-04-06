@@ -6,6 +6,7 @@ export const GetSignature = (param, requestdata, secret) => {
   let tempparam = JSON.parse(JSON.stringify(param))
   let temprequestdata = JSON.parse(JSON.stringify(requestdata))
   tempparam = Object.assign(tempparam, temprequestdata)
+  console.log('wwww', tempparam)
   for (let value in tempparam) {
     arr.push(encodeURI(value))
     url += encodeURI(value) + '=' + encodeURI(tempparam[value]) + '&'

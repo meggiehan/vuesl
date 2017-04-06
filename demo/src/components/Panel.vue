@@ -23,6 +23,7 @@
   import Textareaer from './panel/Textareaer.vue'
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
+  import api from '../api/api.js'
   export default {
     name: 'panel',
     props: {
@@ -48,8 +49,10 @@
         tp === 'quit' && this.quit()
       },
       sure (url) {
-        console.log('value', this.updata + '%%%%%%%%%%%%' + url)
-        // this.$emit('close')
+        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+          console.log('22222', item)
+          this.$emit('close', {name: 'panel'})
+        })
       },
       quit () {
         this.$emit('close', {name: 'panel'})

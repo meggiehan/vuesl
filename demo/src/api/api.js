@@ -41,22 +41,21 @@ api.get = (requestData, method) => {
       // },
       emulateJSON: true
     }).then(function (response) {
-      resolve(response.body.Response.results)
+      resolve(response.body.Response.results || response.body.Response.result)
     })
   })
 }
-
 api.post = (requestData, method) => {
   PARAM.method = METHOD[method]
-  let request = GetSignature(PARAM, {}, SECRET)
+  let request = GetSignature(PARAM, requestData, SECRET)
   return new Promise((resolve, reject) => {
     Vue.http.post(baseUrl, request.returns, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type': 'multipart/form-data; charset=UTF-8'
       },
-      emulateJSON: true
+      emulateJSON: true,
     }).then(function (response) {
-      resolve(response.body.Response.results)
+      resolve(response.body.Response.results || response.body.Response.result)
 
     })
   })

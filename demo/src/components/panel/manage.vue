@@ -24,7 +24,7 @@
   export default {
     name: 'manage',
     props: {
-      msg: ''
+      child: ''
     },
     data () {
       return {
@@ -34,8 +34,8 @@
         tdx: [],
         is_all: {},
         list: [
-          {name: 'system', title: '用户绑定', child: [{name: 'brand', id: 1, title: '品牌'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '管理'}]},
-          {name: 'goods', title: '功能绑定', child: [{name: 'brand', id: 1, title: '商品'}, {name: 'brand', id: 2, title: '分类'}, {name: 'brand', id: 3, title: 'size'}, {name: 'brand', id: 4, title: '品牌'}, {name: 'brand', id: 5, title: '666'}]}
+          {name: 'system', title: '用户绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fc421dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c0f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-3fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c541-4fab-bee4-7cb1daef3c4f', title: '管理'}]},
+          {name: 'goods', title: '功能绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef2c4f', title: '商品'}, {name: 'brand', id: 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c9f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-2fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c521-4fab-bee4-7cb1daef3c4f', title: '666'}]}
         ]
       }
     },
@@ -72,6 +72,16 @@
         this.index = (this.page - 1) * 5 + idx
         this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
+      combine (temp) {
+        let result = ''
+        for (let item in temp) {
+          if (temp[item].length > 0) {
+            result += temp[item].join(',') + ','
+          }
+        }
+        result = result.substring(0, result.length - 1)
+        return result
+      },
       insert (data, idx, id) {
         this.tdx = this.updata[data.name] ? JSON.parse(JSON.stringify(this.updata[data.name])) : []
         let im = this.tdx.indexOf(id)
@@ -82,6 +92,7 @@
         }
         this.updata[data.name] = JSON.parse(JSON.stringify(this.tdx))
         console.log(this.updata)
+        this.$emit('toparent', {name: this.child.name, val: this.combine(JSON.parse(JSON.stringify(this.updata)))})
       }
     }
   }
