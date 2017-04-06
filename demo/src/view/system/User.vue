@@ -1,16 +1,16 @@
 <template>
 <div class="wrap">
   <tip :parent="nav.parent"
-       :child="nav.child"></tip>     
+       :child="nav.child"></tip>
   <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建角色</button>
+        <button class="btn" @click="create('panel')">创建用户</button>
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>  
+              :options="options"></tables>
   </div>
   <transition name="slide-fade">
     <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
@@ -21,7 +21,7 @@
     <auth @close="close" v-if="show.auth">
       <span slot="title">用户权限</span>
     </auth>
-  </transition>  
+  </transition>
 </div>
 
 </template>
@@ -32,9 +32,10 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
-import { mapGetters } from 'vuex'
+// inport api from '../../api/api.js'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'role',
+  name: 'user',
   data () {
     return {
       show: {
@@ -47,7 +48,7 @@ export default {
       },
       title: '',
       method: {
-        list: 'role_list'
+        list: 'user_list'
       },
       column: [
         {text: '序号', name: 'Disp_index'},
@@ -90,11 +91,17 @@ export default {
     ])
   },
   methods: {
+    ...mapActions(['resetsingle']),
     close (data) {
       this.show[data.name] = false
     },
     create (name) {
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'user_insert'}
+      ]
       console.log(name)
+      this.resetsingle()
       for (let i in this.show) {
         if (i === name) {
           this.show[i] = !this.show[i]
@@ -102,11 +109,15 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建角色'
+      this.title = '创建用户'
     },
     edit (idx) {
+      this.types = [
+          {name: 'quit', text: '退出', url: ''},
+          {name: 'save', text: '保存', url: 'user_update'}
+      ]
       this.show.panel = !this.show.panel
-      // this.title = '编辑角色'
+      this.title = '编辑用户'
     },
     auth (idx) {
       this.create('auth')
