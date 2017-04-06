@@ -71,9 +71,9 @@ export default {
       ],
       types: [],
       filters: [
-        {name: 'name', size: 'big', type: 'input'},
-        {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-        {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''}
+        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
@@ -89,8 +89,14 @@ export default {
       'list'
     ])
   },
+  mounted () {
+    this.filters.forEach((val) => {
+      this.$store.dispatch('setfliter', {name: val.name, id: val.val})
+    })
+    this.$store.dispatch('getdata')
+  },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata', 'setfliter']),
     close (data) {
       this.show[data.name] = false
     },

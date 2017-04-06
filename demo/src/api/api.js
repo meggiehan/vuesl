@@ -19,6 +19,7 @@ const METHOD = {
   'part_list': 'vchange.dept.list',  //部门列表请求地址
   'user_list': 'vchange.groups.list' //用户列表请求地址
 }
+const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
 const PARAM = {
   method: '',
@@ -34,13 +35,18 @@ const PARAM = {
 
 const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
-api.get = (requestData, method) => {
+api.list = (requestData, method) => {
   console.log('re', requestData)
-  PARAM.method = METHOD[method]
-  let request = GetSignature(PARAM, {}, SECRET)
-  let url = baseUrl + '?' + request.url
+  let redata = JSON.parse(JSON.stringify(requestData))
+  let updata = JSON.parse(JSON.stringify(PARAM))
+  updata.method = METHOD[method]
+  updata.PageSize = PAGESIZE
+  updata.PageNo = redata.PageNo
+  delete redata.PageNo
+  let lastdata = {JSON: JSON.stringify(redata)}
+  let request = GetSignature(updata, lastdata, SECRET)
   return new Promise((resolve, reject) => {
-    Vue.http.get(url, {
+    Vue.http.post(baseUrl, request.returns, {
       // headers: {
       //   'Access-Control-Allow-Origin': '*',
       //   'Content-Type': 'application/json; charset=utf-8'

@@ -58,7 +58,7 @@ export default {
     },
     change (idx) {
       this.page = idx
-      this.$store.dispatch('setfliter', {name: 'page', id: this.page})
+      this.$store.dispatch('setfliter', {name: 'PageNo', id: this.page})
       this.show(idx)
       this.$store.dispatch('getdata')
     },
@@ -80,7 +80,7 @@ export default {
     ])
   },
   created () {
-    this.$store.dispatch('getdata')
+    // this.$store.dispatch('getdata')
   }
 }
 </script>

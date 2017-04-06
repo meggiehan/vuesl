@@ -12,7 +12,7 @@ export const setfliter = (state, param) => {
 }
 export const resetfilter = (state, param) => {
   state.filters[param] = {
-    page: 1
+    PageNo: 1
   }
 }
 export const getdata = (state, data) => {
