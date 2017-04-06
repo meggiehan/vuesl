@@ -1125,10 +1125,22 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>Id</td>
+	<td>Search</td>
 	<td>string</td>
-	<td>false</td>
-	<td>菜单ID</td>
+	<td>true</td>
+	<td>模糊搜索</td>
+</tr>
+<tr>
+	<td>Type</td>
+	<td>string</td>
+	<td>true</td>
+	<td>类型</td>
+</tr>
+<tr>
+	<td>ParentId</td>
+	<td>string</td>
+	<td>true</td>
+	<td>父级</td>
 </tr>
 </tbody>
 </table>
@@ -1165,13 +1177,15 @@ JSON:{   &quot;Id&quot;: &quot;1431a19d-0de7-48fe-b2e1-6eb1ff321c65&quot; }
 <blockquote>
 <pre><code>method:vchange.func.list
 ver:1
-timestamp:2017-03-28 17:00:03
+timestamp:2017-04-06 19:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:
+JSON:{&quot;Search&quot;:&quot;1&quot;,&quot;Type&quot;:&quot;1&quot;}
+PageNo:1
+PageSize:3
 </code></pre>
 
 </blockquote>
@@ -1184,27 +1198,23 @@ JSON:
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;2b65f430-757a-4d22-9f42-e16f73b75148&quot;,
-      &quot;No&quot;: &quot;No&quot;,
-      &quot;Name&quot;: &quot;Name&quot;,
-      &quot;Url&quot;: &quot;&quot;,
-      &quot;Parent_id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot;,
-      &quot;Image_1&quot;: &quot;&quot;,
-      &quot;Image_2&quot;: &quot;&quot;,
-      &quot;Text_1&quot;: &quot;&quot;,
-      &quot;Text_2&quot;: &quot;&quot;,
-      &quot;Type&quot;: &quot;Type&quot;,
-      &quot;Run&quot;: &quot;&quot;,
-      &quot;Description&quot;: &quot;Description&quot;,
-      &quot;Remark&quot;: &quot;Remark&quot;,
+      &quot;Id&quot;: &quot;77bac959-e577-4284-b96b-e0fb612c704e&quot;,
+      &quot;No&quot;: &quot;&quot;,
+      &quot;Name&quot;: &quot;1&quot;,
+      &quot;Type&quot;: &quot;&quot;,
+      &quot;Description&quot;: &quot;5&quot;,
+      &quot;Remark&quot;: &quot;&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-28 16:18:33&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-06 11:11:56&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-28 16:18:33&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-06 11:11:56&quot;,
       &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 1
+      &quot;Disp_index&quot;: 0
     }
-  ]
+  ],
+  &quot;pageno&quot;: 1,
+  &quot;pagesize&quot;: 1,
+  &quot;count&quot;: 1
 }}
 </code></pre>
 
