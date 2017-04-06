@@ -33,11 +33,23 @@
         index: 0,
         tdx: [],
         is_all: {},
+        funcid: ['fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f'],
         list: [
           {name: 'system', title: '用户绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fc421dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c0f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-3fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c541-4fab-bee4-7cb1daef3c4f', title: '管理'}]},
           {name: 'goods', title: '功能绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef2c4f', title: '商品'}, {name: 'brand', id: 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c9f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-2fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c521-4fab-bee4-7cb1daef3c4f', title: '666'}]}
         ]
       }
+    },
+    mounted () {
+      this.list.forEach((item, idx) => {
+        item.child.map((val) => {
+          if (this.funcid.indexOf(val.id) > -1) {
+            this.updata[item.name] = this.updata[item] ? this.updata[item] : []
+            this.updata[item.name].push(val.id)
+            idx === 0 && this.tdx.push(val.id)
+          }
+        })
+      })
     },
     methods: {
       prev () {
@@ -91,7 +103,6 @@
           this.tdx.splice(im, 1)
         }
         this.updata[data.name] = JSON.parse(JSON.stringify(this.tdx))
-        console.log(this.updata)
         this.$emit('toparent', {name: this.child.name, val: this.combine(JSON.parse(JSON.stringify(this.updata)))})
       }
     }
