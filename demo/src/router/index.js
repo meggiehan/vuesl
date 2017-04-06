@@ -9,11 +9,49 @@ import User from '@/view/system/User'
 import Part from '@/view/system/Part'
 import Supplier from '@/view/system/Supplier'
 import Menu from '@/view/system/Menu'
-
+import Login from '@/view/Login'
+import Home from '@/view/Home'
 Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/',
+      component: Home,
+      name: '',
+      children: [
+        {
+          path: '/role',
+          name: 'Role',
+          component: Role
+        },
+        {
+          path: '/menu',
+          name: 'Menu',
+          component: Menu
+        },
+        {
+          path: '/part',
+          name: 'Part',
+          component: Part
+        },
+        {
+          path: '/supplier',
+          name: 'Supplier',
+          component: Supplier
+        },
+        {
+          path: '/user',
+          name: 'User',
+          component: User
+        }
+      ]
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
     {
       path: '/list/:id',
       name: 'List',
@@ -23,31 +61,6 @@ const router = new Router({
       path: '/index',
       name: 'Index',
       component: Index
-    },
-    {
-      path: '/role',
-      name: 'Role',
-      component: Role
-    },
-    {
-      path: '/menu',
-      name: 'Menu',
-      component: Menu
-    },
-    {
-      path: '/part',
-      name: 'Part',
-      component: Part
-    },
-    {
-      path: '/supplier',
-      name: 'Supplier',
-      component: Supplier
-    },
-    {
-      path: '/user',
-      name: 'User',
-      component: User
     },
     {
       path: '*',

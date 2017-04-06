@@ -427,6 +427,12 @@ img {
 	<td>false</td>
 	<td>序列值</td>
 </tr>
+<tr>
+	<td>FuncIdList</td>
+	<td>array</td>
+	<td>false</td>
+	<td>权限功能ID</td>
+</tr>
 </tbody>
 </table>
 </blockquote>
@@ -468,7 +474,7 @@ app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{   &quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,    &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1,  }
+JSON:{   &quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,    &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1, &quot;FuncIdList&quot;:&quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot; }
 </code></pre>
 
 </blockquote>
@@ -655,13 +661,13 @@ JSON:{   &quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;, 
 <blockquote>
 <pre><code>method:vchange.role.update
 ver:1
-timestamp:2017-03-28 11:59:03
+timestamp:2017-04-05 16:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{  &quot;Id&quot;:&quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot;, &quot;Type&quot;: &quot;22&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,   &quot;Prop1&quot;:&quot;Prop1&quot;, &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1,  }
+JSON:{   &quot;Id&quot;:&quot;532c0ebe-94a0-4536-b964-17bf8f3f0136&quot;,&quot;Type&quot;: &quot;Type&quot;,    &quot;No&quot;: &quot;No&quot;,    &quot;Name&quot;: &quot;Name&quot;,    &quot;Description&quot;: &quot;Description&quot;,    &quot;Remark&quot;: &quot;Remark&quot;,    &quot;Status&quot;: 1,    &quot;DispIndex&quot;: 1, &quot;FuncIdList&quot;:&quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot; }
 </code></pre>
 
 </blockquote>
@@ -937,18 +943,19 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
   &quot;responsetext&quot;: &quot;请求成功！&quot;,
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;Id&quot;: &quot;dcb1602d-ab6b-4aed-b2c3-c2e0dd6c3ddb&quot;,
-    &quot;Type&quot;: &quot;Type&quot;,
-    &quot;No&quot;: &quot;No&quot;,
-    &quot;Name&quot;: &quot;Name&quot;,
-    &quot;Description&quot;: &quot;Description&quot;,
-    &quot;Remark&quot;: &quot;Remark&quot;,
+    &quot;Id&quot;: &quot;e0bc9424-a529-44b4-a8d2-a7139304d68f&quot;,
+    &quot;Type&quot;: &quot;&quot;,
+    &quot;No&quot;: &quot;&quot;,
+    &quot;Name&quot;: &quot;&quot;,
+    &quot;Description&quot;: &quot;&quot;,
+    &quot;Remark&quot;: &quot;&quot;,
     &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-03-30 14:12:56&quot;,
+    &quot;Create_time&quot;: &quot;2017-04-05 16:13:53&quot;,
     &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-03-30 14:12:56&quot;,
+    &quot;Operate_time&quot;: &quot;2017-04-05 16:13:53&quot;,
     &quot;Status&quot;: 1,
-    &quot;Disp_index&quot;: 1
+    &quot;Disp_index&quot;: 0,
+    &quot;FuncIdList&quot;: &quot;fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f,fcd91dbe-c501-4fab-bee4-7cb1daef3c4f&quot;
   }
 }}
 </code></pre>
@@ -1041,10 +1048,22 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>Id</td>
+	<td>Search</td>
 	<td>string</td>
-	<td>false</td>
-	<td>角色ID</td>
+	<td>true</td>
+	<td>模糊搜索</td>
+</tr>
+<tr>
+	<td>PageNo</td>
+	<td>int</td>
+	<td>true</td>
+	<td>分页</td>
+</tr>
+<tr>
+	<td>PageSize</td>
+	<td>int</td>
+	<td>true</td>
+	<td>分页大小</td>
 </tr>
 </tbody>
 </table>
@@ -1081,13 +1100,15 @@ JSON:{   &quot;Id&quot;: &quot;e58e5e84-70f1-424f-b998-a3d79c6360bd&quot; }
 <blockquote>
 <pre><code>method:vchange.role.list
 ver:1
-timestamp:2017-03-28 13:00:03
+timestamp:2017-04-06 14:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:
+JSON:{   &quot;Search&quot;: &quot;a&quot;}
+PageNo:1
+PageSize:2
 </code></pre>
 
 </blockquote>
@@ -1100,34 +1121,37 @@ JSON:
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;3cfdea5c-0966-4458-8d93-a01c6080548d&quot;,
-      &quot;Type&quot;: &quot;Type&quot;,
-      &quot;No&quot;: &quot;No&quot;,
+      &quot;Id&quot;: &quot;1da46657-b508-45af-925b-a56f629deda2&quot;,
+      &quot;Type&quot;: &quot;&quot;,
+      &quot;No&quot;: &quot;&quot;,
       &quot;Name&quot;: &quot;Name&quot;,
-      &quot;Description&quot;: &quot;Description&quot;,
-      &quot;Remark&quot;: &quot;Remark&quot;,
+      &quot;Description&quot;: &quot;&quot;,
+      &quot;Remark&quot;: &quot;&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-31 09:06:43&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-06 09:25:35&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-31 09:06:43&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-06 09:25:35&quot;,
       &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 1
+      &quot;Disp_index&quot;: 0
     },
     {
-      &quot;Id&quot;: &quot;dcb1602d-ab6b-4aed-b2c3-c2e0dd6c3ddb&quot;,
-      &quot;Type&quot;: &quot;Type&quot;,
-      &quot;No&quot;: &quot;No&quot;,
+      &quot;Id&quot;: &quot;1ef674a6-c6c7-4488-a700-7ce3de7832b8&quot;,
+      &quot;Type&quot;: &quot;&quot;,
+      &quot;No&quot;: &quot;&quot;,
       &quot;Name&quot;: &quot;Name&quot;,
-      &quot;Description&quot;: &quot;Description&quot;,
-      &quot;Remark&quot;: &quot;Remark&quot;,
+      &quot;Description&quot;: &quot;&quot;,
+      &quot;Remark&quot;: &quot;&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-30 14:12:56&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-05 19:56:20&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-30 14:12:56&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-05 19:56:20&quot;,
       &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 1
+      &quot;Disp_index&quot;: 0
     }
-  ]
+  ],
+  &quot;pageno&quot;: 1,
+  &quot;pagesize&quot;: 2,
+  &quot;count&quot;: 3
 }}
 </code></pre>
 
