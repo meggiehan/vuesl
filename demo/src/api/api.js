@@ -39,6 +39,7 @@ const PARAM = {
 
 const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
+let globalxhr = ''
 api.list = (requestData, method) => {
   console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
@@ -55,6 +56,13 @@ api.list = (requestData, method) => {
       //   'Access-Control-Allow-Origin': '*',
       //   'Content-Type': 'application/json; charset=utf-8'
       // },
+      before (xhr) {
+        console.log('的斯科拉啥卡拉卡拉斯', globalxhr)
+        if(globalxhr) {
+          globalxhr.abort()
+        }
+        globalxhr = xhr
+      },
       emulateJSON: true
     }).then(function (response) {
       resolve(response.body.Response)
