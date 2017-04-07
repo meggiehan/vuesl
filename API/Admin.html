@@ -324,7 +324,7 @@ img {
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.userlogin.insert</td>
+	<td>vchange.admin.insert</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -385,6 +385,18 @@ img {
 </tr>
 </thead>
 <tbody>
+<tr>
+	<td>No</td>
+	<td>string</td>
+	<td>true</td>
+	<td>账号</td>
+</tr>
+<tr>
+	<td>Name</td>
+	<td>string</td>
+	<td>true</td>
+	<td>名字</td>
+</tr>
 <tr>
 	<td>Email</td>
 	<td>string</td>
@@ -483,11 +495,11 @@ JSON:{     &quot;Email&quot;: &quot;1111&quot;,     &quot;Phone&quot;: &quot;111
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
-  }
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
+    }
 }}
 </code></pre>
 
@@ -517,7 +529,7 @@ JSON:{     &quot;Email&quot;: &quot;1111&quot;,     &quot;Phone&quot;: &quot;111
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.userlogin.update</td>
+	<td>vchange.admin.update</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -578,6 +590,18 @@ JSON:{     &quot;Email&quot;: &quot;1111&quot;,     &quot;Phone&quot;: &quot;111
 </tr>
 </thead>
 <tbody>
+<tr>
+	<td>Id</td>
+	<td>string</td>
+	<td>true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td>Name</td>
+	<td>string</td>
+	<td>true</td>
+	<td>名字</td>
+</tr>
 <tr>
 	<td>Email</td>
 	<td>string</td>
@@ -670,11 +694,11 @@ JSON:{     &quot;Id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;,    
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
-  }
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
+    }
 }}
 </code></pre>
 
@@ -704,7 +728,7 @@ JSON:{     &quot;Id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;,    
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.userlogin.delete</td>
+	<td>vchange.admin.delete</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -804,7 +828,7 @@ JSON:{     &quot;Id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;,    
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.userlogin.delete
+<pre><code>method:vchange.admin.delete
 ver:1
 timestamp:2017-03-28 18:00:03
 format:json
@@ -821,11 +845,11 @@ JSON:[  &quot;813b5ffd-0afc-4e8f-ab79-89133dcfaaa1&quot;  ]
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
-  }
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
+    }
 }}
 </code></pre>
 
@@ -855,7 +879,7 @@ JSON:[  &quot;813b5ffd-0afc-4e8f-ab79-89133dcfaaa1&quot;  ]
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.userlogin.</td>
+	<td>vchange.admin.</td>
 </tr>
 </tbody>
 </table>
@@ -883,7 +907,7 @@ session | string | true | 1799163E221F4638A27D0CBC47830C07</p>
 <tbody>
 <tr>
 	<td>Id</td>
-	<td>array</td>
+	<td>string</td>
 	<td>true</td>
 	<td>管理员ID</td>
 </tr>
@@ -920,7 +944,7 @@ session | string | true | 1799163E221F4638A27D0CBC47830C07</p>
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.userlogin.info
+<pre><code>method:vchange.admin.info
 ver:1
 timestamp:2017-03-28 19:00:03
 format:json
@@ -937,24 +961,24 @@ JSON:{   &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot; }
 </ul>
 <blockquote>
 <pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot;,
-    &quot;Email&quot;: &quot;1111&quot;,
-    &quot;Phone&quot;: &quot;1111&quot;,
-    &quot;Password&quot;: &quot;1111&quot;,
-    &quot;Is_authentication&quot;: true,
-    &quot;Regist_ip&quot;: &quot;&quot;,
-    &quot;Last_ip&quot;: &quot;&quot;,
-    &quot;Last_login_time&quot;: &quot;1900-01-01 00:00:00&quot;,
-    &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-04-01 09:19:05&quot;,
-    &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-04-01 09:19:05&quot;,
-    &quot;Status&quot;: 1,
-    &quot;Disp_index&quot;: 0
-  }
+&quot;responsetext&quot;: &quot;请求成功！&quot;,
+&quot;responsecode&quot;: &quot;200&quot;,
+&quot;result&quot;: {!
+  &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot;,
+  &quot;Email&quot;: &quot;1111&quot;,
+  &quot;Phone&quot;: &quot;1111&quot;,
+  &quot;Password&quot;: &quot;1111&quot;,
+  &quot;Is_authentication&quot;: true,
+  &quot;Regist_ip&quot;: &quot;&quot;,
+  &quot;Last_ip&quot;: &quot;&quot;,
+  &quot;Last_login_time&quot;: &quot;1900-01-01 00:00:00&quot;,
+  &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+  &quot;Create_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+  &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+  &quot;Operate_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+  &quot;Status&quot;: 1,
+  &quot;Disp_index&quot;: 0
+}
 }}
 </code></pre>
 
@@ -984,7 +1008,7 @@ JSON:{   &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot; }
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.userlogin.list</td>
+	<td>vchange.admin.list</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -1084,15 +1108,17 @@ JSON:{   &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot; }
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.userlogin.list
+<pre><code>method:vchange.admin.list
 ver:1
-timestamp:2017-03-28 20:30:03
+timestamp:2017-04-07 17:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{}
+JSON:{&quot;Search&quot;:&quot;3&quot;}
+PageNo:1
+PageSize:3
 </code></pre>
 
 </blockquote>
@@ -1105,22 +1131,33 @@ JSON:{}
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot;,
+      &quot;Id&quot;: &quot;3403591c-b800-4210-935b-bcfcbde4ca10&quot;,
+      &quot;No&quot;: &quot;111&quot;,
+      &quot;Name&quot;: &quot;&quot;,
+      &quot;Mobil_phone&quot;: &quot;&quot;,
+      &quot;Email&quot;: &quot;3333&quot;,
+      &quot;DeptId&quot;: &quot;System.Byte[]&quot;,
+      &quot;Dept&quot;: &quot;哈哈&quot;,
+      &quot;RoleId&quot;: &quot;ba5ae0c8-a054-40bb-ac6d-fbc67c192bf6&quot;,
+      &quot;Role&quot;: &quot;&quot;,
+      &quot;Status&quot;: &quot;1&quot;
+    },
+    {
+      &quot;Id&quot;: &quot;f40a5e50-c732-450d-bfb7-8e4ab3e4019a&quot;,
+      &quot;No&quot;: &quot;111&quot;,
+      &quot;Name&quot;: &quot;333&quot;,
+      &quot;Mobil_phone&quot;: &quot;&quot;,
       &quot;Email&quot;: &quot;1111&quot;,
-      &quot;Phone&quot;: &quot;1111&quot;,
-      &quot;Password&quot;: &quot;1111&quot;,
-      &quot;Is_authentication&quot;: true,
-      &quot;Regist_ip&quot;: &quot;&quot;,
-      &quot;Last_ip&quot;: &quot;&quot;,
-      &quot;Last_login_time&quot;: &quot;1900-01-01 00:00:00&quot;,
-      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-04-01 09:19:05&quot;,
-      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-04-01 09:19:05&quot;,
-      &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 0
+      &quot;DeptId&quot;: &quot;System.Byte[]&quot;,
+      &quot;Dept&quot;: &quot;哈哈&quot;,
+      &quot;RoleId&quot;: &quot;ba5ae0c8-a054-40bb-ac6d-fbc67c192bf6&quot;,
+      &quot;Role&quot;: &quot;&quot;,
+      &quot;Status&quot;: &quot;1&quot;
     }
-  ]
+  ],
+  &quot;pageno&quot;: 1,
+  &quot;pagesize&quot;: 3,
+  &quot;count&quot;: 2
 }}
 </code></pre>
 
