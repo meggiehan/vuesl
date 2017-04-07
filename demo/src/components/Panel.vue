@@ -59,7 +59,7 @@
         if (tp === 'save') {
           this.updata.Id = this.single.Id
         }
-        if(url === 'menu_insert' || url === 'menu_update'){
+        if (url === 'menu_insert' || url === 'menu_update') {
           this.updata.Image1 = ''
           this.updata.Remark = ''
           this.updata.Run = ''
