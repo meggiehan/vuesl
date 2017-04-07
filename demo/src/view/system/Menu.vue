@@ -43,6 +43,7 @@ export default {
         list: 'menu_list'
       },
       column: [
+        {text: '序号', name: 'Disp_index'},
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
         {text: '类型', name: 'Type'},
@@ -63,7 +64,7 @@ export default {
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{title: '菜单', id: 1}, {title: '权限', id: 2}]
+          list: [{title: '菜单', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb3'}, {title: '权限', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb4'}]
         },
         {
           name: 'ParentId',
@@ -71,13 +72,13 @@ export default {
           type: 'select',
           text: '父菜单',
           text1: '选择父菜单',
-          list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {
+          list: [{title: '系统管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb5'}, {title: '商品信息管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb6'}, {title: '销售管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb7'}, {
             title: '采购管理',
-            id: 4
-          }, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {
+            id: '85b2ce3d-4693-473e-b6ca-ab651f016cb3'
+          }, {title: '入库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb8'}, {title: '在库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb9'}, {title: '出库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb1'}, {
             title: '退货管理',
-            id: 8
-          }, {title: '入款管理', id: 9}]
+            id: '85b2ce3d-4693-472e-b6ca-ab659f016cb3'
+          }, {title: '入款管理', id: '85b2ce3d-4693-473e-b8ca-ab659f016cb3'}]
         },
         {name: 'DispIndex', text: '排序', holder: '请输入序号*...', type: 'input', sub: 'input'},
         {name: 'Url', text: 'URL', holder: '请输入URL地址*...', type: 'input', sub: 'url'},
@@ -86,15 +87,15 @@ export default {
           text: '是否激活',
           type: 'radio',
           sub: 'radio',
-          radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]
+          radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]
         },
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
       ],
       types: [],
       filters: [
-        {name: 'name', size: 'big', type: 'input', val: ''},
-        {name: 'part1', size: 'small', type: 'select', text: '类型', list: [{title: '菜单', id: 1}, {title: '权限', id: 2}]},
-        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''},
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '菜单', id: '1'}, {title: '权限', id: '2'}]}
+//        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
       ]
     }
   },
@@ -110,7 +111,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata']),
     close (data) {
       this.show = false
     },
@@ -129,13 +130,14 @@ export default {
       updata.push(id)
       api.post({JSON: JSON.stringify(updata)}, 'menu_delete').then((item) => {
         console.log('item', item)
+        this.getdata()
       })
       console.log(idx, id)
     },
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'menu_delete'}
+        {name: 'save', text: '保存', url: 'menu_update'}
       ]
       this.show = !this.show
       this.title = '编辑菜单'

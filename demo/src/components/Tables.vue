@@ -14,7 +14,7 @@
           </tr>
         </tbody>
     </table>
-    <ul class="page">
+    <ul class="page" v-if="pages.total>0">
       <li class="chevron" @click="prev('min')"><</li>
       <li class="page-item" v-for="n in pages.list" @click="change(n)" v-bind:class="{active:n==pages.num}">{{n}}</li>
       <li class="chevron right" @click="prev('max')">></li>

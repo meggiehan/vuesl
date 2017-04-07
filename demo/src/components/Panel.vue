@@ -59,6 +59,11 @@
         if (tp === 'save') {
           this.updata.Id = this.single.Id
         }
+        if (url === 'menu_insert' || url === 'menu_update') {
+          this.updata.Image1 = ''
+          this.updata.Remark = ''
+          this.updata.Run = ''
+        }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'panel'})
           this.$store.dispatch('getdata')

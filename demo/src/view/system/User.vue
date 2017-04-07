@@ -76,9 +76,9 @@ export default {
       ],
       types: ['sure', 'quit'],
       filters: [
-        {name: 'name', size: 'big', type: 'input', val: ''},
-        {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-        {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'name', size: 'big', type: 'input', val: ''}
+        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
@@ -113,7 +113,7 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建用户'
+      this.title = '用户创建'
     },
     edit (idx) {
       this.types = [

@@ -20,8 +20,9 @@ const METHOD = {
   'user_insert': 'vchange.groups.insert', //添加用户
   'user_update': 'vchange.groups.update', //修改用户
   'user_delete': 'vchange.groups.delete', //删除用户
-  'part_list': 'vchange.dept.list' //部门列表请求地址
-
+  'part_list': 'vchange.dept.list', //部门列表请求地址
+  'part_insert': 'vchange.dept.insert',//新增部门
+  'part_update': 'vchange.dept.update' //修改部门
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
@@ -39,6 +40,7 @@ const PARAM = {
 
 const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
+let globalxhr = ''
 api.list = (requestData, method) => {
   console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
@@ -55,6 +57,13 @@ api.list = (requestData, method) => {
       //   'Access-Control-Allow-Origin': '*',
       //   'Content-Type': 'application/json; charset=utf-8'
       // },
+      before (xhr) {
+        console.log('的斯科拉啥卡拉卡拉斯', globalxhr)
+        if(globalxhr) {
+          globalxhr.abort()
+        }
+        globalxhr = xhr
+      },
       emulateJSON: true
     }).then(function (response) {
       resolve(response.body.Response)

@@ -1,109 +1,142 @@
 <template>
-  <div class="wrap">
-    <tip :parent="nav.parent"
-         :child="nav.child"></tip>
-    <div class="role main">
+<div class="wrap">
+  <tip :parent="nav.parent"
+       :child="nav.child"></tip>
+  <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create()">创建部门</button>
+        <button class="btn" @click="create('panel')">创建部门</button>
       </div>
       <tables :method="method"
               :column="column"
-              :options="options"></tables>
-    </div>
-    <transition name="slide-fade">
-      <panel :panels="panels" :types="types" @close="close" v-if="show"></panel>
-      <span slot="title">{{title}}</span>
-    </transition>
+              :options="options"
+              :filter="filters"></tables>
   </div>
+  <transition name="slide-fade">
+    <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
+      <span slot="title">{{title}}</span>
+    </panel>
+  </transition>
+</div>
+
 </template>
 
 <script>
-  import Tables from '../../components/Tables.vue'
-  import Tip from '../../components/Tip.vue'
-  import Filters from '../../components/Filters.vue'
-  import Panel from '../../components/Panel.vue'
-  import {mapGetters} from 'vuex'
-  export default {
-    name: 'part',
-    data () {
-      return {
-        show: false,
-        nav: {
-          parent: '系统管理',
-          child: '部门管理'
-        },
-        title: '',
-        method: {
-          part: 'part_list'
-        },
-        column: [
-          {text: '序号', name: 'No'},
-          {text: '名称', name: 'Name'},
-          {text: '编号', name: 'Disp_index'},
-          {text: '最后操作时间', name: 'Operate_time'}
-        ],
-        options: [
-          {name: '编辑', method: this.edit}
-        ],
-        panels: [
-          {name: 'user', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
-          {name: 'password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
-          {name: 'name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
-          {name: 'mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'date'},
-          {name: 'email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'}
-        ],
-        filters: [
-          {name: 'select', size: 'big', type: 'input'},
-          {
-            name: 'user',
-            size: 'small',
-            type: 'select',
-            text: '选择部门',
-            list: [{title: '产品部', id: 1}, {title: '会服部', id: 2}, {title: '客服部', id: 3}, {
-              title: '市场部',
-              id: 4
-            }, {title: '开发部', id: 5}, {title: '数据部', id: 6}, {title: '物流部', id: 7}, {
-              title: '财务部',
-              id: 8
-            }, {title: '运维中心', id: 9}, {title: '采购部', id: 10}]
-          }
-        ]
+import Tables from '../../components/Tables.vue'
+import Tip from '../../components/Tip.vue'
+import Filters from '../../components/Filters.vue'
+import Panel from '../../components/Panel.vue'
+import api from '../../api/api.js'
+import { mapGetters, mapActions } from 'vuex'
+export default {
+  name: 'part',
+  data () {
+    return {
+      show: {
+        panel: false,
+        auth: false
+      },
+      nav: {
+        parent: '系统管理',
+        child: '部门管理'
+      },
+      title: '',
+      method: {
+        list: 'role_list'
+      },
+      column: [
+        {text: '序号', name: 'Disp_index'},
+        {text: '名称', name: 'Name'},
+        {text: '编号', name: 'No'},
+        {text: '最后操作时间', name: 'Create_time'}
+      ],
+      options: [
+        {name: '编辑', method: this.edit},
+        {name: '删除', method: this.del}
+      ],
+      panels: [
+        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
+        {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
+        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
+        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
+        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
+        // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
+      ],
+      types: [],
+      filters: [
+        {name: 'Search', size: 'big', type: 'input', val: ''}
+        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+      ]
+    }
+  },
+  components: {
+    tables: Tables,
+    tip: Tip,
+    filters: Filters,
+    panel: Panel
+  },
+  computed: {
+    ...mapGetters([
+      'list'
+    ])
+  },
+  methods: {
+    ...mapActions(['resetsingle', 'getdata']),
+    close (data) {
+      this.show[data.name] = false
+    },
+    create (name) {
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'role_insert'}
+      ]
+      console.log(name)
+      this.resetsingle()
+      for (let i in this.show) {
+        if (i === name) {
+          this.show[i] = !this.show[i]
+        } else {
+          this.show[i] = false
+        }
       }
+      this.title = '创建角色'
     },
-    components: {
-      tables: Tables,
-      tip: Tip,
-      filters: Filters,
-      panel: Panel
+    del (idx, id) {
+      let updata = []
+      updata.push(id)
+      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+        console.log('item', item)
+        this.getdata()
+      })
     },
-    computed: {
-      ...mapGetters([
-        'list'
-      ])
+    edit (idx) {
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'role_update'}
+      ]
+      this.show.panel = !this.show.panel
+      this.title = '编辑角色'
     },
-    methods: {
-      close () {
-        this.show = false
-      },
-      create () {
-        this.show = !this.show
-        this.title = '创建部门'
-      },
-      edit (idx) {
-        // console.log(2222, this.list[idx])
-        this.show = !this.show
-        this.title = '编辑部门'
-      },
-      auth (idx) {
-        console.log(44444)
-      }
+    auth (idx) {
+      this.create('auth')
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="stylus">
-
+<style  lang="stylus">
+  .slide-fade-enter-active
+    transition: all .3s ease
+    -webkit-transition: all .3s ease
+  .slide-fade-leave-active
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+    -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+  .slide-fade-enter, .slide-fade-leave-active
+    transform: translateX(10px)
+    -webkit-transform: translateX(10px)
+    opacity: 0
 </style>

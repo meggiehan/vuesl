@@ -19,6 +19,7 @@ const router = new Router({
       path: '/',
       component: Home,
       name: '',
+      redirect: '/role',
       children: [
         {
           path: '/role',
@@ -69,7 +70,7 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  // console.log(to)
+  console.log(to)
   let name = to.name.toLowerCase()
   setcurrent(store, name)
   resetfilter(store, name)
