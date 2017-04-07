@@ -46,7 +46,7 @@ export default {
         list: 'role_list'
       },
       column: [
-        {text: '序号', name: 'Disp_index'},
+        {text: '编号', name: 'Disp_index'},
         {text: '名称', name: 'Name'},
         {text: '编号', name: 'No'},
         {text: '最后操作时间', name: 'Create_time'}
@@ -56,11 +56,14 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
-        {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
-        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
+        {name: 'No', text: '编号', holder: '请输入名称...', type: 'input', sub: 'input'},
+        {name: 'Name', text: '名称', holder: '请输入人编号...', type: 'input', sub: 'input'},
+        {name: 'ParentId', text: '上级部门', holder: '请输入人编号...', type: 'input', sub: 'input'},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {name: 'TenantId"', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
+        // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
+        // {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
+        // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
@@ -102,7 +105,7 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建角色'
+      this.title = '创建部门'
     },
     del (idx, id) {
       let updata = []
@@ -118,7 +121,7 @@ export default {
         {name: 'save', text: '保存', url: 'role_update'}
       ]
       this.show.panel = !this.show.panel
-      this.title = '编辑角色'
+      this.title = '编辑部门'
     },
     auth (idx) {
       this.create('auth')

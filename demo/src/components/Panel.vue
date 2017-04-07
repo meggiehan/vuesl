@@ -9,6 +9,7 @@
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
       <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
+      <searcher v-if="item.type == 'searcher'" :child="item" @toparent="change"></searcher>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
@@ -23,6 +24,7 @@
   import Textareaer from './panel/Textareaer.vue'
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
+  import Searcher from './panel/Searcher.vue'
   import api from '../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
@@ -42,7 +44,8 @@
       multi: Multi,
       textareaer: Textareaer,
       selecter: Selecter,
-      manage: Manage
+      manage: Manage,
+      searcher: Searcher
     },
     computed: {
       ...mapGetters([
