@@ -65,14 +65,14 @@ export default {
         {name: '权限', method: this.auth}
       ],
       panels: [
-        {name: 'User', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
+        {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
         {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
         {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
-        {name: 'Mobile', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
+        {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]},
-        {name: 'Role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
-        {name: 'Part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
+        {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
+        {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
       types: ['sure', 'quit'],
       filters: [

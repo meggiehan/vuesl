@@ -64,6 +64,10 @@
           this.updata.Remark = ''
           this.updata.Run = ''
         }
+        if (url === 'user_insert' || url === 'user_update') {
+          this.updata.DispIndex = ''
+          this.updata.GroupsIdList = []
+        }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'panel'})
           this.$store.dispatch('getdata')
