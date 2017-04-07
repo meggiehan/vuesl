@@ -86,15 +86,15 @@ export default {
           text: '是否激活',
           type: 'radio',
           sub: 'radio',
-          radioval: [{text: '是', val: 'one'}, {text: '否', val: 'two'}]
+          radioval: [{text: '是', val: 1}, {text: '否', val: 2}]
         },
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
       ],
       types: [],
       filters: [
-        {name: 'name', size: 'big', type: 'input', val: ''},
-        {name: 'part1', size: 'small', type: 'select', text: '类型', list: [{title: '菜单', id: 1}, {title: '权限', id: 2}]},
-        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''},
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '菜单', id: '1'}, {title: '权限', id: '2'}]}
+//        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
       ]
     }
   },
@@ -110,7 +110,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata']),
     close (data) {
       this.show = false
     },
@@ -129,6 +129,7 @@ export default {
       updata.push(id)
       api.post({JSON: JSON.stringify(updata)}, 'menu_delete').then((item) => {
         console.log('item', item)
+        this.getdata()
       })
       console.log(idx, id)
     },
