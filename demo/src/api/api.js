@@ -16,10 +16,10 @@ const METHOD = {
   'menu_insert': 'vchange.func.insert', //增加菜单
   'menu_update': 'vchange.func.update', //修改菜单
   'menu_delete': 'vchange.func.delete', //删除菜单
-  'user_list': 'vchange.groups.list', //用户列表请求地址
-  'user_insert': 'vchange.groups.insert', //添加用户
-  'user_update': 'vchange.groups.update', //修改用户
-  'user_delete': 'vchange.groups.delete', //删除用户
+  'user_list': 'vchange.admin.list', //用户列表请求地址
+  'user_insert': 'vchange.admin.insert', //添加用户
+  'user_update': 'vchange.admin.update', //修改用户
+  'user_delete': 'vchange.admin.delete', //删除用户
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update' //修改部门
