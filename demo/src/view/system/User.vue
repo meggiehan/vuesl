@@ -113,7 +113,7 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建用户'
+      this.title = '用户创建'
     },
     edit (idx) {
       this.types = [

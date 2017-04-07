@@ -43,6 +43,7 @@ export default {
         list: 'menu_list'
       },
       column: [
+        {text: '序号', name: 'Disp_index'},
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
         {text: '类型', name: 'Type'},
