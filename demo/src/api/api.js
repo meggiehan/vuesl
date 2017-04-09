@@ -23,7 +23,7 @@ const METHOD = {
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
-  'group_list': 'vchange.groups.list'
+  'part_info': 'vchange.dept.info'//单个部门查询信息
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'

@@ -47,7 +47,7 @@
         this.index = idx
         this.isshow = !this.isshow
         this.text1 = this.child.list[idx].Name
-        this.$emit('toparent', {name: this.child.Name, val: this.child.list[idx].Id})
+        this.$emit('toparent', {name: this.child.name, val: this.child.list[idx].Id})
       }
     }
   }
