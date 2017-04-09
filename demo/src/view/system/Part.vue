@@ -58,7 +58,17 @@ export default {
       panels: [
         {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
-        {name: 'ParentId', text: '上级部门', holder: '部门名称...', type: 'input', sub: 'input'},
+        // {name: 'ParentId', text: '上级部门', holder: '部门名称...', type: 'input', sub: 'input'},
+        {
+          name: 'ParentId',
+          size: 'small',
+          type: 'select',
+          text: '上级部门',
+          text1: '选择部门',
+          list: [{Name: '顶级部门', Id: '00000000-0000-0000-0000-000000000000'}],
+          get: {url: 'part_list'},
+          param: {PageNo: 1, Search: ''}
+        },
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
         {name: 'UserId', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
         // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
