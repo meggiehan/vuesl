@@ -64,7 +64,7 @@ export default {
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{title: '菜单', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb3'}, {title: '权限', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb4'}]
+          list: [{Name: '菜单', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb3'}, {Name: '权限', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb4'}]
         },
         {
           name: 'ParentId',
@@ -72,13 +72,9 @@ export default {
           type: 'select',
           text: '父菜单',
           text1: '选择父菜单',
-          list: [{title: '系统管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb5'}, {title: '商品信息管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb6'}, {title: '销售管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb7'}, {
-            title: '采购管理',
-            id: '85b2ce3d-4693-473e-b6ca-ab651f016cb3'
-          }, {title: '入库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb8'}, {title: '在库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb9'}, {title: '出库管理', id: '85b2ce3d-4693-473e-b6ca-ab659f016cb1'}, {
-            title: '退货管理',
-            id: '85b2ce3d-4693-472e-b6ca-ab659f016cb3'
-          }, {title: '入款管理', id: '85b2ce3d-4693-473e-b8ca-ab659f016cb3'}]
+          list: [{Name: '顶级菜单', Id: '00000000-0000-0000-0000-000000000000'}],
+          get: {url: 'menu_list'},
+          param: {PageNo: 1, Search: '', Type: ''}
         },
         {name: 'DispIndex', text: '排序', holder: '请输入序号*...', type: 'input', sub: 'input'},
         {name: 'Url', text: 'URL', holder: '请输入URL地址*...', type: 'input', sub: 'url'},

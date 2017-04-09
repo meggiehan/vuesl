@@ -6,13 +6,14 @@
       <p class="p-title" @click="isshow = !isshow">{{text1}}</p>
       <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
       <ul class="list-role" v-show="isshow">
-        <li v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.title}}</li>
+        <li v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import api from '../../api/api.js'
   export default {
     name: 'selecter',
     props: {
@@ -25,12 +26,28 @@
         text1: this.child.text1
       }
     },
+    mounted () {
+      if (this.child.get) {
+        api.list(this.child.param, this.child.get.url).then(item => {
+          if (this.child.get.url === 'menu_list') {
+            item.results.forEach((val) => {
+              if (val.Parent_id === '00000000-0000-0000-0000-000000000000') {
+                this.child.list.push(val)
+              }
+            })
+          } else {
+            Array.prototype.push.apply(this.child.list, item.results)
+          }
+          console.log('as1122', this.child.list)
+        })
+      }
+    },
     methods: {
       change (idx) {
         this.index = idx
         this.isshow = !this.isshow
-        this.text1 = this.child.list[idx].title
-        this.$emit('toparent', {name: this.child.name, val: this.child.list[idx].id})
+        this.text1 = this.child.list[idx].Name
+        this.$emit('toparent', {name: this.child.Name, val: this.child.list[idx].Id})
       }
     }
   }
