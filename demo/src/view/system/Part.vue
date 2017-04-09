@@ -56,11 +56,11 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'No', text: '编号', holder: '请输入名称...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '名称', holder: '请输入人编号...', type: 'input', sub: 'input'},
-        {name: 'ParentId', text: '上级部门', holder: '请输入人编号...', type: 'input', sub: 'input'},
+        {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input'},
+        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
+        {name: 'ParentId', text: '上级部门', holder: '部门名称...', type: 'input', sub: 'input'},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'TenantId"', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
+        {name: 'UserId"', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
         // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
         // {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
         // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
@@ -69,8 +69,8 @@ export default {
       ],
       types: [],
       filters: [
-        {name: 'Search', size: 'big', type: 'input', val: ''},
-        {name: 'role', size: 'small', type: 'multi', text: '选择部门', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''}
+        // {name: 'role', size: 'small', type: 'multi', text: '选择部门', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
