@@ -59,7 +59,6 @@ api.list = (requestData, method) => {
       //   'Content-Type': 'application/json; charset=utf-8'
       // },
       before (xhr) {
-        console.log('的斯科拉啥卡拉卡拉斯', globalxhr)
         if(globalxhr) {
           globalxhr.abort()
         }
@@ -71,6 +70,30 @@ api.list = (requestData, method) => {
     })
   })
 }
+
+api.select = (requestData, method) => {
+  console.log('re', requestData)
+  let redata = JSON.parse(JSON.stringify(requestData))
+  let updata = JSON.parse(JSON.stringify(PARAM))
+  updata.method = METHOD[method]
+  updata.PageSize = PAGESIZE
+  updata.PageNo = redata.PageNo
+  delete redata.PageNo
+  let lastdata = {JSON: JSON.stringify(redata)}
+  let request = GetSignature(updata, lastdata, SECRET)
+  return new Promise((resolve, reject) => {
+    Vue.http.post(baseUrl, request.returns, {
+      // headers: {
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Content-Type': 'application/json; charset=utf-8'
+      // },
+      emulateJSON: true
+    }).then(function (response) {
+      resolve(response.body.Response)
+    })
+  })
+}
+
 api.post = (requestData, method) => {
   PARAM.method = METHOD[method]
   let request = GetSignature(PARAM, requestData, SECRET)
@@ -82,6 +105,21 @@ api.post = (requestData, method) => {
       emulateJSON: true,
     }).then(function (response) {
       resolve(response.body.Response.results || response.body.Response.result)
+
+    })
+  })
+}
+api.user = (requestData, method) => {
+  PARAM.method = METHOD[method]
+  let request = GetSignature(PARAM, requestData, SECRET)
+  return new Promise((resolve, reject) => {
+    Vue.http.post(baseUrl, request.returns, {
+      headers: {
+        'Content-Type': 'multipart/form-data; charset=UTF-8'
+      },
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response.body.Response.UserList)
 
     })
   })

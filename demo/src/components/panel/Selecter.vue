@@ -3,10 +3,10 @@
   <div class="s-lis clearfloat">
     <label for="">{{child.text}}：</label>
     <div class="s-part f-l">
-      <p class="p-title" @click="isshow = !isshow">{{text1}}</p>
+      <p class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
       <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
       <ul class="list-role" v-show="isshow">
-        <li v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+        <li class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
       </ul>
     </div>
   </div>
@@ -14,6 +14,7 @@
 
 <script>
   import api from '../../api/api.js'
+  import { mapGetters } from 'vuex'
   export default {
     name: 'selecter',
     props: {
@@ -23,13 +24,18 @@
       return {
         index: -1,
         isshow: false,
+        parentIds: ['menu_list', 'part_list'],
         text1: this.child.text1
       }
     },
+    computed: {
+      ...mapGetters(['single'])
+    },
     mounted () {
+      console.log('1212121', this.child)
       if (this.child.get) {
         api.list(this.child.param, this.child.get.url).then(item => {
-          if (this.child.get.url === 'menu_list') {
+          if (this.parentIds.indexOf(this.child.get.url) > -1) {
             item.results.forEach((val) => {
               if (val.Parent_id === '00000000-0000-0000-0000-000000000000') {
                 this.child.list.push(val)
@@ -38,8 +44,16 @@
           } else {
             Array.prototype.push.apply(this.child.list, item.results)
           }
-          console.log('as1122', this.child.list)
+          let pid = this.single[this.child.name] || this.child.list[0]
+          this.$emit('toparent', {name: this.child.name, val: pid})
         })
+      }
+    },
+    beforeDestroy () {
+      if (this.parentIds.indexOf(this.child.get.url) > -1) {
+        this.child.list.splice(1)
+      } else {
+        this.child.list = []
       }
     },
     methods: {
