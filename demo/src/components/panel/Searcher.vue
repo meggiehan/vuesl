@@ -5,11 +5,12 @@
       <label for=""></label>
       <input type="input" v-model="val" :placeholder="child.holder" @input="search()">
       <ul class="search-list" v-if="val" @scroll="handleScroll">
-        <li v-for="item in userlist" @click="add(item.id,item)">{{item.name}}&nbsp&nbsp{{item.tel}}</li>
+        <li class="loading" v-if="userlist.length == 0">数据加载中~</li>
+        <li v-for="item in userlist" @click="add(item.Id,item)">{{item.Name}}&nbsp&nbsp{{item.Status}}</li>
       </ul>
     </div>
     <ul class="render clearfloat">
-      <li v-for="(item,idx) in list"><a href="javascript:;">{{item.name}}&nbsp&nbsp{{item.tel}}<i class="delete" @click="del(idx)">x</i></a></li>
+      <li v-for="(item,idx) in list"><a href="javascript:;">{{item.Name}}&nbsp&nbsp{{item.Status}}<i class="delete" @click="del(idx)">x</i></a></li>
     </ul>
   </div>
 </template>
@@ -32,13 +33,15 @@
         userlist: []
       }
     },
+    mounted () {
+      console.log(111)
+    },
     methods: {
       handleScroll (e) {
         let sTop = e.srcElement.scrollTop
         let dHeight = e.srcElement.offsetHeight
         let sHeight = e.srcElement.scrollHeight
         if (sTop + dHeight >= sHeight + 2) {
-          console.log(22222222)
           this.throttle(this.getuser, this, true)
         }
       },
@@ -50,6 +53,7 @@
           } else {
             this.userlist = item.results
           }
+          console.log('saas', this.userlist)
         })
       },
       throttle (method, context, flag) {
@@ -66,6 +70,7 @@
       },
       add (id, item) {
         this.val = ''
+        this.userlist = []
         let index = this.result.indexOf(id)
         if (index === -1) {
           this.result.push(id)
@@ -91,7 +96,7 @@
 
 <style scoped lang="stylus">
   .render
-    margin-top:1.3rem
+    margin-top:.3rem
     li
       width:25%
       padding:.07rem .1rem
@@ -133,7 +138,8 @@
         max-height:2.1rem
         overflow-y:auto
         background:#fff
-        li{
+        z-index:22
+        li
           margin-top:.1rem
           height:.25rem
           line-height:.25rem
@@ -142,7 +148,10 @@
           color:#fff
           text-align:center
           cursor:pointer
-        }
+          &.loading
+            background:#fff
+            color:#000
+            margin-top:0
       label
         line-height:.5rem
         margin-right:.15rem

@@ -22,7 +22,8 @@ const METHOD = {
   'user_delete': 'vchange.admin.delete', //删除用户
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
-  'part_update': 'vchange.dept.update' //修改部门
+  'part_update': 'vchange.dept.update', //修改部门
+  'group_list': 'vchange.groups.list'
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
