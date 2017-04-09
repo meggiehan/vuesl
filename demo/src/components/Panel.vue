@@ -71,6 +71,12 @@
           this.updata.DispIndex = '1'
           this.updata.GroupsIdList = []
         }
+        if (url === 'part_insert' || url === 'part_update') {
+          this.updata.Faxphone = ''
+          this.updata.Status = '1'
+          this.updata.Remark = ''
+          this.updata.DispIndex = '1'
+        }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'panel'})
           this.$store.dispatch('getdata')

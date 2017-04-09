@@ -43,7 +43,7 @@ export default {
       },
       title: '',
       method: {
-        list: 'role_list'
+        list: 'part_list'
       },
       column: [
         {text: '编号', name: 'Disp_index'},
@@ -93,7 +93,7 @@ export default {
     create (name) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_insert'}
+        {name: 'save', text: '保存', url: 'part_insert'}
       ]
       console.log(name)
       this.resetsingle()
@@ -109,7 +109,7 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+      api.post({JSON: JSON.stringify(updata)}, 'part_delete').then((item) => {
         console.log('item', item)
         this.getdata()
       })
@@ -117,7 +117,7 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_update'}
+        {name: 'save', text: '保存', url: 'part_update'}
       ]
       this.show.panel = !this.show.panel
       this.title = '编辑部门'
