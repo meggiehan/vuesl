@@ -46,9 +46,9 @@ export default {
         list: 'part_list'
       },
       column: [
-        {text: '编号', name: 'Disp_index'},
-        {text: '名称', name: 'Name'},
+        {text: '序号', name: 'Disp_index'},
         {text: '编号', name: 'No'},
+        {text: '名称', name: 'Name'},
         {text: '最后操作时间', name: 'Create_time'}
       ],
       options: [

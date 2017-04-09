@@ -53,8 +53,8 @@ export default {
       },
       column: [
         {text: '序号', name: 'Disp_index'},
-        {text: '名称', name: 'Name'},
         {text: '编号', name: 'No'},
+        {text: '名称', name: 'Name'},
         {text: '最后操作时间', name: 'Create_time'}
       ],
       options: [
@@ -62,8 +62,8 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input'},
+        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
         {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
