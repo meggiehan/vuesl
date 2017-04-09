@@ -298,6 +298,7 @@ img {
 <li>删除管理员</li>
 <li>管理员信息</li>
 <li>管理员列表</li>
+<li>管理员重置密码</li>
 </ol>
 <h4>1. 添加管理员</h4>
 <ul>
@@ -1193,6 +1194,338 @@ PageSize:3
   &quot;pageno&quot;: 1,
   &quot;pagesize&quot;: 3,
   &quot;count&quot;: 2
+}}
+</code></pre>
+
+</blockquote>
+<h4>6. 管理员重置密码</h4>
+<ul>
+<li>请求方式</li>
+</ul>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<ul>
+<li>公共参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>是否必须</th>
+	<th>参数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>method</td>
+	<td>string</td>
+	<td>true</td>
+	<td>vchange.admin.list</td>
+</tr>
+<tr>
+	<td>ver</td>
+	<td>int</td>
+	<td>true</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>timestamp</td>
+	<td>time</td>
+	<td>true</td>
+	<td>2017-03-28 11:30:03</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>string</td>
+	<td>true</td>
+	<td>json</td>
+</tr>
+<tr>
+	<td>app_key</td>
+	<td>int</td>
+	<td>true</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>sign</td>
+	<td>string</td>
+	<td>true</td>
+	<td>94E9F5F459C0ACA567A9D4EA6386F019</td>
+</tr>
+<tr>
+	<td>sign_method</td>
+	<td>string</td>
+	<td>true</td>
+	<td>md5</td>
+</tr>
+<tr>
+	<td>session</td>
+	<td>string</td>
+	<td>true</td>
+	<td>1799163E221F4638A27D0CBC47830C07</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>请求参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>是否必须</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Id</td>
+	<td>string</td>
+	<td>true</td>
+	<td>管理员ID</td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td>string</td>
+	<td>true</td>
+	<td>密码</td>
+</tr>
+<tr>
+	<td>Repassword</td>
+	<td>string</td>
+	<td>true</td>
+	<td>重复密码</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>响应参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>ErrCode</td>
+	<td>string</td>
+	<td>错误编号</td>
+</tr>
+<tr>
+	<td>ErrMsg</td>
+	<td>string</td>
+	<td>错误信息</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>请求示例</li>
+</ul>
+<blockquote>
+<pre><code>method:vchange.admin.repassword
+ver:1
+timestamp:2017-04-09 17:19:05
+format:json
+app_key:1000
+sign_method:md5
+session:1799163E221F4638A27D0CBC47830C07
+JSON:{&quot;Password&quot;:&quot;123&quot;,&quot;Repassword&quot;:&quot;123&quot;,&quot;Id&quot;:&quot;09a971d9-0b4a-4911-a0c1-9568dd1ad78a&quot;}
+sign:DDB2F0CDB2EE806F06A30B8DCA7D92A4
+</code></pre>
+
+</blockquote>
+<ul>
+<li>响应示例</li>
+</ul>
+<blockquote>
+<pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;09a971d9-0b4a-4911-a0c1-9568dd1ad78a&quot;
+  }
+}}
+</code></pre>
+
+</blockquote>
+<h4>7. 管理员修改密码</h4>
+<ul>
+<li>请求方式</li>
+</ul>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<ul>
+<li>公共参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>是否必须</th>
+	<th>参数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>method</td>
+	<td>string</td>
+	<td>true</td>
+	<td>vchange.admin.list</td>
+</tr>
+<tr>
+	<td>ver</td>
+	<td>int</td>
+	<td>true</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>timestamp</td>
+	<td>time</td>
+	<td>true</td>
+	<td>2017-03-28 11:30:03</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>string</td>
+	<td>true</td>
+	<td>json</td>
+</tr>
+<tr>
+	<td>app_key</td>
+	<td>int</td>
+	<td>true</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>sign</td>
+	<td>string</td>
+	<td>true</td>
+	<td>94E9F5F459C0ACA567A9D4EA6386F019</td>
+</tr>
+<tr>
+	<td>sign_method</td>
+	<td>string</td>
+	<td>true</td>
+	<td>md5</td>
+</tr>
+<tr>
+	<td>session</td>
+	<td>string</td>
+	<td>true</td>
+	<td>1799163E221F4638A27D0CBC47830C07</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>请求参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>是否必须</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Id</td>
+	<td>string</td>
+	<td>true</td>
+	<td>管理员ID</td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td>string</td>
+	<td>true</td>
+	<td>密码</td>
+</tr>
+<tr>
+	<td>Repassword</td>
+	<td>string</td>
+	<td>true</td>
+	<td>重复密码</td>
+</tr>
+<tr>
+	<td>Oldpassword</td>
+	<td>string</td>
+	<td>true</td>
+	<td>旧密码</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>响应参数</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>ErrCode</td>
+	<td>string</td>
+	<td>错误编号</td>
+</tr>
+<tr>
+	<td>ErrMsg</td>
+	<td>string</td>
+	<td>错误信息</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>请求示例</li>
+</ul>
+<blockquote>
+<pre><code>method:vchange.admin.updatepassword
+ver:1
+timestamp:2017-04-09 18:19:05
+format:json
+app_key:1000
+sign_method:md5
+session:1799163E221F4638A27D0CBC47830C07
+JSON:{&quot;Password&quot;:&quot;123456&quot;,&quot;Repassword&quot;:&quot;123456&quot;,&quot;Oldpassword&quot;:&quot;123&quot;,&quot;Id&quot;:&quot;09a971d9-0b4a-4911-a0c1-9568dd1ad78a&quot;}
+sign:DDB2F0CDB2EE806F06A30B8DCA7D92A4
+</code></pre>
+
+</blockquote>
+<ul>
+<li>响应示例</li>
+</ul>
+<blockquote>
+<pre><code>{&quot;Response&quot;:{
+  &quot;responsetext&quot;: &quot;请求成功！&quot;,
+  &quot;responsecode&quot;: &quot;200&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;09a971d9-0b4a-4911-a0c1-9568dd1ad78a&quot;
+  }
 }}
 </code></pre>
 
