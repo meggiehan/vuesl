@@ -386,12 +386,6 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>TenantId</td>
-	<td>string</td>
-	<td>true</td>
-	<td>单位TL的ID</td>
-</tr>
-<tr>
 	<td>ParentId</td>
 	<td>string</td>
 	<td>true</td>
@@ -401,43 +395,49 @@ img {
 	<td>No</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>编号</td>
 </tr>
 <tr>
 	<td>Name</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>名称</td>
 </tr>
 <tr>
 	<td>Faxphone</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>单位传真号</td>
 </tr>
 <tr>
 	<td>Description</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>描述</td>
 </tr>
 <tr>
 	<td>Remark</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>备注</td>
 </tr>
 <tr>
 	<td>Status</td>
-	<td>string</td>
+	<td>int</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>状态</td>
 </tr>
 <tr>
 	<td>DispIndex</td>
-	<td>string</td>
+	<td>int</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>索引值</td>
+</tr>
+<tr>
+	<td>UserId</td>
+	<td>array</td>
+	<td>true</td>
+	<td>部门人员</td>
 </tr>
 </tbody>
 </table>
@@ -474,13 +474,13 @@ img {
 <blockquote>
 <pre><code>method:vchange.dept.insert
 ver:1
-timestamp:2017-03-29 19:00:00
+timestamp:2017-04-09 11:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;ParentId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;No&quot;: &quot;aaaaa&quot;,     &quot;Name&quot;: &quot;aaaaa&quot;,     &quot;Faxphone&quot;: &quot;aaaaa&quot;,     &quot;Description&quot;: &quot;aaaaa&quot;,     &quot;Remark&quot;: &quot;aaaaa&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
+JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;ParentId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;No&quot;: &quot;aaaaa&quot;,     &quot;Name&quot;: &quot;aaaaa&quot;,     &quot;Faxphone&quot;: &quot;aaaaa&quot;,     &quot;Description&quot;: &quot;aaaaa&quot;,     &quot;Remark&quot;: &quot;aaaaa&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 ,&quot;UserId&quot;:[&quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;]}
 </code></pre>
 
 </blockquote>
@@ -588,13 +588,13 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 	<td>Id</td>
 	<td>string</td>
 	<td>true</td>
-	<td>部门ID</td>
+	<td>ID</td>
 </tr>
 <tr>
-	<td>Type</td>
+	<td>ParentId</td>
 	<td>string</td>
 	<td>true</td>
-	<td>类型</td>
+	<td>父单位ID</td>
 </tr>
 <tr>
 	<td>No</td>
@@ -609,15 +609,21 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 	<td>名称</td>
 </tr>
 <tr>
+	<td>Faxphone</td>
+	<td>string</td>
+	<td>true</td>
+	<td>单位传真号</td>
+</tr>
+<tr>
 	<td>Description</td>
 	<td>string</td>
-	<td>false</td>
+	<td>true</td>
 	<td>描述</td>
 </tr>
 <tr>
 	<td>Remark</td>
 	<td>string</td>
-	<td>false</td>
+	<td>true</td>
 	<td>备注</td>
 </tr>
 <tr>
@@ -629,8 +635,14 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 <tr>
 	<td>DispIndex</td>
 	<td>int</td>
-	<td>false</td>
-	<td>序列值</td>
+	<td>true</td>
+	<td>索引值</td>
+</tr>
+<tr>
+	<td>UserId</td>
+	<td>array</td>
+	<td>true</td>
+	<td>部门人员</td>
 </tr>
 </tbody>
 </table>
@@ -667,13 +679,13 @@ JSON:{     &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot
 <blockquote>
 <pre><code>method:vchange.dept.update
 ver:1
-timestamp:2017-03-30 9:00:00
+timestamp:2017-04-09 11:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{    &quot;Id&quot;:&quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;, &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;ParentId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;No&quot;: &quot;bbb&quot;,     &quot;Name&quot;: &quot;bbbb&quot;,     &quot;Faxphone&quot;: &quot;aaaaa&quot;,     &quot;Description&quot;: &quot;aaaaa&quot;,     &quot;Remark&quot;: &quot;aaaaa&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
+JSON:{     &quot;Id&quot;: &quot;cf1afc41-7f13-4ca4-bca4-1ac91b8cb28a&quot;,  &quot;TenantId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;ParentId&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot;,     &quot;No&quot;: &quot;123&quot;,     &quot;Name&quot;: &quot;aaaaa&quot;,     &quot;Faxphone&quot;: &quot;aaaaa&quot;,     &quot;Description&quot;: &quot;aaaaa&quot;,     &quot;Remark&quot;: &quot;aaaaa&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 ,&quot;UserId&quot;:[&quot;cf1afc41-7f13-4ca4-bca4-1ac91b8cb28a&quot;]}
 </code></pre>
 
 </blockquote>
@@ -1052,7 +1064,7 @@ JSON:{   &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot; }
 <tr>
 	<td>Id</td>
 	<td>string</td>
-	<td>false</td>
+	<td>true</td>
 	<td>部门ID</td>
 </tr>
 </tbody>
@@ -1090,13 +1102,15 @@ JSON:{   &quot;Id&quot;: &quot;613a93f4-90ae-4c7c-b12d-aaf541cb2768&quot; }
 <blockquote>
 <pre><code>method:vchange.dept.list
 ver:1
-timestamp:2017-03-30 11:00:03
+timestamp:2017-04-09 13:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:
+JSON:{   &quot;Search&quot;: &quot;&quot; }
+PageNo:1
+PageSize:3
 </code></pre>
 
 </blockquote>
@@ -1109,20 +1123,51 @@ JSON:
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;results&quot;: [
     {
-      &quot;Id&quot;: &quot;b2f244de-9d3d-4636-96cc-ca1f8629d0d6&quot;,
+      &quot;Id&quot;: &quot;0101e41c-fee8-4c2d-8da1-f853cc680980&quot;,
       &quot;Type&quot;: &quot;DEPT&quot;,
-      &quot;No&quot;: &quot;bbb&quot;,
-      &quot;Name&quot;: &quot;bbbb&quot;,
-      &quot;Description&quot;: &quot;aaaaa&quot;,
-      &quot;Remark&quot;: &quot;vvvvvvv&quot;,
+      &quot;No&quot;: &quot;单位&quot;,
+      &quot;Name&quot;: &quot;打&quot;,
+      &quot;Description&quot;: &quot;打&quot;,
+      &quot;Remark&quot;: &quot;&quot;,
       &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-31 10:43:34&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-09 12:02:18&quot;,
       &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-31 10:49:39&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-09 12:02:18&quot;,
+      &quot;Status&quot;: 1,
+      &quot;Disp_index&quot;: 1
+    },
+    {
+      &quot;Id&quot;: &quot;12368768-ce33-41c4-82f5-c94f9a320691&quot;,
+      &quot;Type&quot;: &quot;DEPT&quot;,
+      &quot;No&quot;: &quot;bbbbb&quot;,
+      &quot;Name&quot;: &quot;aaaaa&quot;,
+      &quot;Description&quot;: &quot;aaaaa&quot;,
+      &quot;Remark&quot;: &quot;aaaaa&quot;,
+      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-09 11:04:10&quot;,
+      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-09 11:04:10&quot;,
+      &quot;Status&quot;: 1,
+      &quot;Disp_index&quot;: 1
+    },
+    {
+      &quot;Id&quot;: &quot;12eec33d-5bb6-41cc-977a-3c794cc0c056&quot;,
+      &quot;Type&quot;: &quot;DEPT&quot;,
+      &quot;No&quot;: &quot;bbbbb&quot;,
+      &quot;Name&quot;: &quot;aaaaa&quot;,
+      &quot;Description&quot;: &quot;aaaaa&quot;,
+      &quot;Remark&quot;: &quot;aaaaa&quot;,
+      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-09 11:04:09&quot;,
+      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-09 11:04:09&quot;,
       &quot;Status&quot;: 1,
       &quot;Disp_index&quot;: 1
     }
-  ]
+  ],
+  &quot;pageno&quot;: 1,
+  &quot;pagesize&quot;: 3,
+  &quot;count&quot;: 3
 }}
 </code></pre>
 
