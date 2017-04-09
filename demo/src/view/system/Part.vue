@@ -66,9 +66,8 @@ export default {
       ],
       types: [],
       filters: [
-        {name: 'Search', size: 'big', type: 'input', val: ''}
-        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+        {name: 'Search', size: 'big', type: 'input', val: ''},
+        {name: 'role', size: 'small', type: 'multi', text: '选择部门', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },
