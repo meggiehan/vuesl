@@ -76,10 +76,12 @@
           this.result.push(id)
           this.list.push(item)
         }
+        this.$emit('toparent', {name: this.child.name, val: this.result})
       },
       del (idx) {
         this.result.splice(idx, 1)
         this.list.splice(idx, 1)
+        this.$emit('toparent', {name: this.child.name, val: this.result})
       },
       search () {
         this.throttle(this.getuser, this, false)
