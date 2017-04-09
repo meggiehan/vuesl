@@ -8,7 +8,7 @@
       <p class="p-title ellipsis" @click="slide()">{{text}}</p>
       <p class="s-down" @click="slide()"><span class="trangle"></span></p>
       <ul class="list-role" v-show="isshow">
-        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.id)>-1}" @click="change(item.id)"><a href="javascript:;" class="m-item">{{item.title}}</a></li>
+        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.Id)>-1}" @click="change(item.Id)"><a href="javascript:;" class="m-item">{{item.Name}}</a></li>
         <li class="operate clearfloat">
           <a href="javascript:;" class="btn-sure" @click="sure()">确定</a>
         </li>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import api from '../../api/api.js'
+  import { mapGetters } from 'vuex'
   export default {
     name: 'multi',
     props: {
@@ -30,6 +32,19 @@
         list: [],
         result: []
       }
+    },
+    computed: {
+      ...mapGetters(['single'])
+    },
+    mounted () {
+      let temp = this.single[this.child.name] ? this.single[this.child.name].split(',') : []
+      api.select(this.child.param, this.child.get.url).then(item => {
+        this.child.list = item.results
+        this.result = JSON.parse(JSON.stringify(temp))
+        this.list = JSON.parse(JSON.stringify(temp))
+        this.$emit('toparent', {name: this.child.name, val: this.result})
+        this.filltext()
+      })
     },
     methods: {
       slide () {
@@ -46,8 +61,8 @@
       filltext () {
         this.text = ''
         this.child.list.map((val) => {
-          if (this.list.indexOf(val.id) > -1) {
-            this.text += val.title + ','
+          if (this.list.indexOf(val.Id) > -1) {
+            this.text += val.Name + ','
           }
         })
         this.text = this.text.substring(0, this.text.length - 1) || this.child.text

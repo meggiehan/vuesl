@@ -9,7 +9,7 @@
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
       <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
-      <searcher v-if="item.type == 'searcher'" :child="item" @toparent="change"></searcher>
+      <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
@@ -87,6 +87,7 @@
       },
       change (value) {
         this.updata[value.name] = value.val
+        console.log('assasaasssssssss', value.val)
       },
       up () {
         console.log(this.updata)

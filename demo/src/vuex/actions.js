@@ -13,10 +13,7 @@ export const getdata = ({commit, state}) => {
     commit('getpage', item || {})
   })
 }
-export const getsingle = ({commit, state}, index) => {
-  api.post({JSON: JSON.stringify({Id: state.data[index].Id})}, 'part_info').then((item) => {
-    console.log('itemsdsdsd', item)
-  })
+export const getsingle = ({commit}, index) => {
   commit('getsingle', index)
 }
 export const resetsingle = ({commit}) => commit('resetsingle')
