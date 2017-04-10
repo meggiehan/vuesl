@@ -18,11 +18,7 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
-  <transition name="slide-fade">
-    <auth @close="close" v-if="show.auth">
-      <span slot="title">用户权限</span>
-    </auth>
-  </transition>
+
 </div>
 
 </template>
@@ -53,9 +49,9 @@ export default {
       },
       column: [
         {text: '序号', name: 'Disp_index'},
-        {text: '用户名', name: 'Name'},
+        {text: '用户名', name: 'No'},
         {text: '姓名', name: 'Name'},
-        {text: '手机号码', name: 'Disp_index'},
+        {text: '手机号码', name: 'Phone'},
         {text: '用户角色', name: 'Disp_index'},
         {text: '所属部门', name: 'Disp_index'},
         {text: '最后登录时间', name: 'Create_time'}
@@ -67,6 +63,7 @@ export default {
       panels: [
         {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
         {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
+        {name: 'Setpassword', text: '', holder: '重置密码', type: 'span', sub: ''},
         {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
         {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
