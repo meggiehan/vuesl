@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Groups</title>
+<title>Order</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -291,15 +291,15 @@ img {
 </style>
 </head>
 <body>
-<h2>用户组接口文档</h2>
+<h2>订单接口文档</h2>
 <ol>
-<li>添加用户组</li>
-<li>编辑用户组</li>
-<li>删除用户组</li>
-<li>用户组信息</li>
-<li>用户组列表</li>
+<li>添加订单</li>
+<li>编辑订单</li>
+<li>删除订单</li>
+<li>订单信息</li>
+<li>订单列表</li>
 </ol>
-<h4>1. 添加用户组</h4>
+<h4>1. 添加订单</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -324,7 +324,7 @@ img {
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.groups.insert</td>
+	<td>vchange.order.insert</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -386,16 +386,22 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>No</td>
+	<td>Email</td>
 	<td>string</td>
 	<td>true</td>
-	<td>组编号</td>
+	<td>邮箱</td>
 </tr>
 <tr>
-	<td>Name</td>
+	<td>Phone</td>
 	<td>string</td>
 	<td>true</td>
-	<td>组名称</td>
+	<td>手机</td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td>string</td>
+	<td>true</td>
+	<td>密码</td>
 </tr>
 <tr>
 	<td>Status</td>
@@ -407,7 +413,25 @@ img {
 	<td>DispIndex</td>
 	<td>int</td>
 	<td>true</td>
-	<td>序列值</td>
+	<td>索引值</td>
+</tr>
+<tr>
+	<td>RoleIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>角色信息</td>
+</tr>
+<tr>
+	<td>GroupsIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>用户组信息</td>
+</tr>
+<tr>
+	<td>DeptIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>部门信息</td>
 </tr>
 </tbody>
 </table>
@@ -442,15 +466,17 @@ img {
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.groups.insert
+<pre><code>method:vchange.order.insert
 ver:1
-timestamp:2017-03-30 16:00:00
+timestamp:2017-04-06 21:00:00
 format:json
 app_key:1000
-sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
+sign:96FCDF1696E425B1169547813AFE6C9C
+JSON:
+ORDEDRHEAD:{     &quot;OrderType&quot;: &quot;OrderType&quot;,     &quot;CustId&quot;: &quot;CustId&quot;,     &quot;Discount&quot;: 11,     &quot;AreaOrLoc&quot;: &quot;AreaOrLoc&quot;,     &quot;Address1&quot;: &quot;Address1&quot;,     &quot;Address2&quot;: &quot;Address2&quot;,     &quot;Address3&quot;: &quot;Address3&quot;,     &quot;City&quot;: &quot;City&quot;,     &quot;Province&quot;: &quot;Province&quot;,     &quot;Country&quot;: &quot;Country&quot;,     &quot;Zip&quot;: &quot;Zip&quot;,     &quot;ContactPerson&quot;: &quot;ContactPerson&quot;,     &quot;Phone&quot;: &quot;Phone&quot;,     &quot;Fax&quot;: &quot;Fax&quot;,     &quot;Email&quot;: &quot;Email&quot;,     &quot;OrderGroupNo&quot;: &quot;OrderGroupNo&quot;,     &quot;PackageType&quot;: &quot;PackageType&quot;,     &quot;SaleType&quot;: &quot;SaleType&quot;,     &quot;OrderUserId&quot;: &quot;OrderUserId&quot;,     &quot;InvoiceId&quot;: &quot;InvoiceId&quot;,     &quot;InvoiceType&quot;: &quot;InvoiceType&quot;,     &quot;PDiscount&quot;: 1,     &quot;Commision&quot;: 1,     &quot;LogiStatus&quot;: 1,     &quot;OrderQty&quot;: 11,     &quot;OrderAmount&quot;: 11,     &quot;PromotionId&quot;: &quot;PromotionId&quot;,     &quot;Remark&quot;: &quot;Remark&quot; }
+ORDEDRLINE:[{     &quot;SkuId&quot;: 11,     &quot;Qty&quot;: 11},{     &quot;SkuId&quot;: 11,     &quot;Qty&quot;: 11}]
 </code></pre>
 
 </blockquote>
@@ -462,13 +488,13 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
   &quot;responsetext&quot;: &quot;请求成功！&quot;,
   &quot;responsecode&quot;: &quot;200&quot;,
   &quot;result&quot;: {
-    &quot;id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;
+    &quot;id&quot;: &quot;a0d4929f-5aea-4db7-8843-5337db7aa8dd&quot;
   }
 }}
 </code></pre>
 
 </blockquote>
-<h4>2. 编辑用户组</h4>
+<h4>2. 编辑订单</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -493,7 +519,7 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.groups.update</td>
+	<td>vchange.order.update</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -555,22 +581,16 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
 </thead>
 <tbody>
 <tr>
-	<td>Id</td>
-	<td>guid</td>
-	<td>true</td>
-	<td>用户组ID</td>
-</tr>
-<tr>
-	<td>No</td>
+	<td>Email</td>
 	<td>string</td>
 	<td>true</td>
-	<td>组编号</td>
+	<td>邮箱</td>
 </tr>
 <tr>
-	<td>Name</td>
+	<td>Phone</td>
 	<td>string</td>
 	<td>true</td>
-	<td>组名称</td>
+	<td>手机</td>
 </tr>
 <tr>
 	<td>Status</td>
@@ -582,7 +602,25 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
 	<td>DispIndex</td>
 	<td>int</td>
 	<td>true</td>
-	<td>序列值</td>
+	<td>索引值</td>
+</tr>
+<tr>
+	<td>RoleIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>角色信息</td>
+</tr>
+<tr>
+	<td>GroupsIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>用户组信息</td>
+</tr>
+<tr>
+	<td>DeptIdList</td>
+	<td>array</td>
+	<td>true</td>
+	<td>部门信息</td>
 </tr>
 </tbody>
 </table>
@@ -601,12 +639,12 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
 </thead>
 <tbody>
 <tr>
-	<td>responsecode</td>
+	<td>ErrCode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>responsetext</td>
+	<td>ErrMsg</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -617,33 +655,29 @@ JSON:{     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&qu
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.groups.update
+<p>method:vchange.admin.update
 ver:1
-timestamp:2017-03-30 16:00:00
+timestamp:2017-04-01 10:00:00
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,     &quot;No&quot;: &quot;Cat3&quot;,     &quot;Name&quot;: &quot;Cat4&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1 }
-</code></pre>
-
+JSON:{     &quot;Id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;,     &quot;Email&quot;: &quot;1111&quot;,     &quot;Phone&quot;: &quot;2222&quot;,     &quot;Password&quot;: &quot;1111&quot;,     &quot;Status&quot;: 1,     &quot;DispIndex&quot;: 1,     &quot;RoleIdList&quot;: [         &quot;BA5AE0C8-A054-40BB-AC6D-FBC67C192BF6&quot;     ],     &quot;GroupsIdList&quot;: [         &quot;f64e83f3-457a-43f9-9132-6a7c85b2aabb&quot;     ],     &quot;DeptIdList&quot;: [         &quot;f64e83f3-457a-43f9-9132-6a7c85b2aabb&quot;     ] }</p>
 </blockquote>
 <ul>
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;
-  }
-}}
-</code></pre>
-
+<p>{&quot;Response&quot;:{
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
+    }
+}}</p>
 </blockquote>
-<h4>3. 删除用户组</h4>
+<h4>3. 删除订单</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -668,7 +702,7 @@ JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,    
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.groups.delete</td>
+	<td>vchange.order.delete</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -733,7 +767,7 @@ JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,    
 	<td>Id</td>
 	<td>array</td>
 	<td>true</td>
-	<td>用户组ID</td>
+	<td>订单ID</td>
 </tr>
 </tbody>
 </table>
@@ -752,12 +786,12 @@ JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,    
 </thead>
 <tbody>
 <tr>
-	<td>responsecode</td>
+	<td>ErrCode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>responsetext</td>
+	<td>ErrMsg</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -768,15 +802,15 @@ JSON:{     &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,    
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.groups.delete
+<pre><code>method:vchange.order.delete
 ver:1
-timestamp:2017-03-30 16:00:00
+timestamp:2017-03-28 18:00:03
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
+JSON:[  &quot;813b5ffd-0afc-4e8f-ab79-89133dcfaaa1&quot;  ]
 </code></pre>
 
 </blockquote>
@@ -784,14 +818,15 @@ JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;
-}}
-</code></pre>
-
+<p>{&quot;Response&quot;:{
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;id&quot;: &quot;677841bb-dd30-43ea-8644-755aa1c14e34&quot;
+    }
+}}</p>
 </blockquote>
-<h4>4. 用户组信息</h4>
+<h4>4. 订单信息</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -816,52 +851,17 @@ JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.groups.info</td>
-</tr>
-<tr>
-	<td>ver</td>
-	<td>int</td>
-	<td>true</td>
-	<td>1</td>
-</tr>
-<tr>
-	<td>timestamp</td>
-	<td>time</td>
-	<td>true</td>
-	<td>2017-03-28 11:30:03</td>
-</tr>
-<tr>
-	<td>format</td>
-	<td>string</td>
-	<td>true</td>
-	<td>json</td>
-</tr>
-<tr>
-	<td>app_key</td>
-	<td>int</td>
-	<td>true</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>sign</td>
-	<td>string</td>
-	<td>true</td>
-	<td>94E9F5F459C0ACA567A9D4EA6386F019</td>
-</tr>
-<tr>
-	<td>sign_method</td>
-	<td>string</td>
-	<td>true</td>
-	<td>md5</td>
-</tr>
-<tr>
-	<td>session</td>
-	<td>string</td>
-	<td>true</td>
-	<td>1799163E221F4638A27D0CBC47830C07</td>
+	<td>vchange.order.</td>
 </tr>
 </tbody>
 </table>
+<p>ver | int | true | 1
+timestamp | time | true | 2017-03-28 11:30:03
+format | string | true | json
+app_key | int | true | 1000
+sign | string | true | 94E9F5F459C0ACA567A9D4EA6386F019
+sign_method | string | true | md5
+session | string | true | 1799163E221F4638A27D0CBC47830C07</p>
 </blockquote>
 <ul>
 <li>请求参数</li>
@@ -879,9 +879,9 @@ JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 <tbody>
 <tr>
 	<td>Id</td>
-	<td>guid</td>
+	<td>array</td>
 	<td>true</td>
-	<td>用户组ID</td>
+	<td>订单ID</td>
 </tr>
 </tbody>
 </table>
@@ -900,12 +900,12 @@ JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 </thead>
 <tbody>
 <tr>
-	<td>responsecode</td>
+	<td>ErrCode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>responsetext</td>
+	<td>ErrMsg</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -916,41 +916,42 @@ JSON:[&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; ]
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.groups.info
+<p>method:vchange.order.info
 ver:1
-timestamp:2017-03-30 16:00:00
+timestamp:2017-03-28 19:00:03
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
-</code></pre>
-
+JSON:{   &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot; }</p>
 </blockquote>
 <ul>
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;result&quot;: {
-    &quot;Id&quot;: &quot;035511a5-9ed4-4909-a51b-63024d1af86f&quot;,
-    &quot;No&quot;: &quot;&quot;,
-    &quot;Name&quot;: &quot;&quot;,
-    &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Create_time&quot;: &quot;2017-03-31 11:24:32&quot;,
-    &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-    &quot;Operate_time&quot;: &quot;2017-03-31 11:30:36&quot;,
-    &quot;Status&quot;: 0,
-    &quot;Disp_index&quot;: 0
-  }
-}}
-</code></pre>
-
+<p>{&quot;Response&quot;:{
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;result&quot;: {
+      &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot;,
+      &quot;Email&quot;: &quot;1111&quot;,
+      &quot;Phone&quot;: &quot;1111&quot;,
+      &quot;Password&quot;: &quot;1111&quot;,
+      &quot;Is_authentication&quot;: true,
+      &quot;Regist_ip&quot;: &quot;&quot;,
+      &quot;Last_ip&quot;: &quot;&quot;,
+      &quot;Last_login_time&quot;: &quot;1900-01-01 00:00:00&quot;,
+      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Create_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+      &quot;Operate_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+      &quot;Status&quot;: 1,
+      &quot;Disp_index&quot;: 0
+    }
+}}</p>
 </blockquote>
-<h4>5. 用户组列表</h4>
+<h4>5. 订单列表</h4>
 <ul>
 <li>请求方式</li>
 </ul>
@@ -975,7 +976,7 @@ JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
 	<td>method</td>
 	<td>string</td>
 	<td>true</td>
-	<td>vchange.groups.list</td>
+	<td>vchange.order.list</td>
 </tr>
 <tr>
 	<td>ver</td>
@@ -1040,7 +1041,7 @@ JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
 	<td>Id</td>
 	<td>string</td>
 	<td>false</td>
-	<td>用户组ID</td>
+	<td>订单ID</td>
 </tr>
 </tbody>
 </table>
@@ -1059,12 +1060,12 @@ JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
 </thead>
 <tbody>
 <tr>
-	<td>responsetext</td>
+	<td>ErrCode</td>
 	<td>string</td>
 	<td>错误编号</td>
 </tr>
 <tr>
-	<td>responsecode</td>
+	<td>ErrMsg</td>
 	<td>string</td>
 	<td>错误信息</td>
 </tr>
@@ -1075,41 +1076,42 @@ JSON:{    &quot;Id&quot;:&quot;390ac3d4-5e3e-4dfe-a355-d18b8739d53b&quot; }
 <li>请求示例</li>
 </ul>
 <blockquote>
-<pre><code>method:vchange.groups.list
+<p>method:vchange.order.list
 ver:1
-timestamp:2017-03-30 16:00:00
+timestamp:2017-03-28 20:30:03
 format:json
 app_key:1000
 sign:94E9F5F459C0ACA567A9D4EA6386F019
 sign_method:md5
 session:1799163E221F4638A27D0CBC47830C07
-JSON:
-</code></pre>
-
+JSON:{}</p>
 </blockquote>
 <ul>
 <li>响应示例</li>
 </ul>
 <blockquote>
-<pre><code>{&quot;Response&quot;:{
-  &quot;responsetext&quot;: &quot;请求成功！&quot;,
-  &quot;responsecode&quot;: &quot;200&quot;,
-  &quot;results&quot;: [
-    {
-      &quot;Id&quot;: &quot;f98d77f2-f02f-43f2-b2b1-4e768b07da7d&quot;,
-      &quot;No&quot;: &quot;111&quot;,
-      &quot;Name&quot;: &quot;111&quot;,
-      &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Create_time&quot;: &quot;2017-03-15 10:34:50&quot;,
-      &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-      &quot;Operate_time&quot;: &quot;2017-03-15 10:34:50&quot;,
-      &quot;Status&quot;: 1,
-      &quot;Disp_index&quot;: 1
-    }
-  ]
-}}
-</code></pre>
-
+<p>{&quot;Response&quot;:{
+    &quot;responsetext&quot;: &quot;请求成功！&quot;,
+    &quot;responsecode&quot;: &quot;200&quot;,
+    &quot;results&quot;: [
+      {
+        &quot;Id&quot;: &quot;8cdb64c6-78a4-4608-9bf8-1f6acf2c810f&quot;,
+        &quot;Email&quot;: &quot;1111&quot;,
+        &quot;Phone&quot;: &quot;1111&quot;,
+        &quot;Password&quot;: &quot;1111&quot;,
+        &quot;Is_authentication&quot;: true,
+        &quot;Regist_ip&quot;: &quot;&quot;,
+        &quot;Last_ip&quot;: &quot;&quot;,
+        &quot;Last_login_time&quot;: &quot;1900-01-01 00:00:00&quot;,
+        &quot;Create_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+        &quot;Create_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+        &quot;Operate_user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+        &quot;Operate_time&quot;: &quot;2017-04-01 09:19:05&quot;,
+        &quot;Status&quot;: 1,
+        &quot;Disp_index&quot;: 0
+      }
+    ]
+}}</p>
 </blockquote>
 
 </body>

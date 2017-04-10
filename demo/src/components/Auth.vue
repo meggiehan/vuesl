@@ -31,6 +31,9 @@
     props: {
       msg: ''
     },
+    mounted () {
+      console.log(1221)
+    },
     data () {
       return {
         types: ['quit', 'del', 'freeze', 'sure'],

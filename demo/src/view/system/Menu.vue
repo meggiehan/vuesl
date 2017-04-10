@@ -64,7 +64,7 @@ export default {
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{Name: '菜单', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb3'}, {Name: '权限', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb4'}]
+          list: [{Name: '菜单', Id: 'menu'}, {Name: '权限', Id: 'auth'}]
         },
         {
           name: 'ParentId',
@@ -90,7 +90,7 @@ export default {
       types: [],
       filters: [
         {name: 'Search', size: 'big', type: 'input', val: ''},
-        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '菜单', id: '1'}, {title: '权限', id: '2'}]}
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '全部', id: ''}, {title: '菜单', id: '1'}, {title: '权限', id: '2'}]}
 //        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
       ]
     }
@@ -128,7 +128,6 @@ export default {
         console.log('item', item)
         this.getdata()
       })
-      console.log(idx, id)
     },
     edit (idx) {
       this.types = [

@@ -20,7 +20,8 @@
   export default {
     name: 'searcher',
     props: {
-      child: ''
+      child: '',
+      id: ''
     },
     data () {
       return {
@@ -34,7 +35,14 @@
       }
     },
     mounted () {
-      console.log(111)
+      api.user({JSON: JSON.stringify({Id: this.id})}, 'part_info').then((item) => {
+        console.error(item)
+        item.map((val) => {
+          this.result.push(val.UserId)
+          this.list.push(val)
+          this.$emit('toparent', {name: this.child.name, val: this.result})
+        })
+      })
     },
     methods: {
       handleScroll (e) {
@@ -47,7 +55,6 @@
       },
       getuser (flag) {
         api.list(this.child.param, this.child.get.url).then(item => {
-          console.log(111, item)
           if (flag) {
             this.userlist = this.userlist.concat([])
           } else {

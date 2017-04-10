@@ -36,6 +36,18 @@ export default {
   },
   methods: {
     login () {
+      if (!this.user) {
+        window.alert('请输入用户名')
+        return
+      }
+      if (!this.password) {
+        window.alert('请输入密码')
+        return
+      }
+      if (!this.code) {
+        window.alert('请输入验证码')
+        return
+      }
       // this.$cookie.set('test', '卡死')
       this.$router.push({name: 'Role'})
       // console.log('sdssdsdsd', this.$cookie.get('test'))
