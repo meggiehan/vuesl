@@ -8,7 +8,7 @@
       <p class="p-title ellipsis" @click="slide()">{{text}}</p>
       <p class="s-down" @click="slide()"><span class="trangle"></span></p>
       <ul class="list-role" v-show="isshow">
-        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.Id)>-1}" @click="change(item.Id)"><a href="javascript:;" class="m-item">{{item.Name}}</a></li>
+        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.Id)>-1}" @click="change(item.Id)"><a href="javascript:;" class="m-item ellipsis">{{item.Name}}</a></li>
         <li class="operate clearfloat">
           <a href="javascript:;" class="btn-sure" @click="sure()">确定</a>
         </li>
@@ -38,7 +38,7 @@
     },
     mounted () {
       let temp = this.single[this.child.name] ? this.single[this.child.name].split(',') : []
-      api.select(this.child.param, this.child.get.url).then(item => {
+      api.select(this.child.param, this.child.get.url, true).then(item => {
         this.child.list = item.results
         this.result = JSON.parse(JSON.stringify(temp))
         this.list = JSON.parse(JSON.stringify(temp))

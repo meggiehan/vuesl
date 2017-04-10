@@ -64,7 +64,7 @@ export default {
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{Name: '菜单', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb3'}, {Name: '权限', Id: '85b2ce3d-4693-473e-b6ca-ab659f016cb4'}]
+          list: [{Name: '菜单', Id: 'menu'}, {Name: '权限', Id: 'auth'}]
         },
         {
           name: 'ParentId',
@@ -128,7 +128,6 @@ export default {
         console.log('item', item)
         this.getdata()
       })
-      console.log(idx, id)
     },
     edit (idx) {
       this.types = [

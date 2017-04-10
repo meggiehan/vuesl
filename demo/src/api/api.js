@@ -23,6 +23,7 @@ const METHOD = {
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
+  'part_delete': 'vchange.dept.delete', //部门删除
   'part_info': 'vchange.dept.info'//单个部门查询信息
 }
 const PAGESIZE = 10
@@ -71,13 +72,13 @@ api.list = (requestData, method) => {
   })
 }
 
-api.select = (requestData, method) => {
+api.select = (requestData, method, isall) => {
   console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
-  updata.PageSize = PAGESIZE
-  updata.PageNo = redata.PageNo
+  updata.PageSize = isall?0:PAGESIZE
+  updata.PageNo = isall?0:redata.PageNo
   delete redata.PageNo
   let lastdata = {JSON: JSON.stringify(redata)}
   let request = GetSignature(updata, lastdata, SECRET)

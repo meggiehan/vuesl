@@ -32,28 +32,40 @@
       ...mapGetters(['single'])
     },
     mounted () {
-      console.log('1212121', this.child)
       if (this.child.get) {
-        api.list(this.child.param, this.child.get.url).then(item => {
+        api.select(this.child.param, this.child.get.url, true).then(item => {
           if (this.parentIds.indexOf(this.child.get.url) > -1) {
             item.results.forEach((val) => {
-              if (val.Parent_id === '00000000-0000-0000-0000-000000000000') {
+              if (val[this.child.name] === '00000000-0000-0000-0000-000000000000') {
                 this.child.list.push(val)
               }
             })
           } else {
             Array.prototype.push.apply(this.child.list, item.results)
           }
-          let pid = this.single[this.child.name] || this.child.list[0]
+          let pid = this.single[this.child.name] || this.child.list[0].Id
+          this.child.list.forEach((val, n) => {
+            if (val.Id === pid) {
+              this.index = n
+              this.text1 = val.Name
+            }
+          })
           this.$emit('toparent', {name: this.child.name, val: pid})
         })
+      } else {
+        let pid = this.single[this.child.name] || this.child.list[0].Id
+        this.child.list.forEach((val, n) => {
+          if (val.Id === pid) {
+            this.index = n
+            this.text1 = val.Name
+          }
+        })
+        this.$emit('toparent', {name: this.child.name, val: pid})
       }
     },
     beforeDestroy () {
-      if (this.parentIds.indexOf(this.child.get.url) > -1) {
+      if (this.child.get && this.parentIds.indexOf(this.child.get.url) > -1) {
         this.child.list.splice(1)
-      } else {
-        this.child.list = []
       }
     },
     methods: {
