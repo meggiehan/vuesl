@@ -45,7 +45,6 @@ const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
 let globalxhr = ''
 api.list = (requestData, method) => {
-  console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
@@ -74,7 +73,6 @@ api.list = (requestData, method) => {
 }
 
 api.select = (requestData, method, isall) => {
-  console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
