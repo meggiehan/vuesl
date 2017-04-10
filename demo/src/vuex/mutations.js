@@ -59,7 +59,14 @@ export const setcurrent = (state, param) => {
 export const togglemodal = state => {
   state.modal.show = !(state.modal.show)
 }
-export const setmodal = (state,modal) => {
+export const setmodal = (state, modal) => {
   state.modal.title = modal.title || "注意"
-  state.modal.msg = modal.msg || '顶层setmodal调用,参数格式{show: boolean,title:titletext,msg:msg }'
+  state.modal.msg = modal.msg || '参数格式{show: boolean,title:titletext,msg:msg }'
+}
+export const togglenotice = state => {
+  state.notice.show = !state.notice.show
+}
+export const setnotice = (state, notice) => {
+  state.notice.msg = notice.msg || '参数格式{show: boolean,msg: string,color: string,background: string,fontsize: string}'
+  state.notice.type = notice.type || 'success'
 }

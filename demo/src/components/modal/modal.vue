@@ -10,7 +10,7 @@
                     <p>{{modal.msg}}</p>
                 </div>
                 <div class="modal-footer">
-                        <button class="modal-default-button" @click="$emit('close')">
+                        <button class="modal-default-button" @click="$emit('closemodal')">
                             确定
                         </button>
                 </div>

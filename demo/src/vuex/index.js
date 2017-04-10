@@ -13,8 +13,13 @@ const state = {
   pages: {},
   modal: {
     show: false,
-    title: '消息提示',
-    msg: '错误'
+    title: '',
+    msg: ''
+  },
+  notice: {
+    show: false,
+    msg: '测试中哈哈哈哈哈哈哈啊哈哈哈',
+    type: 'success'
   },
   current: 'role',
   open: {
