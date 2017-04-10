@@ -2,7 +2,7 @@
 <template>
   <div class="pannel">
     <p class="p-title"><slot name="title"></slot></p>
-    <div class="form-input" v-for="item in panels">
+    <div class="form-input" v-for="item in panelwords">
       <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
     </div>
     <div class="form-action">
@@ -13,12 +13,13 @@
 
 <script>
   import Inputer from './panel/Inputer.vue'
+  import Manage from './panel/Manage.vue'
   import api from '../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'panelword',
     props: {
-      panels: '',
+      panelwords: '',
       types: ''
     },
     data () {
@@ -27,7 +28,8 @@
       }
     },
     components: {
-      inputer: Inputer
+      inputer: Inputer,
+      manage: Manage
     },
     computed: {
       ...mapGetters([
@@ -37,22 +39,23 @@
     methods: {
       ...mapActions(['getdata']),
       operate (tp, url) {
-        (tp === 'sure' || tp === 'save') && this.sure(url, tp)
+        tp === 'sure' && this.sure(url)
         tp === 'quit' && this.quit()
       },
-      sure (url, tp) {
-        if (tp === 'save') {
-          this.updata.Id = this.single.Id
-        }
+      sure (url) {
+        this.updata.Id = this.single.Id
+        delete this.updata['Againpassword']
+        console.log('WWAWW', this.single.Id)
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'panelword'})
           this.$store.dispatch('getdata')
-        })
+        }).responsecode
       },
       quit () {
         this.$emit('close', {name: 'panelword'})
       },
       change (value) {
+        console.log('DSDSD', this.updata['Password'])
         this.updata[value.name] = value.val
       }
     }

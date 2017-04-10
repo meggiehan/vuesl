@@ -35,14 +35,16 @@
       }
     },
     mounted () {
-      api.user({JSON: JSON.stringify({Id: this.id})}, 'part_info').then((item) => {
-        console.error(item)
-        item.map((val) => {
-          this.result.push(val.UserId)
-          this.list.push(val)
-          this.$emit('toparent', {name: this.child.name, val: this.result})
+      if (this.id) {
+        api.user({JSON: JSON.stringify({Id: this.id})}, 'part_info').then((item) => {
+          console.error(item)
+          item.map((val) => {
+            this.result.push(val.UserId)
+            this.list.push(val)
+            this.$emit('toparent', {name: this.child.name, val: this.result})
+          })
         })
-      })
+      }
     },
     methods: {
       handleScroll (e) {
