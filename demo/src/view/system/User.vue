@@ -18,6 +18,11 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
+  <transition name="slide-fade">
+    <auth @close="close" v-if="show.auth">
+      <span slot="title">用户权限</span>
+    </auth>
+  </transition>
 
 </div>
 
@@ -63,7 +68,6 @@ export default {
       panels: [
         {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
         {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
-        {name: 'Setpassword', text: '', holder: '重置密码', type: 'span', sub: ''},
         {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
         {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
