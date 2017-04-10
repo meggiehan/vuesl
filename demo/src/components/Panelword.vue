@@ -45,15 +45,17 @@
       sure (url) {
         this.updata.Id = this.single.Id
         delete this.updata['Againpassword']
-        console.log('WWAWW', this.single.Id)
-        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
-          console.log('yasyuyuas', item)
-          if (item.responsecode === '200') {
-            alert('1')
-          }
-          this.$emit('close', {name: 'panelword'})
-          this.$store.dispatch('getdata')
-        })
+        console.log('点击行', this.single.Id)
+        if (this.updata.Repassword.length > 6) {
+          api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+            console.log('返回值', item)
+            if (item.responsecode === '200') {
+              alert('1')
+            }
+            this.$emit('close', {name: 'panelword'})
+            this.$store.dispatch('getdata')
+          })
+        }
       },
       quit () {
         this.$emit('close', {name: 'panelword'})
