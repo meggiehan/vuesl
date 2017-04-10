@@ -3,10 +3,10 @@
   <div class="s-lis clearfloat">
     <label for="">{{child.text}}：</label>
     <div class="s-part f-l">
-      <p class="p-title" @click="isshow = !isshow">{{text1}}</p>
+      <p class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
       <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
       <ul class="list-role" v-show="isshow">
-        <li v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+        <li class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
       </ul>
     </div>
   </div>
@@ -14,6 +14,7 @@
 
 <script>
   import api from '../../api/api.js'
+  import { mapGetters } from 'vuex'
   export default {
     name: 'selecter',
     props: {
@@ -23,23 +24,48 @@
       return {
         index: -1,
         isshow: false,
+        parentIds: ['menu_list', 'part_list'],
         text1: this.child.text1
       }
     },
+    computed: {
+      ...mapGetters(['single'])
+    },
     mounted () {
       if (this.child.get) {
-        api.list(this.child.param, this.child.get.url).then(item => {
-          if (this.child.get.url === 'menu_list') {
+        api.select(this.child.param, this.child.get.url, true).then(item => {
+          if (this.parentIds.indexOf(this.child.get.url) > -1) {
             item.results.forEach((val) => {
-              if (val.Parent_id === '00000000-0000-0000-0000-000000000000') {
+              if (val[this.child.name] === '00000000-0000-0000-0000-000000000000') {
                 this.child.list.push(val)
               }
             })
           } else {
             Array.prototype.push.apply(this.child.list, item.results)
           }
-          console.log('as1122', this.child.list)
+          let pid = this.single[this.child.name] || this.child.list[0].Id
+          this.child.list.forEach((val, n) => {
+            if (val.Id === pid) {
+              this.index = n
+              this.text1 = val.Name
+            }
+          })
+          this.$emit('toparent', {name: this.child.name, val: pid})
         })
+      } else {
+        let pid = this.single[this.child.name] || this.child.list[0].Id
+        this.child.list.forEach((val, n) => {
+          if (val.Id === pid) {
+            this.index = n
+            this.text1 = val.Name
+          }
+        })
+        this.$emit('toparent', {name: this.child.name, val: pid})
+      }
+    },
+    beforeDestroy () {
+      if (this.child.get && this.parentIds.indexOf(this.child.get.url) > -1) {
+        this.child.list.splice(1)
       }
     },
     methods: {
@@ -47,7 +73,7 @@
         this.index = idx
         this.isshow = !this.isshow
         this.text1 = this.child.list[idx].Name
-        this.$emit('toparent', {name: this.child.Name, val: this.child.list[idx].Id})
+        this.$emit('toparent', {name: this.child.name, val: this.child.list[idx].Id})
       }
     }
   }

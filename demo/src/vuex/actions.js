@@ -13,7 +13,9 @@ export const getdata = ({commit, state}) => {
     commit('getpage', item || {})
   })
 }
-export const getsingle = ({commit}, index) => commit('getsingle', index)
+export const getsingle = ({commit}, index) => {
+  commit('getsingle', index)
+}
 export const resetsingle = ({commit}) => commit('resetsingle')
 export const setcurrent = ({commit}, param) => {
   commit('setcurrent', param)

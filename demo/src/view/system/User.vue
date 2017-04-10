@@ -23,6 +23,7 @@
       <span slot="title">用户权限</span>
     </auth>
   </transition>
+
 </div>
 
 </template>
@@ -53,9 +54,9 @@ export default {
       },
       column: [
         {text: '序号', name: 'Disp_index'},
-        {text: '用户名', name: 'Name'},
+        {text: '用户名', name: 'No'},
         {text: '姓名', name: 'Name'},
-        {text: '手机号码', name: 'Disp_index'},
+        {text: '手机号码', name: 'Phone'},
         {text: '用户角色', name: 'Disp_index'},
         {text: '所属部门', name: 'Disp_index'},
         {text: '最后登录时间', name: 'Create_time'}
@@ -71,8 +72,8 @@ export default {
         {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
         {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]},
-        {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: '85b2ce3d-4693-473e-b6ca-ab659f086cb5'}, {title: '财务', id: '86b2ce3d-4693-473e-b6ca-ab659f016cb5'}, {title: '运营', id: '87b2ce3d-4693-473e-b6ca-ab659f016cb5'}, {title: '产品', id: '89b2ce3d-4693-473e-b6ca-ab659f016cb5'}, {title: '数据', id: '85b2ce4d-4693-473e-b6ca-ab659f016cb5'}]},
-        {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: '85b2ce3d-4693-463e-b6ca-ab659f016cb5'}, {title: '产品', id: '85b2ce3d-4693-453e-b6ca-ab659f016cb5'}, {title: '运营', id: '85b2ce3d-4693-443e-b6ca-ab659f016cb5'}, {title: '产品', id: '85b2ce3d-4693-433e-b6ca-ab659f016cb5'}, {title: '数据', id: '85b2ce3d-4693-423e-b6ca-ab659f016cb5'}]}
+        {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
+        {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
       ],
       types: ['sure', 'quit'],
       filters: [

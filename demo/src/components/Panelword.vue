@@ -1,34 +1,22 @@
 <!-- 筛选组装主部件 -->
 <template>
- <div class="pannel">
+  <div class="pannel">
     <p class="p-title"><slot name="title"></slot></p>
     <div class="form-input" v-for="item in panels">
       <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
-      <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
-      <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
-      <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
-      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
-      <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
-      <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
     </div>
- </div>
+  </div>
 </template>
 
 <script>
   import Inputer from './panel/Inputer.vue'
-  import Radioer from './panel/Radioer.vue'
-  import Multi from './panel/multi.vue'
-  import Textareaer from './panel/Textareaer.vue'
-  import Selecter from './panel/Selecter.vue'
-  import Manage from './panel/Manage.vue'
-  import Searcher from './panel/Searcher.vue'
   import api from '../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    name: 'panel',
+    name: 'panelword',
     props: {
       panels: '',
       types: ''
@@ -39,13 +27,7 @@
       }
     },
     components: {
-      inputer: Inputer,
-      radioer: Radioer,
-      multi: Multi,
-      textareaer: Textareaer,
-      selecter: Selecter,
-      manage: Manage,
-      searcher: Searcher
+      inputer: Inputer
     },
     computed: {
       ...mapGetters([
@@ -62,35 +44,16 @@
         if (tp === 'save') {
           this.updata.Id = this.single.Id
         }
-        if (url === 'menu_insert' || url === 'menu_update') {
-          this.updata.Image1 = ''
-          this.updata.Remark = ''
-          this.updata.Run = ''
-        }
-        if (url === 'user_insert' || url === 'user_update') {
-          this.updata.DispIndex = '1'
-          this.updata.GroupsIdList = []
-        }
-        if (url === 'part_insert' || url === 'part_update') {
-          this.updata.Faxphone = ''
-          this.updata.Status = '1'
-          this.updata.Remark = ''
-          this.updata.DispIndex = '1'
-        }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
-          this.$emit('close', {name: 'panel'})
+          this.$emit('close', {name: 'panelword'})
           this.$store.dispatch('getdata')
         })
       },
       quit () {
-        this.$emit('close', {name: 'panel'})
+        this.$emit('close', {name: 'panelword'})
       },
       change (value) {
         this.updata[value.name] = value.val
-        console.log('assasaasssssssss', value.val)
-      },
-      up () {
-        console.log(this.updata)
       }
     }
   }

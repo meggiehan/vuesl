@@ -1,6 +1,6 @@
 <template>
   <div class="s-name">
-    <input type="text" v-model="val" @input="change" placeholder='可输入名称、编号、描述查询'>
+    <input type="text" v-model="val" @input="change" placeholder='可输入编号、名称、描述查询'>
   </div>
 </template>
 

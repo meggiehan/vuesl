@@ -8,7 +8,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, idx) in list">
+          <tr v-for="(item, idx) in list" class="list-map">
             <td v-for="its in column">{{item[its.name]}}</td>
             <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx, it.method)">{{it.name}}</button></td>
           </tr>
@@ -97,6 +97,9 @@ export default {
     width:100%
     border:.01rem solid #ccc
     border-collapse:collapse
+    .list-map
+      &:hover
+        background:#E3E6EA
     td
       text-align:center
       height:.5rem
