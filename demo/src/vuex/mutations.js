@@ -56,3 +56,10 @@ export const resetsingle = (state, index) => {
 export const setcurrent = (state, param) => {
   state.current = param
 }
+export const togglemodal = state => {
+  state.modal.show = !(state.modal.show)
+}
+export const setmodal = (state,modal) => {
+  state.modal.title = modal.title || "注意"
+  state.modal.msg = modal.msg || '顶层setmodal调用,参数格式{show: boolean,title:titletext,msg:msg }'
+}
