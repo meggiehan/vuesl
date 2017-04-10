@@ -3,7 +3,7 @@
  <div class="pannel">
     <div class="wrap-panel">
       <ul class="tab-panel">
-        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="change(idx)"><span>{{item.title}}</span></li>
+        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="changes(idx)"><span>{{item.title}}</span></li>
       </ul>
     </div>
     <div >
@@ -62,13 +62,13 @@
         list: [
         {name: 'system', title: '创建供应商', childs: [
         {name: 'Name', text: '供应商名称', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '合同编号', holder: '请输入编号*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '供应商等级', holder: '请输入编号*...', type: 'input', sub: 'input'},
-        {name: 'Type',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'ParentId',size: 'small',type: 'select',text: '产品分类',text1: '选择分类',list: [{Name: '系统管理', Id: 1}, {Name: '商品信息管理', Id: 2}, {Name: '销售管理', Id: 3}, {Name: '采购管理',Id: 4}, {Name: '入库管理', Id: 5}, {Name: '在库管理', Id: 6}, {Name: '出库管理', Id: 7}, {Name: '退货管理',Id: 8 }, {Name: '入款管理', Id: 9}]},
-        {name: 'Type',size: 'small',type: 'select',text: '供应商级别',text1: '级别',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Type',size1: 'small',type: 'select',text: '操作模式',text1: '操作模式',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Noqq', text: '签订时间', holder: '请输入编号*...', type: 'input', sub: 'date'},
+        {name: 'Name', text: '合同编号', holder: '请输入编号*...', type: 'input', sub: 'input'},
+        {name: 'Name', text: '供应商等级', holder: '请输入编号*...', type: 'input', sub: 'input'},
+        {name: 'Name',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
+        {name: 'Name',size: 'small',type: 'select',text: '产品分类',text1: '选择分类',list: [{Name: '系统管理', Id: 1}, {Name: '商品信息管理', Id: 2}, {Name: '销售管理', Id: 3}, {Name: '采购管理',Id: 4}, {Name: '入库管理', Id: 5}, {Name: '在库管理', Id: 6}, {Name: '出库管理', Id: 7}, {Name: '退货管理',Id: 8 }, {Name: '入款管理', Id: 9}]},
+        {name: 'Name',size: 'small',type: 'select',text: '供应商级别',text1: '级别',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
+        {name: 'Name',size1: 'small',type: 'select',text: '操作模式',text1: '操作模式',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
+        {name: 'Name', text: '签订时间', holder: '请输入编号*...', type: 'input', sub: 'date'},
         {name: 'Noqq', text: '终止时间', holder: '请输入编号*...', type: 'input', sub: 'date'},
         {name: 'Type',size: 'small',type: 'select',text: '操作品牌',text1: '选择品牌',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
         {name: 'Type',size: 'small',type: 'select',text: '三方协议',text1: '选择',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
@@ -117,15 +117,8 @@
           {name: 'Name', text: '维修处理周期', holder: '请输入名称*...', type: 'input', sub: 'input'},
           {name: 'Name', text: '滞销品退换货', holder: '请输入名称*...', type: 'input', sub: 'input'}
           ]},
-          {name: 'trans', title: '补充条款',childs: [
-          {name: 'Name', text: '银行名称', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {
-          name: 'Status',
-          text: '是否激活',
-          type: 'radio',
-          sub: 'radio',
-          radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]
-        }
+          {name: 'Name', title: '补充条款',childs: [
+          {name: 'Name', text: '银行名称', holder: '请输入名称*...', type: 'input', sub: 'input'}
           ]}
         ]
       }
@@ -150,10 +143,14 @@
       freeze () {
         this.$emit('close', {name: 'auth'})
       },
-      change (idx) {
+      changes (idx) {
         this.index = (this.page - 1) * 5 + idx
 //      console.log(this.list[this.index].childs)
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+      },
+      change (value) {
+        this.updata[value.name] = value.val
+        console.log('assasaasssssssss', value.val)
       },
       insert (data, idx, id) {
         this.tdx = this.updata[data.name] ? JSON.parse(JSON.stringify(this.updata[data.name])) : []
