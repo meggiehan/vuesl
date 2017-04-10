@@ -74,6 +74,9 @@ export default {
       ]
     }
   },
+  // mounted () {
+  //   this.alerts({title: '你好啊', msg: '哈哈哈'})
+  // },
   components: {
     tables: Tables,
     tip: Tip,
@@ -86,7 +89,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle', 'getdata']),
+    ...mapActions(['resetsingle', 'getdata', 'alerts']),
     close (data) {
       this.show[data.name] = false
     },

@@ -18,3 +18,8 @@ export const resetsingle = ({commit}) => commit('resetsingle')
 export const setcurrent = ({commit}, param) => {
   commit('setcurrent', param)
 }
+export const togglemodal = ({commit}) => commit('togglemodal')
+export const alerts = ({commit},modal) => {
+  commit('setmodal', modal)
+  commit('togglemodal')
+}

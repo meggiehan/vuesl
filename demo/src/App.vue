@@ -1,16 +1,32 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <modal v-if="modal.show" @close="togglemodal"></modal>
   </div>
 </template>
 
 <script>
+  import Modal from './components/modal/modal.vue'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'app',
     data () {
       return {
         index: 0
       }
+    },
+    computed: {
+      ...mapGetters([
+        'modal'
+      ])
+    },
+    methods: {
+      ...mapActions([
+        'togglemodal'
+      ])
+    },
+    components: {
+      modal: Modal
     }
   }
 </script>
