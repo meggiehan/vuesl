@@ -84,8 +84,8 @@ export default {
         {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
       ],
       panelwords: [
-        {name: 'Password', text: '旧密码', holder: '请输入旧密码*...', type: 'input', sub: 'password'},
-        {name: 'Againpassword', text: '新密码', holder: '请输入新密码*...', type: 'input', sub: 'password'},
+        // {name: '', text: '旧密码', holder: '请输入旧密码*...', type: 'input', sub: 'password'},
+        {name: 'Password', text: '新密码', holder: '请输入新密码*...', type: 'input', sub: 'password'},
         {name: 'Repassword', text: '确认密码', holder: '请再次输入新密码*...', type: 'input', sub: 'password'}
       ],
       types: ['sure', 'quit'],

@@ -47,9 +47,13 @@
         delete this.updata['Againpassword']
         console.log('WWAWW', this.single.Id)
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+          console.log('yasyuyuas', item)
+          if (item.responsecode === '200') {
+            alert('1')
+          }
           this.$emit('close', {name: 'panelword'})
           this.$store.dispatch('getdata')
-        }).responsecode
+        })
       },
       quit () {
         this.$emit('close', {name: 'panelword'})
