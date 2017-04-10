@@ -24,7 +24,7 @@ export default {
     ...mapGetters(['single'])
   },
   mounted () {
-    this.picked = this.single[this.child.name] || ''
+    this.picked = this.single[this.child.name] || this.child.radioval[0].val
     this.$emit('toparent', {name: this.child.name, val: this.picked})
   },
   methods: {

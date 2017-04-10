@@ -11,6 +11,11 @@ const state = {
   data: [],
   single: [],
   pages: {},
+  modal: {
+    show: false,
+    title: '消息提示',
+    msg: '错误'
+  },
   current: 'role',
   open: {
     panel: false,

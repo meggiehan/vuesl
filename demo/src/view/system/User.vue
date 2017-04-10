@@ -23,6 +23,12 @@
       <span slot="title">用户权限</span>
     </auth>
   </transition>
+  <transition name="slide-fade">
+    <panelword :panelwords="panelwords" :types="types" @close="close" v-if="show.panelword">
+      <span slot="title">重置密码</span>
+    </panelword>
+  </transition>
+
 </div>
 
 </template>
@@ -33,6 +39,7 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
+import Panelword from '../../components/Panelword.vue'
 // inport api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -41,7 +48,8 @@ export default {
     return {
       show: {
         panel: false,
-        auth: false
+        auth: false,
+        panelword: false
       },
       nav: {
         parent: '系统管理',
@@ -53,16 +61,17 @@ export default {
       },
       column: [
         {text: '序号', name: 'Disp_index'},
-        {text: '用户名', name: 'Name'},
+        {text: '用户名', name: 'No'},
         {text: '姓名', name: 'Name'},
-        {text: '手机号码', name: 'Disp_index'},
+        {text: '手机号码', name: 'Phone'},
         {text: '用户角色', name: 'Disp_index'},
         {text: '所属部门', name: 'Disp_index'},
         {text: '最后登录时间', name: 'Create_time'}
       ],
       options: [
         {name: '编辑', method: this.edit},
-        {name: '权限', method: this.auth}
+        {name: '权限', method: this.auth},
+        {name: '密码重置', method: this.panelword}
       ],
       panels: [
         {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
@@ -73,6 +82,11 @@ export default {
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]},
         {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
         {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
+      ],
+      panelwords: [
+        {name: 'Password', text: '旧密码', holder: '请输入旧密码*...', type: 'input', sub: 'password'},
+        {name: 'Againpassword', text: '新密码', holder: '请输入新密码*...', type: 'input', sub: 'password'},
+        {name: 'Repassword', text: '确认密码', holder: '请再次输入新密码*...', type: 'input', sub: 'password'}
       ],
       types: ['sure', 'quit'],
       filters: [
@@ -87,7 +101,8 @@ export default {
     tip: Tip,
     filters: Filters,
     panel: Panel,
-    auth: Auth
+    auth: Auth,
+    panelword: Panelword
   },
   computed: {
     ...mapGetters([
@@ -125,6 +140,15 @@ export default {
     },
     auth (idx) {
       this.create('auth')
+    },
+    panelword (idx) {
+      console.log('OPOPOPOPOP')
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'sure', text: '确定', url: 'user_repassword'}
+      ]
+      this.show.panelword = !this.show.panelword
+      this.title = '重置密码'
     }
   }
 }

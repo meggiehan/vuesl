@@ -20,9 +20,11 @@ const METHOD = {
   'user_insert': 'vchange.admin.insert', //添加用户
   'user_update': 'vchange.admin.update', //修改用户
   'user_delete': 'vchange.admin.delete', //删除用户
+  'user_repassword': 'vchange.admin.repassword', //重置密码
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
+  'part_delete': 'vchange.dept.delete', //部门删除
   'part_info': 'vchange.dept.info'//单个部门查询信息
 }
 const PAGESIZE = 10
@@ -43,7 +45,6 @@ const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
 let globalxhr = ''
 api.list = (requestData, method) => {
-  console.log('re', requestData)
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
@@ -71,13 +72,12 @@ api.list = (requestData, method) => {
   })
 }
 
-api.select = (requestData, method) => {
-  console.log('re', requestData)
+api.select = (requestData, method, isall) => {
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
-  updata.PageSize = PAGESIZE
-  updata.PageNo = redata.PageNo
+  updata.PageSize = isall?0:PAGESIZE
+  updata.PageNo = isall?0:redata.PageNo
   delete redata.PageNo
   let lastdata = {JSON: JSON.stringify(redata)}
   let request = GetSignature(updata, lastdata, SECRET)
@@ -104,8 +104,7 @@ api.post = (requestData, method) => {
       },
       emulateJSON: true,
     }).then(function (response) {
-      resolve(response.body.Response.results || response.body.Response.result)
-
+      resolve(response.body.Response)
     })
   })
 }
