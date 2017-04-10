@@ -20,6 +20,7 @@ const METHOD = {
   'user_insert': 'vchange.admin.insert', //添加用户
   'user_update': 'vchange.admin.update', //修改用户
   'user_delete': 'vchange.admin.delete', //删除用户
+  'user_repassword': 'vchange.admin.repassword', //重置密码
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
