@@ -104,8 +104,7 @@ api.post = (requestData, method) => {
       },
       emulateJSON: true,
     }).then(function (response) {
-      resolve(response.body.Response.results || response.body.Response.result)
-
+      resolve(response.body.Response)
     })
   })
 }
