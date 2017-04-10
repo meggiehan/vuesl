@@ -49,12 +49,13 @@
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'panelword'})
           this.$store.dispatch('getdata')
-        })
+        }).responsecode
       },
       quit () {
         this.$emit('close', {name: 'panelword'})
       },
       change (value) {
+        console.log('DSDSD', this.updata['Password'])
         this.updata[value.name] = value.val
       }
     }
