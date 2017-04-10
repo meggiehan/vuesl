@@ -2,7 +2,7 @@
   <div class="manage">
     <div class="wrap-panel">
       <ul class="tab-panel">
-        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="change(idx)"><span>{{item.title}}</span></li>
+        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="change(idx)"><span>{{item.Name}}</span></li>
       </ul>
       <ul class="tab-page" v-if="list.length>5">
         <li @click="prev()"><</li>
@@ -11,9 +11,9 @@
     </div>
     <div class="render">
       <ul class="render-list">
-        <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: tdx.indexOf(item.id)>-1}" @click="insert(list[index], idx, item.id)"><span></span></p>{{item.title}}</li>
+        <li v-for="(item,idx) in list[index].child"><p class="choice" v-bind:class="{active: tdx.indexOf(item.Id)>-1}" @click="insert(list[index], idx, item.Id)"><span></span></p>{{item.Name}}</li>
       </ul>
-      <div class="select-all" v-if="false">
+      <div class="select-all">
         <p class="choice" @click="selectall()" v-bind:class="{active:tdx.length===list[index].child.length}"><span></span></p>全选
       </div>
     </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+  import api from '../../api/api.js'
   export default {
     name: 'manage',
     props: {
@@ -32,32 +33,42 @@
         page: 1,
         index: 0,
         tdx: [],
+        alllist: {},
         is_all: {},
         funcid: ['fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f'],
-        list: [
-          {name: 'system', title: '用户绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fc421dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c0f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-3fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c541-4fab-bee4-7cb1daef3c4f', title: '管理'}]},
-          {name: 'goods', title: '功能绑定', child: [{name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef2c4f', title: '商品'}, {name: 'brand', id: 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f', title: '分类'}, {name: 'brand', id: 'fcd91dbe-c501-4fab-bee4-7cb1daef3c9f', title: 'size'}, {name: 'brand', id: 'fcd91dbe-c501-2fab-bee4-7cb1daef3c4f', title: '品牌'}, {name: 'brand', id: 'fcd91dbe-c521-4fab-bee4-7cb1daef3c4f', title: '666'}]}
-        ]
+        list: [{child: []}]
       }
     },
     mounted () {
-      this.list.forEach((item, idx) => {
-        item.child.map((val) => {
-          if (this.funcid.indexOf(val.id) > -1) {
-            this.updata[item.name] = this.updata[item] ? this.updata[item] : []
-            this.updata[item.name].push(val.id)
-            idx === 0 && this.tdx.push(val.id)
-          }
+      api.select({PageNo: 1, Search: '', Type: ''}, 'menu_list', true).then((item) => {
+        let result = item.results || []
+        result.forEach((value, index) => {
+          this.alllist[value.ParentId] = this.alllist[value.ParentId] || []
+          this.alllist[value.ParentId].push(value)
         })
+        this.list = JSON.parse(JSON.stringify(this.alllist['00000000-0000-0000-0000-000000000000']))
+        this.list.forEach((value, index) => {
+          value.child = this.alllist[value.Id] ? this.alllist[value.Id] : []
+        })
+        console.log('是的是的', this.list)
       })
-      this.$emit('toparent', {name: this.child.name, val: this.combine(JSON.parse(JSON.stringify(this.updata)))})
+      // this.list.forEach((item, idx) => {
+      //   item.child.map((val) => {
+      //     if (this.funcid.indexOf(val.id) > -1) {
+      //       this.updata[item.name] = this.updata[item] ? this.updata[item] : []
+      //       this.updata[item.name].push(val.id)
+      //       idx === 0 && this.tdx.push(val.id)
+      //     }
+      //   })
+      // })
+      this.$emit('toparent', {name: this.child.name, val: this.funcid || []})
     },
     methods: {
       prev () {
         if (this.page > 1) {
           this.page--
           this.index = (this.page - 1) * 5
-          this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+          this.tdx = this.updata[this.list[this.index].Id] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].Id])) : []
         }
       },
       next () {
@@ -65,25 +76,25 @@
         if (this.page < all) {
           this.page++
           this.index = (this.page - 1) * 5
-          this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+          this.tdx = this.updata[this.list[this.index].Id] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].Id])) : []
         }
       },
       selectall () {
         let tlength = this.tdx.length
         let alllength = this.list[this.index].child.length
         this.tdx = []
-        this.is_all[this.list[this.index].name] = false
+        this.is_all[this.list[this.index].Id] = false
         if (tlength !== alllength) {
-          this.is_all[this.list[this.index].name] = true
+          this.is_all[this.list[this.index].Id] = true
           this.list[this.index].child.map((val) => {
-            this.tdx.push(val.id)
+            this.tdx.push(val.Id)
           })
         }
-        this.updata[this.list[this.index].name] = JSON.parse(JSON.stringify(this.tdx))
+        this.updata[this.list[this.index].Id] = JSON.parse(JSON.stringify(this.tdx))
       },
       change (idx) {
         this.index = (this.page - 1) * 5 + idx
-        this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
+        this.tdx = this.updata[this.list[this.index].Id] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].Id])) : []
       },
       combine (temp) {
         let result = ''
@@ -96,14 +107,14 @@
         return result
       },
       insert (data, idx, id) {
-        this.tdx = this.updata[data.name] ? JSON.parse(JSON.stringify(this.updata[data.name])) : []
+        this.tdx = this.updata[data.Id] ? JSON.parse(JSON.stringify(this.updata[data.Id])) : []
         let im = this.tdx.indexOf(id)
         if (im === -1) {
           this.tdx.push(id)
         } else {
           this.tdx.splice(im, 1)
         }
-        this.updata[data.name] = JSON.parse(JSON.stringify(this.tdx))
+        this.updata[data.Id] = JSON.parse(JSON.stringify(this.tdx))
         this.$emit('toparent', {name: this.child.name, val: this.combine(JSON.parse(JSON.stringify(this.updata)))})
       }
     }
