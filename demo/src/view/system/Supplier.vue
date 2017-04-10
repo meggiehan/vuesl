@@ -11,7 +11,8 @@
     	</div>
       <tables :param="param"
       				:options="options"
-              :column="column"></tables>
+              :column="column"
+              :filter="filters"></tables>
       
   </div>
   <transition name="slide-fade">
