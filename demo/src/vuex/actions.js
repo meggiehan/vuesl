@@ -7,7 +7,7 @@ export const setfliter = ({commit}, param) => {
 }
 export const resetfilter = ({commit}, param) => commit('resetfilter', param)
 export const getdata = ({commit, state}) => {
-  let method = state.current + '_list'  
+  let method = state.current + '_list'
   api.list(state.filters[state.current], method).then(item => {
     commit('getdata', item.results || [])
     commit('getpage', item || {})
@@ -31,5 +31,5 @@ export const notice = ({commit}, notice) => {
   commit('togglenotice')
   setTimeout(function() {
     commit('togglenotice')
-  }, 6000);
+  }, 3000);
 }
