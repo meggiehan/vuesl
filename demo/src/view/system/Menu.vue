@@ -102,9 +102,7 @@ export default {
     panel: Panel
   },
   computed: {
-    ...mapGetters([
-      'list'
-    ])
+    ...mapGetters(['list'])
   },
   methods: {
     ...mapActions(['resetsingle', 'getdata']),
