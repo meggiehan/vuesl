@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import api from '../api/api.js'
 export default {
   name: 'login',
   data () {
@@ -48,8 +49,13 @@ export default {
         window.alert('请输入验证码')
         return
       }
+      api.post({JSON: JSON.stringify({No: this.user, Password: this.password})}, 'login').then((item) => {
+        console.log('item', item)
+        if (item.responsecode === '200') {
+          this.$router.push({name: 'Role'})
+        }
+      })
       // this.$cookie.set('test', '卡死')
-      this.$router.push({name: 'Role'})
       // console.log('sdssdsdsd', this.$cookie.get('test'))
     }
   }

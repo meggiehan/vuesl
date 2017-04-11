@@ -62,7 +62,6 @@
           } else {
             this.userlist = item.results
           }
-          console.log('saas', this.userlist)
         })
       },
       throttle (method, context, flag) {

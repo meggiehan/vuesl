@@ -19,7 +19,7 @@
     </panel>
   </transition>
   <transition name="slide-fade">
-    <auth @close="close" v-if="show.auth">
+    <auth @close="close" :authid="authId" v-if="show.auth">
       <span slot="title">用户权限</span>
     </auth>
   </transition>
@@ -40,7 +40,7 @@ import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
 import Panelword from '../../components/Panelword.vue'
-// inport api from '../../api/api.js'
+import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'user',
@@ -56,6 +56,7 @@ export default {
         child: '用户管理'
       },
       title: '',
+      authId: '',
       method: {
         list: 'user_list'
       },
@@ -71,15 +72,17 @@ export default {
       options: [
         {name: '编辑', method: this.edit},
         {name: '权限', method: this.auth},
+        {name: '冻结', method: this.freeze},
+        {name: '删除', method: this.del},
         {name: '密码重置', method: this.panelword}
       ],
       panels: [
-        {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input'},
-        {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password'},
-        {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input'},
-        {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input'},
-        {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email'},
-        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]},
+        {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password', check: 'is_null'},
+        {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
+        {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'},
+        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
         {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
         {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
       ],
@@ -110,7 +113,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(['resetsingle']),
+    ...mapActions(['resetsingle', 'getdata']),
     close (data) {
       this.show[data.name] = false
     },
@@ -138,8 +141,23 @@ export default {
       this.show.panel = !this.show.panel
       this.title = '编辑用户'
     },
-    auth (idx) {
+    del (idx, id) {
+      let updata = []
+      updata.push(id)
+      api.post({JSON: JSON.stringify(updata)}, 'user_delete').then((item) => {
+        this.getdata()
+      })
+    },
+    freeze (idx, id) {
+      let status = this.list[idx].Status === 1 ? 0 : 1
+      api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_freeze').then((item) => {
+        this.getdata()
+      })
+    },
+    auth (idx, id) {
+      this.authId = id
       this.create('auth')
+      console.log('mappppp', this.authId)
     },
     panelword (idx) {
       console.log('OPOPOPOPOP')

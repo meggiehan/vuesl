@@ -30,9 +30,11 @@
   export default {
     name: 'auth',
     props: {
-      msg: ''
+      msg: '',
+      authid: ''
     },
     mounted () {
+      console.log('ssdsdsd', this.authid)
       api.select({PageNo: 1, Search: '', Type: ''}, 'menu_list', true).then((item) => {
         let result = item.results || []
         result.forEach((value, index) => {
@@ -43,12 +45,25 @@
         this.list.forEach((value, index) => {
           value.child = this.alllist[value.Id] ? this.alllist[value.Id] : []
         })
-        console.log('是的是的', this.list)
+        api.post({JSON: JSON.stringify({Id: this.authid})}, 'power_info').then((item) => {
+          item.results.map((val, idx) => {
+            this.funcid.push(val.Func_id)
+          })
+          this.list.forEach((item, idx) => {
+            item.child.map((val) => {
+              if (this.funcid.indexOf(val.Id) > -1) {
+                this.updata[item.Id] = this.updata[item.Id] ? this.updata[item.Id] : []
+                this.updata[item.Id].push(val.Id)
+                idx === 0 && this.tdx.push(val.Id)
+              }
+            })
+          })
+        })
       })
     },
     data () {
       return {
-        types: ['quit', 'del', 'freeze', 'sure'],
+        types: ['quit', 'sure'],
         updata: {},
         page: 1,
         index: 0,
@@ -59,6 +74,7 @@
         },
         tdx: [],
         is_all: {},
+        funcid: [],
         list: [{child: []}]
       }
     },
@@ -72,6 +88,9 @@
       sure () {
         let up = this.combine(JSON.parse(JSON.stringify(this.updata)))
         console.log(121212121, up)
+        api.post({JSON: JSON.stringify({Id: this.authid, FuncIdList: up})}, 'power_update').then((item) => {
+          console.log(item)
+        })
         this.$emit('close', {name: 'auth'})
       },
       quit () {
