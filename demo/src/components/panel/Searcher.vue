@@ -44,6 +44,8 @@
             this.$emit('toparent', {name: this.child.name, val: this.result})
           })
         })
+      } else {
+        this.$emit('toparent', {name: this.child.name, val: []})
       }
     },
     methods: {
