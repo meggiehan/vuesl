@@ -21,7 +21,15 @@ export const setcurrent = ({commit}, param) => {
   commit('setcurrent', param)
 }
 export const togglemodal = ({commit}) => commit('togglemodal')
-export const alerts = ({commit},modal) => {
+export const alerts = ({commit}, modal) => {
   commit('setmodal', modal)
   commit('togglemodal')
+}
+export const togglenotice = ({commit}) => commit('togglenotice')
+export const notice = ({commit}, notice) => {
+  commit('setnotice', notice)
+  commit('togglenotice')
+  setTimeout(function() {
+    commit('togglenotice')
+  }, 6000);
 }

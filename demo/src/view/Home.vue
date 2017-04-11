@@ -15,6 +15,7 @@
     </div>
     <div id="content">
       <div class="content-top">
+        <notice v-if="notice.show" @closenotice='togglenotice'></notice>
         <img src="../assets/zhuye.png" alt="" class="home-icon"><span class="hello">欢迎页</span><span class="welcome">欢迎来到V联网后台管理</span>
       </div>
       <router-view></router-view>
@@ -23,7 +24,8 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import Notice from '../components/notice/Notice.vue'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'home',
     data () {
@@ -50,9 +52,10 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'current'
-      ])
+      ...mapGetters(['current', 'notice'])
+    },
+    components: {
+      notice: Notice
     },
     methods: {
       throttle (method, context) {
@@ -65,7 +68,10 @@
         // let percent = window.innerWidth / 1920
         // let font = 625 * percent
         // document.querySelector('html').style.fontSize = font + '%'
-      }
+      },
+      ...mapActions([
+        'togglenotice'
+      ])
     },
     mounted: function () {
       window.addEventListener('resize', () => {

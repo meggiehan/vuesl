@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <modal v-if="modal.show" @close="togglemodal"></modal>
+    <modal v-if="modal.show" @closemodal="togglemodal"></modal>
   </div>
 </template>
 
@@ -16,14 +16,10 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'modal'
-      ])
+      ...mapGetters(['modal'])
     },
     methods: {
-      ...mapActions([
-        'togglemodal'
-      ])
+      ...mapActions(['togglemodal'])
     },
     components: {
       modal: Modal
