@@ -14,7 +14,9 @@ const state = {
   modal: {
     show: false,
     title: '',
-    msg: ''
+    msg: '',
+    confirm: '',
+    type: ''
   },
   notice: {
     show: false,

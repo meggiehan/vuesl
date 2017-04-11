@@ -63,7 +63,7 @@ export default {
     top: 0
     left: 250px
     &.success
-      color: black
+      color: white
       background: #22ac38
     &.error
       color: white
