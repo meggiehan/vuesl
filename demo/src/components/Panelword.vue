@@ -33,7 +33,8 @@
     },
     computed: {
       ...mapGetters([
-        'single'
+        'single',
+        'notice'
       ])
     },
     methods: {
