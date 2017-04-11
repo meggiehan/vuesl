@@ -30,7 +30,7 @@ export default {
     user: User
   },
   mounted () {
-    this.alerts({msg: '确认删除?', type: 'confirm', back: function (window) { console.log('hahah') }})
+    this.alerts({msg: '确认删除?', type: 'confirm'})
   }
 }
 </script>
