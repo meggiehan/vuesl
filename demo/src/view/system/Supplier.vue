@@ -12,8 +12,7 @@
       <tables :param="param"
       				:options="options"
               :column="column"
-              :filter="filters"></tables>
-      
+              :filters="filters"></tables>
   </div>
   <transition name="slide-fade">
     <tabs @close="close" v-if="show.auth">
