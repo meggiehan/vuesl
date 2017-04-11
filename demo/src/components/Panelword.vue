@@ -46,7 +46,7 @@
         this.updata.Id = this.single.Id
         delete this.updata['Againpassword']
         console.log('点击行', this.single.Id)
-        if (this.updata.Repassword.length > 6) {
+        if (this.updata.Repassword.length > 0) {
           api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
             console.log('返回值', item)
             if (item.responsecode === '200') {
