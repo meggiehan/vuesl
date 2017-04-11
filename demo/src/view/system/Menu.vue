@@ -76,7 +76,7 @@ export default {
           get: {url: 'menu_list'},
           param: {PageNo: 1, Search: '', Type: ''}
         },
-        {name: 'DispIndex', text: '排序', holder: '请输入序号*...', type: 'input', sub: 'input'},
+        {name: 'DispIndex', text: '排序', holder: '请输入序号*...', type: 'input', sub: 'input', must: 'int'},
         {name: 'Url', text: 'URL', holder: '请输入URL地址*...', type: 'input', sub: 'url', check: 'is_null'},
         {
           name: 'Status',

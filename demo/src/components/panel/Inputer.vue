@@ -30,7 +30,10 @@ export default {
   },
   methods: {
     change () {
-      this.$emit('toparent', {name: this.child.name, val: this.val})
+      if (this.child.must === 'int') {
+        this.val = this.val.replace(/\D/g, '')
+      }
+      this.$emit('toparent', {name: this.child.name, val: Number(this.val)})
     }
   }
 }
