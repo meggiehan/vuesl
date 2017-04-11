@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <modal v-if="modal.show" @closemodal="togglemodal"></modal>
+    <modal v-if="modal.show" @closemodal-y="confirmyes" @closemodal-n="confirmno"></modal>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
       ...mapGetters(['modal'])
     },
     methods: {
-      ...mapActions(['togglemodal'])
+      ...mapActions(['confirmyes', 'confirmno'])
     },
     components: {
       modal: Modal

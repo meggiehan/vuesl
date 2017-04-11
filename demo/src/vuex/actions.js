@@ -21,9 +21,13 @@ export const setcurrent = ({commit}, param) => {
   commit('setcurrent', param)
 }
 export const togglemodal = ({commit}) => commit('togglemodal')
+export const confirmyes = ({commit}) => commit('confirmyes')
+export const confirmno = ({commit}) => commit('confirmno')
 export const alerts = ({commit}, modal) => {
   commit('setmodal', modal)
   commit('togglemodal')
+  console.log('asjasjasjasj', modal.back)
+  this.$watch('this.state.modal',modal.back())
 }
 export const togglenotice = ({commit}) => commit('togglenotice')
 export const notice = ({commit}, notice) => {
@@ -31,5 +35,5 @@ export const notice = ({commit}, notice) => {
   commit('togglenotice')
   setTimeout(function() {
     commit('togglenotice')
-  }, 3000);
+  }, notice.time || 3000);
 }

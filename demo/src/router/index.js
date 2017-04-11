@@ -70,7 +70,6 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  console.log(to)
   let name = to.name.toLowerCase()
   setcurrent(store, name)
   resetfilter(store, name)

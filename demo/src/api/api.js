@@ -20,19 +20,23 @@ const METHOD = {
   'user_insert': 'vchange.admin.insert', //添加用户
   'user_update': 'vchange.admin.update', //修改用户
   'user_delete': 'vchange.admin.delete', //删除用户
+  'user_freeze': 'vchange.admin.freeze', //冻结用户
+  'power_info': 'vchange.power.info', //获取用户权限
+  'power_update': 'vchange.power.update',//修改用户权限
   'user_repassword': 'vchange.admin.repassword', //重置密码
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
   'part_delete': 'vchange.dept.delete', //部门删除
-  'part_info': 'vchange.dept.info'//单个部门查询信息
+  'part_info': 'vchange.dept.info',//单个部门查询信息
+  'login': 'vchange.admin.login'//登录
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
 const PARAM = {
   method: '',
   ver: '1',
-  timestamp: gettime(),
+  timestamp: '',
   format: 'json',
   app_key: '1000',
   sign_method: 'md5',
@@ -45,8 +49,10 @@ const baseUrl = 'http://192.168.2.110/Router.aspx'
 const api = {}
 let globalxhr = ''
 api.list = (requestData, method) => {
+  PARAM.timestamp = gettime()
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
+  updata.timestamp = gettime()
   updata.method = METHOD[method]
   updata.PageSize = PAGESIZE
   updata.PageNo = redata.PageNo
@@ -73,6 +79,7 @@ api.list = (requestData, method) => {
 }
 
 api.select = (requestData, method, isall) => {
+  PARAM.timestamp = gettime()
   let redata = JSON.parse(JSON.stringify(requestData))
   let updata = JSON.parse(JSON.stringify(PARAM))
   updata.method = METHOD[method]
@@ -95,6 +102,7 @@ api.select = (requestData, method, isall) => {
 }
 
 api.post = (requestData, method) => {
+  PARAM.timestamp = gettime()
   PARAM.method = METHOD[method]
   let request = GetSignature(PARAM, requestData, SECRET)
   return new Promise((resolve, reject) => {
@@ -109,6 +117,7 @@ api.post = (requestData, method) => {
   })
 }
 api.user = (requestData, method) => {
+  PARAM.timestamp = gettime()
   PARAM.method = METHOD[method]
   let request = GetSignature(PARAM, requestData, SECRET)
   return new Promise((resolve, reject) => {

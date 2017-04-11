@@ -8,7 +8,7 @@
       <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
-      <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
+      <manage v-if="item.type == 'manage'" :child="item" :id="single.Id" @toparent="change"></manage>
       <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
     </div>
     <div class="form-action">
@@ -26,16 +26,19 @@
   import Manage from './panel/Manage.vue'
   import Searcher from './panel/Searcher.vue'
   import api from '../api/api.js'
+  import { CheckRule } from '../mixins/index.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'panel',
+    mixins: [CheckRule],
     props: {
       panels: '',
       types: ''
     },
     data () {
       return {
-        updata: {}
+        updata: {},
+        check: []
       }
     },
     components: {
@@ -52,13 +55,30 @@
         'single'
       ])
     },
+    mounted () {
+      this.panels.forEach((value, index) => {
+        if (value.check) {
+          let temp = {
+            name: value.name,
+            type: value.check,
+            msg: value.text
+          }
+          this.check.push(temp)
+        }
+      })
+    },
     methods: {
-      ...mapActions(['getdata']),
+      ...mapActions(['getdata', 'notice']),
       operate (tp, url) {
         (tp === 'sure' || tp === 'save') && this.sure(url, tp)
         tp === 'quit' && this.quit()
       },
       sure (url, tp) {
+        let result = this.checkdata(this.updata, this.check)
+        if (result.length > 0) {
+          this.notice({msg: result[0], type: 'error'})
+          return
+        }
         if (tp === 'save') {
           this.updata.Id = this.single.Id
         }

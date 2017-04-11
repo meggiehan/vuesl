@@ -47,7 +47,7 @@ export const getpage = (state, data) => {
 }
 export const getsingle = (state, index) => {
   state.single = JSON.parse(JSON.stringify(state.data[index])) || []
-  console.log('iiiii', state.single)
+  console.log('iiiiiqqq', state.single)
 }
 export const resetsingle = (state, index) => {
   state.single = []
@@ -59,14 +59,23 @@ export const setcurrent = (state, param) => {
 export const togglemodal = state => {
   state.modal.show = !(state.modal.show)
 }
+export const confirmyes = state => {
+  state.modal.show = !(state.modal.show)
+  state.modal.confirm = true
+}
+export const confirmno = state => {
+  state.modal.show = !(state.modal.show)
+  state.modal.confirm = false
+}
 export const setmodal = (state, modal) => {
   state.modal.title = modal.title || "注意"
   state.modal.msg = modal.msg || '参数格式{show: boolean,title:titletext,msg:msg }'
+  state.modal.type = modal.type || "alert"
 }
 export const togglenotice = state => {
   state.notice.show = !state.notice.show
 }
 export const setnotice = (state, notice) => {
-  state.notice.msg = notice.msg || '参数格式{show: boolean,msg: string,color: string,background: string,fontsize: string}'
+  state.notice.msg = notice.msg || '参数格式{msg: string,}'
   state.notice.type = notice.type || 'success'
 }

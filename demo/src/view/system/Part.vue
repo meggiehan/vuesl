@@ -56,8 +56,8 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input'},
+        {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         // {name: 'ParentId', text: '上级部门', holder: '部门名称...', type: 'input', sub: 'input'},
         {
           name: 'ParentId',

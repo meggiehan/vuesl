@@ -25,7 +25,8 @@
   export default {
     name: 'manage',
     props: {
-      child: ''
+      child: '',
+      id: ''
     },
     data () {
       return {
@@ -35,7 +36,6 @@
         tdx: [],
         alllist: {},
         is_all: {},
-        funcid: ['fcd91dbe-c501-4fab-bee4-7cb1daef3c4f', 'fcd71dbe-c501-4fab-bee4-7cb1daef3c4f'],
         list: [{child: []}]
       }
     },
@@ -50,18 +50,27 @@
         this.list.forEach((value, index) => {
           value.child = this.alllist[value.Id] ? this.alllist[value.Id] : []
         })
-        console.log('是的是的', this.list)
+        if (this.id) {
+          api.post({JSON: JSON.stringify({Id: this.id})}, 'power_info').then((item) => {
+            let funcid = []
+            item.results.map((val, idx) => {
+              funcid.push(val.Func_id)
+            })
+            this.list.forEach((item, idx) => {
+              item.child.map((val) => {
+                if (funcid.indexOf(val.Id) > -1) {
+                  this.updata[item.Id] = this.updata[item.Id] ? this.updata[item.Id] : []
+                  this.updata[item.Id].push(val.Id)
+                  idx === 0 && this.tdx.push(val.Id)
+                }
+              })
+            })
+            this.$emit('toparent', {name: this.child.name, val: funcid || []})
+          })
+        } else {
+          this.$emit('toparent', {name: this.child.name, val: []})
+        }
       })
-      // this.list.forEach((item, idx) => {
-      //   item.child.map((val) => {
-      //     if (this.funcid.indexOf(val.id) > -1) {
-      //       this.updata[item.name] = this.updata[item] ? this.updata[item] : []
-      //       this.updata[item.name].push(val.id)
-      //       idx === 0 && this.tdx.push(val.id)
-      //     }
-      //   })
-      // })
-      this.$emit('toparent', {name: this.child.name, val: this.funcid || []})
     },
     methods: {
       prev () {
@@ -97,13 +106,12 @@
         this.tdx = this.updata[this.list[this.index].Id] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].Id])) : []
       },
       combine (temp) {
-        let result = ''
+        let result = []
         for (let item in temp) {
           if (temp[item].length > 0) {
-            result += temp[item].join(',') + ','
+            result = result.concat(temp[item])
           }
         }
-        result = result.substring(0, result.length - 1)
         return result
       },
       insert (data, idx, id) {

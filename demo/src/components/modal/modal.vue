@@ -10,7 +10,10 @@
                     <p>{{modal.msg}}</p>
                 </div>
                 <div class="modal-footer">
-                        <button class="modal-default-button" @click="$emit('closemodal')">
+                        <button class="modal-default-button" @click="$emit('closemodal-n')" v-if='modal.type=="confirm"'>
+                            取消
+                        </button>
+                        <button class="modal-default-button" @click="$emit('closemodal-y')">
                             确定
                         </button>
                 </div>
@@ -72,6 +75,7 @@
   float: right;
   width: auto;
   border-radius: 10%;
+  margin-left: 20px;
 .modal-enter
   opacity: 0;
 .modal-leave-active
