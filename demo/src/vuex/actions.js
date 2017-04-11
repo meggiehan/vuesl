@@ -26,8 +26,7 @@ export const confirmno = ({commit}) => commit('confirmno')
 export const alerts = ({commit}, modal) => {
   commit('setmodal', modal)
   commit('togglemodal')
-  console.log('asjasjasjasj', modal.back)
-  this.$watch('this.state.modal',modal.back())
+  console.log('asasasasasasas')
 }
 export const togglenotice = ({commit}) => commit('togglenotice')
 export const notice = ({commit}, notice) => {
