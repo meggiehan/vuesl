@@ -20,14 +20,17 @@ export default {
       show: true
     }
   },
-  computed: mapGetters([
-    'count'
-  ]),
-  methods: mapActions([
-    'increment'
-  ]),
+  computed: {
+    ...mapGetters(['count', 'modal'])
+  },
+  methods: {
+    ...mapActions(['increment', 'alerts'])
+  },
   components: {
     user: User
+  },
+  mounted () {
+    this.alerts({msg: '确认删除?', type: 'confirm', back: function (window) { console.log('hahah') }})
   }
 }
 </script>

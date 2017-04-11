@@ -37,7 +37,7 @@
       ])
     },
     methods: {
-      ...mapActions(['getdata']),
+      ...mapActions(['getdata', 'notice']),
       operate (tp, url) {
         tp === 'sure' && this.sure(url)
         tp === 'quit' && this.quit()
@@ -45,11 +45,20 @@
       sure (url) {
         this.updata.Id = this.single.Id
         delete this.updata['Againpassword']
-        console.log('WWAWW', this.single.Id)
-        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
-          this.$emit('close', {name: 'panelword'})
-          this.$store.dispatch('getdata')
-        }).responsecode
+        console.log('点击行', this.single.Id)
+        if (this.updata.Repassword.length > 6) {
+          api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+            console.log('返回值', item)
+            if (item.responsecode === '200') {
+              // alert('1')
+              this.notice({msg: '恭喜！密码重置成功', type: 'success'})
+            } else {
+              this.notice({msg: '抱歉！密码重置失败', type: 'error'})
+            }
+            this.$emit('close', {name: 'panelword'})
+            this.$store.dispatch('getdata')
+          })
+        }
       },
       quit () {
         this.$emit('close', {name: 'panelword'})

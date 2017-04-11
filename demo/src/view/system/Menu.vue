@@ -56,8 +56,8 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'No', text: '编号', holder: '请输入编号*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input'},
+        {name: 'No', text: '编号', holder: '请输入编号*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         {
           name: 'Type',
           size: 'small',
@@ -77,13 +77,13 @@ export default {
           param: {PageNo: 1, Search: '', Type: ''}
         },
         {name: 'DispIndex', text: '排序', holder: '请输入序号*...', type: 'input', sub: 'input'},
-        {name: 'Url', text: 'URL', holder: '请输入URL地址*...', type: 'input', sub: 'url'},
+        {name: 'Url', text: 'URL', holder: '请输入URL地址*...', type: 'input', sub: 'url', check: 'is_null'},
         {
           name: 'Status',
           text: '是否激活',
           type: 'radio',
           sub: 'radio',
-          radioval: [{text: '是', val: '1'}, {text: '否', val: '2'}]
+          radioval: [{text: '是', val: 1}, {text: '否', val: 0}]
         },
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
       ],

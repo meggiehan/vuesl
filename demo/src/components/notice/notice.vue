@@ -70,6 +70,7 @@ export default {
       background: #E60012
     .content
       font-size: 24px
+      color: #fff
       position: absolute
       top: 20%
       right: 50%

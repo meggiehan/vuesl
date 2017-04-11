@@ -47,7 +47,7 @@ export const getpage = (state, data) => {
 }
 export const getsingle = (state, index) => {
   state.single = JSON.parse(JSON.stringify(state.data[index])) || []
-  console.log('iiiii', state.single)
+  console.log('iiiiiqqq', state.single)
 }
 export const resetsingle = (state, index) => {
   state.single = []

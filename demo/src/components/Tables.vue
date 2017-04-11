@@ -10,7 +10,7 @@
         <tbody>
           <tr v-for="(item, idx) in list" class="list-map">
             <td v-for="its in column">{{item[its.name]}}</td>
-            <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx, it.method)">{{it.name}}</button></td>
+            <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx, it.method)"><span v-if="it.name!=='冻结'">{{it.name}}</span><span v-if="it.name==='冻结'">{{item.Status===0?'解冻':'冻结'}}</span></button></td>
           </tr>
         </tbody>
     </table>
@@ -57,7 +57,6 @@ export default {
       }
     },
     go () {
-      console.log('加斯科拉里', this.number)
       this.number = this.number ? this.number : 1
       this.number = parseInt(this.number, 10)
       this.number = this.number > this.pages.total ? this.pages.total : this.number
