@@ -18,6 +18,7 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
+  <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
 
 </template>
@@ -28,11 +29,16 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import api from '../../api/api.js'
+import Confirm from '../../components/Modal/Confirm.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'menu',
   data () {
     return {
+      confirms: {
+        title: '提示',
+        body: '确定删除?'
+      },
       show: false,
       nav: {
         parent: '系统管理',
@@ -99,7 +105,8 @@ export default {
     tables: Tables,
     tip: Tip,
     filters: Filters,
-    panel: Panel
+    panel: Panel,
+    confirm: Confirm
   },
   computed: {
     ...mapGetters(['list'])
@@ -114,7 +121,6 @@ export default {
         {name: 'quit', text: '退出', url: ''},
         {name: 'save', text: '保存', url: 'menu_insert'}
       ]
-      console.log(name)
       this.resetsingle()
       this.show = !this.show
       this.title = '创建菜单'
@@ -122,9 +128,10 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'menu_delete').then((item) => {
-        console.log('item', item)
-        this.getdata()
+      this.$refs.dialog.confirm().then(() => {
+        api.post({JSON: JSON.stringify(updata)}, 'menu_delete').then((item) => {
+          this.getdata()
+        })
       })
     },
     edit (idx) {

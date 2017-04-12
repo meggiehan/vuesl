@@ -28,7 +28,7 @@
       <span slot="title">重置密码</span>
     </panelword>
   </transition>
-
+<confirm ref="dialog" :msg="confirms"></confirm>
 </div>
 
 </template>
@@ -40,12 +40,17 @@ import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
 import Panelword from '../../components/Panelword.vue'
+import Confirm from '../../components/Modal/Confirm.vue'
 import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'user',
   data () {
     return {
+      confirms: {
+        title: '提示',
+        body: '确定删除?'
+      },
       show: {
         panel: false,
         auth: false,
@@ -105,7 +110,8 @@ export default {
     filters: Filters,
     panel: Panel,
     auth: Auth,
-    panelword: Panelword
+    panelword: Panelword,
+    confirm: Confirm
   },
   computed: {
     ...mapGetters([
@@ -144,14 +150,20 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'user_delete').then((item) => {
-        this.getdata()
+      this.confirms.body = '确定删除？'
+      this.$refs.dialog.confirm().then(() => {
+        api.post({JSON: JSON.stringify(updata)}, 'user_delete').then((item) => {
+          this.getdata()
+        })
       })
     },
     freeze (idx, id) {
       let status = this.list[idx].Status === 1 ? 0 : 1
-      api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_freeze').then((item) => {
-        this.getdata()
+      this.confirms.body = this.list[idx].Status === 1 ? '确定冻结？' : '确定解冻？'
+      this.$refs.dialog.confirm().then(() => {
+        api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_freeze').then((item) => {
+          this.getdata()
+        })
       })
     },
     auth (idx, id) {

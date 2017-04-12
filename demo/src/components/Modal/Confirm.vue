@@ -1,13 +1,13 @@
 <template>
 <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" v-if="show">
         <div class="modal-wrapper">
             <div class="modal-container">
                 <div class="modal-header">
-                    <h3>{{modal.title}}</h3>
+                    <h3>{{msg.title}}</h3>
                 </div>
                 <div class="modal-body">
-                    <p>{{modal.msg}}</p>
+                    <p>{{msg.body}}</p>
                 </div>
                 <div class="modal-footer">
                         <button class="modal-default-button" @click="cancel()">
@@ -24,20 +24,35 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   export default {
     name: 'confirm',
-    computed: {
-      ...mapGetters([
-        'modal'
-      ])
+    data () {
+      return {
+        show: false,
+        resolve: '',
+        reject: '',
+        promise: ''
+      }
     },
-    method () {
+    props: {
+      msg: ''
+    },
+    methods: {
       cancel () {
-        console.log()
+        this.show = false
       },
       sure () {
         console.log()
+        this.resolve(true)
+        this.show = false
+      },
+      confirm () {
+        this.show = true
+        this.promise = new Promise((resolve, reject) => {
+          this.resolve = resolve
+          this.reject = reject
+        })
+        return this.promise
       }
     }
   }
