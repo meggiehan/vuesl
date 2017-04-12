@@ -9,6 +9,7 @@
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
       <manage v-if="item.type == 'manage'" :child="item" :id="single.Id" @toparent="change"></manage>
+      <checker v-if="item.type == 'check'" :child="item" :id="single.Id" @toparent="change"></checker>
       <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
       <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
     </div>
@@ -25,6 +26,7 @@
   import Textareaer from './panel/Textareaer.vue'
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
+  import Checker from './panel/Checker.vue'
   import Searcher from './panel/Searcher.vue'
   import Texter from './panel/Texter.vue'
   import api from '../api/api.js'
@@ -50,6 +52,7 @@
       textareaer: Textareaer,
       selecter: Selecter,
       manage: Manage,
+      checker: Checker,
       searcher: Searcher,
       texter: Texter
     },

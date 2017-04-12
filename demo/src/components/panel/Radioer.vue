@@ -1,3 +1,4 @@
+<!--单选按钮部件-->
 <template>
   <div class="s-radio">
     <label for="" class="label-radio">{{child.text}}：</label>

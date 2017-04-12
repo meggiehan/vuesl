@@ -67,16 +67,16 @@ export default {
         {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'Name1', text: '客户退货', holder: '', type: 'texter', sub: '', check: ''},
+        {name: 'Name1', text: '退货用库 ：', holder: '', type: 'texter', sub: '', check: ''},
         {name: 'Name2', text: '联系人', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name3', text: '电话', holder: '请输入电话...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name4', text: '地址', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name5', text: '采购用库', holder: '', type: 'texter', sub: '', check: ''},
+        {name: 'Name5', text: '采购用库 ：', holder: '', type: 'texter', sub: '', check: ''},
         {name: 'Name6', text: '联系人', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name7', text: '电话', holder: '请输入电话...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name8', text: '地址', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'}
+        {name: 'Name8', text: '地址', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'},
 
-        // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {name: 'FuncIdList', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '1'}, {'title': '礼品库位', id: '2'}, {'title': '退货库位', id: '3'}, {'title': '虚拟库位', id: '4'}]}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
