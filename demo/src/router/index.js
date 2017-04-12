@@ -9,6 +9,8 @@ import User from '@/view/system/User'
 import Part from '@/view/system/Part'
 import Supplier from '@/view/system/Supplier'
 import Menu from '@/view/system/Menu'
+import Stock from '@/view/system/Stock'
+import Category from '@/view/system/Category'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
 Vue.use(Router)
@@ -40,6 +42,16 @@ const router = new Router({
           path: '/supplier',
           name: 'Supplier',
           component: Supplier
+        },
+        {
+          path: '/category',
+          name: 'Category',
+          component: Category
+        },
+        {
+          path: '/stock',
+          name: 'Stock',
+          component: Stock
         },
         {
           path: '/user',
