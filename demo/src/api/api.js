@@ -46,6 +46,7 @@ const PARAM = {
 // const baseUrl = 'http://192.168.2.162/VChangeUserService/Router.aspx'
 
 const baseUrl = 'http://192.168.2.110/Router.aspx'
+// const baseUrl ='http://192.168.2.24:81'
 const api = {}
 let globalxhr = ''
 api.list = (requestData, method) => {

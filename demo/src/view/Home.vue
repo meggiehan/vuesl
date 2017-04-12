@@ -17,6 +17,16 @@
       <div class="content-top">
         <notice v-if="notice.show" @closenotice='togglenotice'></notice>
         <img src="../assets/zhuye.png" alt="" class="home-icon"><span class="hello">欢迎页</span><span class="welcome">欢迎来到V联网后台管理</span>
+        <div class="personal">
+          <img src="../assets/logo.png" alt="" class="person-icon" @click="slideshow = !slideshow">
+          <span class="trangle" @click="slideshow = !slideshow"></span>
+          <div class="slidedown" v-if="slideshow">
+            <ul>
+              <li @click="info()"><img src="../assets/info.png" alt="">个人信息</li>
+              <li @click="quit()"><img src="../assets/exit.png" alt="">安全退出</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <router-view></router-view>
     </div>
@@ -30,6 +40,7 @@
     name: 'home',
     data () {
       return {
+        slideshow: false,
         index: 0,
         navlist: [
           {
@@ -65,6 +76,17 @@
         method.t = setTimeout(() => {
           method.call(context)
         }, 500)
+      },
+      quit () {
+        // api.post({JSON: JSON.stringify({No: this.user, Password: this.password})}, 'login').then((item) => {
+        // console.log('item', item)
+        // if (item.responsecode === '200') {
+        this.$router.push({name: 'Login'})
+        // }
+      // })
+      },
+      info () {
+        this.slideshow = false
       },
       handleResize () {
         // let percent = window.innerWidth / 1920
