@@ -10,6 +10,7 @@
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
       <manage v-if="item.type == 'manage'" :child="item" :id="single.Id" @toparent="change"></manage>
       <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
+      <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
@@ -25,6 +26,7 @@
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
   import Searcher from './panel/Searcher.vue'
+  import Texter from './panel/Texter.vue'
   import api from '../api/api.js'
   import { CheckRule } from '../mixins/index.js'
   import { mapGetters, mapActions } from 'vuex'
@@ -48,7 +50,8 @@
       textareaer: Textareaer,
       selecter: Selecter,
       manage: Manage,
-      searcher: Searcher
+      searcher: Searcher,
+      texter: Texter
     },
     computed: {
       ...mapGetters([

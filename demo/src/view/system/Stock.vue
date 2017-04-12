@@ -55,6 +55,8 @@ export default {
         {text: '序号', name: 'Disp_index'},
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
+        {text: '联系人', name: 'Person'},
+        {text: '电话', name: 'Phone'},
         {text: '最后操作时间', name: 'Create_time'}
       ],
       options: [
@@ -62,11 +64,19 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {name: 'Name', text: '客户退货', holder: '', type: 'texter', sub: '', check: ''},
+        {name: 'Name', text: '联系人', holder: '请输入电话...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '电话', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '地址', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '采购用库', holder: '', type: 'texter', sub: '', check: ''},
+        {name: 'Name', text: '联系人', holder: '请输入电话...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '电话', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '地址', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'}
+
+        // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
@@ -108,7 +118,7 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建角色'
+      this.title = '创建仓库'
     },
     del (idx, id) {
       let updata = []
@@ -124,7 +134,7 @@ export default {
         {name: 'save', text: '保存', url: 'role_update'}
       ]
       this.show.panel = !this.show.panel
-      this.title = '编辑角色'
+      this.title = '编辑仓库'
     },
     auth (idx) {
       this.create('auth')
