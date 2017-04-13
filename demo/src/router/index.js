@@ -11,6 +11,7 @@ import Supplier from '@/view/system/Supplier'
 import Menu from '@/view/system/Menu'
 import Stock from '@/view/system/Stock'
 import Category from '@/view/system/Category'
+import Member from '@/view/system/Member'
 import Tennet from '@/view/system/Tennet'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
@@ -58,6 +59,11 @@ const router = new Router({
           path: '/tennet',
           name: 'Tennet',
           component: Tennet
+        },
+        {
+          path: '/member',
+          name: 'Member',
+          component: Member
         },
         {
           path: '/user',

@@ -47,6 +47,7 @@
             name: '系统管理',
             level1: [
               {name: '用户管理', link: 'User'},
+              {name: '会员管理', link: 'Member'},
               {name: '菜单管理', link: 'Menu'},
               {name: '部门管理', link: 'Part'},
               {name: '角色管理', link: 'Role'},
