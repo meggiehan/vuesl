@@ -4,7 +4,7 @@
       {{child.text}}：
     </div>
     <ul>
-      <li v-for='item in child.list' @click=change(item.id)><span></span>{{item.title}}</li>
+      <li v-for='(item,idx) in child.list' v-bind:class="{active: result.indexOf(item.id)>-1}" @click=change(item.id)><span></span>{{item.title}}</li>
     </ul>
   </div>
 </template>
@@ -17,7 +17,9 @@
     },
     data () {
       return {
-        text: this.child.text
+        text: this.child.text,
+        list1: [],
+        result: []
       }
     },
     computed: {
@@ -33,21 +35,24 @@
       filltext () {
         this.text = ''
         this.child.list.map((val) => {
-          if (this.list.indexOf(val.Id) > -1) {
+          if (this.result.indexOf(val.Id) > -1) {
             this.text += val.Name + ','
           }
         })
         this.text = this.text.substring(0, this.text.length - 1) || this.child.text
       },
       change (id) {
-        console.log('哈哈', this)
-        let index = this.list.indexOf(id)
+//        console.log('哈哈', this)
+        let index = this.result.indexOf(id)
         if (index === -1) {
-          this.list.push(id)
+          this.result.push(id)
         } else {
-          this.list.splice(index, 1)
+          this.result.splice(index, 1)
         }
-        this.$emit('toparent', {name: this.child.name, val: this.list})
+        this.$emit('toparent', {name: this.child.name, val: this.result})
+        console.log('嘻嘻', this.result)
+//        this.list1 = JSON.stringify(this.result)
+//        console.log('嘻嘻1', this.list1)
       }
     }
   }
@@ -64,12 +69,17 @@
     margin-left: .3rem
     height: .5rem
     line-height: .5rem
-  span
-    width: .2rem
-    height: .2rem
-    display: inline-block
-    border: .02rem solid #23330e
-    margin: 0 .1rem
-    border-radius: 50%
-    vertical-align: middle
+    span
+      width: .2rem
+      height: .2rem
+      display: inline-block
+      border: .02rem solid #23330e
+      margin: 0 .1rem
+      border-radius: 50%
+      vertical-align: middle
+    &.active
+      span
+        background: #40afe1
+        color: #fff
+
 </style>
