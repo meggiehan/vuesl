@@ -24,7 +24,7 @@ const state = {
     type: 'success'
   },
   current: 'role',
-  open: {
+  slide: {
     panel: false,
     auth: false
   }

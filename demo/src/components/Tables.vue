@@ -65,7 +65,7 @@ export default {
     },
     operate (idx, method) {
       this.$store.dispatch('getsingle', idx)
-      method(idx, this.single.Id)
+      method(idx, this.single.Id || this.single.id)
     },
     change (idx) {
       this.page = idx

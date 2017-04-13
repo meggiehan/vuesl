@@ -50,6 +50,7 @@
               {name: '菜单管理', link: 'Menu'},
               {name: '部门管理', link: 'Part'},
               {name: '角色管理', link: 'Role'},
+              {name: '租户管理', link: 'Tennet'},
               {name: '仓库管理', link: 'Stock'},
               {name: '分类管理', link: 'Category'},
               {name: '供应商管理', link: 'Supplier'}

@@ -79,6 +79,7 @@ api.list = (requestData, method) => {
   })
 }
 
+//下拉选择请求
 api.select = (requestData, method, isall) => {
   PARAM.timestamp = gettime()
   let redata = JSON.parse(JSON.stringify(requestData))
@@ -101,7 +102,7 @@ api.select = (requestData, method, isall) => {
     })
   })
 }
-
+//操作请求
 api.post = (requestData, method) => {
   PARAM.timestamp = gettime()
   PARAM.method = METHOD[method]
@@ -117,6 +118,7 @@ api.post = (requestData, method) => {
     })
   })
 }
+//用户选择请求
 api.user = (requestData, method) => {
   PARAM.timestamp = gettime()
   PARAM.method = METHOD[method]
@@ -133,5 +135,44 @@ api.user = (requestData, method) => {
     })
   })
 }
+
+//模拟数据
+const mockUrl = 'http://localhost:3000/' 
+api.mockPost = (requestData, method) => {
+  return new Promise((resolve, reject) => {
+    Vue.http.post(mockUrl + method, requestData, {
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
+    })
+  })
+}
+api.mockGet = (requestData, method) => {
+  return new Promise((resolve, reject) => {
+    Vue.http.get(mockUrl + method, {
+      emulateJSON: true,
+    }).then(function (response) {
+      console.log('response', response)
+      let data = {
+        count: response.body.length,
+        pageno: requestData.PageNo,
+        results: response.body.slice((requestData.PageNo -1)*10, requestData.PageNo*10)
+      }
+      resolve(data)
+    })
+  })
+}
+api.mockDel = (requestData, method) => {
+  console.log('asasasasa111', requestData)
+  let id = JSON.parse(requestData.JSON)[0]
+  return new Promise((resolve, reject) => {
+    Vue.http.delete(mockUrl + method + '/' + id, {
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
+    })
+  })
+}
+
 export default api
 

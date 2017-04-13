@@ -112,7 +112,7 @@ export default {
     ...mapGetters(['list'])
   },
   methods: {
-    ...mapActions(['resetsingle', 'getdata']),
+    ...mapActions(['resetsingle', 'getdata', 'notice']),
     close (data) {
       this.show = false
     },
@@ -130,6 +130,10 @@ export default {
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
         api.post({JSON: JSON.stringify(updata)}, 'menu_delete').then((item) => {
+          if (item.responsecode === '241') {
+            this.notice({msg: '请先删除子菜单', type: 'error'})
+            return
+          }
           this.getdata()
         })
       })

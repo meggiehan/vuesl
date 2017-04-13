@@ -6,3 +6,4 @@ export const single = state => state.single
 export const current = state => state.current
 export const modal = state => state.modal
 export const notice = state => state.notice
+export const slide = state => state.slide

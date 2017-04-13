@@ -79,3 +79,11 @@ export const setnotice = (state, notice) => {
   state.notice.msg = notice.msg || '参数格式{msg: string,}'
   state.notice.type = notice.type || 'success'
 }
+export const setslide = (state, param) => {
+  state.slide[param.name] = param.value
+  for (let i in state.slide) {
+    if (i !== param.name) {
+      state.slide[i] = false
+    }
+  }
+}

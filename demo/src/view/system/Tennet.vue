@@ -6,7 +6,7 @@
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建角色</button>
+        <button class="btn" @click="create('panel')">创建租户</button>
       </div>
       <tables :method="method"
               :column="column"
@@ -18,11 +18,6 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
-  <transition name="slide-fade">
-    <auth @close="close" v-if="show.auth">
-      <span slot="title">用户权限</span>
-    </auth>
-  </transition>
   <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
 
@@ -33,12 +28,11 @@ import Tables from '../../components/Tables.vue'
 import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
-import Auth from '../../components/Auth.vue'
 import Confirm from '../../components/Modal/Confirm.vue'
 import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'role',
+  name: 'tennet',
   data () {
     return {
       confirms: {
@@ -51,14 +45,14 @@ export default {
       },
       nav: {
         parent: '系统管理',
-        child: '角色管理'
+        child: '租户管理'
       },
       title: '',
       method: {
         list: 'role_list'
       },
       column: [
-        {text: '序号', name: 'Disp_index'},
+        {text: '序号', name: 'DispIndex'},
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
         {text: '最后操作时间', name: 'Create_time'}
@@ -71,9 +65,9 @@ export default {
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
-        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
+        {name: 'Remark', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'}
         // {name: 'UserId', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}},
-        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
@@ -90,7 +84,6 @@ export default {
     tip: Tip,
     filters: Filters,
     panel: Panel,
-    auth: Auth,
     confirm: Confirm
   },
   computed: {
@@ -123,7 +116,10 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-        api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+        // api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+        //   this.getdata()
+        // })
+        api.mockDel({JSON: JSON.stringify(updata)}, 'tennet').then((item) => {
           this.getdata()
         })
       })
