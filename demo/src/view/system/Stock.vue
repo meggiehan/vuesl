@@ -23,6 +23,7 @@
       <span slot="title">用户权限</span>
     </auth>
   </transition>
+  <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
 
 </template>
@@ -33,12 +34,17 @@ import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import Auth from '../../components/Auth.vue'
+import Confirm from '../../components/Modal/Confirm.vue'
 import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'stock',
   data () {
     return {
+      confirms: {
+        title: '提示',
+        body: '确定删除?'
+      },
       show: {
         panel: false,
         auth: false
@@ -93,7 +99,8 @@ export default {
     tip: Tip,
     filters: Filters,
     panel: Panel,
-    auth: Auth
+    auth: Auth,
+    confirm: Confirm
   },
   computed: {
     ...mapGetters([
@@ -123,9 +130,10 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
-        console.log('item', item)
-        this.getdata()
+      this.$refs.dialog.confirm().then(() => {
+        api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+          this.getdata()
+        })
       })
     },
     edit (idx) {

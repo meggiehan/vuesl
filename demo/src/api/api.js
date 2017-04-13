@@ -29,6 +29,10 @@ const METHOD = {
   'part_update': 'vchange.dept.update', //修改部门
   'part_delete': 'vchange.dept.delete', //部门删除
   'part_info': 'vchange.dept.info', //单个部门查询信息
+  'member_list': 'vchange.user.list', //会员列表请求地址
+  'member_insert': 'vchange.user.insert', //添加会员
+  'member_update': 'vchange.user.update', //修改会员
+  'member_delete': 'vchange.user.delete', //删除会员
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
