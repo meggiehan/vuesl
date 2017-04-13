@@ -42,7 +42,8 @@
     data () {
       return {
         updata: {},
-        check: []
+        check: [],
+        mock: ['tennet']
       }
     },
     components: {
@@ -59,7 +60,7 @@
     },
     computed: {
       ...mapGetters([
-        'single'
+        'single', 'current'
       ])
     },
     mounted () {
@@ -104,10 +105,22 @@
           this.updata.Remark = ''
           this.updata.DispIndex = 1
         }
-        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
-          this.$emit('close', {name: 'panel'})
-          this.$store.dispatch('getdata')
-        })
+        if (this.mock.indexOf(this.current) === -1) {
+          api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+            this.$emit('close', {name: 'panel'})
+            this.$store.dispatch('getdata')
+          })
+        } else {
+          delete this.updata.Id
+          let method = this.current
+          if (this.single.id) {
+            method = method + '/' + this.single.id
+          }
+          api.mockPut(this.updata, method, tp).then((item) => {
+            this.$emit('close', {name: 'panel'})
+            this.$store.dispatch('getdata')
+          })
+        }
       },
       quit () {
         this.$emit('close', {name: 'panel'})
