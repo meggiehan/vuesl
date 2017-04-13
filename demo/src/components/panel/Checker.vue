@@ -64,6 +64,9 @@
     padding: .1rem 0
     .s-title
        padding-left: .32rem
+     ul
+       border-top: 0.01rem solid #858689
+       padding-left: .8rem
   li
     display: inline-block
     margin-left: .3rem
