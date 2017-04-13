@@ -40,7 +40,7 @@
         this.text = this.text.substring(0, this.text.length - 1) || this.child.text
       },
       change (id) {
-        console.log('哈哈哈哈哈哈哈哈哈哈哈哈哈哈', this)
+        console.log('哈哈', this)
         let index = this.list.indexOf(id)
         if (index === -1) {
           this.list.push(id)
