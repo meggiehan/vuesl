@@ -6,7 +6,7 @@
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建仓库</button>
+        <button class="btn" @click="create('panel')">创建分类</button>
       </div>
       <tables :method="method"
               :column="column"
@@ -18,11 +18,6 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
-  <transition name="slide-fade">
-    <auth @close="close" v-if="show.auth">
-      <span slot="title">用户权限</span>
-    </auth>
-  </transition>
 </div>
 
 </template>
@@ -32,7 +27,6 @@ import Tables from '../../components/Tables.vue'
 import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
-import Auth from '../../components/Auth.vue'
 import api from '../../api/api.js'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -64,16 +58,22 @@ export default {
       panels: [
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
-        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
+        {
+          name: 'Type',
+          size: 'small',
+          type: 'select',
+          text: '类型',
+          text1: '请选择类型',
+          list: [{Name: '单数据类型', Id: 'menu'}, {Name: '会员等级', Id: 'auth'}]
+        },
+        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
       types: [],
       filters: [
-        {name: 'Search', size: 'big', type: 'input', val: ''}
-        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
+        {name: 'Search', size: 'big', type: 'input', val: ''},
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '权限', id: '2'}]}
         // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
@@ -82,8 +82,7 @@ export default {
     tables: Tables,
     tip: Tip,
     filters: Filters,
-    panel: Panel,
-    auth: Auth
+    panel: Panel
   },
   computed: {
     ...mapGetters([
@@ -98,7 +97,7 @@ export default {
     create (name) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_insert'}
+        {name: 'save', text: '保存', url: 'category_insert'}
       ]
       this.resetsingle()
       for (let i in this.show) {
@@ -108,12 +107,12 @@ export default {
           this.show[i] = false
         }
       }
-      this.title = '创建角色'
+      this.title = '创建分类'
     },
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+      api.post({JSON: JSON.stringify(updata)}, 'category_delete').then((item) => {
         console.log('item', item)
         this.getdata()
       })
@@ -121,13 +120,10 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_update'}
+        {name: 'save', text: '保存', url: 'category_update'}
       ]
       this.show.panel = !this.show.panel
-      this.title = '编辑角色'
-    },
-    auth (idx) {
-      this.create('auth')
+      this.title = '编辑分类'
     }
   }
 }
