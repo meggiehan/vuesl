@@ -76,7 +76,7 @@ export default {
         {name: 'Name7', text: '电话', holder: '请输入电话...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name8', text: '地址', holder: '请输入地址...', type: 'input', sub: 'input', check: 'is_null'},
 
-        {name: 'FuncIdList', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '1'}, {'title': '礼品库位', id: '2'}, {'title': '退货库位', id: '3'}, {'title': '虚拟库位', id: '4'}]}
+        {name: 'FuncIdList', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '5c244759-0c77-4fbb-ad24-e63103194f74'}, {'title': '礼品库位', id: '5c244759-0c77-4fbb-ad34-e63103194f74'}, {'title': '退货库位', id: '5c244759-0c77-4fbb-ad44-e63103194f74'}, {'title': '虚拟库位', id: '5c244759-0c77-4fbb-ad54-e63103194f74'}]}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],

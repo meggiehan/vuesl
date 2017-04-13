@@ -29,7 +29,7 @@ const METHOD = {
   'part_update': 'vchange.dept.update', //修改部门
   'part_delete': 'vchange.dept.delete', //部门删除
   'part_info': 'vchange.dept.info',//单个部门查询信息
-  'login': 'vchange.admin.login'//登录
+  'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
