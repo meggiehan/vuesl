@@ -147,9 +147,23 @@ api.mockPost = (requestData, method) => {
     })
   })
 }
-api.mockGet = (requestData, method) => {
+api.mockPut = (requestData, method) => {
   return new Promise((resolve, reject) => {
-    Vue.http.get(mockUrl + method, {
+    Vue.http.put(mockUrl + method, requestData, {
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
+    })
+  })
+}
+api.mockGet = (requestData, method) => {
+  console.log('qwqeq', requestData)
+  let query = '?'
+  if (requestData.Search) {
+    query += 'q=' + requestData.Search
+  }
+  return new Promise((resolve, reject) => {
+    Vue.http.get(mockUrl + method + query, {
       emulateJSON: true,
     }).then(function (response) {
       console.log('response', response)
@@ -175,4 +189,3 @@ api.mockDel = (requestData, method) => {
 }
 
 export default api
-
