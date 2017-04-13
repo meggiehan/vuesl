@@ -54,7 +54,8 @@
       manage: Manage,
       checker: Checker,
       searcher: Searcher,
-      texter: Texter
+      texter: Texter,
+      file: File
     },
     computed: {
       ...mapGetters([

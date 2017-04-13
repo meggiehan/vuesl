@@ -9,14 +9,19 @@
     <div >
       <ul class="render-list">
       <div class="form-input" v-for="item in list[index]['childs']">
-      <inputer v-if="item.type == 'input'" :child="item" ></inputer>
+      <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
       <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
       <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
       <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
       <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
       <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
       <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
+      <file v-if="item.type == 'file'" :child="item"  @toparent="change"></file>
     	</div>
+    <div class="form-action">
+      <button :class="item.name" v-for="item in types" v-if=' index == 0'   @click="operate(item.name,item.url)">{{item.text}}</button>
+      <button :class="item.name" v-for="item in lgds" v-if=' index == 1'    @click="operate(item.name,item.url)">{{item.text}}</button>
+    </div>
       </ul>
     </div>
  </div>
@@ -27,16 +32,21 @@
   import Inputer from './panel/Inputer.vue'
   import Radioer from './panel/Radioer.vue'
   import Multi from './panel/multi.vue'
+  import File from './panel/File.vue'
   import Textareaer from './panel/Textareaer.vue'
   import Selecter from './panel/Selecter.vue'
   import Manage from './panel/Manage.vue'
   import Searcher from './panel/Searcher.vue'
   import api from '../api/api.js'
+  import { CheckRule } from '../mixins/index.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'tabs',
+   	mixins: [CheckRule],
     props: {
-      msg: ''
+      msg: '',
+      types: '',
+      lgds: ''
     },
     components: {
       inputer: Inputer,
@@ -45,122 +55,117 @@
       textareaer: Textareaer,
       selecter: Selecter,
       manage: Manage,
-      searcher: Searcher
+      searcher: Searcher,
+      file: File
     },
     data () {
       return {
-        types: ['quit', 'del', 'freeze', 'sure'],
         updata: {},
         page: 1,
         index: 0,
-        texts: {
-          quit: '退出',
-          sure: '确定'
+        check: [],
+        new: {
+        	system: '',
+        	goods: ''
         },
         tdx: [],
         is_all: {},
         list: [
         {name: 'system', title: '创建供应商', childs: [
-        {name: 'Name', text: '供应商名称', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '合同编号', holder: '请输入编号*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '供应商等级', holder: '请输入编号*...', type: 'input', sub: 'input'},
-        {name: 'Name',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Name',size: 'small',type: 'select',text: '产品分类',text1: '选择分类',list: [{Name: '系统管理', Id: 1}, {Name: '商品信息管理', Id: 2}, {Name: '销售管理', Id: 3}, {Name: '采购管理',Id: 4}, {Name: '入库管理', Id: 5}, {Name: '在库管理', Id: 6}, {Name: '出库管理', Id: 7}, {Name: '退货管理',Id: 8 }, {Name: '入款管理', Id: 9}]},
-        {name: 'Name',size: 'small',type: 'select',text: '供应商级别',text1: '级别',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Name',size1: 'small',type: 'select',text: '操作模式',text1: '操作模式',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Name', text: '签订时间', holder: '请输入编号*...', type: 'input', sub: 'date'},
-        {name: 'Noqq', text: '终止时间', holder: '请输入编号*...', type: 'input', sub: 'date'},
-        {name: 'Type',size: 'small',type: 'select',text: '操作品牌',text1: '选择品牌',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Type',size: 'small',type: 'select',text: '三方协议',text1: '选择',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Type',size: 'small',type: 'select',text: '授权区域',text1: '选择',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Name', text: '注册资本', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '注册号', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '组织机构代码', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '供应商销售额', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '供应商联系人', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '供应商电话号', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '售后联系人', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: 'MSN/QQ', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '邮箱', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '售后电话', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '财务电话', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '供应商地址', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'},
-        {name: 'Name', text: '售后地址', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'},
+        {name: 'Name', text: '供应商名称', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
+        {name: 'No', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
+        {name: 'Phone', text: '联系电话', holder: '请输入电话*...', type: 'input', sub: 'input',check: 'is_null'},
+        {name: 'Level',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '战略', Id: 1},{Name: 'A', Id: 2}, {Name: 'B', Id: 3},{Name: 'C', Id: 4},{Name: '新', Id: 5}]},
+        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '选择地区', Id: 1}, {Name: '省', Id: 2},{Name: '市', Id: 3}]},
       ]},
-        {name: 'goods', title: '本年度合同政策', childs:  [
-        {name: 'Name', text: '目标销量', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '预计毛利率', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '保价政策', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '质保金额', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Status',text: '月度折扣',type: 'radio',sub: 'radio',radioval: [{text: '扣点', val: '1'}, {text: '结算方式', val: '2'}]},
-        {name: 'Status',text: '季度折扣',type: 'radio',sub: 'radio',radioval: [{text: '扣点', val: '1'}, {text: '结算方式', val: '2'}]},
-        {name: 'Status',text: '年度折扣',type: 'radio',sub: 'radio',radioval: [{text: '扣点', val: '1'}, {text: '结算方式', val: '2'}]},
-        {name: 'No', text: '规模折扣', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'No', text: '规模折扣', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Type',size: 'small',type: 'select',text: '开票模式',text1: '请选择',list: [{Name: '等级', Id: 1}, {Name: '权限', Id: 2}]},
-        {name: 'Name', text: '市场费', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '保底量(代销/联销)', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '保底未完成的补差扣点', holder: '请输入名称*...', type: 'input', sub: 'input'},
-        {name: 'Name', text: '合同扫描照', holder: '请输入名称*...', type: 'input', sub: 'input'}
-      ]},
-          {name: 'order', title: '财务信息', childs: [
-          {name: 'Name', text: '银行名称', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '银行账号', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '银行行号', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '银行地址', holder: '请输入名称*...', type: 'input', sub: 'input'}]},
-          {name: 'buy', title: '售后条款', childs: [
-          {name: 'Name', text: '退换待政策', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '包换期', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '包换处理周期', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '保质期', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '退修运费承担', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '维修处理周期', holder: '请输入名称*...', type: 'input', sub: 'input'},
-          {name: 'Name', text: '滞销品退换货', holder: '请输入名称*...', type: 'input', sub: 'input'}
-          ]},
-          {name: 'Name', title: '补充条款',childs: [
-          {name: 'Name', text: '银行名称', holder: '请输入名称*...', type: 'input', sub: 'input'}
-          ]}
+        {name: 'goods', title: '合同', childs:  [
+        {name: 'Tpe',size: 'big',type: 'select',text: '供应商类型',text1: '请选择计算方式',list: [{Name: '集采', Id: 1}, {Name: '通用', Id: 2}]},
+        {name: 'Bank', text: '开户行', holder: '请输入开户行*...', type: 'input', sub: 'input'},
+        {name: 'Account', text: '账号', holder: '请输入账号*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Group', text: '财务联系群', holder: '默认供应商联系人*...', type: 'input', sub: 'input'},
+        {name: 'Tell', text: '财务联系方式', holder: '默认供应商联系方式*...', type: 'input', sub: 'input'},
+        {name: 'Number', text: '合同编号', holder: '请输入合同编号*...', type: 'input', sub: 'input'},
+        {name: 'Start', text: '合同开始', holder: '请输入开始时间*...', type: 'input', sub: 'input'},
+        {name: 'End', text: '合同结束日期', holder: '请输入编号*...', type: 'input', sub: 'input'},
+        {name: 'Type',size: 'big',type: 'select',text: '结算方式',text1: '请选择计算方式',list: [{Name: '账期', Id: 1}, {Name: '授信额度', Id: 2},{Name: '现款现货', Id: 3},]},
+        {name: 'Md',size: 'small',type: 'select',text: '开票类型',text1: '请选择开票方式',list: [{Name: '无票', Id: 1}, {Name: '普通增票', Id: 2}, {Name: '专用增票', Id: 3}]},
+        {name: 'Trans',size: 'small',type: 'select',text: '配送方式',text1: '请选择配送方式',list: [{Name: '代发', Id: 1}, {Name: '代发', Id: 2}]},
+        {name: 'Target', text: '目标销量', holder: '请输入名称*...', type: 'input', sub: 'input'},
+        {name: 'Sale', text: '销售服务保证金', holder: '请输入名称*...', type: 'input', sub: 'input'},
+//      {name: 'Pic', text: '合同扫描照', holder: '', type: 'input', sub: 'input'},
+        {name: 'File', text: '描述', holder: '请输入描述内容...', type: 'file', sub: 'file'},
+        {name: 'Remark', text: '备注信息', holder: '', type: 'input', sub: 'input'},
+        {name: 'Status',size: 'small',type: 'select',text: '合同状态',text1: '请选择配送方式',list: [{Name: '待审批', Id: 1}, {Name: '生效', Id: 2}, {Name: '失效', Id: 3}]},
+      ]}
         ]
       }
     },
+//   mounted () {
+//    this.addcheck(this.list[0].childs)
+//  },
     methods: {
-      operate (tp) {
-        tp === 'sure' && this.sure()
-        tp === 'quit' && this.quit()
-        tp === 'del' && this.del()
-        tp === 'freeze' && this.freeze()
+      ...mapActions(['getdata', 'notice']),
+      addcheck (data) {
+      	this.check = []
+      	data.forEach((value, index) => {
+	        if (value.check) {
+	          let temp = {
+	            name: value.name,
+	            type: value.check,
+	            msg: value.text
+	          }
+	          this.check.push(temp)
+	        }
+      	})
+//    	console.log('12222222222', this.check)
       },
-      sure () {
-        console.log(this.updata)
-        this.$emit('close', {name: 'auth'})
+      operate (tp, url) {
+        (tp === 'sure' || tp === 'save') && this.sure(url, tp)
+        tp === 'quit' && this.quit()
+      },
+      sure (url, tp) {
+//    	console.log('asasasasas', this.updata)
+      	let result = this.checkdata(this.updata, this.check)
+        if (result.length > 0) {
+          this.notice({msg: result[0], type: 'error'})
+          return
+        }
+        if (tp === 'save') {
+          this.updata.Id = this.single.Id
+        }
+        if (url === 'menu_insert' || url === 'menu_update') {
+          this.updata.Image1 = ''
+          this.updata.Remark = ''
+          this.updata.Run = ''
+        }
+        if (url === 'user_insert' || url === 'user_update') {
+          this.updata.DispIndex = '1'
+          this.updata.GroupsIdList = []
+        }
+        if (url === 'part_insert' || url === 'part_update') {
+          this.updata.Faxphone = ''
+          this.updata.Status = '1'
+          this.updata.Remark = ''
+          this.updata.DispIndex = '1'
+        }
+        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+          this.$emit('close', {name: 'tabs'})
+          this.$store.dispatch('getdata')
+        })
       },
       quit () {
-        this.$emit('close', {name: 'auth'})
-      },
-      del () {
-        this.$emit('close', {name: 'auth'})
-      },
-      freeze () {
-        this.$emit('close', {name: 'auth'})
+        this.$emit('close', {name: 'tabs'})
       },
       changes (idx) {
         this.index = (this.page - 1) * 5 + idx
-//      console.log(this.list[this.index].childs)
+        this.addcheck(this.list[this.index].childs)
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
       change (value) {
         this.updata[value.name] = value.val
         console.log('assasaasssssssss', value.val)
       },
-      insert (data, idx, id) {
-        this.tdx = this.updata[data.name] ? JSON.parse(JSON.stringify(this.updata[data.name])) : []
-        let im = this.tdx.indexOf(id)
-        if (im === -1) {
-          this.tdx.push(id)
-        } else {
-          this.tdx.splice(im, 1)
-        }
-        this.updata[data.name] = JSON.parse(JSON.stringify(this.tdx))
+      up () {
         console.log(this.updata)
       }
     }
@@ -253,7 +258,7 @@
           line-height:.55rem
     .form-action
       text-align:center
-      margin-top:1.5rem
+      margin-top:.5rem
       width:8rem
       margin-left:-.4rem
       button

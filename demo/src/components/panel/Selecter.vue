@@ -147,6 +147,7 @@
         height: .4rem
         line-height: .4rem
         padding: 0 .1rem
+        z-index : 100
         &.active
           background: #dfeaed
         &:hover
