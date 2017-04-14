@@ -28,7 +28,16 @@ const METHOD = {
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
   'part_delete': 'vchange.dept.delete', //部门删除
-  'part_info': 'vchange.dept.info',//单个部门查询信息
+  'part_info': 'vchange.dept.info', //单个部门查询信息
+  'member_list': 'vchange.user.list', //会员列表请求地址
+  'member_insert': 'vchange.user.insert', //添加会员
+  'member_update': 'vchange.user.update', //修改会员
+  'member_delete': 'vchange.user.delete', //删除会员
+  'member_freeze': 'vchange.user.freeze', //冻结用户
+  'tennet_list': 'vchange.tenant.list', //租户列表
+  'tennet_update': 'vchange.tenant.update', //租户修改
+  'tennet_insert': 'vchange.tenant.insert', //租户添加
+  'tennet_delete': 'vchange.tenant.delete', //租户删除
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
@@ -137,7 +146,7 @@ api.user = (requestData, method) => {
 }
 
 //模拟数据
-const mockUrl = 'http://localhost:3000/' 
+const mockUrl = 'http://localhost:3000/'
 api.mockPost = (requestData, method) => {
   return new Promise((resolve, reject) => {
     Vue.http.post(mockUrl + method, requestData, {

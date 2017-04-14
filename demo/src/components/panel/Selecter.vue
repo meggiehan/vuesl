@@ -131,7 +131,6 @@
       left: 0
       background: #fff
       border-radius: .03rem
-
       z-index : 100
       &:before
         width: 0;
