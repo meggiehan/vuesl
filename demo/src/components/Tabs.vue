@@ -141,7 +141,7 @@
 //        return
 //      }
         if (tp === 'save') {
-          this.updata.Id = this.single.Id
+          this.updata.system.Id = this.single.Id
         }
         if (url === 'menu_insert' || url === 'menu_update') {
           this.updata.Image1 = ''
