@@ -38,6 +38,10 @@ const METHOD = {
   'tennet_update': 'vchange.tenant.update', //租户修改
   'tennet_insert': 'vchange.tenant.insert', //租户添加
   'tennet_delete': 'vchange.tenant.delete', //租户删除
+  'category_list': 'vchange.billtype.list', //分类列表请求地址
+  'category_insert': 'vchange.billtype.insert', //分类添加会员
+  'category_update': 'vchange.billtype.update', //分类修改会员
+  'category_delete': 'vchange.billtype.delete', //分类删除会员
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10

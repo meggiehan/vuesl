@@ -65,6 +65,7 @@
         index: 0,
         check: [],
         now: 'system',
+        update:{},
         tdx: [],
         list: [
         {name: 'system', title: '创建供应商', childs: [
@@ -105,7 +106,6 @@
 			this.updata[val.name][value.name] = ''
 		})
       })
-      console.log('asajksjaks', this.updata)
     },
 	computed: {
       ...mapGetters([
@@ -133,7 +133,7 @@
         tp === 'quit' && this.quit()
       },
       sure (url, tp) {
-      	console.log('mmmm',this.updata)
+//    	console.log('mmmm',this.updata)
 //    	console.log('asasasasas', this.updata)
 //    	let result = this.checkdata(this.updata, this.check)
 //      if (result.length > 0) {
@@ -158,14 +158,23 @@
           this.updata.Remark = ''
           this.updata.DispIndex = '1'
         }
-        if (true) {
-        	console.log('asjkaskj', this.updata)
-        	return
-        }
-        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+//      if (true) {
+//      	console.log('asjkaskj99999999999999', this.updata)
+//      	return
+//      }
+		console.log('222222',this.index)
+		if ( this.index == 0){
+			api.post({JSON: JSON.stringify(this.updata.system)}, url).then((item) => {
           this.$emit('close', {name: 'tabs'})
           this.$store.dispatch('getdata')
         })
+		}
+        else {
+        	api.post({JSON: JSON.stringify(this.updata.goods)}, url).then((item) => {
+          this.$emit('close', {name: 'tabs'})
+          this.$store.dispatch('getdata')
+        })
+        }
       },
       quit () {
         this.$emit('close', {name: 'tabs'})
@@ -174,19 +183,21 @@
       	this.now = name
         this.index = (this.page - 1) * 5 + idx
         this.addcheck(this.list[this.index].childs)
-        console.log(this.list[this.index].name)
+//      console.log(this.list[this.index].name)
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
       change (value) {
 //    	console.log('asjsa', this.updata)
       	if (this.updata[this.now][value.name] === '' || this.updata[this.now][value.name]) {
-      		this.updata[this.now][value.name] = value.val	
+      		this.updata[this.now][value.name] = value.val
+      		console.log('doyu6666666666666', this.updata.goods)
+      		console.log('asajksjaks11111111111111', this.updata.system)
       	}
 //      this.updata[value.name] = value.val
 //      console.log('assasaasssssssss', value.val)
       },
       up () {
-        console.log(this.updata)
+//      console.log(this.updata)
       }
     }
   }
