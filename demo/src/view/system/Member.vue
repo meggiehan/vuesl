@@ -19,11 +19,6 @@
     </panel>
   </transition>
   <transition name="slide-fade">
-    <auth @close="close" :authid="authId" v-if="show.auth">
-      <span slot="title">会员权限</span>
-    </auth>
-  </transition>
-  <transition name="slide-fade">
     <panelword :panelwords="panelwords" :types="types" @close="close" v-if="show.panelword">
       <span slot="title">重置密码</span>
     </panelword>
@@ -38,7 +33,6 @@ import Tables from '../../components/Tables.vue'
 import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
-import Auth from '../../components/Auth.vue'
 import Panelword from '../../components/Panelword.vue'
 import Confirm from '../../components/Modal/Confirm.vue'
 import api from '../../api/api.js'
@@ -54,7 +48,6 @@ export default {
       style: 'large',
       show: {
         panel: false,
-        auth: false,
         panelword: false
       },
       nav: {
@@ -78,7 +71,6 @@ export default {
       ],
       options: [
         {name: '编辑', method: this.edit},
-        {name: '权限', method: this.auth},
         {name: '冻结', method: this.freeze},
         {name: '删除', method: this.del},
         {name: '密码重置', method: this.panelword}
@@ -118,7 +110,6 @@ export default {
     tip: Tip,
     filters: Filters,
     panel: Panel,
-    auth: Auth,
     panelword: Panelword,
     confirm: Confirm
   },
@@ -174,11 +165,6 @@ export default {
           this.getdata()
         })
       })
-    },
-    auth (idx, id) {
-      this.authId = id
-      this.create('auth')
-      console.log('mappppp', this.authId)
     },
     panelword (idx) {
       console.log('OPOPOPOPOP')
