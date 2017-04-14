@@ -115,11 +115,16 @@
           let method = this.current
           if (this.single.id) {
             method = method + '/' + this.single.id
+            api.mockPut(this.updata, method).then((item) => {
+              this.$emit('close', {name: 'panel'})
+              this.$store.dispatch('getdata')
+            })
+          } else {
+            api.mockPost(this.updata, method).then((item) => {
+              this.$emit('close', {name: 'panel'})
+              this.$store.dispatch('getdata')
+            })
           }
-          api.mockPut(this.updata, method, tp).then((item) => {
-            this.$emit('close', {name: 'panel'})
-            this.$store.dispatch('getdata')
-          })
         }
       },
       quit () {
