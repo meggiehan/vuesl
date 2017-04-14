@@ -76,7 +76,7 @@ export default {
         {name: 'Phone', text: '联系电话', holder: '请输入联系电话...', type: 'input', sub: 'input', check: 'is_mobile'},
         {name: 'ContactName', text: '编号', holder: '请输入联系人名...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'ContactEmail', text: '邮件', holder: '请输入邮件...', type: 'input', sub: 'input', check: 'is_email'},
-        {name: 'ContactPhoneNo', text: '电话', holder: '请输入联系人电话...', type: 'input', sub: 'input', check: 'is_monile'},
+        {name: 'ContactPhoneNo', text: '电话', holder: '请输入联系人电话...', type: 'input', sub: 'input', check: 'is_mobile'},
         {name: 'JobLv', text: '工作职位', holder: '请输入工作职位...', type: 'input', sub: 'input'},
         {name: 'Scale', text: '公司规模', holder: '请输入公司规模...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Remark', text: '备注', holder: '请输入备注...', type: 'textarea', sub: 'textarea', check: 'is_null'},

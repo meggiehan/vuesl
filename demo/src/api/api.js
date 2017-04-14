@@ -33,6 +33,10 @@ const METHOD = {
   'member_insert': 'vchange.user.insert', //添加会员
   'member_update': 'vchange.user.update', //修改会员
   'member_delete': 'vchange.user.delete', //删除会员
+  'tennet_list': 'vchange.tenant.list', //租户列表
+  'tennet_update': 'vchange.tenant.update', //租户修改
+  'tennet_insert': 'vchange.tenant.insert', //租户添加
+  'tennet_delete': 'vchange.tenant.delete', //租户删除
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
