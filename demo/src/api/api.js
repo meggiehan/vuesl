@@ -33,6 +33,7 @@ const METHOD = {
   'member_insert': 'vchange.user.insert', //添加会员
   'member_update': 'vchange.user.update', //修改会员
   'member_delete': 'vchange.user.delete', //删除会员
+  'member_freeze': 'vchange.user.freeze', //冻结用户
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
