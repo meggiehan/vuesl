@@ -28,6 +28,8 @@
 <style scoped lang='stylus'>
   .s-area
     overflow: hidden
+    border-top: 0.01rem solid #858689
+    margin-top: .1rem
     label
       line-height: .5rem
       margin-right: .15rem
@@ -35,8 +37,8 @@
       display: inline-block
       height: .5rem
       text-align: right
-      padding-right: 0.08rem
-      padding-top: .1rem
+      /*padding-right: 0.08rem*/
+      /*padding-top: .1rem*/
       font-weight: bold
       font-size: .16rem
       text-align: left

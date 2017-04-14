@@ -106,6 +106,7 @@
           this.updata.DispIndex = 1
         }
         if (this.mock.indexOf(this.current) === -1) {
+          console.log('北京天安门', this.single)
           api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
             this.$emit('close', {name: 'panel'})
             this.$store.dispatch('getdata')
