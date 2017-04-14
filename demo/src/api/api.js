@@ -23,7 +23,7 @@ const METHOD = {
   'user_frozen': 'vchange.user.frozen', //冻结用户
   'power_info': 'vchange.power.info', //获取用户权限
   'power_update': 'vchange.power.update',//修改用户权限
-  'user_repassword': 'vchange.admin.repassword', //重置密码
+  'user_repassword': 'vchange.user.repassword', //重置密码
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
@@ -41,7 +41,8 @@ const METHOD = {
   'category_insert': 'vchange.billtype.insert', //分类添加会员
   'category_update': 'vchange.billtype.update', //分类修改会员
   'category_delete': 'vchange.billtype.delete', //分类删除会员
-  'login': 'vchange.admin.login' //登录
+  'login': 'vchange.user.login', //登录
+   'logout': 'vchange.user.logout' //退出
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'

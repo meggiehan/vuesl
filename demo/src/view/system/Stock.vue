@@ -130,7 +130,10 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-        api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+//        api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+//          this.getdata()
+//        })
+        api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
           this.getdata()
         })
       })
