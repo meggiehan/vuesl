@@ -84,6 +84,7 @@ export default {
       ],
       panels: [
         {name: 'No', text: '账号', holder: '请输入账号*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password', check: 'is_null'},
         {name: 'Age', text: '年龄', holder: '请输入年龄*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'WorkPhone', text: '传真', holder: '请输入传真号*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Remark', text: '备注', holder: '请输入备注*...', type: 'input', sub: 'input', check: 'is_null'},
