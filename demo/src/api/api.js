@@ -20,7 +20,7 @@ const METHOD = {
   'user_insert': 'vchange.admin.insert', //添加用户
   'user_update': 'vchange.admin.update', //修改用户
   'user_delete': 'vchange.admin.delete', //删除用户
-  'user_freeze': 'vchange.admin.freeze', //冻结用户
+  'user_frozen': 'vchange.user.frozen', //冻结用户
   'power_info': 'vchange.power.info', //获取用户权限
   'power_update': 'vchange.power.update',//修改用户权限
   'user_repassword': 'vchange.admin.repassword', //重置密码
@@ -33,7 +33,6 @@ const METHOD = {
   'member_insert': 'vchange.user.insert', //添加会员
   'member_update': 'vchange.user.update', //修改会员
   'member_delete': 'vchange.user.delete', //删除会员
-  'member_freeze': 'vchange.user.freeze', //冻结用户
   'tennet_list': 'vchange.tenant.list', //租户列表
   'tennet_update': 'vchange.tenant.update', //租户修改
   'tennet_insert': 'vchange.tenant.insert', //租户添加

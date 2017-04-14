@@ -161,7 +161,7 @@ export default {
       let status = this.list[idx].Status === 1 ? 0 : 1
       this.confirms.body = this.list[idx].Status === 1 ? '确定冻结？' : '确定解冻？'
       this.$refs.dialog.confirm().then(() => {
-        api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_freeze').then((item) => {
+        api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_frozen').then((item) => {
           this.getdata()
         })
       })

@@ -14,7 +14,7 @@
               :filter="filters"></tables>
   </div>
   <transition name="slide-fade">
-    <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
+    <panel :panels="panels" :styles="style" :types="types" @close="close" v-if="show.panel">
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
@@ -51,6 +51,7 @@ export default {
         title: '提示',
         body: '确定删除?'
       },
+      style: 'large',
       show: {
         panel: false,
         auth: false,
@@ -169,7 +170,7 @@ export default {
       let status = this.list[idx].Status === 1 ? 0 : 1
       this.confirms.body = this.list[idx].Status === 1 ? '确定冻结？' : '确定解冻？'
       this.$refs.dialog.confirm().then(() => {
-        api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'member_freeze').then((item) => {
+        api.post({JSON: JSON.stringify({Id: id, Status: status})}, 'user_frozen').then((item) => {
           this.getdata()
         })
       })

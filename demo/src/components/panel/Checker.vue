@@ -65,7 +65,7 @@
     .s-title
        padding-left: .32rem
      ul
-       border-top: 0.01rem solid #858689
+       border-top: 0.01rem dashed #999
        padding-left: .8rem
   li
     display: inline-block
@@ -76,13 +76,13 @@
       width: .2rem
       height: .2rem
       display: inline-block
-      border: .02rem solid #23330e
+      border: .02rem solid #999
       margin: 0 .1rem
       border-radius: 50%
       vertical-align: middle
     &.active
       span
-        background: #40afe1
+        background: #ffa625
         color: #fff
 
 </style>
