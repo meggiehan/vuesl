@@ -50,7 +50,7 @@ export default {
       },
       title: '',
       method: {
-        list: 'role_list'
+        list: 'category_list'
       },
       column: [
         {text: '序号', name: 'Disp_index'},
@@ -72,7 +72,7 @@ export default {
           text: '类型',
           text1: '请选择类型',
           list: [{Name: '单数据类型', Id: '1'}, {Name: '会员等级', Id: '2'}, {Name: '区域城市', Id: '3'}, {Name: '账户类型', Id: '4'}, {Name: '商品分类', Id: '5'}, {Name: '商品品牌', Id: '6'}
-          , {Name: '配送方式', Id: '7'}, {Name: '优惠券分类', Id: '8'}, {Name: '促销分类', Id: '9'}, {Name: '广告类型', Id: '10'}, {Name: '广告来源', Id: '11'}, {Name: '礼包分类', Id: '12'}, 
+          , {Name: '配送方式', Id: '7'}, {Name: '优惠券分类', Id: '8'}, {Name: '促销分类', Id: '9'}, {Name: '广告类型', Id: '10'}, {Name: '广告来源', Id: '11'}, {Name: '礼包分类', Id: '12'},
           {Name: '支付方式', Id: '13'}, {Name: '存储方式', Id: '14'}]
         },
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'}
