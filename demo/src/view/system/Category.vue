@@ -18,21 +18,28 @@
       <span slot="title">{{title}}</span>
     </panel>
   </transition>
+   <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
 
 </template>
 
 <script>
+		/* eslint-disable */
 import Tables from '../../components/Tables.vue'
 import Tip from '../../components/Tip.vue'
 import Filters from '../../components/Filters.vue'
 import Panel from '../../components/Panel.vue'
 import api from '../../api/api.js'
+import Confirm from '../../components/Modal/Confirm.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'category',
   data () {
     return {
+    	confirms: {
+        title: '提示',
+        body: '确定删除?'
+      },
       show: {
         panel: false,
         auth: false
@@ -59,12 +66,14 @@ export default {
         {name: 'No', text: '编号', holder: '请输入人编号...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
         {
-          name: 'Type',
+          name: 'ParentTypeId',
           size: 'small',
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{Name: '单数据类型', Id: 'menu'}, {Name: '会员等级', Id: 'auth'}]
+          list: [{Name: '单数据类型', Id: '1'}, {Name: '会员等级', Id: '2'}, {Name: '区域城市', Id: '3'}, {Name: '账户类型', Id: '4'}, {Name: '商品分类', Id: '5'}, {Name: '商品品牌', Id: '6'}
+          , {Name: '配送方式', Id: '7'}, {Name: '优惠券分类', Id: '8'}, {Name: '促销分类', Id: '9'}, {Name: '广告类型', Id: '10'}, {Name: '广告来源', Id: '11'}, {Name: '礼包分类', Id: '12'}, 
+          {Name: '支付方式', Id: '13'}, {Name: '存储方式', Id: '14'}]
         },
         {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
@@ -73,7 +82,9 @@ export default {
       types: [],
       filters: [
         {name: 'Search', size: 'big', type: 'input', val: ''},
-        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '权限', id: '2'}]}
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '区域城市', id: '3'},{title: '账户类型', id: '4'},
+        {title: '商品分类', id: '5'},{title: '商品品牌', id: '6'},{title: '配送方式', id: '7'},{title: '优惠卷分类', id: '8'},{title: '促销分类', id: '9'},{title: '广告类型', id: '10'},{title: '广告来源', id: '11'},
+        {title: '礼包分类', id: '12'},{title: '支付方式', id: '13'},{title: '储存方式', id: '14'}]}
         // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
@@ -82,7 +93,8 @@ export default {
     tables: Tables,
     tip: Tip,
     filters: Filters,
-    panel: Panel
+    panel: Panel,
+    confirm: Confirm
   },
   computed: {
     ...mapGetters([
@@ -112,10 +124,15 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
+      this.$refs.dialog.confirm().then(() => {
       api.post({JSON: JSON.stringify(updata)}, 'category_delete').then((item) => {
         console.log('item', item)
         this.getdata()
       })
+//		 api.mockDel({JSON: JSON.stringify(updata)}, 'category_delete').then((item) => {
+//        this.getdata()
+//      })
+		 })
     },
     edit (idx) {
       this.types = [

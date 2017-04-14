@@ -3,28 +3,28 @@
  <div class="pannel">
     <div class="wrap-panel">
       <ul class="tab-panel">
-        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="changes(idx)"><span>{{item.title}}</span></li>
+        <li v-for="(item,idx) in list.slice((page-1)*5,page*5)" v-bind:class="{active:(idx+(page - 1) * 5)=== index }" @click="changes(idx, item.name)"><span>{{item.title}}</span></li>
       </ul>
     </div>
-    <div >
-      <ul class="render-list">
-      <div class="form-input" v-for="item in list[index]['childs']">
-      <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
-      <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
-      <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
-      <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
-      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
-      <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
-      <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
-      <file v-if="item.type == 'file'" :child="item"  @toparent="change"></file>
-    	</div>
-    <div class="form-action">
-      <button :class="item.name" v-for="item in types" v-if=' index == 0'   @click="operate(item.name,item.url)">{{item.text}}</button>
-      <button :class="item.name" v-for="item in lgds" v-if=' index == 1'    @click="operate(item.name,item.url)">{{item.text}}</button>
-    </div>
-      </ul>
-    </div>
- </div>
+	    <div >
+	      <ul class="render-list">
+		      <div class="form-input" v-for="item in list[index]['childs']">
+		      <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
+		      <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
+		      <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
+		      <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
+		      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
+		      <manage v-if="item.type == 'manage'" :child="item" @toparent="change"></manage>
+		      <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
+		      <file v-if="item.type == 'file'" :child="item"  @toparent="change"></file>
+		      </div>
+		    <div class="form-action">
+		      <button :class="item.name" v-for="item in types" v-if=' index == 0'   @click="operate(item.name,item.url)">{{item.text}}</button>
+		      <button :class="item.name" v-for="item in lgds" v-if=' index == 1'    @click="operate(item.name,item.url)">{{item.text}}</button>
+		    </div>
+	      </ul>
+	    </div>
+ 	</div>
 </template>
 
 <script>
@@ -64,12 +64,8 @@
         page: 1,
         index: 0,
         check: [],
-        new: {
-        	system: '',
-        	goods: ''
-        },
+        now: 'system',
         tdx: [],
-        is_all: {},
         list: [
         {name: 'system', title: '创建供应商', childs: [
         {name: 'Name', text: '供应商名称', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
@@ -100,9 +96,22 @@
         ]
       }
     },
-//   mounted () {
+     beforeMount () {
 //    this.addcheck(this.list[0].childs)
-//  },
+	  this.now = this.list[0].name
+      this.list.forEach((val, idx) => {
+      	this.updata[val.name] = {}
+      	val.childs.forEach((value) => {
+			this.updata[val.name][value.name] = ''
+		})
+      })
+      console.log('asajksjaks', this.updata)
+    },
+	computed: {
+      ...mapGetters([
+        'single', 'current'
+      ])
+    },
     methods: {
       ...mapActions(['getdata', 'notice']),
       addcheck (data) {
@@ -124,12 +133,13 @@
         tp === 'quit' && this.quit()
       },
       sure (url, tp) {
+      	console.log('mmmm',this.updata)
 //    	console.log('asasasasas', this.updata)
-      	let result = this.checkdata(this.updata, this.check)
-        if (result.length > 0) {
-          this.notice({msg: result[0], type: 'error'})
-          return
-        }
+//    	let result = this.checkdata(this.updata, this.check)
+//      if (result.length > 0) {
+//        this.notice({msg: result[0], type: 'error'})
+//        return
+//      }
         if (tp === 'save') {
           this.updata.Id = this.single.Id
         }
@@ -148,6 +158,10 @@
           this.updata.Remark = ''
           this.updata.DispIndex = '1'
         }
+        if (true) {
+        	console.log('asjkaskj', this.updata)
+        	return
+        }
         api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
           this.$emit('close', {name: 'tabs'})
           this.$store.dispatch('getdata')
@@ -156,14 +170,20 @@
       quit () {
         this.$emit('close', {name: 'tabs'})
       },
-      changes (idx) {
+      changes (idx, name) {
+      	this.now = name
         this.index = (this.page - 1) * 5 + idx
         this.addcheck(this.list[this.index].childs)
+        console.log(this.list[this.index].name)
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
       change (value) {
-        this.updata[value.name] = value.val
-        console.log('assasaasssssssss', value.val)
+//    	console.log('asjsa', this.updata)
+      	if (this.updata[this.now][value.name] === '' || this.updata[this.now][value.name]) {
+      		this.updata[this.now][value.name] = value.val	
+      	}
+//      this.updata[value.name] = value.val
+//      console.log('assasaasssssssss', value.val)
       },
       up () {
         console.log(this.updata)

@@ -5,7 +5,7 @@
 		</label>
 		<input type="input" name="" id="" value="" class="arrt" />
 		<a href="javascript:;" class="file">浏览
-        <input type="file" :accept="accepts" @change="upload" >
+        <input type="file" :accept="accepts"  >
         <slot></slot>
     	</a>
 	</div>
@@ -21,10 +21,10 @@
                 type : String,
                 default : 'image/jpeg,image/jpg,image/png,image/gif'
             },
-            flag : [String, Number], //当前上传标识,以便于在同一个监听函数中区分不同的上传域
+            flag : [String, Number], 
             maxSize : {
                 type : Number,
-                default : 0 //上传大小限制
+                default : 0 
             }, 
         }
 //      methods: {
@@ -54,7 +54,6 @@
 //                      //提交给七牛处理
 //                      self.$http.post('https://up.qbox.me/', formData, {
 //                          progress(event) {
-//                              //传递给父组件的progress方法
 //                              self.$emit('progress', parseFloat(event.loaded / event.total * 100), flag) 
 //                          }
 //                      })
