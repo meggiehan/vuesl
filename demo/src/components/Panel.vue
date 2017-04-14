@@ -1,17 +1,19 @@
 <!-- 筛选组装主部件 -->
 <template>
- <div class="pannel">
-    <p class="p-title"><slot name="title"></slot></p>
-    <div class="form-input" v-for="item in panels">
-      <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
-      <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
-      <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
-      <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
-      <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
-      <manage v-if="item.type == 'manage'" :child="item" :id="single.Id" @toparent="change"></manage>
-      <checker v-if="item.type == 'check'" :child="item" :id="single.Id" @toparent="change"></checker>
-      <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
-      <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
+ <div class="pannel" v-bind:class="styles">
+    <p class="p-title"><slot name="title"></slot{{styles}}</p>
+    <div class="clearfloat">
+      <div class="form-input" v-for="item in panels">
+        <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
+        <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
+        <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
+        <textareaer v-if="item.type == 'textarea'" :child="item" @toparent="change"></textareaer>
+        <selecter v-if="item.type == 'select'" :child="item" @toparent="change"></selecter>
+        <manage v-if="item.type == 'manage'" :child="item" :id="single.Id" @toparent="change"></manage>
+        <checker v-if="item.type == 'check'" :child="item" :id="single.Id" @toparent="change"></checker>
+        <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
+        <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
+      </div>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
@@ -37,13 +39,14 @@
     mixins: [CheckRule],
     props: {
       panels: '',
-      types: ''
+      types: '',
+      styles: ''
     },
     data () {
       return {
         updata: {},
         check: [],
-        mock: ['tennet']
+        mock: []
       }
     },
     components: {
@@ -106,7 +109,6 @@
           this.updata.DispIndex = 1
         }
         if (this.mock.indexOf(this.current) === -1) {
-          console.log('北京天安门', this.single)
           api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
             this.$emit('close', {name: 'panel'})
             this.$store.dispatch('getdata')
@@ -159,25 +161,30 @@
       padding:.2rem 0
       border-bottom:.01rem solid #858659
       margin-bottom:.1rem
-  .form-action
-    text-align:center
-    margin-top:.5rem
-    button
-      text-align: center
-      height:.5rem
-      line-height:.5rem
-      border-radius:.06rem
-      color:#000
-      font-size:.14rem
-      width:1.5rem
-      background:#fff
-      margin:0 .2rem
-      cursor:pointer
-      &.quit
-        border:.01rem solid #B2F1EA
-      &.sure
-        border:.01rem solid #e40300
-      &.save
-        border:.01rem solid #e40300
+    &.large
+      width:12rem
+      .form-input
+        float:left
+        width:50%
+    .form-action
+      text-align:center
+      margin-top:.5rem
+      button
+        text-align: center
+        height:.5rem
+        line-height:.5rem
+        border-radius:.06rem
+        color:#000
+        font-size:.14rem
+        width:1.5rem
+        background:#fff
+        margin:0 .2rem
+        cursor:pointer
+        &.quit
+          border:.01rem solid #B2F1EA
+        &.sure
+          border:.01rem solid #e40300
+        &.save
+          border:.01rem solid #e40300
 </style>
 
