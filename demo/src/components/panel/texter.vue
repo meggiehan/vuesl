@@ -28,7 +28,7 @@
 <style scoped lang='stylus'>
   .s-area
     overflow: hidden
-    border-top: 0.01rem solid #858689
+    border-top: 0.01rem dashed #858689
     margin-top: .1rem
     label
       line-height: .5rem

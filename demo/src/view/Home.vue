@@ -60,7 +60,15 @@
           {
             name: '商品管理',
             level1: [
+              {name: '商品列表', link: 'Goods'},
+              {name: '基本信息', link: 'Basic'},
               {name: '首页', link: 'Index'}
+            ]
+          },
+          {
+            name: '订单管理',
+            level1: [
+              {name: '订单列表', link: 'Order'}
             ]
           }
         ]

@@ -13,6 +13,9 @@ import Stock from '@/view/system/Stock'
 import Category from '@/view/system/Category'
 import Member from '@/view/system/Member'
 import Tennet from '@/view/system/Tennet'
+import Goods from '@/view/goods/Goods'
+import Basic from '@/view/goods/Basic'
+import Order from '@/view/orders/Order'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
 Vue.use(Router)
@@ -69,6 +72,21 @@ const router = new Router({
           path: '/user',
           name: 'User',
           component: User
+        },
+        {
+          path: '/goods',
+          name: 'Goods',
+          component: Goods
+        },
+        {
+          path: '/basic',
+          name: 'Basic',
+          component: Basic
+        },
+        {
+          path: '/orders',
+          name: 'Order',
+          component: Order
         }
       ]
     },
