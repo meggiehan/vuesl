@@ -149,6 +149,19 @@ api.user = (requestData, method) => {
   })
 }
 
+api.getJson = (method) => {
+  return new Promise((resolve, reject) => {
+    Vue.http.get(method, {
+      headers: {
+        'Content-Type': 'multipart/form-data; charset=UTF-8'
+      },
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
+    })
+  })
+}
+
 //模拟数据
 const mockUrl = 'http://localhost:3000/'
 api.mockPost = (requestData, method) => {
