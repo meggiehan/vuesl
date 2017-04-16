@@ -122,7 +122,7 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '通过', url: ''},
-        {name: 'sure', text: '拒绝', url: 'supplier_insert'},
+        {name: 'sure', text: '拒绝', url: 'supplier_edit'},
         {name: 'quit', text: '保存', url: ''},
         {name: 'quit', text: '提交', url: ''}
       ]
