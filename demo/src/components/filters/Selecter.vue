@@ -1,10 +1,10 @@
 <!-- 筛选下拉部件 -->
 <template>
-  <div class="s-part f-l">
-    <p class="p-title" @click="isshow = !isshow">{{text}}</p>
-    <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
-    <ul class="list-role" v-show="isshow">
-      <li v-for="(item,idx) in param.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{item.title}}</li>
+  <div class="s-part f-l" contenteditable="true" @blur="isshow=false">
+    <p class="p-title" contenteditable="false" @click="isshow = !isshow">{{text}}</p>
+    <p class="s-down" contenteditable="false" @click="isshow = !isshow"><span class="trangle"></span></p>
+    <ul class="list-role" contenteditable="false" v-show="isshow">
+      <li contenteditable="false" v-for="(item,idx) in param.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{item.title}}</li>
     </ul>
   </div>
 </template>
