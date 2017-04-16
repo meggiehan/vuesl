@@ -41,6 +41,11 @@ const METHOD = {
   'category_insert': 'vchange.billtype.insert', //分类添加会员
   'category_update': 'vchange.billtype.update', //分类修改会员
   'category_delete': 'vchange.billtype.delete', //分类删除会员
+  'supplier_list': 'vchange.supplier.list', //供应商列表请求地址
+  'supplier_insert': 'vchange.supplier.insert', //供应商添加
+  'supplier_update': 'vchange.supplier.update', //供应商修改
+  'supplier_delete': 'vchange.supplier.delete', //供应商删除
+  'login': 'vchange.admin.login',//登录
   'login': 'vchange.user.login', //登录
   'logout': 'vchange.user.logout' //退出
 }
@@ -145,6 +150,19 @@ api.user = (requestData, method) => {
     }).then(function (response) {
       resolve(response.body.Response.UserList)
 
+    })
+  })
+}
+
+api.getJson = (method) => {
+  return new Promise((resolve, reject) => {
+    Vue.http.get(method, {
+      headers: {
+        'Content-Type': 'multipart/form-data; charset=UTF-8'
+      },
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
     })
   })
 }
