@@ -58,7 +58,8 @@ module.exports = function () {
              Name6: faker.random.word(),
              Name7: faker.random.word(),
              Name8: faker.random.word(),
-             DispIndex: faker.random.number()
+             DispIndex: faker.random.number(),
+             Create_time: faker.date.past()
          }
      }),
      category:_.times(20, function () {

@@ -45,7 +45,6 @@ const METHOD = {
   'supplier_insert': 'vchange.supplier.insert', //供应商添加
   'supplier_update': 'vchange.supplier.update', //供应商修改
   'supplier_delete': 'vchange.supplier.delete', //供应商删除
-  'login': 'vchange.admin.login',//登录
   'login': 'vchange.user.login', //登录
   'logout': 'vchange.user.logout' //退出
 }
