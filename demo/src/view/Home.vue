@@ -68,7 +68,7 @@
           {
             name: '订单管理',
             level1: [
-              {name: '订单列表', link: 'Order'}
+              {name: '快递单号输入', link: 'Order'}
             ]
           }
         ]

@@ -6,7 +6,7 @@
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建礼包</button>
+        <button class="btn" @click="create('panel')">创建快递单</button>
       </div>
       <tables :method="method"
               :column="column"
@@ -44,7 +44,7 @@
         },
         nav: {
           parent: '订单管理',
-          child: '订单列表'
+          child: '快递单号输入'
         },
         title: '',
         authId: '',
@@ -52,8 +52,8 @@
           list: 'user_list'
         },
         column: [
-          {text: '会员账号', name: 'Disp_index'},
           {text: '订单编号', name: 'No'},
+          {text: '会员账号', name: 'Disp_index'},
           {text: '商品名称', name: 'Name'},
           {text: '商品型号', name: 'Phone'},
           {text: '数量', name: 'Disp_index'}
@@ -65,19 +65,23 @@
           {name: '删除', method: this.del}
         ],
         panels: [
-          {name: 'No', text: '会员账号', holder: '请输入用户名*...', type: 'input', sub: 'input', check: 'is_null'},
-          {name: 'Password', text: '订单编号', holder: '请输入密码*...', type: 'input', sub: 'password', check: 'is_null'},
-          {name: 'Name', text: '商品名称', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
-          {name: 'Phone', text: '商品型号', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
-          {name: 'Email', text: '数量', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'}
+          {name: 'No', text: '原快递公司', holder: '请输入公司名*...', type: 'input', sub: 'input', check: 'is_null'},
+          {name: 'Password', text: '原快递单号', holder: '请输入单号*...', type: 'input', sub: 'password', check: 'is_null'},
+          {
+            name: 'Type',
+            size: 'small',
+            type: 'select',
+            text: '快递公司',
+            text1: '全部公司',
+            list: [{Name: '顺丰快递', Id: 'menu'}, {Name: '韵达快递', Id: 'auth'}, {Name: '中通快递', Id: 'menu'}, {Name: '邮政包裹', Id: 'auth'}, {Name: '银婕快递', Id: 'menu'}]
+          },
+          {name: 'Remark', text: '备注', holder: '请输入备注...', type: 'textarea', sub: 'textarea', check: 'is_null'}
+          // {name: 'Name', text: '商品名称', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
+          // {name: 'Phone', text: '商品型号', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
+          // {name: 'Email', text: '数量', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'}
           // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
           // {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
           // {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
-        ],
-        panelwords: [
-          // {name: '', text: '旧密码', holder: '请输入旧密码*...', type: 'input', sub: 'password'},
-          {name: 'Password', text: '新密码', holder: '请输入新密码*...', type: 'input', sub: 'password'},
-          {name: 'Repassword', text: '确认密码', holder: '请再次输入新密码*...', type: 'input', sub: 'password'}
         ],
         types: ['sure', 'quit'],
         filters: [
@@ -118,7 +122,7 @@
             this.show[i] = false
           }
         }
-        this.title = '礼包创建'
+        this.title = '快递单号创建'
       },
       edit (idx) {
         this.types = [

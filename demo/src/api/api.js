@@ -23,7 +23,7 @@ const METHOD = {
   'user_frozen': 'vchange.user.frozen', //冻结用户
   'power_info': 'vchange.power.info', //获取用户权限
   'power_update': 'vchange.power.update',//修改用户权限
-  'user_repassword': 'vchange.admin.repassword', //重置密码
+  'user_repassword': 'vchange.user.repassword', //重置密码
   'part_list': 'vchange.dept.list', //部门列表请求地址
   'part_insert': 'vchange.dept.insert',//新增部门
   'part_update': 'vchange.dept.update', //修改部门
@@ -45,7 +45,9 @@ const METHOD = {
   'supplier_insert': 'vchange.supplier.insert', //供应商添加
   'supplier_update': 'vchange.supplier.update', //供应商修改
   'supplier_delete': 'vchange.supplier.delete', //供应商删除
-  'login': 'vchange.admin.login' //登录
+  'login': 'vchange.admin.login',//登录
+  'login': 'vchange.user.login', //登录
+   'logout': 'vchange.user.logout' //退出
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
