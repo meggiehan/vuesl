@@ -2,11 +2,11 @@
 <template>
   <div class="s-lis clearfloat">
     <label for="">{{child.text}}：</label>
-    <div class="s-part f-l">
-      <p class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
-      <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
-      <ul class="list-role" v-show="isshow">
-        <li class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+    <div class="s-part f-l" contenteditable="true" @blur="isshow=false">
+      <p contenteditable="false" class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
+      <p contenteditable="false" class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
+      <ul contenteditable="false" class="list-role" v-show="isshow">
+        <li contenteditable="false" class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
       </ul>
     </div>
   </div>
