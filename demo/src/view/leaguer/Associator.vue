@@ -44,7 +44,7 @@
   import api from '../../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    name: 'user',
+    name: 'associator',
     data () {
       return {
         confirms: {

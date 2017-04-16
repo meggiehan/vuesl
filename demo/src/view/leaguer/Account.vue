@@ -1,12 +1,13 @@
 <template>
   <div class="wrap">
+  	<!--会员管理头部-->
     <tip :parent="nav.parent"
          :child="nav.child"></tip>
     <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建用户</button>
+        <button class="btn" @click="create('panel')">创建会员账号</button>
       </div>
       <tables :method="method"
               :column="column"
@@ -44,7 +45,7 @@
   import api from '../../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    name: 'user',
+    name: 'account',
     data () {
       return {
         confirms: {
@@ -57,8 +58,8 @@
           panelword: false
         },
         nav: {
-          parent: '系统管理',
-          child: '用户管理'
+          parent: '会员管理',
+          child: '会员账号管理'
         },
         title: '',
         authId: '',
