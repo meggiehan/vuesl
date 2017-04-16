@@ -72,11 +72,13 @@ module.exports = function () {
      }),
      order:_.times(20, function () {
          return {
+             id: faker.random.uuid(),
              No: faker.random.uuid(),
-             Description: faker.random.word(),
-             Disp_index: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
              Name: faker.random.word(),
-             Type: faker.database.type()
+             Number: faker.random.number(),
+             Create_time: faker.date.past()
          }
      })
  }

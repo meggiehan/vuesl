@@ -52,30 +52,30 @@
           list: 'user_list'
         },
         column: [
-          {text: '订单编号', name: 'No'},
-          {text: '会员账号', name: 'Disp_index'},
-          {text: '订单日期', name: 'No'},
-          {text: '支付状态', name: 'No'},
-          {text: '联系人', name: 'No'},
-          {text: '电话', name: 'No'},
-          {text: '地址', name: 'No'},
-          {text: '商品名称', name: 'Name'},
-          {text: '商品型号', name: 'Phone'},
-          {text: '供应商', name: 'Phone'},
-          {text: '快递公司', name: 'Disp_index'},
-          {text: '快递单号', name: 'Disp_index'}
+          {text: '订单编号', name: 'Name'},
+          {text: '会员账号', name: 'Number'},
+          {text: '订单日期', name: 'Description'},
+          {text: '支付状态', name: 'Remark'},
+          {text: '联系人', name: 'Type'},
+          // {text: '电话', name: 'No'},
+          // {text: '地址', name: 'No'},
+          // {text: '商品名称', name: 'Name'},
+          // {text: '商品型号', name: 'Phone'},
+          // {text: '供应商', name: 'Phone'},
+          // {text: '快递公司', name: 'Disp_index'},
+          // {text: '快递单号', name: 'Disp_index'}
           // {text: '所属部门', name: 'Disp_index'},
-          // {text: '最后登录时间', name: 'Create_time'}
+          {text: '最后登录时间', name: 'Create_time'}
         ],
         options: [
           {name: '编辑', method: this.edit},
           {name: '删除', method: this.del}
         ],
         panels: [
-          {name: 'No', text: '原快递公司', holder: '请输入公司名*...', type: 'input', sub: 'input', check: 'is_null'},
-          {name: 'Password', text: '原快递单号', holder: '请输入单号*...', type: 'input', sub: 'password', check: 'is_null'},
+          {name: 'Name', text: '原快递公司', holder: '请输入公司名*...', type: 'input', sub: 'input', check: 'is_null'},
+          {name: 'Number', text: '原快递单号', holder: '请输入单号*...', type: 'input', sub: 'password', check: 'is_null'},
           {
-            name: 'Type',
+            name: 'Company',
             size: 'small',
             type: 'select',
             text: '快递公司',
@@ -144,7 +144,10 @@
         updata.push(id)
         this.confirms.body = '确定删除？'
         this.$refs.dialog.confirm().then(() => {
-          api.post({JSON: JSON.stringify(updata)}, 'order_delete').then((item) => {
+//          api.post({JSON: JSON.stringify(updata)}, 'order_delete').then((item) => {
+//            this.getdata()
+//          })
+          api.mockDel({JSON: JSON.stringify(updata)}, 'order').then((item) => {
             this.getdata()
           })
         })
