@@ -189,17 +189,13 @@
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
       change (value) {
-//    	console.log('asjsa', this.updata)
       	if (this.updata[this.now][value.name] === '' || this.updata[this.now][value.name]) {
       		this.updata[this.now][value.name] = value.val
-//    		console.log('doyu6666666666666', this.updata.goods)
-//    		console.log('asajksjaks11111111111111', this.updata.system)
       	}
 //      this.updata[value.name] = value.val
-//      console.log('assasaasssssssss', value.val)
       },
       up () {
-//      console.log(this.updata)
+        console.log(this.updata)
       }
     }
   }

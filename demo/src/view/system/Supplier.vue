@@ -70,7 +70,7 @@ export default {
 //        {name: 'part2', size: 'small', type: 'select', text: '菜单', list: [{title: '系统管理', id: 1}, {title: '商品信息管理', id: 2}, {title: '销售管理', id: 3}, {title: '采购管理', id: 4}, {title: '入库管理', id: 5}, {title: '在库管理', id: 6}, {title: '出库管理', id: 7}, {title: '退货管理', id: 8}, {title: '入款管理', id: 9}]}
       ],
       options: [
-        {name: '编辑', method: this.edit}
+        {name: '编辑', method: this.edit}, {name: '删除', method: this.del}
       ],
       method: {
         list: 'menu_list'
@@ -97,8 +97,8 @@ export default {
     create (name) {
       this.types = [
         {name: 'quit', text: '通过', url: ''},
-        {name: 'sure', text: '拒绝', url: 'supplier_insert'},
-        {name: 'quit', text: '保存', url: ''},
+        {name: 'quit', text: '拒绝', url: ''},
+        {name: 'save', text: '保存', url: 'supplier_insert'},
         {name: 'quit', text: '提交', url: ''}
       ]
       this.lgds = [
@@ -113,8 +113,11 @@ export default {
     del (idx, id) {
       let updata = []
       updata.push(id)
-      api.post({JSON: JSON.stringify(updata)}, 'supplier_delete').then((item) => {
-        console.log('item', item)
+//    api.post({JSON: JSON.stringify(updata)}, 'supplier_delete').then((item) => {
+//      console.log('item', item)
+//      this.getdata()
+//    })
+      api.mockDel({JSON: JSON.stringify(updata)}, 'supplier').then((item) => {
         this.getdata()
       })
       console.log(idx, id)
@@ -122,8 +125,8 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '通过', url: ''},
-        {name: 'sure', text: '拒绝', url: 'supplier_edit'},
-        {name: 'quit', text: '保存', url: ''},
+        {name: 'sure', text: '拒绝', url: ''},
+        {name: 'quit', text: '保存', url: 'supplier_edit'},
         {name: 'quit', text: '提交', url: ''}
       ]
       this.lgds = [
