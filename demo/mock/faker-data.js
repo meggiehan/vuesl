@@ -69,6 +69,15 @@ module.exports = function () {
              Name: faker.random.word(),
              Type: faker.database.type()
          }
+     }),
+     order:_.times(20, function () {
+         return {
+             No: faker.random.uuid(),
+             Description: faker.random.word(),
+             Disp_index: faker.random.word(),
+             Name: faker.random.word(),
+             Type: faker.database.type()
+         }
      })
  }
 }

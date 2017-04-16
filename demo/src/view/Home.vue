@@ -70,6 +70,23 @@
             level1: [
               {name: '快递单号输入', link: 'Order'}
             ]
+          },
+          {
+            name: '会员管理',
+            level1: [
+              {name: '会员账号管理', link: 'Account'},
+              {name: '会员管理', link: 'Associator'},
+              {name: '会员积分导入', link: 'Points'},
+              {name: '会员订单管理', link: 'Orders'},
+              {name: '返积分处理', link: 'Back'},
+              {name: '退换货管理', link: 'Changes'}
+            ]
+          },
+          {
+            name: '采购管理',
+            level1: [
+              {name: '采购查询', link: 'Purchase'}
+            ]
           }
         ]
       }

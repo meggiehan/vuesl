@@ -32,7 +32,7 @@
   import api from '../../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    name: 'user',
+    name: 'order',
     data () {
       return {
         confirms: {
@@ -54,9 +54,16 @@
         column: [
           {text: '订单编号', name: 'No'},
           {text: '会员账号', name: 'Disp_index'},
+          {text: '订单日期', name: 'No'},
+          {text: '支付状态', name: 'No'},
+          {text: '联系人', name: 'No'},
+          {text: '电话', name: 'No'},
+          {text: '地址', name: 'No'},
           {text: '商品名称', name: 'Name'},
           {text: '商品型号', name: 'Phone'},
-          {text: '数量', name: 'Disp_index'}
+          {text: '供应商', name: 'Phone'},
+          {text: '快递公司', name: 'Disp_index'},
+          {text: '快递单号', name: 'Disp_index'}
           // {text: '所属部门', name: 'Disp_index'},
           // {text: '最后登录时间', name: 'Create_time'}
         ],
@@ -111,7 +118,7 @@
       create (name) {
         this.types = [
           {name: 'quit', text: '退出', url: ''},
-          {name: 'save', text: '保存', url: 'user_insert'}
+          {name: 'save', text: '保存', url: 'order_insert'}
         ]
         console.log(name)
         this.resetsingle()
@@ -127,7 +134,7 @@
       edit (idx) {
         this.types = [
           {name: 'quit', text: '退出', url: ''},
-          {name: 'save', text: '保存', url: 'user_update'}
+          {name: 'save', text: '保存', url: 'order_update'}
         ]
         this.show.panel = !this.show.panel
         this.title = '编辑礼包'
@@ -137,7 +144,7 @@
         updata.push(id)
         this.confirms.body = '确定删除？'
         this.$refs.dialog.confirm().then(() => {
-          api.post({JSON: JSON.stringify(updata)}, 'user_delete').then((item) => {
+          api.post({JSON: JSON.stringify(updata)}, 'order_delete').then((item) => {
             this.getdata()
           })
         })

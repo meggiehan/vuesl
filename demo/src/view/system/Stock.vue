@@ -55,7 +55,7 @@ export default {
       },
       title: '',
       method: {
-        list: 'role_list'
+        list: 'stock_list'
       },
       column: [
         {text: '序号', name: 'Disp_index'},
@@ -114,7 +114,7 @@ export default {
     create (name) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_insert'}
+        {name: 'save', text: '保存', url: 'stock_insert'}
       ]
       this.resetsingle()
       for (let i in this.show) {
@@ -130,7 +130,7 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-//        api.post({JSON: JSON.stringify(updata)}, 'role_delete').then((item) => {
+//        api.post({JSON: JSON.stringify(updata)}, 'stock_delete').then((item) => {
 //          this.getdata()
 //        })
         api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
@@ -141,7 +141,7 @@ export default {
     edit (idx) {
       this.types = [
         {name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'role_update'}
+        {name: 'save', text: '保存', url: 'stock_update'}
       ]
       this.show.panel = !this.show.panel
       this.title = '编辑仓库'
