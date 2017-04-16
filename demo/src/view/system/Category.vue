@@ -82,9 +82,9 @@ export default {
       types: [],
       filters: [
         {name: 'Search', size: 'big', type: 'input', val: ''},
-//      {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '区域城市', id: '3'},{title: '账户类型', id: '4'},
-//      {title: '商品分类', id: '5'},{title: '商品品牌', id: '6'},{title: '配送方式', id: '7'},{title: '优惠卷分类', id: '8'},{title: '促销分类', id: '9'},{title: '广告类型', id: '10'},{title: '广告来源', id: '11'},
-//      {title: '礼包分类', id: '12'},{title: '支付方式', id: '13'},{title: '储存方式', id: '14'}]}
+        {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '区域城市', id: '3'},{title: '账户类型', id: '4'},
+        {title: '商品分类', id: '5'},{title: '商品品牌', id: '6'},{title: '配送方式', id: '7'},{title: '优惠卷分类', id: '8'},{title: '促销分类', id: '9'},{title: '广告类型', id: '10'},{title: '广告来源', id: '11'},
+        {title: '礼包分类', id: '12'},{title: '支付方式', id: '13'},{title: '储存方式', id: '14'}]}
         // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }

@@ -73,7 +73,7 @@
         {name: 'No', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
         {name: 'Phone', text: '联系电话', holder: '请输入电话*...', type: 'input', sub: 'input',check: 'is_null'},
         {name: 'Level',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '战略', Id: 1},{Name: 'A', Id: 2}, {Name: 'B', Id: 3},{Name: 'C', Id: 4},{Name: '新', Id: 5}]},
-        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '选择地区', Id: 1}, {Name: '省', Id: 2},{Name: '市', Id: 3}]},
+        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '省', Id: 1},{Name: '市', Id: 2}]},
       ]},
         {name: 'goods', title: '合同', childs:  [
         {name: 'Tpe',size: 'big',type: 'select',text: '供应商类型',text1: '请选择计算方式',list: [{Name: '集采', Id: 1}, {Name: '通用', Id: 2}]},
@@ -131,6 +131,8 @@
       operate (tp, url) {
         (tp === 'sure' || tp === 'save') && this.sure(url, tp)
         tp === 'quit' && this.quit()
+		console.log('111111111',url)
+      	
       },
       sure (url, tp) {
 //    	console.log('mmmm',this.updata)
@@ -190,8 +192,8 @@
 //    	console.log('asjsa', this.updata)
       	if (this.updata[this.now][value.name] === '' || this.updata[this.now][value.name]) {
       		this.updata[this.now][value.name] = value.val
-      		console.log('doyu6666666666666', this.updata.goods)
-      		console.log('asajksjaks11111111111111', this.updata.system)
+//    		console.log('doyu6666666666666', this.updata.goods)
+//    		console.log('asajksjaks11111111111111', this.updata.system)
       	}
 //      this.updata[value.name] = value.val
 //      console.log('assasaasssssssss', value.val)

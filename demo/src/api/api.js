@@ -41,6 +41,10 @@ const METHOD = {
   'category_insert': 'vchange.billtype.insert', //分类添加会员
   'category_update': 'vchange.billtype.update', //分类修改会员
   'category_delete': 'vchange.billtype.delete', //分类删除会员
+  'supplier_list': 'vchange.supplier.list', //供应商列表请求地址
+  'supplier_insert': 'vchange.supplier.insert', //供应商添加
+  'supplier_update': 'vchange.supplier.update', //供应商修改
+  'supplier_delete': 'vchange.supplier.delete', //供应商删除
   'login': 'vchange.admin.login' //登录
 }
 const PAGESIZE = 10
