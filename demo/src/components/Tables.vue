@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-  	 ...mapActions(['getdata', 'setfliter', 'getsingle']),
+    ...mapActions(['getdata', 'setfliter', 'getsingle']),
     limit () {
       this.number = this.number.replace(/\D/g, '')
     },
@@ -73,8 +73,7 @@ export default {
       this.page = idx
       this.$store.dispatch('setfliter', {name: 'PageNo', id: this.page})
       this.$store.dispatch('getdata')
-    },
-   
+    }
   },
   computed: {
     ...mapGetters([
