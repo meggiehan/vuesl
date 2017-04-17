@@ -5,7 +5,7 @@
 		</label>
 		<input type="input" name="" id="" value="" class="arrt" />
 		<a href="javascript:;" class="file">浏览
-        <input type="file" :accept="accepts"  >
+        <input type="file" :accept="accepts" v-bind="val"  @input="change()" >
         <slot></slot>
     	</a>
 	</div>
@@ -14,9 +14,11 @@
 
 <script>
 	/* eslint-disable */
+	import { mapGetters } from 'vuex'
 	export default {
         name : 'MoUpload',
         props : {
+        	child: '',
             accepts : { //允许的上传类型
                 type : String,
                 default : 'image/jpeg,image/jpg,image/png,image/gif'
@@ -25,53 +27,28 @@
             maxSize : {
                 type : Number,
                 default : 0 
-            }, 
-        }
-//      methods: {
-//          upload (event) {
-//              let file = event.target.files[0]
-//              const self = this
-//              const flag = this.flag
-//              if (file) {
-//                  if (this.maxSize) {
-//                      //todo filter file
-//                  }
-//                  //filter file, 文件大小,类型等过滤
-//                  //如果是图片文件
-//                  // const reader = new FileReader()
-//                  // const imageUrl = reader.readAsDataURL(file)
-//                  // img.src = imageUrl //在预览区域插入图片
-//
-//                  const formData = new FormData()
-//                  formData.append('file', file)
-//                  
-//                  //获取token
-//                  this.$http.get(`/api/token/`)
-//                  .then(response => {
-//                      const result = response.body
-//                      formData.append('token', result.token)
-//                      formData.append('key', result.key)
-//                      //提交给七牛处理
-//                      self.$http.post('https://up.qbox.me/', formData, {
-//                          progress(event) {
-//                              self.$emit('progress', parseFloat(event.loaded / event.total * 100), flag) 
-//                          }
-//                      })
-//                      .then(response => {
-//                          const result = response.body
-//                          if (result.hash && result.key) {
-//                              //传递给父组件的complete方法
-//                              self.$emit('complete', 200 , result, flag)
-//                              //让当前target可以重新选择
-//                              event.target.value = null
-//                          } else {
-//                              self.$emit('complete', 500, result, flag)
-//                          }
-//                      }, error => self.$emit('complete', 500, error.message), flag)
-//                  })
-//              }
-//          }
-//      }
+            }
+        },
+        data () {
+		    return {
+		      val: ''
+		    }
+		  },
+	    computed: {
+	    ...mapGetters(['single'])
+	  },
+	  mounted () {
+	    this.val = this.single[this.child.name] || ''
+	    this.$emit('toparent', {name: this.child.name, val: this.val})
+	  },
+	  methods: {
+	    change () {
+	      if (this.child.must === 'int') {
+	        this.val = Number(this.val)
+	      }
+	      this.$emit('toparent', {name: this.child.name, val: this.val})
+	    }
+	  }
     }
 	
 	

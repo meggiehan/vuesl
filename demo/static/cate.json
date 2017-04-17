@@ -1,0 +1,75 @@
+{
+  "cate": [
+          {"name": "家用电器", "id": 10000, "child": [
+            {"name": "3C数码", "id": 10100, "child": [
+              {"name": "手机", "id": 10101, "child": null},
+              {"name": "电脑", "id": 10102, "child": null},
+              {"name": "iphone", "id": 10103, "child": null},
+              {"name": "数据线", "id": 10104, "child": null}
+            ]},
+            {"name": "厨房电器", "id": 10200, "child": [
+              {"name": "电饭煲", "id": 10201, "child": null},
+              {"name": "烤箱", "id": 10202, "child": null},
+              {"name": "料理机", "id": 10203, "child": null},
+              {"name": "面包机", "id": 10204, "child": null}
+            ]},
+            {"name": "生活电器", "id": 10300, "child": [
+              {"name": "加湿器", "id": 10301, "child": null},
+              {"name": "吸尘器", "id": 10302, "child": null},
+              {"name": "净化器", "id": 10303, "child": null},
+              {"name": "熨斗", "id": 10304, "child": null}
+            ]},
+            {"name": "厨房电器", "id": 10400, "child": [
+              {"name": "电饭煲", "id": 10401, "child": null},
+              {"name": "烤箱", "id": 10402, "child": null},
+              {"name": "料理机", "id": 10403, "child": null},
+              {"name": "面包机", "id": 10404, "child": null}
+            ]}
+          ]},
+          {"name": "居家识趣", "id": 20000, "child": [
+            {"name": "烹饪锅具", "id": 20100, "child": [
+              {"name": "炒锅手机", "id": 20101, "child": null},
+              {"name": "奶锅", "id": 20102, "child": null},
+              {"name": "炖锅", "id": 20103, "child": null},
+              {"name": "不粘锅", "id": 20104, "child": null}
+            ]},
+            {"name": "餐饮用品", "id": 20200, "child": [
+              {"name": "保温杯", "id": 20201, "child": null},
+              {"name": "茶杯", "id": 20202, "child": null},
+              {"name": "保温壶", "id": 20203, "child": null},
+              {"name": "刀叉", "id": 20204, "child": null}
+            ]},
+            {"name": "酒类", "id": 20300, "child": [
+              {"name": "白酒", "id": 20301, "child": null},
+              {"name": "红酒", "id": 20302, "child": null},
+              {"name": "啤酒", "id": 20303, "child": null},
+              {"name": "葡萄酒", "id": 20304, "child": null}
+            ]},
+            {"name": "食品", "id": 20400, "child": [
+              {"name": "米油速食", "id": 20401, "child": null},
+              {"name": "罐头", "id": 20402, "child": null},
+              {"name": "料理", "id": 20403, "child": null},
+              {"name": "面包", "id": 20404, "child": null}
+            ]}
+          ]},
+          {"name": "床上那点事", "id": 30000, "child": [
+            {"name": "床品套件", "id": 30100, "child": [
+              {"name": "婚庆", "id": 30101, "child": null},
+              {"name": "天丝", "id": 30102, "child": null},
+              {"name": "儿童", "id": 30103, "child": null},
+              {"name": "真丝", "id": 30104, "child": null}
+            ]},
+            {"name": "枕芯被芯", "id": 30200, "child": [
+              {"name": "蚕丝被", "id": 30201, "child": null},
+              {"name": "羊毛被", "id": 30202, "child": null},
+              {"name": "鹅绒", "id": 30203, "child": null},
+              {"name": "鸭绒", "id": 30204, "child": null}
+            ]},
+            {"name": "床垫", "id": 30300, "child": [
+              {"name": "羊毛垫", "id": 30301, "child": null},
+              {"name": "凉席", "id": 30302, "child": null}
+            ]}
+          ]}
+          
+        ]
+}

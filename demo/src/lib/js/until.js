@@ -1,5 +1,6 @@
 import md5 from 'MD5'
 export const GetSignature = (param, requestdata, secret) => {
+  console.log('wwwqqqqw', param)
   let arr = []
   let result = ''
   let url = ''

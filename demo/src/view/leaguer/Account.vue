@@ -1,12 +1,13 @@
 <template>
   <div class="wrap">
+  	<!--会员管理头部-->
     <tip :parent="nav.parent"
          :child="nav.child"></tip>
     <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
       <div class="option">
-        <button class="btn" @click="create('panel')">创建快递单</button>
+        <button class="btn" @click="create('panel')">创建会员账号</button>
       </div>
       <tables :method="method"
               :column="column"
@@ -32,7 +33,7 @@
   import api from '../../api/api.js'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    name: 'order',
+    name: 'account',
     data () {
       return {
         confirms: {
@@ -40,31 +41,24 @@
           body: '确定删除?'
         },
         show: {
-          panel: false
+          panel: false,
+          auth: false,
+          panelword: false
         },
         nav: {
-          parent: '订单管理',
-          child: '快递单号输入'
+          parent: '会员管理',
+          child: '会员账号管理'
         },
         title: '',
         authId: '',
         method: {
-          list: 'user_list'
+          list: 'account_list'
         },
         column: [
-          {text: '订单编号', name: 'Name'},
-          {text: '会员账号', name: 'Number'},
-          {text: '订单日期', name: 'Description'},
-          {text: '支付状态', name: 'Remark'},
-          {text: '联系人', name: 'Type'},
-          // {text: '电话', name: 'No'},
-          // {text: '地址', name: 'No'},
-          // {text: '商品名称', name: 'Name'},
-          // {text: '商品型号', name: 'Phone'},
-          // {text: '供应商', name: 'Phone'},
-          // {text: '快递公司', name: 'Disp_index'},
-          // {text: '快递单号', name: 'Disp_index'}
-          // {text: '所属部门', name: 'Disp_index'},
+          {text: '序号', name: 'Disp_index'},
+          {text: '用户名', name: 'No'},
+          {text: '姓名', name: 'Name'},
+          {text: '手机号码', name: 'Phone'},
           {text: '最后登录时间', name: 'Create_time'}
         ],
         options: [
@@ -72,23 +66,12 @@
           {name: '删除', method: this.del}
         ],
         panels: [
-          {name: 'Name', text: '原快递公司', holder: '请输入公司名*...', type: 'input', sub: 'input', check: 'is_null'},
-          {name: 'Number', text: '原快递单号', holder: '请输入单号*...', type: 'input', sub: 'password', check: 'is_null'},
-          {
-            name: 'Company',
-            size: 'small',
-            type: 'select',
-            text: '快递公司',
-            text1: '全部公司',
-            list: [{Name: '顺丰快递', Id: 'menu'}, {Name: '韵达快递', Id: 'auth'}, {Name: '中通快递', Id: 'menu'}, {Name: '邮政包裹', Id: 'auth'}, {Name: '银婕快递', Id: 'menu'}]
-          },
-          {name: 'Remark', text: '备注', holder: '请输入备注...', type: 'textarea', sub: 'textarea', check: 'is_null'}
-          // {name: 'Name', text: '商品名称', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
-          // {name: 'Phone', text: '商品型号', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
-          // {name: 'Email', text: '数量', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'}
-          // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
-          // {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
-          // {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
+          {name: 'No', text: '用户名', holder: '请输入用户名*...', type: 'input', sub: 'input', check: 'is_null'},
+          {name: 'Password', text: '密码', holder: '请输入密码*...', type: 'input', sub: 'password', check: 'is_null'},
+          {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
+          {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
+          {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'},
+          {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]}
         ],
         types: ['sure', 'quit'],
         filters: [
@@ -118,7 +101,7 @@
       create (name) {
         this.types = [
           {name: 'quit', text: '退出', url: ''},
-          {name: 'save', text: '保存', url: 'order_insert'}
+          {name: 'save', text: '保存', url: 'account_insert'}
         ]
         console.log(name)
         this.resetsingle()
@@ -129,25 +112,25 @@
             this.show[i] = false
           }
         }
-        this.title = '快递单号创建'
+        this.title = '会员账号创建'
       },
       edit (idx) {
         this.types = [
           {name: 'quit', text: '退出', url: ''},
-          {name: 'save', text: '保存', url: 'order_update'}
+          {name: 'save', text: '保存', url: 'account_update'}
         ]
         this.show.panel = !this.show.panel
-        this.title = '编辑礼包'
+        this.title = '编辑会员账号'
       },
       del (idx, id) {
         let updata = []
         updata.push(id)
         this.confirms.body = '确定删除？'
         this.$refs.dialog.confirm().then(() => {
-//          api.post({JSON: JSON.stringify(updata)}, 'order_delete').then((item) => {
+//          api.post({JSON: JSON.stringify(updata)}, 'account_delete').then((item) => {
 //            this.getdata()
 //          })
-          api.mockDel({JSON: JSON.stringify(updata)}, 'order').then((item) => {
+          api.mockDel({JSON: JSON.stringify(updata)}, 'account').then((item) => {
             this.getdata()
           })
         })

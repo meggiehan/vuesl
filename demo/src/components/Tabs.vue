@@ -65,6 +65,7 @@
         index: 0,
         check: [],
         now: 'system',
+        update:{},
         tdx: [],
         list: [
         {name: 'system', title: '创建供应商', childs: [
@@ -72,7 +73,7 @@
         {name: 'No', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
         {name: 'Phone', text: '联系电话', holder: '请输入电话*...', type: 'input', sub: 'input',check: 'is_null'},
         {name: 'Level',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '战略', Id: 1},{Name: 'A', Id: 2}, {Name: 'B', Id: 3},{Name: 'C', Id: 4},{Name: '新', Id: 5}]},
-        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '选择地区', Id: 1}, {Name: '省', Id: 2},{Name: '市', Id: 3}]},
+        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '省', Id: 1},{Name: '市', Id: 2}]},
       ]},
         {name: 'goods', title: '合同', childs:  [
         {name: 'Tpe',size: 'big',type: 'select',text: '供应商类型',text1: '请选择计算方式',list: [{Name: '集采', Id: 1}, {Name: '通用', Id: 2}]},
@@ -105,7 +106,6 @@
 			this.updata[val.name][value.name] = ''
 		})
       })
-      console.log('asajksjaks', this.updata)
     },
 	computed: {
       ...mapGetters([
@@ -131,9 +131,11 @@
       operate (tp, url) {
         (tp === 'sure' || tp === 'save') && this.sure(url, tp)
         tp === 'quit' && this.quit()
+		console.log('111111111',url)
+      	
       },
       sure (url, tp) {
-      	console.log('mmmm',this.updata)
+//    	console.log('mmmm',this.updata)
 //    	console.log('asasasasas', this.updata)
 //    	let result = this.checkdata(this.updata, this.check)
 //      if (result.length > 0) {
@@ -141,7 +143,7 @@
 //        return
 //      }
         if (tp === 'save') {
-          this.updata.Id = this.single.Id
+          this.updata.system.Id = this.single.Id
         }
         if (url === 'menu_insert' || url === 'menu_update') {
           this.updata.Image1 = ''
@@ -158,14 +160,23 @@
           this.updata.Remark = ''
           this.updata.DispIndex = '1'
         }
-        if (true) {
-        	console.log('asjkaskj', this.updata)
-        	return
-        }
-        api.post({JSON: JSON.stringify(this.updata)}, url).then((item) => {
+//      if (true) {
+//      	console.log('asjkaskj99999999999999', this.updata)
+//      	return
+//      }
+		console.log('222222',this.index)
+		if ( this.index == 0){
+			api.post({JSON: JSON.stringify(this.updata.system)}, url).then((item) => {
           this.$emit('close', {name: 'tabs'})
           this.$store.dispatch('getdata')
         })
+		}
+        else {
+        	api.post({JSON: JSON.stringify(this.updata.goods)}, url).then((item) => {
+          this.$emit('close', {name: 'tabs'})
+          this.$store.dispatch('getdata')
+        })
+        }
       },
       quit () {
         this.$emit('close', {name: 'tabs'})
@@ -174,16 +185,14 @@
       	this.now = name
         this.index = (this.page - 1) * 5 + idx
         this.addcheck(this.list[this.index].childs)
-        console.log(this.list[this.index].name)
+//      console.log(this.list[this.index].name)
 //      this.tdx = this.updata[this.list[this.index].name] ? JSON.parse(JSON.stringify(this.updata[this.list[this.index].name])) : []
       },
       change (value) {
-//    	console.log('asjsa', this.updata)
       	if (this.updata[this.now][value.name] === '' || this.updata[this.now][value.name]) {
-      		this.updata[this.now][value.name] = value.val	
+      		this.updata[this.now][value.name] = value.val
       	}
 //      this.updata[value.name] = value.val
-//      console.log('assasaasssssssss', value.val)
       },
       up () {
         console.log(this.updata)

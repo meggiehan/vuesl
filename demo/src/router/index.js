@@ -16,6 +16,13 @@ import Tennet from '@/view/system/Tennet'
 import Goods from '@/view/goods/Goods'
 import Basic from '@/view/goods/Basic'
 import Order from '@/view/orders/Order'
+import Account from '@/view/leaguer/Account'
+import Associator from '@/view/leaguer/Associator'
+import Back from '@/view/leaguer/Back'
+import Changes from '@/view/leaguer/Changes'
+import Orders from '@/view/leaguer/Orders'
+import Points from '@/view/leaguer/Points'
+import Purchase from '@/view/purchase/Purchase'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
 Vue.use(Router)
@@ -84,9 +91,44 @@ const router = new Router({
           component: Basic
         },
         {
-          path: '/orders',
+          path: '/order',
           name: 'Order',
           component: Order
+        },
+        {
+          path: '/account',
+          name: 'Account',
+          component: Account
+        },
+        {
+          path: '/associator',
+          name: 'Associator',
+          component: Associator
+        },
+        {
+          path: '/back',
+          name: 'Back',
+          component: Back
+        },
+        {
+          path: '/changes',
+          name: 'Changes',
+          component: Changes
+        },
+        {
+          path: '/orders',
+          name: 'Orders',
+          component: Orders
+        },
+        {
+          path: '/points',
+          name: 'Points',
+          component: Points
+        },
+        {
+          path: '/purchase',
+          name: 'Purchase',
+          component: Purchase
         }
       ]
     },

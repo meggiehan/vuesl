@@ -1,11 +1,13 @@
 <template>
 <div class="wrap">
-  <div class="tab-bar"><span>您在这里</span><span class="parent">基本信息</span><span class="parent active">> SKU</span><span class="parent">>规格参数</span></div>
+  <div class="tab-bar"><span>您在这里</span><span class="parent" v-bind:class="{active:index===0}" @click="index=0">基本信息</span><span class="parent" v-bind:class="{active:index===1}" @click="index=1">> SKU</span><span class="parent" v-bind:class="{active:index===2}" @click="index=2">>规格参数</span></div>
   <div class="m-title">
     <p>商品基本信息</p>
   </div>
   <div class="main">
-    <baseinfo></baseinfo>
+    <baseinfo v-show="index === 0"></baseinfo>
+    <sku v-show="index === 1"></sku>
+    <parame v-show="index === 2"></parame>
   </div>
   <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
@@ -24,7 +26,9 @@ export default {
   data () {
     return {
       confirms: {},
-      msg: ''
+      msg: '',
+      step: ['base', 'sku', 'parame'],
+      index: 0
     }
   },
   components: {
@@ -63,6 +67,7 @@ export default {
     .parent
       color:#666666
       margin-left:.09rem
+      cursor:pointer
     .active
       color:#318EBF
       margin-left:.09rem
