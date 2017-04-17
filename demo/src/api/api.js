@@ -153,6 +153,16 @@ api.user = (requestData, method) => {
   })
 }
 
+api.getJson = (method) => {
+  return new Promise((resolve, reject) => {
+    Vue.http.get(method, {
+      emulateJSON: true,
+    }).then(function (response) {
+      resolve(response)
+    })
+  })
+}
+
 //模拟数据
 const mockUrl = 'http://localhost:3000/'
 api.mockPost = (requestData, method) => {
