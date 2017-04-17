@@ -45,6 +45,10 @@ const METHOD = {
   'supplier_insert': 'vchange.supplier.insert', //供应商添加
   'supplier_update': 'vchange.supplier.update', //供应商修改
   'supplier_delete': 'vchange.supplier.delete', //供应商删除
+  'stock_list': 'vchange.warehouse.list', //仓库列表
+  'stock_insert': 'vchange.warehouse.insert', //仓库添加
+  'stock_update': 'vchange.warehouse.update', //仓库修改
+  'stock_delete': 'vchange.warehouse.delete', //仓库删除
   'login': 'vchange.user.login', //登录
    'logout': 'vchange.user.logout' //退出
 }
@@ -62,7 +66,7 @@ const PARAM = {
 
 // const baseUrl = 'http://192.168.2.162/VChangeUserService/Router.aspx'
 
-const baseUrl = 'http://192.168.2.110/Router.aspx'
+const baseUrl = 'http://192.168.2.118/Router.aspx'
 // const baseUrl ='http://192.168.2.24:81'
 const api = {}
 let globalxhr = ''
