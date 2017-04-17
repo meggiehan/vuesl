@@ -65,9 +65,9 @@
               {"name": "鹅绒", "id": 30203, "child": null},
               {"name": "鸭绒", "id": 30204, "child": null}
             ]},
-            {"name": "床垫", "id": 20300, "child": [
-              {"name": "羊毛垫", "id": 20301, "child": null},
-              {"name": "凉席", "id": 20302, "child": null}
+            {"name": "床垫", "id": 30300, "child": [
+              {"name": "羊毛垫", "id": 30301, "child": null},
+              {"name": "凉席", "id": 30302, "child": null}
             ]}
           ]}
           

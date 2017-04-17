@@ -4,13 +4,13 @@
     <div class="s-title f-l">
       {{child.text}}：
     </div>
-    <div class="s-part f-l">
-      <p class="p-title ellipsis" @click="slide()">{{text}}</p>
-      <p class="s-down" @click="slide()"><span class="trangle"></span></p>
-      <ul class="list-role" v-show="isshow">
-        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.Id)>-1}" @click="change(item.Id)"><a href="javascript:;" class="m-item ellipsis">{{item.Name}}</a></li>
+    <div class="s-part f-l" contenteditable="true" @blur="isshow=false">
+      <p contenteditable="false" class="p-title ellipsis" @click="slide()">{{text}}</p>
+      <p contenteditable="false" class="s-down" @click="slide()"><span class="trangle"></span></p>
+      <ul contenteditable="false" class="list-role" v-show="isshow" @click="stop">
+        <li v-for="(item,idx) in child.list" v-bind:class="{active:list.indexOf(item.Id)>-1}"  @click="change(item.Id, $event)"><span class="m-item ellipsis">{{item.Name}}</span></li>
         <li class="operate clearfloat">
-          <a href="javascript:;" class="btn-sure" @click="sure()">确定</a>
+          <span class="btn-sure" @click="sure">确定</span>
         </li>
       </ul>
     </div>
@@ -47,14 +47,19 @@
       })
     },
     methods: {
+      stop (e) {
+        e.stopPropagation()
+      },
       slide () {
         this.isshow = !this.isshow
         this.list = JSON.parse(JSON.stringify(this.result))
         this.isshow && this.filltext()
       },
-      sure () {
+      sure (e) {
+        e.stopPropagation()
         this.isshow = false
         this.result = JSON.parse(JSON.stringify(this.list))
+        console.log('hshahs', this.result)
         this.filltext()
         this.$emit('toparent', {name: this.child.name, val: this.result})
       },
@@ -67,13 +72,15 @@
         })
         this.text = this.text.substring(0, this.text.length - 1) || this.child.text
       },
-      change (id) {
+      change (id, e) {
+        e.stopPropagation()
         let index = this.list.indexOf(id)
         if (index === -1) {
           this.list.push(id)
         } else {
           this.list.splice(index, 1)
         }
+        console.log(id)
       }
     }
   }

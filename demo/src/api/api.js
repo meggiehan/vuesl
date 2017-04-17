@@ -45,9 +45,8 @@ const METHOD = {
   'supplier_insert': 'vchange.supplier.insert', //供应商添加
   'supplier_update': 'vchange.supplier.update', //供应商修改
   'supplier_delete': 'vchange.supplier.delete', //供应商删除
-  'login': 'vchange.admin.login',//登录
   'login': 'vchange.user.login', //登录
-  'logout': 'vchange.user.logout' //退出
+   'logout': 'vchange.user.logout' //退出
 }
 const PAGESIZE = 10
 const SECRET = 'ED7B184CCAE248FF'
@@ -150,19 +149,6 @@ api.user = (requestData, method) => {
     }).then(function (response) {
       resolve(response.body.Response.UserList)
 
-    })
-  })
-}
-
-api.getJson = (method) => {
-  return new Promise((resolve, reject) => {
-    Vue.http.get(method, {
-      headers: {
-        'Content-Type': 'multipart/form-data; charset=UTF-8'
-      },
-      emulateJSON: true,
-    }).then(function (response) {
-      resolve(response)
     })
   })
 }

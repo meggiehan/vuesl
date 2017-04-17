@@ -15,6 +15,7 @@
 				
 		 </div>
 		 <transition name="slide-fade">
+		 	<!--创建会员订单-->
 		 	<!--弹出层的小组件（里面所有的框和取消 和保存）-->
 		    <panel :panels="panels" :types="types" @close="close" v-if="show.panel">
 		    	<!--@close 点击退出 弹出层消失-->
@@ -22,13 +23,13 @@
 				  <span slot="title">{{title}}</span>
 				</panel>
 		 </transition>
-		 <!--<confirm ref="dialog" :msg="confirms"></confirm>-->
+		 <confirm ref="dialog" :msg="confirms"></confirm>
   </div>
 
 </template>
 
 <script>
-    import Tip from '../../components/Tip.vue'
+  import Tip from '../../components/Tip.vue'
 	import Filters from '../../components/Filters.vue'
 	import Panel from '../../components/Panel.vue'
 	import Confirm from '../../components/Modal/Confirm.vue'
@@ -39,6 +40,10 @@
 	  name: 'orders',
 		data () {
 			return {
+				confirms: {
+					title: '提示',
+          body: '确定删除?'
+				},
 				nav: {
 					parent: '会员管理',
 					child: '会员订单管理'
@@ -47,7 +52,7 @@
           {name: 'Search', size: 'big', type: 'input', val: ''}
         ],
 				method: {
-					list: 'user_list'
+					list: 'orders_list'
 					},
 				show: {
 					panel: false,
@@ -60,9 +65,7 @@
           {name: 'Name', text: '姓名', holder: '请输入姓名*...', type: 'input', sub: 'input', check: 'is_null'},
           {name: 'Phone', text: '手机', holder: '请输入手机号*...', type: 'input', sub: 'input', check: 'is_mobile'},
           {name: 'Email', text: '邮箱', holder: '请输入邮箱', type: 'input', sub: 'email', check: 'is_email'},
-          {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]},
-          {name: 'RoleIdList', text: '用户角色', type: 'multi', sub: 'multi', get: {url: 'role_list'}, param: {PageNo: 1, Search: ''}, list: []},
-          {name: 'DeptIdList', text: '选择部门', type: 'multi', sub: 'multi', get: {url: 'part_list'}, param: {PageNo: 1, Search: ''}, list: []}
+          {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]}
         ],
 				title: '',
 				types: ['sure', 'quit'],
@@ -71,16 +74,11 @@
           {text: '用户名', name: 'No'},
           {text: '姓名', name: 'Name'},
           {text: '手机号码', name: 'Phone'},
-          {text: '用户角色', name: 'Disp_index'},
-          {text: '所属部门', name: 'Disp_index'},
           {text: '最后登录时间', name: 'Create_time'}
         ],
         options: [
           {name: '编辑', method: this.edit},
-          {name: '权限', method: this.auth},
-          {name: '冻结', method: this.freeze},
-          {name: '删除', method: this.del},
-          {name: '密码重置', method: this.panelword}
+          {name: '删除', method: this.del}
         ]
 			}
 		},
@@ -99,7 +97,7 @@
 			create(name) {
 				this.types=[
 				{name: 'quit', text: '退出', url: ''},
-        {name: 'save', text: '保存', url: 'user_insert'}
+        {name: 'save', text: '保存', url: 'orders_insert'}
 				]
 				console.log('I love you',this.types)
 				this.resetsingle()
@@ -112,7 +110,28 @@
 					}
 				}
         this.title='会员订单创建'
-			}
+			},
+			del (idx, id) {
+      let updata = []
+      updata.push(id)
+      this.$refs.dialog.confirm().then(() => {
+//        api.post({JSON: JSON.stringify(updata)}, 'orders_delete').then((item) => {
+//          this.getdata()
+//        })
+        api.mockDel({JSON: JSON.stringify(updata)}, 'orders').then((item) => {
+          this.getdata()
+        })
+      })
+      console.log(123456,updata)
+    },
+    edit (idx) {
+      this.types = [
+        {name: 'quit', text: '退出', url: ''},
+        {name: 'save', text: '保存', url: 'orders_update'}
+      ]
+      this.show.panel = !this.show.panel
+      this.title = '编辑仓库'
+    }
 		}
 	}
 </script>

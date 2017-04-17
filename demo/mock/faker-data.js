@@ -58,7 +58,8 @@ module.exports = function () {
              Name6: faker.random.word(),
              Name7: faker.random.word(),
              Name8: faker.random.word(),
-             DispIndex: faker.random.number()
+             DispIndex: faker.random.number(),
+             Create_time: faker.date.past()
          }
      }),
      category:_.times(20, function () {
@@ -72,11 +73,24 @@ module.exports = function () {
      }),
      order:_.times(20, function () {
          return {
-             No: faker.random.uuid(),
-             Description: faker.random.word(),
-             Disp_index: faker.random.word(),
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
              Name: faker.random.word(),
-             Type: faker.database.type()
+             Number: faker.random.number(),
+             Create_time: faker.date.past()
+         }
+     }),
+     orders:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
          }
      })
  }
