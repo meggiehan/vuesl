@@ -58,7 +58,6 @@ export default {
         list: 'stock_list'
       },
       column: [
-        {text: '序号', name: 'Disp_index'},
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
         {text: '退货联系人', name: 'Name2'},
@@ -130,12 +129,12 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-        api.post({JSON: JSON.stringify(updata)}, 'stock_delete').then((item) => {
-          this.getdata()
-        })
-//        api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
+//        api.post({JSON: JSON.stringify(updata)}, 'stock_delete').then((item) => {
 //          this.getdata()
 //        })
+        api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
+          this.getdata()
+        })
       })
     },
     edit (idx) {
