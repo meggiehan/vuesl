@@ -103,6 +103,28 @@ module.exports = function () {
              Name: faker.random.word(),
              Number: faker.random.number()
          }
+     }),
+     account:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
+     }),
+     associator:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
      })
  }
 }
