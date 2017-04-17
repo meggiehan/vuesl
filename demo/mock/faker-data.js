@@ -92,6 +92,17 @@ module.exports = function () {
              Name: faker.random.word(),
              Number: faker.random.number()
          }
+     }),
+     points:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
      })
  }
 }
