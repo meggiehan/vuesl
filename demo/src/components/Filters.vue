@@ -31,9 +31,9 @@
   .filters
     min-height:.9rem
     padding:.11rem 0
-    border-bottom:.01rem solid #a3aeb
+    border-bottom:.01rem solid #a3aeb1
     .wrap-component
-      padding:.1rem .59rem .1rem 0 
+      padding:.1rem .59rem .1rem 0
       padding-right:.59rem
 </style>
 
