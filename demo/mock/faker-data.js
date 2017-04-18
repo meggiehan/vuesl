@@ -58,28 +58,95 @@ module.exports = function () {
              Name6: faker.random.word(),
              Name7: faker.random.word(),
              Name8: faker.random.word(),
-             DispIndex: faker.random.number()
+             DispIndex: faker.random.number(),
+             Create_time: faker.date.past()
          }
      }),
-     category:_.times(20, function () {
-         return {
-             id: faker.random.uuid(),
-             Description: faker.random.word(),
-             No: faker.random.word(),
-             Name: faker.random.word(),
-             Type: faker.database.type()
-         }
-     }),
+//   category:_.times(20, function () {
+//       return {
+//           id: faker.random.uuid(),
+//           Description: faker.random.word(),
+//           No: faker.random.word(),
+//           Name: faker.random.word(),
+//           Type: faker.database.type()
+//       }
+//   }),
      order:_.times(20, function () {
          return {
              id: faker.random.uuid(),
-             No: faker.random.uuid(),
+             No: faker.random.word(),
              Remark: faker.random.word(),
              Company: faker.random.word(),
              Name: faker.random.word(),
              Number: faker.random.number(),
              Create_time: faker.date.past()
          }
+     }),
+     orders:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
+     }),
+     points:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
+     }),
+     account:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
+     }),
+     associator:_.times(20, function () {
+         return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+         }
+     }),
+     back:_.times(20, function () {
+          return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+          }
+     }),
+     changes:_.times(20, function () {
+          return {
+             id: faker.random.uuid(),
+             No: faker.random.word(),
+             Remark: faker.random.word(),
+             Company: faker.random.word(),
+             Phone: faker.random.word(),
+             Name: faker.random.word(),
+             Number: faker.random.number()
+          }
      })
  }
 }

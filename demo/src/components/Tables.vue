@@ -14,6 +14,7 @@
           </tr>
         </tbody>
     </table>
+    <!--分页显示-->
     <ul class="page" v-if="pages.total>0">
       <li class="chevron" @click="prev('min')"><</li>
       <li class="page-item" v-for="n in pages.list" @click="change(n)" v-bind:class="{active:n==pages.num}">{{n}}</li>
@@ -43,6 +44,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getdata', 'setfliter', 'getsingle']),
     limit () {
       this.number = this.number.replace(/\D/g, '')
     },
@@ -71,8 +73,7 @@ export default {
       this.page = idx
       this.$store.dispatch('setfliter', {name: 'PageNo', id: this.page})
       this.$store.dispatch('getdata')
-    },
-    ...mapActions(['getdata', 'setfliter', 'getsingle'])
+    }
   },
   computed: {
     ...mapGetters([

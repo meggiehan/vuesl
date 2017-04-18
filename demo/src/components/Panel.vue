@@ -46,7 +46,7 @@
       return {
         updata: {},
         check: [],
-        mock: ['stock', 'order']
+        mock: ['stock', 'order', 'orders', 'points', 'account', 'associator', 'back', 'changes']
       }
     },
     components: {

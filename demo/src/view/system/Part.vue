@@ -62,8 +62,8 @@ export default {
         {name: '删除', method: this.del}
       ],
       panels: [
-        {name: 'No', text: '编号', holder: '请输入编号...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'No', text: '编号', holder: '请输入编号*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         // {name: 'ParentId', text: '上级部门', holder: '部门名称...', type: 'input', sub: 'input'},
         {
           name: 'ParentId',
@@ -75,8 +75,8 @@ export default {
           get: {url: 'part_list'},
           param: {PageNo: 1, Search: ''}
         },
-        {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
-        {name: 'UserIdList', text: '描述', holder: '请输部门成员或手机号', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
+        {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'},
+        {name: 'UserIdList', text: '描述', holder: '请输部门成员或手机号*...', type: 'searcher', sub: 'searcher', get: {url: 'user_list'}, param: {PageNo: 1, Search: ''}}
         // {name: 'Status', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 2}]},
         // {name: 'Description', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'},
         // {name: 'FuncIdList', text: '', holder: '', type: 'manage', sub: 'manage'}
