@@ -67,11 +67,8 @@ export default {
         {name: 'SubDomain', text: '子域名', holder: '请输入子域名*...', type: 'input', sub: 'input'},
         {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'BizType', text: 'Biz类型', holder: '请输人Biz类型*...', type: 'input', sub: 'input'},
-        {name: 'Province', text: '省份', holder: '请输入省份*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'TradeNo', text: '商业模式', holder: '请输入商业模式*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'District', text: '地区', holder: '请输入地区*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'FaxPhone', text: '传真号', holder: '请输入传真号*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Address', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'ContactName', text: '联系人', holder: '请输入联系人名*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'PostCode', text: '邮编', holder: '请输入邮编*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'ContactPhoneNo', text: '电话', holder: '请输入联系人电话*...', type: 'input', sub: 'input', check: 'is_mobile'},
@@ -79,14 +76,14 @@ export default {
         {name: 'Phone', text: '联系电话', holder: '请输入联系电话*...', type: 'input', sub: 'input', check: 'is_mobile'},
         {name: 'JobLv', text: '工作职位', holder: '请输入工作职位*...', type: 'input', sub: 'input'},
         {name: 'Scale', text: '公司规模', holder: '请输入公司规模*...', type: 'input', sub: 'input', check: 'is_null'},
-        // {name: 'Remark', text: '备注', holder: '请输入备注...', type: 'textarea', sub: 'textarea', check: 'is_null'},
+        {name: 'address', type: 'location', holder: '请输入地址*...' , check:'is_null'},
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
+
+
       ],
       types: [],
       filters: [
         {name: 'Search', size: 'big', type: 'input', val: ''}
-        // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-        // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
       ]
     }
   },

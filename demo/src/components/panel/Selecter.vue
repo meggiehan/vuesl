@@ -2,11 +2,11 @@
 <template>
   <div class="s-lis clearfloat">
     <label for="">{{child.text}}：</label>
-    <div class="s-part f-l" contenteditable="true" @blur="isshow=false">
-      <p contenteditable="false" class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
-      <p contenteditable="false" class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
-      <ul contenteditable="false" class="list-role" v-show="isshow">
-        <li contenteditable="false" class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+    <div class="s-part f-l" contenteditable="true" spellcheck="false" @blur="isshow=false">
+      <p contenteditable="false" spellcheck="false" class="p-title ellipsis" @click="isshow = !isshow">{{text1}}</p>
+      <p contenteditable="false" class="s-down" spellcheck="false" @click="isshow = !isshow"><span class="trangle"></span></p>
+      <ul contenteditable="false" class="list-role" spellcheck="false" v-show="isshow">
+        <li contenteditable="false" class="ellipsis" spellcheck="false" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
       </ul>
     </div>
   </div>
@@ -91,6 +91,7 @@
       text-align:right
       float: left
   .s-part
+    outline: none
     height: .5rem
     border-radius: .06rem
     border: .01rem solid #c6c6c6
@@ -99,6 +100,8 @@
     padding: 0 0 0 .1rem
     color: #2e2e3d
     cursor: pointer
+    *
+      outline: none
     .s-down
       width: .5rem
       height: .25rem
@@ -151,4 +154,23 @@
           background: #dfeaed
         &:hover
           background: #dfeaed
+  .s-list
+      overflow:hidden
+      padding:.1rem 0
+      // text-align: justify
+      // text-align-last: justify
+      // text-justify: inter-ideograph
+      label
+        line-height:.5rem
+        margin-right:.15rem
+        width:.8rem
+        display:inline-block
+        height:.5rem
+        text-align:right
+      input
+        padding:0 .1rem
+        width:3.5rem
+        height:.5rem
+        border:.01rem solid #c6c6c6
+        border-radius:.06rem
 </style>

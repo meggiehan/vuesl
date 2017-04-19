@@ -1,3 +1,4 @@
+
 module.exports = function () {
   var faker = require("faker");
   faker.locale = "zh_CN";
@@ -147,6 +148,15 @@ module.exports = function () {
         Name: faker.random.word(),
         Number: faker.random.number()
       }
+    }),
+    parameters: _.times(20, function () {
+      return {
+        id: faker.random.uuid(),
+        No: faker.random.word(),
+        Name: faker.random.word()
+      }
     })
   }
 }
+
+

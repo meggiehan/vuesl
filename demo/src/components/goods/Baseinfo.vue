@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="base-line clearfloat">
-      <div class="line-form f-l w3">
+      <div class="line-form f-l w4">
         <div class="line-title">
           V联价：
         </div>
@@ -82,7 +82,15 @@
           <input type="text">
         </div>
       </div>
-      <div class="line-form f-l w3">
+      <div class="line-form f-l w4">
+        <div class="line-title">
+          积分：
+        </div>
+        <div class="forminput">
+          <input type="text">
+        </div>
+      </div>
+      <div class="line-form f-l w4">
         <div class="line-title">
           现金
         </div>
@@ -90,7 +98,7 @@
           <input type="text">
         </div>
       </div>
-      <div class="line-form f-l w3">
+      <div class="line-form f-l w4">
         <div class="line-title">
           市场
         </div>
@@ -224,6 +232,7 @@
       },
       delCat (idx) {
         this.cateall.splice(idx, 1)
+        this.isrepeat.splice(idx, 1)
       },
       addTo (idx, id, name) {
         let temp = {
@@ -398,8 +407,8 @@
         min-height:.5rem
         &.wd
           width:50%
-        &.w3
-          width:33.33%
+        &.w4
+          width:25%
         &.goods-title
           margin-right:1.8rem
         .forminput
@@ -421,6 +430,8 @@
             border:0
           .select
             li
+              user-select:none
+              cursor:default
               float:left
               height:.5rem
               line-height:.5rem
