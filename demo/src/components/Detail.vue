@@ -13,30 +13,21 @@
     </div>
     <table border='0' cellspacing="0" cellpadding="5" width='720' height='100'>
       <tr>
-        <th>商品名称</th>
-        <th>规格</th>
-        <th>货号</th>
-        <th>销售单价</th>
-        <th>数量</th>
-        <th>运费</th>
-        <th>总金额</th>
-        <th>订单状态</th>
-        <th>配送状态</th>
-        <th>采购方式</th>
-        <th>优惠价方式</th>
+        <!--<th>商品名称</th>-->
+        <!--<th>规格</th>-->
+        <!--<th>货号</th>-->
+        <!--<th>销售单价</th>-->
+        <!--<th>数量</th>-->
+        <!--<th>运费</th>-->
+        <!--<th>总金额</th>-->
+        <!--<th>订单状态</th>-->
+        <!--<th>配送状态</th>-->
+        <!--<th>采购方式</th>-->
+        <!--<th>优惠价方式</th>-->
+        <th v-for='item in list'>{{item.text}}</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td v-for='item in list'></td>
       </tr>
     </table>
     <div class="logistics">
@@ -64,7 +55,20 @@
     },
     data () {
       return {
-        updata: {}
+        updata: {},
+        list: [
+          {text: '商品名称'},
+          {text: '规格'},
+          {text: '货号'},
+          {text: '销售单价'},
+          {text: '数量'},
+          {text: '运费'},
+          {text: '总金额'},
+          {text: '订单状态'},
+          {text: '配送状态'},
+          {text: '采购方式'},
+          {text: '优惠价方式'}
+        ]
       }
     },
     components: {
