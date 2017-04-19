@@ -62,6 +62,7 @@
             level1: [
               {name: '商品列表', link: 'Goods'},
               {name: '基本信息', link: 'Basic'},
+              {name: '商品目录', link: 'Catalogue'},
               {name: '首页', link: 'Index'}
             ]
           },

@@ -88,7 +88,7 @@
 .haa
   width:1119px;
   float:right;
-  transform: translateY(0);
+  // transform: translateY(0);
   .s-lis
     width:50%
     float:left;
@@ -105,7 +105,7 @@
     height: .5rem
     border-radius: .06rem
     border: .01rem solid #c6c6c6
-    width: 1.8rem
+    width: 3.5rem
     position: relative
     padding: 0 0 0 .1rem
     color: #2e2e3d
@@ -177,7 +177,7 @@
         height:.5rem
         text-align:right
       input
-        width: 890px;
+        width: 9.11rem;
         padding:0 .1rem
         // width:3.5rem
         height:.5rem

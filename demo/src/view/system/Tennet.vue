@@ -67,6 +67,7 @@ export default {
         {name: 'SubDomain', text: '子域名', holder: '请输入子域名*...', type: 'input', sub: 'input'},
         {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'BizType', text: 'Biz类型', holder: '请输人Biz类型*...', type: 'input', sub: 'input'},
+        {name: 'address', type: 'location', holder: '请输入地址*...' , check:'is_null', col: 'full'},
         {name: 'TradeNo', text: '商业模式', holder: '请输入商业模式*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'FaxPhone', text: '传真号', holder: '请输入传真号*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'ContactName', text: '联系人', holder: '请输入联系人名*...', type: 'input', sub: 'input', check: 'is_null'},
@@ -76,7 +77,6 @@ export default {
         {name: 'Phone', text: '联系电话', holder: '请输入联系电话*...', type: 'input', sub: 'input', check: 'is_mobile'},
         {name: 'JobLv', text: '工作职位', holder: '请输入工作职位*...', type: 'input', sub: 'input'},
         {name: 'Scale', text: '公司规模', holder: '请输入公司规模*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'address', type: 'location', holder: '请输入地址*...' , check:'is_null'},
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
 
 

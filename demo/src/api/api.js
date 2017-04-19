@@ -3,7 +3,8 @@ import Vue from 'vue'
 import { GetSignature } from '../lib/js/until.js'
 const gettime = (time) => {
   let tzoffset = (new Date()).getTimezoneOffset() * 60000
-  let localISOTime = (new Date(Date.now() - tzoffset)).toISOString()
+  let localISOTime = (
+    ew Date(Date.now() - tzoffset)).toISOString()
   localISOTime = localISOTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').replace(/(-)/g, '-')
   return localISOTime
 }

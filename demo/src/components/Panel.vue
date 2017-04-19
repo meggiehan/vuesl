@@ -3,7 +3,7 @@
  <div class="pannel" v-bind:class="styles">
     <p class="p-title"><slot name="title"></slot{{styles}}</p>
     <div class="clearfloat">
-      <div class="form-input" v-for="item in panels">
+      <div :class="item.col=='full'?'form-input-full':'form-input'" v-for="item in panels">
         <inputer v-if="item.type == 'input'" :child="item" @toparent="change"></inputer>
         <radioer v-if="item.type == 'radio'" :child="item" @toparent="change"></radioer>
         <multi v-if="item.type == 'multi'" :child="item" @toparent="change"></multi>
@@ -13,8 +13,6 @@
         <checker v-if="item.type == 'check'" :child="item" :id="single.Id" @toparent="change"></checker>
         <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
         <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
-      </div>
-      <div class="form-input-full" v-for="item in panels">
         <location v-if="item.type== 'location'" :id="single.Id" @toparent="change" :child="item"></location>
       </div>
     </div>
@@ -194,5 +192,7 @@
           border:.01rem solid #e40300
         &.save
           border:.01rem solid #e40300
+        &.delete
+          border:.01rem solid #E40300
 </style>
 
