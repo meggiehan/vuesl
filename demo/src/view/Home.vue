@@ -138,4 +138,6 @@
 <style lang="stylus">
   @import '../lib/stylus/common.styl'
   @import '../lib/stylus/nav.styl'
+  button
+    width:auto
 </style>
