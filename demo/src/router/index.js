@@ -15,6 +15,8 @@ import Member from '@/view/system/Member'
 import Tennet from '@/view/system/Tennet'
 import Goods from '@/view/goods/Goods'
 import Basic from '@/view/goods/Basic'
+import Catalogue from '@/view/goods/Catalogue'
+import Parameters from '@/view/goods/Parameters'
 import Details from '@/view/orders/Details'
 import Account from '@/view/leaguer/Account'
 import Associator from '@/view/leaguer/Associator'
@@ -25,8 +27,6 @@ import Points from '@/view/leaguer/Points'
 import Purchase from '@/view/purchase/Purchase'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
-import Catalogue from '@/view/goods/catalogue'
-import Parameters from '@/view/goods/parameters'
 Vue.use(Router)
 const router = new Router({
   // mode: 'history',
