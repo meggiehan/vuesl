@@ -169,5 +169,5 @@
         width:3.5rem
         height:.5rem
         border:.01rem solid #c6c6c6
-        border-radius:.06rem      
+        border-radius:.06rem
 </style>

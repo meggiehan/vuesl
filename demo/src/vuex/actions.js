@@ -1,6 +1,6 @@
 /* eslint-disable */
 import api from '../api/api.js'
-const mock = ['category', 'details', 'orders', 'points', 'account', 'associator', 'back', 'changes']
+const mock = ['category', 'details', 'orders', 'points', 'account', 'associator', 'back', 'changes', 'parameters']
 export const increment = ({commit}) => commit('increment')
 export const decrement = ({commit}) => commit('decrement')
 export const setfliter = ({commit}, param) => {

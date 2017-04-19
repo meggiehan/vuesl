@@ -50,7 +50,7 @@
       return {
         updata: {},
         check: [],
-        mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes']
+        mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes', 'parameters']
       }
     },
     components: {
@@ -173,7 +173,7 @@
         width:50%
       .form-input-full
         float:left
-        width:100%  
+        width:100%
     .form-action
       text-align:center
       margin-top:.5rem
