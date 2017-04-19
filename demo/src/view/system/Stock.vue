@@ -60,10 +60,10 @@ export default {
       column: [
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
-        {text: '退货联系人', name: 'Name2'},
-        {text: '退货联系电话', name: 'Name3'},
-        {text: '采购联系人', name: 'Name6'},
-        {text: '采购联系电话', name: 'Name7'},
+        {text: '退货联系人', name: 'Contact'},
+        {text: '退货联系电话', name: 'Faxphone'},
+        {text: '采购联系人', name: 'Prop_1'},
+        {text: '采购联系电话', name: 'Prop_2'},
         {text: '最后操作时间', name: 'Create_time'}
       ],
       options: [
@@ -74,13 +74,13 @@ export default {
         {name: 'No', text: '编号', holder: '请输入编号*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name1', text: '退货联系 ：', holder: '', type: 'texter', sub: '', check: ''},
-        {name: 'Name2', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name3', text: '电话', holder: '请输入电话*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name4', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Contact', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Faxphone', text: '电话', holder: '请输入电话*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Address', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name5', text: '采购联系 ：', holder: '', type: 'texter', sub: '', check: ''},
-        {name: 'Name6', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name7', text: '电话', holder: '请输入电话*...', type: 'input', sub: 'input', check: 'is_null'},
-        {name: 'Name8', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Prop_1', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Prop_2', text: '电话', holder: '请输入电话*...', type: 'input', sub: 'input', check: 'is_null'},
+        {name: 'Prop_3', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'},
         {name: 'FuncIdList', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '1c244759-0c77-4fbb-ad24-e63103194f74'}, {'title': '礼品库位', id: '2c244759-0c77-4fbb-ad34-e63103194f74'}, {'title': '退货库位', id: '3c244759-0c77-4fbb-ad44-e63103194f74'}, {'title': '虚拟库位', id: '4c244759-0c77-4fbb-ad54-e63103194f74'}]}
       ],
@@ -129,12 +129,12 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-//        api.post({JSON: JSON.stringify(updata)}, 'stock_delete').then((item) => {
-//          this.getdata()
-//        })
-        api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
+        api.post({JSON: JSON.stringify(updata)}, 'stock_delete').then((item) => {
           this.getdata()
         })
+//        api.mockDel({JSON: JSON.stringify(updata)}, 'stock').then((item) => {
+//          this.getdata()
+//        })
       })
     },
     edit (idx) {

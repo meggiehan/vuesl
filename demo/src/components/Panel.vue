@@ -14,6 +14,9 @@
         <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
         <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
       </div>
+      <div class="form-input-full" v-for="item in panels">
+        <location v-if="item.type== 'location'" :id="single.Id" @toparent="change" :child="item"></location>
+      </div>
     </div>
     <div class="form-action">
       <button :class="item.name" v-for="item in types" @click="operate(item.name,item.url)">{{item.text}}</button>
@@ -31,6 +34,7 @@
   import Checker from './panel/Checker.vue'
   import Searcher from './panel/Searcher.vue'
   import Texter from './panel/Texter.vue'
+  import Location from './location.vue'
   import api from '../api/api.js'
   import { CheckRule } from '../mixins/index.js'
   import { mapGetters, mapActions } from 'vuex'
@@ -46,7 +50,7 @@
       return {
         updata: {},
         check: [],
-        mock: ['stock', 'order', 'category', 'orders', 'points', 'account', 'associator', 'back', 'changes']
+        mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes', 'parameters']
       }
     },
     components: {
@@ -58,7 +62,8 @@
       manage: Manage,
       checker: Checker,
       searcher: Searcher,
-      texter: Texter
+      texter: Texter,
+      location: Location
     },
     computed: {
       ...mapGetters([
@@ -68,6 +73,7 @@
     mounted () {
       this.panels.forEach((value, index) => {
         if (value.check) {
+
           let temp = {
             name: value.name,
             type: value.check,
@@ -165,6 +171,9 @@
       .form-input
         float:left
         width:50%
+      .form-input-full
+        float:left
+        width:100%
     .form-action
       text-align:center
       margin-top:.5rem

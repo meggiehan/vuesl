@@ -15,7 +15,9 @@ import Member from '@/view/system/Member'
 import Tennet from '@/view/system/Tennet'
 import Goods from '@/view/goods/Goods'
 import Basic from '@/view/goods/Basic'
-import Order from '@/view/orders/Order'
+import Catalogue from '@/view/goods/Catalogue'
+import Parameters from '@/view/goods/Parameters'
+import Details from '@/view/orders/Details'
 import Account from '@/view/leaguer/Account'
 import Associator from '@/view/leaguer/Associator'
 import Back from '@/view/leaguer/Back'
@@ -86,14 +88,24 @@ const router = new Router({
           component: Goods
         },
         {
+          path: '/catalogue',
+          name: 'Catalogue',
+          component: Catalogue
+        },
+        {
+          path: '/parameters',
+          name: 'Parameters',
+          component: Parameters
+        },
+        {
           path: '/basic',
           name: 'Basic',
           component: Basic
         },
         {
-          path: '/order',
-          name: 'Order',
-          component: Order
+          path: '/details',
+          name: 'Details',
+          component: Details
         },
         {
           path: '/account',
