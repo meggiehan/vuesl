@@ -5,9 +5,9 @@
     <div class="role main">
       <filters :filters="filters"
                :method="method"></filters>
-      <div class="option">
-        <button class="btn" @click="create('panel')">创建快递单</button>
-      </div>
+      <!--<div class="option">-->
+        <!--<button class="btn" @click="create('panel')">创建快递单</button>-->
+      <!--</div>-->
       <tables :method="method"
               :column="column"
               :options="options"
@@ -44,7 +44,7 @@
         },
         nav: {
           parent: '订单管理',
-          child: '快递单号输入'
+          child: '订单详情'
         },
         title: '',
         authId: '',
@@ -52,24 +52,21 @@
           list: 'user_list'
         },
         column: [
-          {text: '订单编号', name: 'Name'},
+          {text: '订单编号', name: 'No'},
+          {text: '商品名称', name: 'Name'},
+          {text: '商品型号', name: 'Phone'},
+          {text: '数量', name: 'Number'},
+          {text: '支付金额', name: 'Money'},
+          {text: '支付时间', name: 'Time'},
+          {text: '支付方式', name: 'Money'},
           {text: '会员账号', name: 'Number'},
-          {text: '订单日期', name: 'Description'},
-          {text: '支付状态', name: 'Remark'},
-          {text: '联系人', name: 'Type'},
-          // {text: '电话', name: 'No'},
-          // {text: '地址', name: 'No'},
-          // {text: '商品名称', name: 'Name'},
-          // {text: '商品型号', name: 'Phone'},
-          // {text: '供应商', name: 'Phone'},
-          // {text: '快递公司', name: 'Disp_index'},
-          // {text: '快递单号', name: 'Disp_index'}
-          // {text: '所属部门', name: 'Disp_index'},
+          {text: '交易状态', name: 'Remark'},
+          {text: '实收款', name: 'realy'},
           {text: '最后登录时间', name: 'Create_time'}
         ],
         options: [
-          {name: '编辑', method: this.edit},
-          {name: '删除', method: this.del}
+          {name: '详情', method: this.edit},
+          {name: '物流', method: this.del}
         ],
         panels: [
           {name: 'Name', text: '原快递公司', holder: '请输入公司名*...', type: 'input', sub: 'input', check: 'is_null'},
@@ -92,9 +89,16 @@
         ],
         types: ['sure', 'quit'],
         filters: [
-          {name: 'Search', size: 'big', type: 'input', val: ''}
-          // {name: 'active', size: 'small', type: 'select', text: '是否激活', list: [{title: '是', id: 1}, {title: '否', id: 2}]},
-          // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
+          {name: 'Search', size: 'big', type: 'input', val: ''},
+          // {name: 'Search', size: 'small', type: 'input', val: ''}
+          // {name: 'Search', size: 'small', type: 'input', val: ''}
+           {name: 'active', size: 'small', type: 'select', text: '订单状态', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '支付状态', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '支付时间范围', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '支付方式', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '订单来源', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '活动订单', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]},
+           {name: 'active', size: 'small', type: 'select', text: '配送区分', list: [{title: '已支付', id: 1}, {title: '未支付', id: 2}]}
         ]
       }
     },

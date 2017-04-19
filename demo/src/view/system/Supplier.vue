@@ -126,7 +126,7 @@ export default {
       this.types = [
         {name: 'quit', text: '通过', url: ''},
         {name: 'save', text: '拒绝', url: ''},
-        {name: 'quit', text: '保存', url: 'supplier_edit'},
+        {name: 'save', text: '保存', url: 'supplier_update'},
         {name: 'quit', text: '提交', url: ''}
       ]
       this.lgds = [
