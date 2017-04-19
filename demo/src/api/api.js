@@ -114,10 +114,10 @@ api.select = (requestData, method, isall) => {
   let request = GetSignature(updata, lastdata, SECRET)
   return new Promise((resolve, reject) => {
     Vue.http.post(baseUrl, request.returns, {
-      // headers: {
-      //   'Access-Control-Allow-Origin': '*',
-      //   'Content-Type': 'application/json; charset=utf-8'
-      // },
+//       headers: {
+//         'Access-Control-Allow-Origin': '*',
+//         'Content-Type': 'application/json; charset=utf-8'
+//       },
       emulateJSON: true
     }).then(function (response) {
       resolve(response.body.Response)

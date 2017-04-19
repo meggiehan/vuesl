@@ -62,14 +62,14 @@
             level1: [
               {name: '商品列表', link: 'Goods'},
               {name: '基本信息', link: 'Basic'},
+				      {name: '参数管理', link: 'Parameters'}				
               {name: '商品目录', link: 'Catalogue'},
-              {name: '首页', link: 'Index'}
-            ]
-          },
+              ]},
           {
             name: '订单管理',
             level1: [
-              {name: '订单详情', link: 'Details'}
+              {name: '订单详情', link: 'Details'},
+              {name: '等待付款', link: 'Awaitpay'}
             ]
           },
           {
@@ -139,4 +139,6 @@
 <style lang="stylus">
   @import '../lib/stylus/common.styl'
   @import '../lib/stylus/nav.styl'
+  button
+    width:auto
 </style>

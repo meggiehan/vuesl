@@ -1,13 +1,28 @@
 <template>
 <div class="wrap">
-  <div class="tab-bar"><span>您在这里</span><span class="parent" v-bind:class="{active:index===0}" @click="index=0">基本信息</span><span class="parent" v-bind:class="{active:index===1}" @click="index=1">> SKU</span><span class="parent" v-bind:class="{active:index===2}" @click="index=2">>规格参数</span></div>
+  <div class="tab-bar">
+    <span>您在这里</span>
+    <span class="parent">基本信息</span>
+    <!--<span class="parent" v-bind:class="{active:index===1}" @click="index=1">> SKU</span>
+    <span class="parent" v-bind:class="{active:index===2}" @click="index=2">>规格参数</span>
+    <span class="parent" v-bind:class="{active:index===3}" @click="index=3">>商品详情</span>-->
+  </div>
   <div class="m-title">
-    <p>商品基本信息</p>
+    <p>
+      <span class="parent" v-bind:class="{active:index===0}" @click="index=0">基本信息</span>
+      <span class="parent" v-bind:class="{active:index===1}" @click="index=1">> SKU</span>
+      <span class="parent" v-bind:class="{active:index===2}" @click="index=2">>规格参数</span>
+      <span class="parent" v-bind:class="{active:index===3}" @click="index=3">>商品详情</span>
+    </p>
   </div>
   <div class="main">
     <baseinfo v-show="index === 0"></baseinfo>
     <sku v-show="index === 1"></sku>
     <parame v-show="index === 2"></parame>
+    <detail ref="editor" v-show="index === 3"></detail>
+  </div>
+  <div class="foot">
+    <button class="fbtn" @click="save">保存</button>
   </div>
   <confirm ref="dialog" :msg="confirms"></confirm>
 </div>
@@ -19,6 +34,7 @@ import Confirm from '../../components/Modal/Confirm.vue'
 import Baseinfo from '../../components/goods/Baseinfo.vue'
 import Sku from '../../components/goods/Sku.vue'
 import Parame from '../../components/goods/Parame.vue'
+import Detail from '../../components/goods/Detail.vue'
 // import api from '../../api/api.js'
 import { mapGetters } from 'vuex'
 export default {
@@ -35,7 +51,13 @@ export default {
     confirm: Confirm,
     parame: Parame,
     sku: Sku,
-    baseinfo: Baseinfo
+    baseinfo: Baseinfo,
+    detail: Detail
+  },
+  methods: {
+    save () {
+      this.$refs.editor.getcontent()
+    }
   },
   computed: {
     ...mapGetters([
@@ -47,6 +69,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="stylus" scoped>
+  .main
+    margin-bottom:0
+    padding-bottom:1px
+  .foot
+    text-align:right
+    background: #fff;
+    margin: 0 0.28rem;
+    padding: 0 .72rem .25rem
+    .fbtn
+      width:1.52rem
+      height:.52rem
+      text-align:center
+      border-radius:.06rem
+      border:.01rem solid #3b95c2
+      background:#fff
   .m-title
     background:#fff
     height:.6rem
@@ -58,7 +95,7 @@ export default {
       text-indent: .4rem
       border-bottom:.01rem solid #5f6060
       height:100%
-  .tab-bar
+  .tab-bar,.m-title
     height:.48rem
     line-height:.48rem
     font-size:.14rem

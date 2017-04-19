@@ -70,10 +70,12 @@
         list: [
         {name: 'system', title: '创建供应商', childs: [
         {name: 'Name', text: '供应商名称', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
-        {name: 'No', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
-        {name: 'Phone', text: '联系电话', holder: '请输入电话*...', type: 'input', sub: 'input',check: 'is_null'},
-        {name: 'Level',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '战略', Id: 1},{Name: 'A', Id: 2}, {Name: 'B', Id: 3},{Name: 'C', Id: 4},{Name: '新', Id: 5}]},
-        {name: 'Area',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '省', Id: 1},{Name: '市', Id: 2}]},
+        {name: 'Contact', text: '联系人', holder: '请输入名称*...', type: 'input', sub: 'input',check: 'is_null'},
+        {name: 'Faxphone', text: '联系电话', holder: '请输入电话*...', type: 'input', sub: 'input',check: 'is_null'},
+        {name: 'Prop_2',size: 'small',type: 'select',text: '供应商等级',text1: '等级',list: [{Name: '战略', Id: 1},{Name: 'A', Id: 2}, {Name: 'B', Id: 3},{Name: 'C', Id: 4},{Name: '新', Id: 5}]},
+        {name: 'Country',size: 'small',type: 'select',text: '选择国家',text1: '级别',list: [{Name: '中国', Id: 1},{Name: 'usa', Id: 2}]},
+        {name: 'Province',size: 'small',type: 'select',text: '选择地区',text1: '级别',list: [{Name: '省', Id: 1},{Name: '市', Id: 2}]},
+        {name: 'Prop_1', text: '是否激活', type: 'radio', sub: 'radio', radioval: [{text: '是', val: 1}, {text: '否', val: 0}]}
       ]},
         {name: 'goods', title: '合同', childs:  [
         {name: 'Tpe',size: 'big',type: 'select',text: '供应商类型',text1: '请选择计算方式',list: [{Name: '集采', Id: 1}, {Name: '通用', Id: 2}]},
@@ -86,7 +88,7 @@
         {name: 'End', text: '合同结束日期', holder: '请输入编号*...', type: 'input', sub: 'input'},
         {name: 'Type',size: 'big',type: 'select',text: '结算方式',text1: '请选择计算方式',list: [{Name: '账期', Id: 1}, {Name: '授信额度', Id: 2},{Name: '现款现货', Id: 3},]},
         {name: 'Md',size: 'small',type: 'select',text: '开票类型',text1: '请选择开票方式',list: [{Name: '无票', Id: 1}, {Name: '普通增票', Id: 2}, {Name: '专用增票', Id: 3}]},
-        {name: 'Trans',size: 'small',type: 'select',text: '配送方式',text1: '请选择配送方式',list: [{Name: '代发', Id: 1}, {Name: '代发', Id: 2}]},
+        {name: 'Trans',size: 'small',type: 'select',text: '配送方式',text1: '请选择配送方式',list: [{Name: '自发', Id: 1}, {Name: '代发', Id: 2}]},
         {name: 'Target', text: '目标销量', holder: '请输入名称*...', type: 'input', sub: 'input'},
         {name: 'Sale', text: '销售服务保证金', holder: '请输入名称*...', type: 'input', sub: 'input'},
 //      {name: 'Pic', text: '合同扫描照', holder: '', type: 'input', sub: 'input'},

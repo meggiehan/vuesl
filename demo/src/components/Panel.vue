@@ -48,7 +48,12 @@
       return {
         updata: {},
         check: [],
-        mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes']
+<<<<<<< HEAD
+        mock: ['stock', 'order', 'orders', 'points', 'account', 'associator', 'back', 'changes'],
+        mock: ['order', 'details', 'points', 'account', 'associator', 'back', 'changes']
+=======
+        mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes', 'parameters']
+>>>>>>> ca353bc7377c894009d7d063adf6071866aecbe0
       }
     },
     components: {
@@ -171,7 +176,7 @@
         width:50%
       .form-input-full
         float:left
-        width:100%  
+        width:100%
     .form-action
       text-align:center
       margin-top:.5rem

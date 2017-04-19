@@ -66,23 +66,24 @@ export default {
         {name: 'No', text: '编号', holder: '请输入人编号*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Name', text: '名称', holder: '请输入名称*...', type: 'input', sub: 'input', check: 'is_null'},
         {
-          name: 'ParentTypeId',
+          name: 'DomainFor',
           size: 'small',
           type: 'select',
           text: '类型',
           text1: '请选择类型',
-          list: [{Name: '单数据类型', Id: '1'}, {Name: '账单类型', Id: '2'}, {Name: '会员等级', Id: '2'}, {Name: '区域城市', Id: '3'}, {Name: '账户类型', Id: '4'}, {Name: '商品分类', Id: '5'}, {Name: '商品品牌', Id: '6'}
+          list: [{Name: '单据数据类型', Id: 'BillType111'}, {Name: '会员等级', Id: '2'}, {Name: '区域城市', Id: '3'}, {Name: '账户类型', Id: '4'}, {Name: '商品分类', Id: '5'}, {Name: '商品品牌', Id: '6'}
           , {Name: '配送方式', Id: '7'}, {Name: '优惠券分类', Id: '8'}, {Name: '促销分类', Id: '9'}, {Name: '广告类型', Id: '10'}, {Name: '广告来源', Id: '11'}, {Name: '礼包分类', Id: '12'},
           {Name: '支付方式', Id: '13'}, {Name: '存储方式', Id: '14'}]
         },
-        {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
+        {name: 'ValueIs', text: '描述', holder: '请输入描述内容...', type: 'textarea', sub: 'textarea'}
+//      {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'}
         // {name: 'role', text: '用户角色', type: 'multi', sub: 'multi', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]},
         // {name: 'part', text: '选择部门', type: 'multi', sub: 'multi', list: [{title: '技术', id: 1}, {title: '产品', id: 2}, {title: '运营', id: 3}, {title: '产品', id: 4}, {title: '数据', id: 5}]}
       ],
       types: [],
       filters: [
         {name: 'Search', size: 'big', type: 'input', val: ''},
-//      {name: 'BillType', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '区域城市', id: '3'},{title: '账户类型', id: '4'},
+//      {name: 'Type', size: 'small', type: 'select', val: '', text: '类型', list: [{title: '单据类型', id: ''}, {title: '会员等级', id: '1'}, {title: '区域城市', id: '3'},{title: '账户类型', id: '4'},
 //      {title: '商品分类', id: '5'},{title: '商品品牌', id: '6'},{title: '配送方式', id: '7'},{title: '优惠卷分类', id: '8'},{title: '促销分类', id: '9'},{title: '广告类型', id: '10'},{title: '广告来源', id: '11'},
 //      {title: '礼包分类', id: '12'},{title: '支付方式', id: '13'},{title: '储存方式', id: '14'}]}
         // {name: 'role', size: 'small', type: 'multi', text: '选择角色', list: [{title: '超管员', id: 1}, {title: '财务', id: 2}, {title: '运营', id: 3}]}
@@ -125,13 +126,13 @@ export default {
       let updata = []
       updata.push(id)
       this.$refs.dialog.confirm().then(() => {
-//    api.post({JSON: JSON.stringify(updata)}, 'category_delete').then((item) => {
-//      console.log('item', item)
-//      this.getdata()
-//    })
-		 api.mockDel({JSON: JSON.stringify(updata)}, 'category').then((item) => {
-          this.getdata()
-        })
+      api.post({JSON: JSON.stringify(updata)}, 'category_delete').then((item) => {
+        console.log('item', item)
+        this.getdata()
+      })
+//		 api.mockDel({JSON: JSON.stringify(updata)}, 'category').then((item) => {
+//        this.getdata()
+//      })
 		 })
     },
     edit (idx) {
