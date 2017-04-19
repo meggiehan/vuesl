@@ -151,4 +151,23 @@
           background: #dfeaed
         &:hover
           background: #dfeaed
+  .s-list
+      overflow:hidden
+      padding:.1rem 0
+      // text-align: justify
+      // text-align-last: justify
+      // text-justify: inter-ideograph
+      label
+        line-height:.5rem
+        margin-right:.15rem
+        width:.8rem
+        display:inline-block
+        height:.5rem
+        text-align:right
+      input
+        padding:0 .1rem
+        width:3.5rem
+        height:.5rem
+        border:.01rem solid #c6c6c6
+        border-radius:.06rem      
 </style>

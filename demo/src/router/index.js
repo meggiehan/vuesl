@@ -25,6 +25,8 @@ import Points from '@/view/leaguer/Points'
 import Purchase from '@/view/purchase/Purchase'
 import Login from '@/view/Login'
 import Home from '@/view/Home'
+import Catalogue from '@/view/goods/catalogue'
+import Parameters from '@/view/goods/parameters'
 Vue.use(Router)
 const router = new Router({
   // mode: 'history',
@@ -84,6 +86,16 @@ const router = new Router({
           path: '/goods',
           name: 'Goods',
           component: Goods
+        },
+        {
+          path: '/catalogue',
+          name: 'Catalogue',
+          component: Catalogue
+        },
+        {
+          path: '/parameters',
+          name: 'Parameters',
+          component: Parameters
         },
         {
           path: '/basic',

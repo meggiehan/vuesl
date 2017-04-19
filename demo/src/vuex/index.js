@@ -20,7 +20,7 @@ const state = {
   },
   notice: {
     show: false,
-    msg: '测试中哈哈哈哈哈哈哈啊哈哈哈',
+    msg: '测试消息',
     type: 'success'
   },
   current: 'role',

@@ -1,3 +1,4 @@
+
 module.exports = function () {
  var faker = require("faker");
  faker.locale = "zh_CN";
@@ -14,6 +15,12 @@ module.exports = function () {
          return {
              id: faker.random.uuid(),
              city: faker.address.city(),
+             county: faker.address.county()
+         }
+     }),
+     county: _.times(100, function () {
+         return {
+             id: faker.random.uuid(),
              county: faker.address.county()
          }
      }),

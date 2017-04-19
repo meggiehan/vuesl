@@ -1,32 +1,37 @@
 <template>
-<!-- 省 -->
-	  <div class="s-lis clearfloat">
+	 <div class="haa">
+     <div class="s-lis clearfloat">
     <label for="">省份：</label>
     <div class="s-part f-l">
-      <p class="p-title ellipsis" @click="isshow = !isshow">选择省份</p>
-      <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
-      <ul class="list-role" v-show="isshow">
-        <li class="ellipsis" v-for="(i,idx) in provience" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+      <p class="p-title ellipsis" @click="isshowprv = !isshowprv">{{text1}}</p>
+      <p class="s-down" @click="isshowprv = !isshowprv"><span class="trangle"></span></p>
+      <ul class="list-role" v-show="isshowprv">
+        <li class="ellipsis" v-for="(i,idx) in address" v-bind:class="{active:idx == index}" @click="selectprv(i)">{{i.name}}</li>
       </ul>
     </div>
   </div>
-<!-- 市 -->
+
     <div class="s-lis clearfloat">
     <label for="">城市：</label>
     <div class="s-part f-l">
-      <p class="p-title ellipsis" @click="isshow = !isshow">{{text1||选择城市}}</p>
-      <p class="s-down" @click="isshow = !isshow"><span class="trangle"></span></p>
-      <ul class="list-role" v-show="isshow">
-        <li class="ellipsis" v-for="(i,idx) in child.list" v-bind:class="{active:idx == index}" @click="change(idx)">{{i.Name}}</li>
+      <p class="p-title ellipsis" @click="isshowcity = !isshowcity">{{text2}}</p>
+      <p class="s-down" @click="isshowcity = !isshowcity"><span class="trangle"></span></p>
+      <ul class="list-role" v-show="isshowcity">
+        <li class="ellipsis" v-for="(i,idx) in citys" v-bind:class="{active:idx == index}" @click="selectcity(i)">{{i.name}}</li>
       </ul>
     </div>
   </div>
+
+  <div class="s-list">
+    <label for="">详细地址：</label>
+    <input type="input" v-model="val" :placeholder="child.holder" @input="change()">
+  </div> 
+   </div>
 
 </template>
 
 <script>
-  import api from '../../api/api.js'
-  import { mapGetters } from 'vuex'
+  import api from '../api/api.js'
   export default {
     name: 'location',
     props: {
@@ -35,68 +40,58 @@
     data () {
       return {
         index: -1,
-        isshow: false,
-        parentIds: ['menu_list', 'part_list','city_list'],
-        text1: this.child.text1,
-        provience: [{name: '河南', id: 1},{name: '江西', id: 2}],
-        selectedpv: ''
+        isshowprv: false,
+        isshowcity: false,
+        address: {},
+        citys:[],
+        selectedcity: '',
+        selectedprv: '',
+        cityId: 1,
+        prvId: 1,
+        val: '',
+        text1:'请选择省',
+        text2: '请选择市'
       }
-    },
-    computed: {
-      ...mapGetters(['single'])
     },
     mounted () {
-      
-    },
-    beforeDestroy () {
-      if (this.child.get && this.parentIds.indexOf(this.child.get.url) > -1) {
-        this.child.list.splice(1)
-      }
+      api.getJson('../../../static/address.json').then((json) => {
+        this.address=json.body.data
+      })
     },
     methods: {
-      change (idx) {
-        this.index = idx
-        this.isshow = !this.isshow
-        this.text1 = this.child.list[idx].Name
-        this.$emit('toparent', {name: this.provience.name, val: this.Id})
-        this.selectedpv = i.id;
-        if (this.child.get) {
-        api.select(this.child.param, this.child.get.url, true).then(item => {
-          if (this.parentIds.indexOf(this.child.get.url) > -1) {
-            item.results.forEach((val) => {
-              if (val[this.child.name] === '00000000-0000-0000-0000-000000000000') {
-                this.child.list.push(val)
-              }
-            })
-          } else {
-            Array.prototype.push.apply(this.child.list, item.results)
-          }
-          let pid = this.single[this.child.name] || this.child.list[0].Id
-          this.child.list.forEach((val, n) => {
-            if (val.Id === pid) {
-              this.index = n
-              this.text1 = val.Name
-            }
-          })
-          this.$emit('toparent', {name: this.child.name, val: pid})
-        })
-      } else {
-        let pid = this.single[this.child.name] || this.child.list[0].Id
-        this.child.list.forEach((val, n) => {
-          if (val.Id === pid) {
-            this.index = n
-            this.text1 = val.Name
-          }
-        })
-        this.$emit('toparent', {name: this.child.name, val: pid})
-      }
+      selectprv (i) {
+        this.isshowprv = !this.isshowprv
+        this.citys = []
+        this.selectedcity = ''
+        this.selectedprv = i.name
+        this.citys = i.city
+        this.text1 = i.name
+        this.text2 = '请选择市'
+        this.prvId = i.id
+        this.$emit('toparent', {name: this.selectedprv, val: this.prvId})
+      },
+      selectcity (i)  {
+        this.isshowcity = !this.isshowcity
+        this.selectedcity = i.name
+        this.cityId = i.id
+        this.$emit('toparent', {name: this.selectedcity, val: this.cityId})
+        this.text2 = i.name
+      },
+      change() {
+        this.$emit('toparent', {name: 'location' , val: this.val})
       }
     }
   }
 </script>
 
 <style scoped lang="stylus">
-.s-lis
+.haa
+  width:1119px;
+  float:right;
+  transform: translateY(0);
+  .s-lis
+    width:50%
+    float:left;
     padding: .1rem 0
     label
       line-height:.5rem
@@ -167,4 +162,25 @@
           background: #dfeaed
         &:hover
           background: #dfeaed
+  .s-list
+      float: left
+      overflow:hidden
+      padding:.1rem 0
+      // text-align: justify
+      // text-align-last: justify
+      // text-justify: inter-ideograph
+      label
+        line-height:.5rem
+        margin-right:.15rem
+        width:.8rem
+        display:inline-block
+        height:.5rem
+        text-align:right
+      input
+        width: 890px;
+        padding:0 .1rem
+        // width:3.5rem
+        height:.5rem
+        border:.01rem solid #c6c6c6
+        border-radius:.06rem
 </style>
