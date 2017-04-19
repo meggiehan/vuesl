@@ -9,32 +9,55 @@
           商品参数名值
         </div>
       </div>
-      <div class="parame-list clearfloat">
+      <div class="parame-list clearfloat" v-if="list.length>0" v-for="(item,idx) in list">
         <div class="title p-name">
-          <input type="text" class="set-name">
-          <button class="add">+</button>
+          <input type="text" class="set-name" v-model="item.name">
+          <!-- <button class="add">+</button>-->
         </div>
         <div class="info">
-          <input type="text" class="set-value">
-          <button class="minus">-</button>
+          <input type="text" class="set-value" v-model="item.value">
+          <button class="minus" @click="minus(idx)">-</button>
+        </div>
+      </div>
+      <div class="parame-list clearfloat">
+        <div class="title p-name">
+          <input type="text" class="set-name" v-model="name">
+          <button class="add" @click="add()">+</button>
+        </div>
+        <div class="info">
+          <input type="text" class="set-value" v-model="val">
+          <!--<button class="minus">-</button>-->
         </div>
       </div>
     
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex'
   export default {
     name: 'baseinfo',
     data () {
       return {
-        isshow: false,
-        index: -1,
-        list: [{Name: '大码', Id: 121}, {Name: '中码', Id: 1212}, {Name: '小码', Id: 1211}]
+        list: [],
+        name:'',
+        val:''
       }
     },
     methods: {
-      add (idx) {
-        this.index = idx
+      ...mapActions(['notice']),
+      minus (idx) {
+        this.list.splice(idx, 1)
+        console.log('asasas', this.list)
+      },
+      add () {
+        if (!this.val || !this.name) {
+          this.notice({msg: '值不能为空', type: 'error'})
+          return
+        }
+        let temp = {name: this.name, value: this.val}
+        this.val = ''
+        this.name = ''
+        this.list.push(temp)
       }
     }
   }
@@ -45,6 +68,7 @@
     margin:0 .9rem 0
     padding-top:1px
     .parame-list
+      padding: .1rem 0
       .title
         width:20%
         float:left
@@ -69,6 +93,7 @@
           border:.01rem solid #999
           border-radius:.06rem
           padding-right:.42rem
+          padding-left:.05rem
       .info
         width:60%
         float:left
@@ -92,6 +117,7 @@
           height:.5rem
           border:.01rem solid #999
           border-radius:.06rem
+          padding-left:.05rem
   .s-part
       height: .5rem
       border-radius: .06rem

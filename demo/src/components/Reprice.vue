@@ -17,7 +17,7 @@
     </div>
     <div class="form-action">
     <button>返回</button>
-     <button>确定</button>
+    <button>确定</button>
     </div>
  </div>
 </template>

@@ -15,6 +15,8 @@ import Member from '@/view/system/Member'
 import Tennet from '@/view/system/Tennet'
 import Goods from '@/view/goods/Goods'
 import Basic from '@/view/goods/Basic'
+import Catalogue from '@/view/goods/Catalogue'
+import Parameters from '@/view/goods/Parameters'
 import Details from '@/view/orders/Details'
 import Awaitpay from '@/view/orders/Awaitpay'
 import Account from '@/view/leaguer/Account'
@@ -85,6 +87,16 @@ const router = new Router({
           path: '/goods',
           name: 'Goods',
           component: Goods
+        },
+        {
+          path: '/catalogue',
+          name: 'Catalogue',
+          component: Catalogue
+        },
+        {
+          path: '/parameters',
+          name: 'Parameters',
+          component: Parameters
         },
         {
           path: '/basic',
