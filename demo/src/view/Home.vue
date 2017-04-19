@@ -69,7 +69,8 @@
           {
             name: '订单管理',
             level1: [
-              {name: '订单详情', link: 'Details'}
+              {name: '订单详情', link: 'Details'},
+              {name: '等待付款', link: 'Awaitpay'}
             ]
           },
           {

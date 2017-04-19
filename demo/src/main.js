@@ -136,7 +136,7 @@ Vue.use(Vuecookie)
 // credentials设置true跨域有问题
 Vue.http.options.credentials = false
 // Vue.http.headers.common['Access-Control-Request-Method'] = '*'
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

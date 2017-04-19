@@ -18,6 +18,7 @@ import Basic from '@/view/goods/Basic'
 import Catalogue from '@/view/goods/Catalogue'
 import Parameters from '@/view/goods/Parameters'
 import Details from '@/view/orders/Details'
+import Awaitpay from '@/view/orders/Awaitpay'
 import Account from '@/view/leaguer/Account'
 import Associator from '@/view/leaguer/Associator'
 import Back from '@/view/leaguer/Back'
@@ -141,6 +142,11 @@ const router = new Router({
           path: '/purchase',
           name: 'Purchase',
           component: Purchase
+        },
+        {
+          path: '/awaitpay',
+          name: 'Awaitpay',
+          component: Awaitpay
         }
       ]
     },
