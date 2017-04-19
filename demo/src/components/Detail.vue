@@ -79,7 +79,8 @@
       ...mapActions(['getdata', 'notice']),
       toLogistic () {
         console.log('TO')
-        this.quit()
+//        this.quit()
+        this.$emit('close', {name1: 'detail', name2: 'logistic', val: true})
       },
       operate (tp, url) {
         tp === 'sure' && this.sure(url)
@@ -87,7 +88,7 @@
       },
       quit () {
         console.log('退出')
-        this.$emit('close', {name: 'detail'})
+        this.$emit('close', {name1: 'detail', val: true})
       },
       change (value) {
         console.log('DSDSD', this.updata['Password'])

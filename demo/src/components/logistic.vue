@@ -54,7 +54,7 @@
       },
       quit () {
         console.log('退出')
-        this.$emit('close', {name: 'logistic'})
+        this.$emit('close', {name2: 'logistic', val: false})
       },
       change (value) {
         console.log('DSDSD', this.updata['Password'])

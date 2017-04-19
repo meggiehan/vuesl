@@ -134,7 +134,9 @@
     methods: {
       ...mapActions(['resetsingle', 'getdata']),
       close (data) {
-        this.show[data.name] = false
+        console.log('data11', data)
+        this.show[data.name1] = !data.val
+        this.show[data.name2] = data.val
       },
       det (data) {
         console.log(11)

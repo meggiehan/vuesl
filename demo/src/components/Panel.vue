@@ -50,7 +50,7 @@
       return {
         updata: {},
         check: [],
-        mock: ['stock', 'order', 'orders', 'points', 'account', 'associator', 'back', 'changes'],
+        mock: ['order', 'orders', 'points', 'account', 'associator', 'back', 'changes'],
       }
     },
     components: {
@@ -73,7 +73,6 @@
     mounted () {
       this.panels.forEach((value, index) => {
         if (value.check) {
-
           let temp = {
             name: value.name,
             type: value.check,
