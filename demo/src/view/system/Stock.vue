@@ -61,7 +61,7 @@ export default {
         {text: '编号', name: 'No'},
         {text: '名称', name: 'Name'},
         {text: '退货联系人', name: 'Contact'},
-        {text: '退货联系电话', name: 'Faxphone'},
+        {text: '退货联系电话', name: 'FaxPhone'},
         {text: '采购联系人', name: 'Prop_1'},
         {text: '采购联系电话', name: 'Prop_2'},
         {text: '最后操作时间', name: 'Create_time'}
@@ -82,7 +82,7 @@ export default {
         {name: 'Prop_2', text: '电话', holder: '请输入电话*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Prop_3', text: '地址', holder: '请输入地址*...', type: 'input', sub: 'input', check: 'is_null'},
         {name: 'Description', text: '描述', holder: '请输入描述内容*...', type: 'textarea', sub: 'textarea'},
-        {name: 'FuncIdList', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '1c244759-0c77-4fbb-ad24-e63103194f74'}, {'title': '礼品库位', id: '2c244759-0c77-4fbb-ad34-e63103194f74'}, {'title': '退货库位', id: '3c244759-0c77-4fbb-ad44-e63103194f74'}, {'title': '虚拟库位', id: '4c244759-0c77-4fbb-ad54-e63103194f74'}]}
+        {name: 'Cat_1 ', text: '库位', holder: '', type: 'check', sub: 'checker', list: [{'title': '常规库位', id: '1c244759-0c77-4fbb-ad24-e63103194f74'}, {'title': '礼品库位', id: '2c244759-0c77-4fbb-ad34-e63103194f74'}, {'title': '退货库位', id: '3c244759-0c77-4fbb-ad44-e63103194f74'}, {'title': '虚拟库位', id: '4c244759-0c77-4fbb-ad54-e63103194f74'}]}
       ],
       types: [],
       filters: [
