@@ -11,7 +11,8 @@
   		<tables :method="method"
   		        :column="column"
   		        :options="options"
-  		        :filter="filters"></tables>		 
+  		        :filter="filters"
+  		        :list="level1"></tables>
   	</div>
   	<transition name="slide-fade">
   	  <panel :panels="panels" :types="types" @close="close('panel')" v-if="show.panel">
@@ -34,6 +35,10 @@ import { mapGetters, mapActions } from 'vuex'
     name: 'Catalogue',
     data () {
     	return {
+    		cataloguedata: [],
+    		level1: [],
+    		level2: [],
+    		level3: [],
     		confirms: {
     			title: '提示',
     			body: '确认删除?'
@@ -48,7 +53,7 @@ import { mapGetters, mapActions } from 'vuex'
     		},
     		title: '',
     		method: {
-    			list: 'menu_list'
+    			list: this.level1
     		},
     		filters: [
     		   {name: 'Search', size: 'big', type: 'input', val: ''},
@@ -78,6 +83,29 @@ import { mapGetters, mapActions } from 'vuex'
     		types: [{name: 'quit', text: '退出'},{name: 'save', text: '保存'}]
     	}
     },
+    mounted() {
+    	// console.log('hahaha',api.getJson('../../../static/catalogue.json'))
+    	api.getJson('../../../static/catalogue.json').then((json)=>{
+    		this.cataloguedata = json.body.data
+    		// console.log('hahaha',this.cataloguedata)
+    	}).then(()=>{
+    		for (let i = 0 ; i < this.cataloguedata.length; i++) {
+    			this.level1.push(this.cataloguedata[i])
+    			for (let k = 0; k<this.cataloguedata[i].child.length;k++) {
+    				this.level2.push(this.cataloguedata[i].child[k])		
+    				for(let j =0; j<this.cataloguedata[i].child[k].child.length;j++){
+    					this.level3.push(this.cataloguedata[i].child[k].child[j])
+    				}
+    			}
+    		}
+    	})
+    	
+    },
+    computed: {
+    ...mapGetters([
+      'list'
+    ])
+  },
     components: {
     	tip: Tip,
     	filters: Filters,
@@ -86,23 +114,24 @@ import { mapGetters, mapActions } from 'vuex'
     	confirm: Confirm
     },
     methods: {
-    create (name) {
-      this.show[name] = true;
-    },
-    close (name) {
-    	this.show[name] = false;
-    },
-    edit () {
-    	this.panels=[
-    		  {name: 'CatalogueName', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null' },
-    		  {name: 'ParentClass', text: '父分类', type: 'select', sub: 'select'},
-    		  {name: 'KeyWords', text: '关键词', holder: '请输入关键词', type: 'input', sub: 'input',check: 'is_null'},
-    		  {name: 'No', text: '排序',holder: '请输入序号...', type: 'input', sub: 'input', check: 'is_null'},
-    		  {name: 'Standard', text: '规格绑定', type: 'select', sub: 'select'},
-    		  {name: 'Parameters', text: '参数绑定', type: 'select', sub: 'select'}
-    	]
-    	this.show['panel'] = true;
-    }
+	    create (name) {
+	      this.show[name] = true;
+	      // console.log(this.level1)
+	    },
+	    close (name) {
+	    	this.show[name] = false;
+	    },
+	    edit () {
+	    	this.panels=[
+	    		  {name: 'CatalogueName', text: '名称', holder: '请输入名称...', type: 'input', sub: 'input', check: 'is_null' },
+	    		  {name: 'ParentClass', text: '父分类', type: 'select', sub: 'select'},
+	    		  {name: 'KeyWords', text: '关键词', holder: '请输入关键词', type: 'input', sub: 'input',check: 'is_null'},
+	    		  {name: 'No', text: '排序',holder: '请输入序号...', type: 'input', sub: 'input', check: 'is_null'},
+	    		  {name: 'Standard', text: '规格绑定', type: 'select', sub: 'select'},
+	    		  {name: 'Parameters', text: '参数绑定', type: 'select', sub: 'select'}
+	    	]
+	    	this.show['panel'] = true;
+	    }
     }
   }
 </script>

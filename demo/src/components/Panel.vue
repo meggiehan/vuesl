@@ -48,12 +48,7 @@
       return {
         updata: {},
         check: [],
-<<<<<<< HEAD
-        mock: ['stock', 'order', 'orders', 'points', 'account', 'associator', 'back', 'changes'],
-        mock: ['order', 'details', 'points', 'account', 'associator', 'back', 'changes']
-=======
         mock: ['order', 'category', 'details', 'points', 'account', 'associator', 'back', 'changes', 'parameters']
->>>>>>> ca353bc7377c894009d7d063adf6071866aecbe0
       }
     },
     components: {

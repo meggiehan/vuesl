@@ -1,0 +1,142 @@
+{
+    "data": [
+        {
+            "Category_name": "家用3c",
+            "id": 1,
+            "Disp_index": 1,
+            "Goods_quantity": 100,
+            "Goods_proportion": 10000,
+            "Goods_rank": "一级分类",
+            "Create_time": "2017-4-20",
+            "child": [
+                {
+                    "Category_name": "冰箱",
+                    "Disp_index": 1,
+                    "Goods_quantity": 100,
+                    "Goods_proportion": 10000,
+                    "Goods_rank": "二级分类",
+                    "Create_time": "2017-4-20",
+                    "id": 1001,
+                    "child": [
+                        {
+                            "name": "b990",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 1001001
+                        },
+                        {
+                            "name": "b991",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 1001002
+                        }
+                    ]
+                },
+                {
+                    "Category_name": "洗衣机",
+                    "Disp_index": 1,
+                    "Goods_quantity": 100,
+                    "Goods_proportion": 10000,
+                    "Goods_rank": 1,
+                    "Create_time": "2017-4-20",
+                    "id": 1002,
+                    "child": [
+                        {
+                            "name": "s990",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 1002001
+                        },
+                        {
+                            "name": "s991",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 1002002
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Category_name": "床上那些事",
+            "Disp_index": 1,
+            "Goods_quantity": 100,
+            "Goods_proportion": 10000,
+            "Goods_rank": "一级分类",
+            "Create_time": "2017-4-20",
+            "id": 2,
+            "child": [
+                {
+                    "Category_name": "床单",
+                    "Disp_index": 1,
+                    "Goods_quantity": 100,
+                    "Goods_proportion": 10000,
+                    "Goods_rank": 1,
+                    "Create_time": "2017-4-20",
+                    "id": 2001,
+                    "child": [
+                        {
+                            "name": "c990",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 2001001
+                        },
+                        {
+                            "name": "c991",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 2001002
+                        }
+                    ]
+                },
+                {
+                    "Category_name": "被套",
+                    "Disp_index": 1,
+                    "Goods_quantity": 100,
+                    "Goods_proportion": 10000,
+                    "Goods_rank": 1,
+                    "Create_time": "2017-4-20",
+                    "id": 2002,
+                    "child": [
+                        {
+                            "name": "v990",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 2002001
+                        },
+                        {
+                            "name": "v991",
+                            "Disp_index": 1,
+                            "Goods_quantity": 100,
+                            "Goods_proportion": 10000,
+                            "Goods_rank": "三级分类",
+                            "Create_time": "2017-4-20",
+                            "id": 2002002
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -8,7 +8,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, idx) in list" class="list-map">
+          <tr v-for="(item, idx) in this.list" class="list-map">
             <td v-for="its in column">{{item[its.name]}}</td>
             <td class="opt" v-if="options"><button class="option" v-for="it in options" @click="operate(idx, it.method)"><span v-if="it.name!=='冻结'">{{it.name}}</span><span v-if="it.name==='冻结'">{{item.Status===0?'解冻':'冻结'}}</span></button></td>
           </tr>
@@ -34,7 +34,8 @@ export default {
     method: {},
     column: '',
     options: '',
-    filter: ''
+    filter: '',
+    list: ''
   },
   data () {
     return {
