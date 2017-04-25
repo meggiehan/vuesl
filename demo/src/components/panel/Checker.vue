@@ -4,7 +4,7 @@
       {{child.text}}：
     </div>
     <ul>
-      <li v-for='(item,idx) in child.list' v-bind:class="{active: result.indexOf(item.id)>-1}" @click=change(item.id)><span></span>{{item.title}}</li>
+      <li v-for='(item,idx) in child.list' v-bind:class="{active: result.indexOf(item.id)>-1}" @click='change(item.id)'><span></span>{{item.title}}</li>
     </ul>
   </div>
 </template>

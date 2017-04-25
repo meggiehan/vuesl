@@ -13,6 +13,7 @@
         <checker v-if="item.type == 'check'" :child="item" :id="single.Id" @toparent="change"></checker>
         <searcher v-if="item.type == 'searcher'" :child="item" :id="single.Id" @toparent="change"></searcher>
         <texter v-if="item.type == 'texter'" :child="item" :id="single.Id" @toparent="change"></texter>
+        <selectfilter v-if="item.type=='selectfilter'" :child="item" :id="single.Id" @toparent="change"></selectfilter>
         <location v-if="item.type== 'location'" :id="single.Id" @toparent="change" :child="item"></location>
       </div>
     </div>
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+  import Selectfilter from "./selectfilter/Selectfilter.vue";
   import Inputer from './panel/Inputer.vue'
   import Radioer from './panel/Radioer.vue'
   import Multi from './panel/multi.vue'
@@ -51,6 +53,7 @@
 mock: ['stock', 'order', 'orders', 'points', 'account', 'associator', 'back', 'changes'], mock: ['order', 'orders', 'points', 'account', 'associator', 'back', 'changes'],      }
     },
     components: {
+      selectfilter: Selectfilter,
       inputer: Inputer,
       radioer: Radioer,
       multi: Multi,

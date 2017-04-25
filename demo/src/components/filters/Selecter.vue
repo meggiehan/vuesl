@@ -69,7 +69,7 @@
     .p-title
       margin-right:.5rem
       margin-top:.125rem
-      height.25rem
+      height:.25rem
       line-height:.25rem
     .list-role
       position:absolute

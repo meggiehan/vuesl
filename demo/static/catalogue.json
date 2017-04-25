@@ -19,7 +19,7 @@
                     "id": 1001,
                     "child": [
                         {
-                            "name": "b990",
+                            "Category_name": "b990",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -28,7 +28,7 @@
                             "id": 1001001
                         },
                         {
-                            "name": "b991",
+                            "Category_name": "b991",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -48,7 +48,7 @@
                     "id": 1002,
                     "child": [
                         {
-                            "name": "s990",
+                            "Category_name": "s990",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -57,7 +57,7 @@
                             "id": 1002001
                         },
                         {
-                            "name": "s991",
+                            "Category_name": "s991",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -77,6 +77,28 @@
             "Goods_rank": "一级分类",
             "Create_time": "2017-4-20",
             "id": 2,
+            "specification": [
+                {
+                    "name": "color",
+                    "val": "red",
+                    "id": "103"
+                },
+                {
+                    "name": "color",
+                    "val": "red",
+                    "id": "110"
+                }
+            ],
+            "parameters": {
+                "ele": {
+                    "color": "red",
+                    "type": "new"
+                },
+                "size": {
+                    "big": "hahah",
+                    "node": "dddddd"
+                }
+            },
             "child": [
                 {
                     "Category_name": "床单",
@@ -88,7 +110,7 @@
                     "id": 2001,
                     "child": [
                         {
-                            "name": "c990",
+                            "Category_name": "c990",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -97,7 +119,7 @@
                             "id": 2001001
                         },
                         {
-                            "name": "c991",
+                            "Category_name": "c991",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -117,7 +139,7 @@
                     "id": 2002,
                     "child": [
                         {
-                            "name": "v990",
+                            "Category_name": "v990",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,
@@ -126,7 +148,7 @@
                             "id": 2002001
                         },
                         {
-                            "name": "v991",
+                            "Category_name": "v991",
                             "Disp_index": 1,
                             "Goods_quantity": 100,
                             "Goods_proportion": 10000,

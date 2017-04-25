@@ -6,7 +6,7 @@
   		<filters :filters="filters"
   				 :method="method"></filters>
   		<div class="option">
-  			<button class="btn" @click="create('panel')">创建目录</button>
+  			<button class="btn" @click="edit('panel')">创建目录</button>
   		</div>	
   		<tables :method="method"
   		        :column="column"
@@ -85,20 +85,20 @@ import { mapGetters, mapActions } from 'vuex'
     },
     mounted() {
     	// console.log('hahaha',api.getJson('../../../static/catalogue.json'))
-    	api.getJson('../../../static/catalogue.json').then((json)=>{
-    		this.cataloguedata = json.body.data
-    		// console.log('hahaha',this.cataloguedata)
-    	}).then(()=>{
-    		for (let i = 0 ; i < this.cataloguedata.length; i++) {
-    			this.level1.push(this.cataloguedata[i])
-    			for (let k = 0; k<this.cataloguedata[i].child.length;k++) {
-    				this.level2.push(this.cataloguedata[i].child[k])		
-    				for(let j =0; j<this.cataloguedata[i].child[k].child.length;j++){
-    					this.level3.push(this.cataloguedata[i].child[k].child[j])
-    				}
-    			}
-    		}
-    	})
+    	// api.getJson('../../../static/catalogue.json').then((json)=>{
+    	// 	this.cataloguedata = json.body.data
+    	// 	// console.log('hahaha',this.cataloguedata)
+    	// }).then(()=>{
+    	// 	for (let i = 0 ; i < this.cataloguedata.length; i++) {
+    	// 		this.level1.push(this.cataloguedata[i])
+    	// 		for (let k = 0; k<this.cataloguedata[i].child.length;k++) {
+    	// 			this.level2.push(this.cataloguedata[i].child[k])		
+    	// 			for(let j =0; j<this.cataloguedata[i].child[k].child.length;j++){
+    	// 				this.level3.push(this.cataloguedata[i].child[k].child[j])
+    	// 			}
+    	// 		}
+    	// 	}
+    	// })
     	
     },
     computed: {
@@ -127,8 +127,8 @@ import { mapGetters, mapActions } from 'vuex'
 	    		  {name: 'ParentClass', text: '父分类', type: 'select', sub: 'select'},
 	    		  {name: 'KeyWords', text: '关键词', holder: '请输入关键词', type: 'input', sub: 'input',check: 'is_null'},
 	    		  {name: 'No', text: '排序',holder: '请输入序号...', type: 'input', sub: 'input', check: 'is_null'},
-	    		  {name: 'Standard', text: '规格绑定', type: 'select', sub: 'select'},
-	    		  {name: 'Parameters', text: '参数绑定', type: 'select', sub: 'select'}
+	    		  {name: 'Standard', text: '规格绑定', type: 'selectfilter', sub: 'select'},
+	    		  {name: 'Parameters', text: '参数绑定', type: 'selectfilter', sub: 'select'}
 	    	]
 	    	this.show['panel'] = true;
 	    }
